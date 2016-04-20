@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Favorite List View Controller-->
         <scene sceneID="Gdr-JI-dxw">
             <objects>
-                <viewController id="YWC-PN-V9s" sceneMemberID="viewController">
+                <viewController id="YWC-PN-V9s" customClass="FavoriteListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tai-cf-mgW"/>
                         <viewControllerLayoutGuide type="bottom" id="PPv-dR-Hph"/>

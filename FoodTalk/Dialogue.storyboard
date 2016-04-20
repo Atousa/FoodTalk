@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Dialogue View Controller-->
         <scene sceneID="lgG-L2-fne">
             <objects>
-                <viewController id="zsU-2L-Dml" sceneMemberID="viewController">
+                <viewController id="zsU-2L-Dml" customClass="DialogueViewController" customModule="FoodTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JXZ-4I-rSC"/>
                         <viewControllerLayoutGuide type="bottom" id="RqG-d5-uMx"/>
