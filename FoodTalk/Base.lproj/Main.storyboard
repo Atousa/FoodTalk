@@ -18,21 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imm-4e-CyZ">
-                                <rect key="frame" x="273" y="285" width="55" height="30"/>
+                                <rect key="frame" x="354" y="285" width="72" height="30"/>
                                 <state key="normal" title="Favorite"/>
                                 <connections>
                                     <segue destination="Bwa-So-jQZ" kind="show" id="D02-qj-vtf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAt-fO-K84">
-                                <rect key="frame" x="261" y="344" width="79" height="30"/>
-                                <state key="normal" title="Been There"/>
-                                <connections>
-                                    <segue destination="ELR-Dv-VFL" kind="show" id="5cF-W7-qAt"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGO-vM-b4E">
-                                <rect key="frame" x="264" y="227" width="72" height="30"/>
+                                <rect key="frame" x="173" y="285" width="72" height="30"/>
                                 <state key="normal" title="New Place"/>
                                 <connections>
                                     <segue destination="KZb-md-CTb" kind="show" id="aZB-bE-ddZ"/>
@@ -79,15 +72,7 @@
                 <viewControllerPlaceholder storyboardName="FavoritesList" id="Bwa-So-jQZ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S9E-SH-Mdv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1711" y="387"/>
-        </scene>
-        <!--BeenHereBefore-->
-        <scene sceneID="BG7-m1-kP6">
-            <objects>
-                <viewControllerPlaceholder storyboardName="BeenHereBefore" id="ELR-Dv-VFL" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zSG-Ja-q0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1722" y="649"/>
+            <point key="canvasLocation" x="1711" y="572"/>
         </scene>
     </scenes>
 </document>

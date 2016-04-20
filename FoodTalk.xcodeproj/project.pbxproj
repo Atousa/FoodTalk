@@ -14,10 +14,8 @@
 		1A4FE0991CC6FDA000EE8787 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A4FE0971CC6FDA000EE8787 /* LaunchScreen.storyboard */; };
 		1A4FE0A11CC7017500EE8787 /* Dialogue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A4FE0A01CC7017500EE8787 /* Dialogue.storyboard */; };
 		1A4FE0A41CC701B600EE8787 /* FavoritesList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A4FE0A21CC701B600EE8787 /* FavoritesList.storyboard */; };
-		1A4FE0A61CC7020200EE8787 /* BeenHereBefore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A4FE0A51CC7020200EE8787 /* BeenHereBefore.storyboard */; };
 		1A4FE0AB1CC7029100EE8787 /* DialogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE0AA1CC7029100EE8787 /* DialogueViewController.swift */; };
 		1A4FE0AD1CC702A400EE8787 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */; };
-		1A4FE0AF1CC702B000EE8787 /* BeenHereBeforeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE0AE1CC702B000EE8787 /* BeenHereBeforeViewController.swift */; };
 		1A4FE0B31CC702E200EE8787 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE0B21CC702E200EE8787 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,10 +29,8 @@
 		1A4FE09A1CC6FDA000EE8787 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A4FE0A01CC7017500EE8787 /* Dialogue.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dialogue.storyboard; sourceTree = "<group>"; };
 		1A4FE0A31CC701B600EE8787 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FavoritesList.storyboard; sourceTree = "<group>"; };
-		1A4FE0A51CC7020200EE8787 /* BeenHereBefore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BeenHereBefore.storyboard; sourceTree = "<group>"; };
 		1A4FE0AA1CC7029100EE8787 /* DialogueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogueViewController.swift; sourceTree = "<group>"; };
 		1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
-		1A4FE0AE1CC702B000EE8787 /* BeenHereBeforeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeenHereBeforeViewController.swift; sourceTree = "<group>"; };
 		1A4FE0B21CC702E200EE8787 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,15 +65,14 @@
 			isa = PBXGroup;
 			children = (
 				1A4FE08B1CC6FDA000EE8787 /* AppDelegate.swift */,
-				1A4FE08F1CC6FDA000EE8787 /* Main.storyboard */,
 				1A4FE0B21CC702E200EE8787 /* MainViewController.swift */,
+				1A4FE08F1CC6FDA000EE8787 /* Main.storyboard */,
 				1A4FE0951CC6FDA000EE8787 /* Assets.xcassets */,
 				1A4FE0971CC6FDA000EE8787 /* LaunchScreen.storyboard */,
 				1A4FE09A1CC6FDA000EE8787 /* Info.plist */,
 				1A4FE0921CC6FDA000EE8787 /* FoodTalk.xcdatamodeld */,
 				1A4FE0A71CC7022C00EE8787 /* Dialogue */,
 				1A4FE0A81CC7023B00EE8787 /* FavoriteList */,
-				1A4FE0A91CC7025000EE8787 /* BeenHereBeforeList */,
 			);
 			path = FoodTalk;
 			sourceTree = "<group>";
@@ -98,15 +93,6 @@
 				1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */,
 			);
 			name = FavoriteList;
-			sourceTree = "<group>";
-		};
-		1A4FE0A91CC7025000EE8787 /* BeenHereBeforeList */ = {
-			isa = PBXGroup;
-			children = (
-				1A4FE0A51CC7020200EE8787 /* BeenHereBefore.storyboard */,
-				1A4FE0AE1CC702B000EE8787 /* BeenHereBeforeViewController.swift */,
-			);
-			name = BeenHereBeforeList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,7 +155,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A4FE0A11CC7017500EE8787 /* Dialogue.storyboard in Resources */,
-				1A4FE0A61CC7020200EE8787 /* BeenHereBefore.storyboard in Resources */,
 				1A4FE0991CC6FDA000EE8787 /* LaunchScreen.storyboard in Resources */,
 				1A4FE0A41CC701B600EE8787 /* FavoritesList.storyboard in Resources */,
 				1A4FE0961CC6FDA000EE8787 /* Assets.xcassets in Resources */,
@@ -185,7 +170,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A4FE0AD1CC702A400EE8787 /* FavoriteListViewController.swift in Sources */,
-				1A4FE0AF1CC702B000EE8787 /* BeenHereBeforeViewController.swift in Sources */,
 				1A4FE0941CC6FDA000EE8787 /* FoodTalk.xcdatamodeld in Sources */,
 				1A4FE0B31CC702E200EE8787 /* MainViewController.swift in Sources */,
 				1A4FE0AB1CC7029100EE8787 /* DialogueViewController.swift in Sources */,
