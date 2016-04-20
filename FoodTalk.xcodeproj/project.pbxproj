@@ -17,7 +17,6 @@
 		1A4FE0AB1CC7029100EE8787 /* DialogueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE0AA1CC7029100EE8787 /* DialogueController.swift */; };
 		1A4FE0AD1CC702A400EE8787 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */; };
 		1A4FE0B31CC702E200EE8787 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE0B21CC702E200EE8787 /* MainViewController.swift */; };
-		1A4FE0E81CC83CEA00EE8787 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1A4FE0E71CC83CEA00EE8787 /* Podfile */; };
 		717E624B1CC7FAE80078B71A /* DialogueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717E624A1CC7FAE80078B71A /* DialogueCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +33,6 @@
 		1A4FE0AA1CC7029100EE8787 /* DialogueController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogueController.swift; sourceTree = "<group>"; };
 		1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
 		1A4FE0B21CC702E200EE8787 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		1A4FE0E71CC83CEA00EE8787 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		717E624A1CC7FAE80078B71A /* DialogueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogueCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,7 +75,6 @@
 				1A4FE0921CC6FDA000EE8787 /* FoodTalk.xcdatamodeld */,
 				1A4FE0A71CC7022C00EE8787 /* Dialogue */,
 				1A4FE0A81CC7023B00EE8787 /* FavoriteList */,
-				1A4FE0E71CC83CEA00EE8787 /* Podfile */,
 			);
 			path = FoodTalk;
 			sourceTree = "<group>";
@@ -160,7 +157,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A4FE0E81CC83CEA00EE8787 /* Podfile in Resources */,
 				1A4FE0A11CC7017500EE8787 /* Dialogue.storyboard in Resources */,
 				1A4FE0991CC6FDA000EE8787 /* LaunchScreen.storyboard in Resources */,
 				1A4FE0A41CC701B600EE8787 /* FavoritesList.storyboard in Resources */,
