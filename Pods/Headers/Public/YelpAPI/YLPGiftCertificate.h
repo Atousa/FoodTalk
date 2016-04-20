@@ -1,0 +1,1 @@
+../../../YelpAPI/Pod/Classes/Response/YLPGiftCertificate.h
