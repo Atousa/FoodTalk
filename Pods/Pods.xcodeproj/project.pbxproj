@@ -1,999 +1,2971 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		0580A68CAE1F24B27839AF36C650F87B /* YLPBusiness.h in Headers */ = {isa = PBXBuildFile; fileRef = C2D2649BFDDFE165EAB58FB329E31D75 /* YLPBusiness.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0D783095E4935DAC4DC3BBE3D3C4B564 /* YLPCoordinate.h in Headers */ = {isa = PBXBuildFile; fileRef = BDAC0967274E48C561626F6C53D5D91E /* YLPCoordinate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0D7B5E4AE6A4970B11406BEC028BFAEA /* YLPCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = B6564E1D0DFEA9EF8B2E5B57449ACB7E /* YLPCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0FE24A6C646B1366523E331118C75872 /* YLPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1C3D980136D23077F0EC928740BE62 /* YLPUser.m */; };
-		120126E18D4D17F9048AE376A29EC477 /* YLPCoordinateDelta.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B9EB1AC201D3AC9F61A3F8F6C26DA35 /* YLPCoordinateDelta.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		17B88450A4B21EBD6E3FBDEBF8B2EC8C /* TDOAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F2B47286F7AE09C434D384743245513 /* TDOAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1CA5E5B427016F8F21C95D7088C3FA48 /* OMGHTTPURLRQ-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B629A4F82B57E37D30B2A540150AA8A /* OMGHTTPURLRQ-dummy.m */; };
-		2A3FCA5D136A825A3E24D1C5D765DFF5 /* YLPDealOption.m in Sources */ = {isa = PBXBuildFile; fileRef = F98E8F394D4E18E6C4518CA44EEDA61D /* YLPDealOption.m */; };
-		30DAA83F83C7A789892C40FA46C00A35 /* YLPRegion.h in Headers */ = {isa = PBXBuildFile; fileRef = D46D2B12B30B31C3699CA5715AA596BC /* YLPRegion.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3264C90F727B61848C1D64362B1F0256 /* YLPGeoBoundingBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 300CC37F48AF77E06656DF9D62A4A258 /* YLPGeoBoundingBox.m */; };
-		36E43C2F34D63DB78F7BED3EE6997927 /* YLPReview.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B07E1B8CECD827ABBA901DF896AFE8 /* YLPReview.m */; };
-		37CFDAD6793E1C6CDCC82649A61BD3C6 /* YLPGiftCertificate.m in Sources */ = {isa = PBXBuildFile; fileRef = B79701FE98D70C6EAAAAEFB10956742C /* YLPGiftCertificate.m */; };
-		37FB44731CEFA43A74259725973F30A1 /* YLPResponsePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 72EF9F210C457290756527DB4121A2AD /* YLPResponsePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3CD610E63CADCC89A15EFD277ACB5E42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		3CF65AE0AA599AC39118199B4CC7F4C3 /* YLPSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F3C5BB36126EE8D4A96C6A7E7EA05AB /* YLPSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4037AADD9CB3942DC59572468FC56562 /* YLPClient+Business.h in Headers */ = {isa = PBXBuildFile; fileRef = 458B4D52219485CEE9CF1D5D52585F30 /* YLPClient+Business.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		48FD54B161094645748D2BACA8DE4A5B /* OMGUserAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C713E142F27E95E9CC4491198FA48E /* OMGUserAgent.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		4AC6B7C1A729BFA3E148B32DCF60CA6F /* YLPGiftCertificateOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E791C9A70CA2917AEF5CF53B1AB3057 /* YLPGiftCertificateOption.m */; };
-		4AD2297F42DB036348D9DDB24282A124 /* YLPGeoCoordinate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E1BB3171CF49E1281927332E78A5D82 /* YLPGeoCoordinate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4B682942B45A2EE3E4B6AABF4EE55345 /* TDOAuth-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 63523A7986BDDD5E3BBD929BE658B6E4 /* TDOAuth-dummy.m */; };
-		4F48EFB3BB3D973FFBB50324526793D4 /* YLPCoordinateDelta.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C51C07B4DB7DFD31846BEA38A991A7C /* YLPCoordinateDelta.m */; };
-		4F5C22C16ABD92938480FB7D5A7F49AE /* YLPClient+Business.m in Sources */ = {isa = PBXBuildFile; fileRef = CB29DF1321F2B21125BE2D5D77850BA6 /* YLPClient+Business.m */; };
-		5369514447576BAC8C24B19A1B2662D1 /* YLPGeoCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7F107C003C8DE2B9E29F7530789C /* YLPGeoCoordinate.m */; };
-		552C334B39FA76BD6A53B99D624DE2D1 /* YLPCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D0505AD44912EED804D8CF23A0AD04 /* YLPCoordinate.m */; };
-		5753BC10A254763D9663BF27AF279784 /* YLPClient+Search.h in Headers */ = {isa = PBXBuildFile; fileRef = 404FB865B91324687C0D56C3147B1C3F /* YLPClient+Search.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5E854EE85833736FE5C399AEE2626661 /* YLPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C779CA6AF0907D9E44C36F248C68E716 /* YLPClient.m */; };
-		5F6EAF9F70A1F27B58CB34851E3D72DF /* YLPGeoBoundingBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 54385E420EA3CABF7AA67273B44A1462 /* YLPGeoBoundingBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6285C8F420B7A9F314412B6D2100A4EB /* YLPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FA4C5C2EC5B4C3EA89F22A1F16F476C /* YLPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		642A24954ADA07C516450E5A065D0027 /* YelpAPI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37292BFEEFEB283250624F4E72E1CFB3 /* YelpAPI-dummy.m */; };
-		679185ECC01651959F59F29A6C78DA8C /* YLPDealOption.h in Headers */ = {isa = PBXBuildFile; fileRef = 883EBA00FDC95CA584344DBF2CA00E00 /* YLPDealOption.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6BA059678A8732487F69EB681733149F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		6F150957B5F7BBB906C1B9236FCD3BAE /* YLPCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F8274EAF1BA8761EB2CD75ED6451D160 /* YLPCategory.m */; };
-		71855CAD7ABD31291BC830508C289C45 /* YLPDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = B26861BC846C277A0DA2E8470D39F667 /* YLPDeal.m */; };
-		7B3E177253436259F58B5B9268446C29 /* YLPSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA0B316F658BE2E2D1B8BEF2066B8A5 /* YLPSearch.m */; };
-		7F2214C254E1D306A868D66283AD40C3 /* YLPRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E0B395F6BE26BA834B21AEC39CB3D0 /* YLPRegion.m */; };
-		878A4A1C6C171E6F0AFCD520BBCF9BDD /* TDOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D420DEC2A28B41A1D04CD90F6EE559 /* TDOAuth.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		9E6821C2A71F957BE46996A92DF70D18 /* YLPClientPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = DABF248DBDD5B46C149AF5DA5D754290 /* YLPClientPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9F6218CFC796C07DAA0CCED178734EB8 /* YLPPhoneSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 599A6356ECC3C333115F54C189FB3110 /* YLPPhoneSearch.m */; };
-		A3563F70F763C931C23396059C1DEAC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		A53F1A69839A17642AAD9CF4678A51AD /* YLPClient+PhoneSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FE4CC9B5CCDEC971D1F2C9B82F5E29F /* YLPClient+PhoneSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A6605D17D650EAD92C125D6402AF934E /* YLPGiftCertificate.h in Headers */ = {isa = PBXBuildFile; fileRef = C8D034E254C14570C1C3FB0EE9145232 /* YLPGiftCertificate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B1071F03DE5980D7312E2B91A43C1DB6 /* YLPGiftCertificateOption.h in Headers */ = {isa = PBXBuildFile; fileRef = F70AD731F06BAB610E415BB8D9626E1D /* YLPGiftCertificateOption.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B4A10A5E833884094866BCCE4F7F5AEF /* YLPUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BF2E84FB36CBBD3534FA2806DAB9491 /* YLPUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BD3F2596A17EAD748F196809B5E8BF4C /* YLPCommonPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 831A57DBD8D3950DA5B92A418447E61F /* YLPCommonPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BE2CF19C42B06B3E794CEC37A4642832 /* YLPReview.h in Headers */ = {isa = PBXBuildFile; fileRef = D1C5CD1497D7DB2922F8F3043AC89888 /* YLPReview.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB9957C541DE160BA5E2C35EF779763 /* YLPBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = B49E92690208BE044BF35CF4415CE719 /* YLPBusiness.m */; };
-		D1279B95537BB6B036DCBE99DAFE91D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		D9D2258AB682E491E2BD9D1A7FF62FE6 /* YLPClient+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6F2D5607579A73C779E3BEF1FD4A66 /* YLPClient+Search.m */; };
-		DA32A70C53F0D7F919FC3625180C474A /* YLPDeal.h in Headers */ = {isa = PBXBuildFile; fileRef = 716B223BE20DC98AF3D1A243D2902080 /* YLPDeal.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB543C4EBD283048E766B3D3FCA2FE2C /* Pods-FoodTalk-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0961A21F664B4D5AD78208C4D177F73E /* Pods-FoodTalk-dummy.m */; };
-		E42C4679C21714B51DB3E09D99AFAB59 /* YLPSortType.h in Headers */ = {isa = PBXBuildFile; fileRef = F54DDCA61990D2254956EA6C856820B6 /* YLPSortType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E44CBD80E1AFB738D0EB321C5B94D4E4 /* YLPClient+PhoneSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4508C1FC3ED56F76CC79325C911FAA /* YLPClient+PhoneSearch.m */; };
-		E46F96663CB6D6AFDE7D7108F201D24C /* YLPLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 41A4B69F4423BD93032CEFA6E45F114D /* YLPLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EB9AF8D145E1A9B95210016A93DA8FFE /* YLPLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C54C839FBBCB9F9126D8EB6F18156BA6 /* YLPLocation.m */; };
-		F29C6CB87595941B74EE3F238D78B367 /* OMGUserAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CB714DAD171272D84F101CF8B817A26 /* OMGUserAgent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FE7EE70C4746908171EFE695F006DC8A /* YLPPhoneSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = D61A56C6FD4492A4E023A26ADF050E06 /* YLPPhoneSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		425F69A757B2F5F823B76015FBFB1221 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 56E044B939FA2DE4F639E057339E6D54;
-			remoteInfo = TDOAuth;
-		};
-		7926F4CB391DAA8FECD8C8ADE2DB04B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FCD660E6CD2216BA204430C04B61EFFF;
-			remoteInfo = OMGHTTPURLRQ;
-		};
-		8508DB50FF8C0677FA8F8E98C5A8AA31 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CBAC502682C59632928733393232116D;
-			remoteInfo = "YelpAPI-YelpAPI";
-		};
-		8AB9DF71976DA17839368485E7D39201 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FCD660E6CD2216BA204430C04B61EFFF;
-			remoteInfo = OMGHTTPURLRQ;
-		};
-		A0CE0FCCBEA916A6D85700B34438FEA1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 56E044B939FA2DE4F639E057339E6D54;
-			remoteInfo = TDOAuth;
-		};
-		B4B385D54C5B1B16BC18A92B0C61260D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 831462D60370DE66F14CE5AA0A4C9A6B;
-			remoteInfo = YelpAPI;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		05C713E142F27E95E9CC4491198FA48E /* OMGUserAgent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OMGUserAgent.m; path = Sources/OMGUserAgent.m; sourceTree = "<group>"; };
-		0961A21F664B4D5AD78208C4D177F73E /* Pods-FoodTalk-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FoodTalk-dummy.m"; sourceTree = "<group>"; };
-		0E1BB3171CF49E1281927332E78A5D82 /* YLPGeoCoordinate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPGeoCoordinate.h; path = Pod/Classes/Request/YLPGeoCoordinate.h; sourceTree = "<group>"; };
-		0E4508C1FC3ED56F76CC79325C911FAA /* YLPClient+PhoneSearch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "YLPClient+PhoneSearch.m"; path = "Pod/Classes/Client/YLPClient+PhoneSearch.m"; sourceTree = "<group>"; };
-		0F2B47286F7AE09C434D384743245513 /* TDOAuth.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDOAuth.h; sourceTree = "<group>"; };
-		0F30FB7347C59423CE791D2E82D1DD2D /* YelpAPI-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YelpAPI-prefix.pch"; sourceTree = "<group>"; };
-		171F53E1419BF96FB533077098AFD5F2 /* Pods-FoodTalk-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FoodTalk-acknowledgements.markdown"; sourceTree = "<group>"; };
-		2FA4C5C2EC5B4C3EA89F22A1F16F476C /* YLPClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPClient.h; path = Pod/Classes/Client/YLPClient.h; sourceTree = "<group>"; };
-		300CC37F48AF77E06656DF9D62A4A258 /* YLPGeoBoundingBox.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPGeoBoundingBox.m; path = Pod/Classes/Request/YLPGeoBoundingBox.m; sourceTree = "<group>"; };
-		30BC7CB4EFFB8AA5E05ED54F36D8E91C /* YelpAPI.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YelpAPI.xcconfig; sourceTree = "<group>"; };
-		31DBC04FDB5B461943720469E76CD4E0 /* TDOAuth.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TDOAuth.xcconfig; sourceTree = "<group>"; };
-		368B11345634A507E364A79709327E30 /* libPods-FoodTalk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodTalk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		37292BFEEFEB283250624F4E72E1CFB3 /* YelpAPI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YelpAPI-dummy.m"; sourceTree = "<group>"; };
-		3AB55837D27DCE6C884FF60833A8E1DC /* Pods-FoodTalk-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FoodTalk-acknowledgements.plist"; sourceTree = "<group>"; };
-		3BF2E84FB36CBBD3534FA2806DAB9491 /* YLPUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPUser.h; path = Pod/Classes/Response/YLPUser.h; sourceTree = "<group>"; };
-		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		3FE1C38ABB63A5B50E807C05A7CF10B9 /* TDOAuth-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TDOAuth-prefix.pch"; sourceTree = "<group>"; };
-		404FB865B91324687C0D56C3147B1C3F /* YLPClient+Search.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "YLPClient+Search.h"; path = "Pod/Classes/Client/YLPClient+Search.h"; sourceTree = "<group>"; };
-		41A4B69F4423BD93032CEFA6E45F114D /* YLPLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPLocation.h; path = Pod/Classes/Response/YLPLocation.h; sourceTree = "<group>"; };
-		44B6044171CE44FFBBDB2FFFAC56B6F2 /* libTDOAuth.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTDOAuth.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		458B4D52219485CEE9CF1D5D52585F30 /* YLPClient+Business.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "YLPClient+Business.h"; path = "Pod/Classes/Client/YLPClient+Business.h"; sourceTree = "<group>"; };
-		4B9EB1AC201D3AC9F61A3F8F6C26DA35 /* YLPCoordinateDelta.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPCoordinateDelta.h; path = Pod/Classes/Response/YLPCoordinateDelta.h; sourceTree = "<group>"; };
-		4ECC47BF01474B8EE08CAE61F507A5C8 /* Pods-FoodTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FoodTalk.debug.xcconfig"; sourceTree = "<group>"; };
-		4F3C5BB36126EE8D4A96C6A7E7EA05AB /* YLPSearch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPSearch.h; path = Pod/Classes/Response/YLPSearch.h; sourceTree = "<group>"; };
-		54385E420EA3CABF7AA67273B44A1462 /* YLPGeoBoundingBox.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPGeoBoundingBox.h; path = Pod/Classes/Request/YLPGeoBoundingBox.h; sourceTree = "<group>"; };
-		54D420DEC2A28B41A1D04CD90F6EE559 /* TDOAuth.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDOAuth.m; sourceTree = "<group>"; };
-		599A6356ECC3C333115F54C189FB3110 /* YLPPhoneSearch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPPhoneSearch.m; path = Pod/Classes/Response/YLPPhoneSearch.m; sourceTree = "<group>"; };
-		59D0505AD44912EED804D8CF23A0AD04 /* YLPCoordinate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPCoordinate.m; path = Pod/Classes/Common/YLPCoordinate.m; sourceTree = "<group>"; };
-		63523A7986BDDD5E3BBD929BE658B6E4 /* TDOAuth-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TDOAuth-dummy.m"; sourceTree = "<group>"; };
-		6CB714DAD171272D84F101CF8B817A26 /* OMGUserAgent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OMGUserAgent.h; path = Sources/OMGUserAgent.h; sourceTree = "<group>"; };
-		6E791C9A70CA2917AEF5CF53B1AB3057 /* YLPGiftCertificateOption.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPGiftCertificateOption.m; path = Pod/Classes/Response/YLPGiftCertificateOption.m; sourceTree = "<group>"; };
-		716B223BE20DC98AF3D1A243D2902080 /* YLPDeal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPDeal.h; path = Pod/Classes/Response/YLPDeal.h; sourceTree = "<group>"; };
-		72EF9F210C457290756527DB4121A2AD /* YLPResponsePrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPResponsePrivate.h; path = Pod/Classes/Response/YLPResponsePrivate.h; sourceTree = "<group>"; };
-		7CA0B316F658BE2E2D1B8BEF2066B8A5 /* YLPSearch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPSearch.m; path = Pod/Classes/Response/YLPSearch.m; sourceTree = "<group>"; };
-		831A57DBD8D3950DA5B92A418447E61F /* YLPCommonPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPCommonPrivate.h; path = Pod/Classes/Common/YLPCommonPrivate.h; sourceTree = "<group>"; };
-		883EBA00FDC95CA584344DBF2CA00E00 /* YLPDealOption.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPDealOption.h; path = Pod/Classes/Response/YLPDealOption.h; sourceTree = "<group>"; };
-		8B629A4F82B57E37D30B2A540150AA8A /* OMGHTTPURLRQ-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OMGHTTPURLRQ-dummy.m"; sourceTree = "<group>"; };
-		8FE4CC9B5CCDEC971D1F2C9B82F5E29F /* YLPClient+PhoneSearch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "YLPClient+PhoneSearch.h"; path = "Pod/Classes/Client/YLPClient+PhoneSearch.h"; sourceTree = "<group>"; };
-		9C51C07B4DB7DFD31846BEA38A991A7C /* YLPCoordinateDelta.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPCoordinateDelta.m; path = Pod/Classes/Response/YLPCoordinateDelta.m; sourceTree = "<group>"; };
-		A85048B1B98D0596877BB9376059FD33 /* libOMGHTTPURLRQ.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOMGHTTPURLRQ.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8E0B395F6BE26BA834B21AEC39CB3D0 /* YLPRegion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPRegion.m; path = Pod/Classes/Response/YLPRegion.m; sourceTree = "<group>"; };
-		AC1C3D980136D23077F0EC928740BE62 /* YLPUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPUser.m; path = Pod/Classes/Response/YLPUser.m; sourceTree = "<group>"; };
-		B26861BC846C277A0DA2E8470D39F667 /* YLPDeal.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPDeal.m; path = Pod/Classes/Response/YLPDeal.m; sourceTree = "<group>"; };
-		B49E92690208BE044BF35CF4415CE719 /* YLPBusiness.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPBusiness.m; path = Pod/Classes/Response/YLPBusiness.m; sourceTree = "<group>"; };
-		B6564E1D0DFEA9EF8B2E5B57449ACB7E /* YLPCategory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPCategory.h; path = Pod/Classes/Response/YLPCategory.h; sourceTree = "<group>"; };
-		B74DF1BB5FCB775584561D622034C4D6 /* Pods-FoodTalk-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FoodTalk-resources.sh"; sourceTree = "<group>"; };
-		B79701FE98D70C6EAAAAEFB10956742C /* YLPGiftCertificate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPGiftCertificate.m; path = Pod/Classes/Response/YLPGiftCertificate.m; sourceTree = "<group>"; };
-		BB6F2D5607579A73C779E3BEF1FD4A66 /* YLPClient+Search.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "YLPClient+Search.m"; path = "Pod/Classes/Client/YLPClient+Search.m"; sourceTree = "<group>"; };
-		BDAC0967274E48C561626F6C53D5D91E /* YLPCoordinate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPCoordinate.h; path = Pod/Classes/Common/YLPCoordinate.h; sourceTree = "<group>"; };
-		C2D2649BFDDFE165EAB58FB329E31D75 /* YLPBusiness.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPBusiness.h; path = Pod/Classes/Response/YLPBusiness.h; sourceTree = "<group>"; };
-		C47693EC2BFF2EDF6531BF8F92897E2A /* Pods-FoodTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FoodTalk.release.xcconfig"; sourceTree = "<group>"; };
-		C54C839FBBCB9F9126D8EB6F18156BA6 /* YLPLocation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPLocation.m; path = Pod/Classes/Response/YLPLocation.m; sourceTree = "<group>"; };
-		C779CA6AF0907D9E44C36F248C68E716 /* YLPClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPClient.m; path = Pod/Classes/Client/YLPClient.m; sourceTree = "<group>"; };
-		C869B0E6B3A6626D4BF3379597078035 /* YelpAPI.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YelpAPI.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		C8D034E254C14570C1C3FB0EE9145232 /* YLPGiftCertificate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPGiftCertificate.h; path = Pod/Classes/Response/YLPGiftCertificate.h; sourceTree = "<group>"; };
-		CB29DF1321F2B21125BE2D5D77850BA6 /* YLPClient+Business.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "YLPClient+Business.m"; path = "Pod/Classes/Client/YLPClient+Business.m"; sourceTree = "<group>"; };
-		D1C5CD1497D7DB2922F8F3043AC89888 /* YLPReview.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPReview.h; path = Pod/Classes/Response/YLPReview.h; sourceTree = "<group>"; };
-		D46D2B12B30B31C3699CA5715AA596BC /* YLPRegion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPRegion.h; path = Pod/Classes/Response/YLPRegion.h; sourceTree = "<group>"; };
-		D61A56C6FD4492A4E023A26ADF050E06 /* YLPPhoneSearch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPPhoneSearch.h; path = Pod/Classes/Response/YLPPhoneSearch.h; sourceTree = "<group>"; };
-		D849742E6685FC8783471BC46AFF5888 /* Pods-FoodTalk-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FoodTalk-frameworks.sh"; sourceTree = "<group>"; };
-		DABF248DBDD5B46C149AF5DA5D754290 /* YLPClientPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPClientPrivate.h; path = Pod/Classes/Client/YLPClientPrivate.h; sourceTree = "<group>"; };
-		E34B0F8525D8C4701E1F96319BE707F8 /* libYelpAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYelpAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E40C2B34D5B8CC0592BE18C45E125BE3 /* OMGHTTPURLRQ.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OMGHTTPURLRQ.xcconfig; sourceTree = "<group>"; };
-		ED6DD6220EF3DDD98AAC78D7792A8FB7 /* OMGHTTPURLRQ-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OMGHTTPURLRQ-prefix.pch"; sourceTree = "<group>"; };
-		EFAD7F107C003C8DE2B9E29F7530789C /* YLPGeoCoordinate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPGeoCoordinate.m; path = Pod/Classes/Request/YLPGeoCoordinate.m; sourceTree = "<group>"; };
-		F2B07E1B8CECD827ABBA901DF896AFE8 /* YLPReview.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPReview.m; path = Pod/Classes/Response/YLPReview.m; sourceTree = "<group>"; };
-		F54DDCA61990D2254956EA6C856820B6 /* YLPSortType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPSortType.h; path = Pod/Classes/Request/YLPSortType.h; sourceTree = "<group>"; };
-		F70AD731F06BAB610E415BB8D9626E1D /* YLPGiftCertificateOption.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YLPGiftCertificateOption.h; path = Pod/Classes/Response/YLPGiftCertificateOption.h; sourceTree = "<group>"; };
-		F8274EAF1BA8761EB2CD75ED6451D160 /* YLPCategory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPCategory.m; path = Pod/Classes/Response/YLPCategory.m; sourceTree = "<group>"; };
-		F98E8F394D4E18E6C4518CA44EEDA61D /* YLPDealOption.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YLPDealOption.m; path = Pod/Classes/Response/YLPDealOption.m; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		06DF07A7F70611A3E1FD76D182EE36DE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6BA059678A8732487F69EB681733149F /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2AB05E8AE7DF294E1706C94A4A056E36 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A3563F70F763C931C23396059C1DEAC8 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8C47DE81F963E87B80B6B689B6AFA85C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1279B95537BB6B036DCBE99DAFE91D8 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C88B11781694DDA1C92DF9B6CFA3762E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3CD610E63CADCC89A15EFD277ACB5E42 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E95A2F837C8C7691592E702E15FC0EB0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		156813B0E6FD715344498CDCB5DF2831 /* TDOAuth */ = {
-			isa = PBXGroup;
-			children = (
-				0F2B47286F7AE09C434D384743245513 /* TDOAuth.h */,
-				54D420DEC2A28B41A1D04CD90F6EE559 /* TDOAuth.m */,
-				E0D2E1299CC8D36146D97D159707B6B2 /* Support Files */,
-			);
-			path = TDOAuth;
-			sourceTree = "<group>";
-		};
-		250ADAB07F9E5A5434482EC5D89E2632 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				30BC7CB4EFFB8AA5E05ED54F36D8E91C /* YelpAPI.xcconfig */,
-				37292BFEEFEB283250624F4E72E1CFB3 /* YelpAPI-dummy.m */,
-				0F30FB7347C59423CE791D2E82D1DD2D /* YelpAPI-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/YelpAPI";
-			sourceTree = "<group>";
-		};
-		2D63E83D7E5237D9E0B4A32FC209849D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B8EFBE7F69BC925048EA1F60D6B078A5 /* OMGHTTPURLRQ */,
-				156813B0E6FD715344498CDCB5DF2831 /* TDOAuth */,
-				DFD7D749F78F646B8BF24D075B238E49 /* YelpAPI */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		74B268339E5F6CA39DB4EDBA74A1EFAF /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				99CB32DE065CA2989F7FFEFEBC588FCE /* Pods-FoodTalk */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		7DB346D0F39D3F0E887471402A8071AB = {
-			isa = PBXGroup;
-			children = (
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				2D63E83D7E5237D9E0B4A32FC209849D /* Pods */,
-				8F1F7B55E07CD4640963FC8ADDFE8F05 /* Products */,
-				74B268339E5F6CA39DB4EDBA74A1EFAF /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		8F1F7B55E07CD4640963FC8ADDFE8F05 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A85048B1B98D0596877BB9376059FD33 /* libOMGHTTPURLRQ.a */,
-				368B11345634A507E364A79709327E30 /* libPods-FoodTalk.a */,
-				44B6044171CE44FFBBDB2FFFAC56B6F2 /* libTDOAuth.a */,
-				E34B0F8525D8C4701E1F96319BE707F8 /* libYelpAPI.a */,
-				C869B0E6B3A6626D4BF3379597078035 /* YelpAPI.bundle */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		99CB32DE065CA2989F7FFEFEBC588FCE /* Pods-FoodTalk */ = {
-			isa = PBXGroup;
-			children = (
-				171F53E1419BF96FB533077098AFD5F2 /* Pods-FoodTalk-acknowledgements.markdown */,
-				3AB55837D27DCE6C884FF60833A8E1DC /* Pods-FoodTalk-acknowledgements.plist */,
-				0961A21F664B4D5AD78208C4D177F73E /* Pods-FoodTalk-dummy.m */,
-				D849742E6685FC8783471BC46AFF5888 /* Pods-FoodTalk-frameworks.sh */,
-				B74DF1BB5FCB775584561D622034C4D6 /* Pods-FoodTalk-resources.sh */,
-				4ECC47BF01474B8EE08CAE61F507A5C8 /* Pods-FoodTalk.debug.xcconfig */,
-				C47693EC2BFF2EDF6531BF8F92897E2A /* Pods-FoodTalk.release.xcconfig */,
-			);
-			name = "Pods-FoodTalk";
-			path = "Target Support Files/Pods-FoodTalk";
-			sourceTree = "<group>";
-		};
-		B8EFBE7F69BC925048EA1F60D6B078A5 /* OMGHTTPURLRQ */ = {
-			isa = PBXGroup;
-			children = (
-				D9633881B3CA24F3DA1A24EC284073A5 /* Support Files */,
-				E46FC65F0321ECCB3A3A8363AF309B87 /* UserAgent */,
-			);
-			path = OMGHTTPURLRQ;
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		D9633881B3CA24F3DA1A24EC284073A5 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				E40C2B34D5B8CC0592BE18C45E125BE3 /* OMGHTTPURLRQ.xcconfig */,
-				8B629A4F82B57E37D30B2A540150AA8A /* OMGHTTPURLRQ-dummy.m */,
-				ED6DD6220EF3DDD98AAC78D7792A8FB7 /* OMGHTTPURLRQ-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/OMGHTTPURLRQ";
-			sourceTree = "<group>";
-		};
-		DFD7D749F78F646B8BF24D075B238E49 /* YelpAPI */ = {
-			isa = PBXGroup;
-			children = (
-				C2D2649BFDDFE165EAB58FB329E31D75 /* YLPBusiness.h */,
-				B49E92690208BE044BF35CF4415CE719 /* YLPBusiness.m */,
-				B6564E1D0DFEA9EF8B2E5B57449ACB7E /* YLPCategory.h */,
-				F8274EAF1BA8761EB2CD75ED6451D160 /* YLPCategory.m */,
-				2FA4C5C2EC5B4C3EA89F22A1F16F476C /* YLPClient.h */,
-				C779CA6AF0907D9E44C36F248C68E716 /* YLPClient.m */,
-				458B4D52219485CEE9CF1D5D52585F30 /* YLPClient+Business.h */,
-				CB29DF1321F2B21125BE2D5D77850BA6 /* YLPClient+Business.m */,
-				8FE4CC9B5CCDEC971D1F2C9B82F5E29F /* YLPClient+PhoneSearch.h */,
-				0E4508C1FC3ED56F76CC79325C911FAA /* YLPClient+PhoneSearch.m */,
-				404FB865B91324687C0D56C3147B1C3F /* YLPClient+Search.h */,
-				BB6F2D5607579A73C779E3BEF1FD4A66 /* YLPClient+Search.m */,
-				DABF248DBDD5B46C149AF5DA5D754290 /* YLPClientPrivate.h */,
-				831A57DBD8D3950DA5B92A418447E61F /* YLPCommonPrivate.h */,
-				BDAC0967274E48C561626F6C53D5D91E /* YLPCoordinate.h */,
-				59D0505AD44912EED804D8CF23A0AD04 /* YLPCoordinate.m */,
-				4B9EB1AC201D3AC9F61A3F8F6C26DA35 /* YLPCoordinateDelta.h */,
-				9C51C07B4DB7DFD31846BEA38A991A7C /* YLPCoordinateDelta.m */,
-				716B223BE20DC98AF3D1A243D2902080 /* YLPDeal.h */,
-				B26861BC846C277A0DA2E8470D39F667 /* YLPDeal.m */,
-				883EBA00FDC95CA584344DBF2CA00E00 /* YLPDealOption.h */,
-				F98E8F394D4E18E6C4518CA44EEDA61D /* YLPDealOption.m */,
-				54385E420EA3CABF7AA67273B44A1462 /* YLPGeoBoundingBox.h */,
-				300CC37F48AF77E06656DF9D62A4A258 /* YLPGeoBoundingBox.m */,
-				0E1BB3171CF49E1281927332E78A5D82 /* YLPGeoCoordinate.h */,
-				EFAD7F107C003C8DE2B9E29F7530789C /* YLPGeoCoordinate.m */,
-				C8D034E254C14570C1C3FB0EE9145232 /* YLPGiftCertificate.h */,
-				B79701FE98D70C6EAAAAEFB10956742C /* YLPGiftCertificate.m */,
-				F70AD731F06BAB610E415BB8D9626E1D /* YLPGiftCertificateOption.h */,
-				6E791C9A70CA2917AEF5CF53B1AB3057 /* YLPGiftCertificateOption.m */,
-				41A4B69F4423BD93032CEFA6E45F114D /* YLPLocation.h */,
-				C54C839FBBCB9F9126D8EB6F18156BA6 /* YLPLocation.m */,
-				D61A56C6FD4492A4E023A26ADF050E06 /* YLPPhoneSearch.h */,
-				599A6356ECC3C333115F54C189FB3110 /* YLPPhoneSearch.m */,
-				D46D2B12B30B31C3699CA5715AA596BC /* YLPRegion.h */,
-				A8E0B395F6BE26BA834B21AEC39CB3D0 /* YLPRegion.m */,
-				72EF9F210C457290756527DB4121A2AD /* YLPResponsePrivate.h */,
-				D1C5CD1497D7DB2922F8F3043AC89888 /* YLPReview.h */,
-				F2B07E1B8CECD827ABBA901DF896AFE8 /* YLPReview.m */,
-				4F3C5BB36126EE8D4A96C6A7E7EA05AB /* YLPSearch.h */,
-				7CA0B316F658BE2E2D1B8BEF2066B8A5 /* YLPSearch.m */,
-				F54DDCA61990D2254956EA6C856820B6 /* YLPSortType.h */,
-				3BF2E84FB36CBBD3534FA2806DAB9491 /* YLPUser.h */,
-				AC1C3D980136D23077F0EC928740BE62 /* YLPUser.m */,
-				250ADAB07F9E5A5434482EC5D89E2632 /* Support Files */,
-			);
-			path = YelpAPI;
-			sourceTree = "<group>";
-		};
-		E0D2E1299CC8D36146D97D159707B6B2 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				31DBC04FDB5B461943720469E76CD4E0 /* TDOAuth.xcconfig */,
-				63523A7986BDDD5E3BBD929BE658B6E4 /* TDOAuth-dummy.m */,
-				3FE1C38ABB63A5B50E807C05A7CF10B9 /* TDOAuth-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/TDOAuth";
-			sourceTree = "<group>";
-		};
-		E46FC65F0321ECCB3A3A8363AF309B87 /* UserAgent */ = {
-			isa = PBXGroup;
-			children = (
-				6CB714DAD171272D84F101CF8B817A26 /* OMGUserAgent.h */,
-				05C713E142F27E95E9CC4491198FA48E /* OMGUserAgent.m */,
-			);
-			name = UserAgent;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		B6E813CD28096058AE4381E5D87A44D0 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0580A68CAE1F24B27839AF36C650F87B /* YLPBusiness.h in Headers */,
-				0D7B5E4AE6A4970B11406BEC028BFAEA /* YLPCategory.h in Headers */,
-				4037AADD9CB3942DC59572468FC56562 /* YLPClient+Business.h in Headers */,
-				A53F1A69839A17642AAD9CF4678A51AD /* YLPClient+PhoneSearch.h in Headers */,
-				5753BC10A254763D9663BF27AF279784 /* YLPClient+Search.h in Headers */,
-				6285C8F420B7A9F314412B6D2100A4EB /* YLPClient.h in Headers */,
-				9E6821C2A71F957BE46996A92DF70D18 /* YLPClientPrivate.h in Headers */,
-				BD3F2596A17EAD748F196809B5E8BF4C /* YLPCommonPrivate.h in Headers */,
-				0D783095E4935DAC4DC3BBE3D3C4B564 /* YLPCoordinate.h in Headers */,
-				120126E18D4D17F9048AE376A29EC477 /* YLPCoordinateDelta.h in Headers */,
-				DA32A70C53F0D7F919FC3625180C474A /* YLPDeal.h in Headers */,
-				679185ECC01651959F59F29A6C78DA8C /* YLPDealOption.h in Headers */,
-				5F6EAF9F70A1F27B58CB34851E3D72DF /* YLPGeoBoundingBox.h in Headers */,
-				4AD2297F42DB036348D9DDB24282A124 /* YLPGeoCoordinate.h in Headers */,
-				A6605D17D650EAD92C125D6402AF934E /* YLPGiftCertificate.h in Headers */,
-				B1071F03DE5980D7312E2B91A43C1DB6 /* YLPGiftCertificateOption.h in Headers */,
-				E46F96663CB6D6AFDE7D7108F201D24C /* YLPLocation.h in Headers */,
-				FE7EE70C4746908171EFE695F006DC8A /* YLPPhoneSearch.h in Headers */,
-				30DAA83F83C7A789892C40FA46C00A35 /* YLPRegion.h in Headers */,
-				37FB44731CEFA43A74259725973F30A1 /* YLPResponsePrivate.h in Headers */,
-				BE2CF19C42B06B3E794CEC37A4642832 /* YLPReview.h in Headers */,
-				3CF65AE0AA599AC39118199B4CC7F4C3 /* YLPSearch.h in Headers */,
-				E42C4679C21714B51DB3E09D99AFAB59 /* YLPSortType.h in Headers */,
-				B4A10A5E833884094866BCCE4F7F5AEF /* YLPUser.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BE005C355B7A018D87A7E645D53EC02E /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				17B88450A4B21EBD6E3FBDEBF8B2EC8C /* TDOAuth.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C46B1B2248038D58B7A9923C26B11B29 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F29C6CB87595941B74EE3F238D78B367 /* OMGUserAgent.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
-/* Begin PBXNativeTarget section */
-		56E044B939FA2DE4F639E057339E6D54 /* TDOAuth */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1943243AB793C4926555F1330CC61D29 /* Build configuration list for PBXNativeTarget "TDOAuth" */;
-			buildPhases = (
-				11FE79864FBF0CAA8DB9B9A5986115E7 /* Sources */,
-				C88B11781694DDA1C92DF9B6CFA3762E /* Frameworks */,
-				BE005C355B7A018D87A7E645D53EC02E /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AA4D62278A10956AAB1A2E97F04BDF14 /* PBXTargetDependency */,
-			);
-			name = TDOAuth;
-			productName = TDOAuth;
-			productReference = 44B6044171CE44FFBBDB2FFFAC56B6F2 /* libTDOAuth.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		831462D60370DE66F14CE5AA0A4C9A6B /* YelpAPI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A60465201B0357A6F13AB6CBF7ED9D6C /* Build configuration list for PBXNativeTarget "YelpAPI" */;
-			buildPhases = (
-				ECCEE6E4CAC85929C92FE00A6243ECAD /* Sources */,
-				8C47DE81F963E87B80B6B689B6AFA85C /* Frameworks */,
-				B6E813CD28096058AE4381E5D87A44D0 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CF6F1BEF077A5995B2B9065E056E60F9 /* PBXTargetDependency */,
-				56552E1EA9868A1D3F16B67B129B7011 /* PBXTargetDependency */,
-			);
-			name = YelpAPI;
-			productName = YelpAPI;
-			productReference = E34B0F8525D8C4701E1F96319BE707F8 /* libYelpAPI.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		915AD546968643DA6DC21D3A9B4D96B5 /* Pods-FoodTalk */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 06ADD5E8F78FBF2232D8549656E44D76 /* Build configuration list for PBXNativeTarget "Pods-FoodTalk" */;
-			buildPhases = (
-				F7C0083EC374A2B75652F20D8E73A5E6 /* Sources */,
-				2AB05E8AE7DF294E1706C94A4A056E36 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0615790CDAE9FE1C3A4965F60AAFAB91 /* PBXTargetDependency */,
-				97D2A322DED2F4C62FC3541BE966DF60 /* PBXTargetDependency */,
-				F022E49ADF03E90D4642B9D2B400B8CA /* PBXTargetDependency */,
-			);
-			name = "Pods-FoodTalk";
-			productName = "Pods-FoodTalk";
-			productReference = 368B11345634A507E364A79709327E30 /* libPods-FoodTalk.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		CBAC502682C59632928733393232116D /* YelpAPI-YelpAPI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 05F0E9FD3643C9144718B381BA526617 /* Build configuration list for PBXNativeTarget "YelpAPI-YelpAPI" */;
-			buildPhases = (
-				92B7C455E217D035322725FF81F7F9DE /* Sources */,
-				E95A2F837C8C7691592E702E15FC0EB0 /* Frameworks */,
-				1453AF7D6A4DE1BEE298E6F1C7533232 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "YelpAPI-YelpAPI";
-			productName = "YelpAPI-YelpAPI";
-			productReference = C869B0E6B3A6626D4BF3379597078035 /* YelpAPI.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-		FCD660E6CD2216BA204430C04B61EFFF /* OMGHTTPURLRQ */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BCDAA84180B46191D5FDD1F3233A04FE /* Build configuration list for PBXNativeTarget "OMGHTTPURLRQ" */;
-			buildPhases = (
-				5AE69805046AB1822BAFEC93CBB54CA1 /* Sources */,
-				06DF07A7F70611A3E1FD76D182EE36DE /* Frameworks */,
-				C46B1B2248038D58B7A9923C26B11B29 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = OMGHTTPURLRQ;
-			productName = OMGHTTPURLRQ;
-			productReference = A85048B1B98D0596877BB9376059FD33 /* libOMGHTTPURLRQ.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
-			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 8F1F7B55E07CD4640963FC8ADDFE8F05 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				FCD660E6CD2216BA204430C04B61EFFF /* OMGHTTPURLRQ */,
-				915AD546968643DA6DC21D3A9B4D96B5 /* Pods-FoodTalk */,
-				56E044B939FA2DE4F639E057339E6D54 /* TDOAuth */,
-				831462D60370DE66F14CE5AA0A4C9A6B /* YelpAPI */,
-				CBAC502682C59632928733393232116D /* YelpAPI-YelpAPI */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		1453AF7D6A4DE1BEE298E6F1C7533232 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		11FE79864FBF0CAA8DB9B9A5986115E7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4B682942B45A2EE3E4B6AABF4EE55345 /* TDOAuth-dummy.m in Sources */,
-				878A4A1C6C171E6F0AFCD520BBCF9BDD /* TDOAuth.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5AE69805046AB1822BAFEC93CBB54CA1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1CA5E5B427016F8F21C95D7088C3FA48 /* OMGHTTPURLRQ-dummy.m in Sources */,
-				48FD54B161094645748D2BACA8DE4A5B /* OMGUserAgent.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		92B7C455E217D035322725FF81F7F9DE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ECCEE6E4CAC85929C92FE00A6243ECAD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				642A24954ADA07C516450E5A065D0027 /* YelpAPI-dummy.m in Sources */,
-				BFB9957C541DE160BA5E2C35EF779763 /* YLPBusiness.m in Sources */,
-				6F150957B5F7BBB906C1B9236FCD3BAE /* YLPCategory.m in Sources */,
-				4F5C22C16ABD92938480FB7D5A7F49AE /* YLPClient+Business.m in Sources */,
-				E44CBD80E1AFB738D0EB321C5B94D4E4 /* YLPClient+PhoneSearch.m in Sources */,
-				D9D2258AB682E491E2BD9D1A7FF62FE6 /* YLPClient+Search.m in Sources */,
-				5E854EE85833736FE5C399AEE2626661 /* YLPClient.m in Sources */,
-				552C334B39FA76BD6A53B99D624DE2D1 /* YLPCoordinate.m in Sources */,
-				4F48EFB3BB3D973FFBB50324526793D4 /* YLPCoordinateDelta.m in Sources */,
-				71855CAD7ABD31291BC830508C289C45 /* YLPDeal.m in Sources */,
-				2A3FCA5D136A825A3E24D1C5D765DFF5 /* YLPDealOption.m in Sources */,
-				3264C90F727B61848C1D64362B1F0256 /* YLPGeoBoundingBox.m in Sources */,
-				5369514447576BAC8C24B19A1B2662D1 /* YLPGeoCoordinate.m in Sources */,
-				37CFDAD6793E1C6CDCC82649A61BD3C6 /* YLPGiftCertificate.m in Sources */,
-				4AC6B7C1A729BFA3E148B32DCF60CA6F /* YLPGiftCertificateOption.m in Sources */,
-				EB9AF8D145E1A9B95210016A93DA8FFE /* YLPLocation.m in Sources */,
-				9F6218CFC796C07DAA0CCED178734EB8 /* YLPPhoneSearch.m in Sources */,
-				7F2214C254E1D306A868D66283AD40C3 /* YLPRegion.m in Sources */,
-				36E43C2F34D63DB78F7BED3EE6997927 /* YLPReview.m in Sources */,
-				7B3E177253436259F58B5B9268446C29 /* YLPSearch.m in Sources */,
-				0FE24A6C646B1366523E331118C75872 /* YLPUser.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F7C0083EC374A2B75652F20D8E73A5E6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB543C4EBD283048E766B3D3FCA2FE2C /* Pods-FoodTalk-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0615790CDAE9FE1C3A4965F60AAFAB91 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OMGHTTPURLRQ;
-			target = FCD660E6CD2216BA204430C04B61EFFF /* OMGHTTPURLRQ */;
-			targetProxy = 7926F4CB391DAA8FECD8C8ADE2DB04B1 /* PBXContainerItemProxy */;
-		};
-		56552E1EA9868A1D3F16B67B129B7011 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "YelpAPI-YelpAPI";
-			target = CBAC502682C59632928733393232116D /* YelpAPI-YelpAPI */;
-			targetProxy = 8508DB50FF8C0677FA8F8E98C5A8AA31 /* PBXContainerItemProxy */;
-		};
-		97D2A322DED2F4C62FC3541BE966DF60 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TDOAuth;
-			target = 56E044B939FA2DE4F639E057339E6D54 /* TDOAuth */;
-			targetProxy = A0CE0FCCBEA916A6D85700B34438FEA1 /* PBXContainerItemProxy */;
-		};
-		AA4D62278A10956AAB1A2E97F04BDF14 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OMGHTTPURLRQ;
-			target = FCD660E6CD2216BA204430C04B61EFFF /* OMGHTTPURLRQ */;
-			targetProxy = 8AB9DF71976DA17839368485E7D39201 /* PBXContainerItemProxy */;
-		};
-		CF6F1BEF077A5995B2B9065E056E60F9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TDOAuth;
-			target = 56E044B939FA2DE4F639E057339E6D54 /* TDOAuth */;
-			targetProxy = 425F69A757B2F5F823B76015FBFB1221 /* PBXContainerItemProxy */;
-		};
-		F022E49ADF03E90D4642B9D2B400B8CA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = YelpAPI;
-			target = 831462D60370DE66F14CE5AA0A4C9A6B /* YelpAPI */;
-			targetProxy = B4B385D54C5B1B16BC18A92B0C61260D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin XCBuildConfiguration section */
-		01587DC878C812490E812277B30B17AF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C47693EC2BFF2EDF6531BF8F92897E2A /* Pods-FoodTalk.release.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		19F6E52548954A93F4356D692322DB84 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31DBC04FDB5B461943720469E76CD4E0 /* TDOAuth.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TDOAuth/TDOAuth-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		1DDD6EE1269275D25BC961570FAD8017 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4ECC47BF01474B8EE08CAE61F507A5C8 /* Pods-FoodTalk.debug.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		2B389FAB51F6EEA43F72CA7BDC8E8E28 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				ONLY_ACTIVE_ARCH = YES;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
-		};
-		473B3F618FB4573BFF60BA7CF0836081 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30BC7CB4EFFB8AA5E05ED54F36D8E91C /* YelpAPI.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/YelpAPI/YelpAPI-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		5A0C6FE968931D888F00C9EC18DDF5BC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		68289CD736A59720E7F7CC852EABA5C0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31DBC04FDB5B461943720469E76CD4E0 /* TDOAuth.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TDOAuth/TDOAuth-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		7F6F834742AF889E525061FC937F48F7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30BC7CB4EFFB8AA5E05ED54F36D8E91C /* YelpAPI.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = YelpAPI;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		AA989E2E19793BF712D5C1FA19B66721 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30BC7CB4EFFB8AA5E05ED54F36D8E91C /* YelpAPI.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = YelpAPI;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		ACF8761DF6DA13E3A0EA4D35EB306468 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E40C2B34D5B8CC0592BE18C45E125BE3 /* OMGHTTPURLRQ.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/OMGHTTPURLRQ/OMGHTTPURLRQ-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		BA0836B21B5D9A4FD266F6BA3807D71E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E40C2B34D5B8CC0592BE18C45E125BE3 /* OMGHTTPURLRQ.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/OMGHTTPURLRQ/OMGHTTPURLRQ-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		E8F666C9A196EB2965CF587B865CA5D4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30BC7CB4EFFB8AA5E05ED54F36D8E91C /* YelpAPI.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/YelpAPI/YelpAPI-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		05F0E9FD3643C9144718B381BA526617 /* Build configuration list for PBXNativeTarget "YelpAPI-YelpAPI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AA989E2E19793BF712D5C1FA19B66721 /* Debug */,
-				7F6F834742AF889E525061FC937F48F7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		06ADD5E8F78FBF2232D8549656E44D76 /* Build configuration list for PBXNativeTarget "Pods-FoodTalk" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1DDD6EE1269275D25BC961570FAD8017 /* Debug */,
-				01587DC878C812490E812277B30B17AF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1943243AB793C4926555F1330CC61D29 /* Build configuration list for PBXNativeTarget "TDOAuth" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				19F6E52548954A93F4356D692322DB84 /* Debug */,
-				68289CD736A59720E7F7CC852EABA5C0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2B389FAB51F6EEA43F72CA7BDC8E8E28 /* Debug */,
-				5A0C6FE968931D888F00C9EC18DDF5BC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A60465201B0357A6F13AB6CBF7ED9D6C /* Build configuration list for PBXNativeTarget "YelpAPI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				473B3F618FB4573BFF60BA7CF0836081 /* Debug */,
-				E8F666C9A196EB2965CF587B865CA5D4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BCDAA84180B46191D5FDD1F3233A04FE /* Build configuration list for PBXNativeTarget "OMGHTTPURLRQ" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ACF8761DF6DA13E3A0EA4D35EB306468 /* Debug */,
-				BA0836B21B5D9A4FD266F6BA3807D71E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>01587DC878C812490E812277B30B17AF</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>C47693EC2BFF2EDF6531BF8F92897E2A</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>0580A68CAE1F24B27839AF36C650F87B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C2D2649BFDDFE165EAB58FB329E31D75</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>05C713E142F27E95E9CC4491198FA48E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>OMGUserAgent.m</string>
+			<key>path</key>
+			<string>Sources/OMGUserAgent.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>05F0E9FD3643C9144718B381BA526617</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>AA989E2E19793BF712D5C1FA19B66721</string>
+				<string>7F6F834742AF889E525061FC937F48F7</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>0615790CDAE9FE1C3A4965F60AAFAB91</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>OMGHTTPURLRQ</string>
+			<key>target</key>
+			<string>FCD660E6CD2216BA204430C04B61EFFF</string>
+			<key>targetProxy</key>
+			<string>7926F4CB391DAA8FECD8C8ADE2DB04B1</string>
+		</dict>
+		<key>06ADD5E8F78FBF2232D8549656E44D76</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>1DDD6EE1269275D25BC961570FAD8017</string>
+				<string>01587DC878C812490E812277B30B17AF</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>06DF07A7F70611A3E1FD76D182EE36DE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6BA059678A8732487F69EB681733149F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>0961A21F664B4D5AD78208C4D177F73E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-FoodTalk-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0D783095E4935DAC4DC3BBE3D3C4B564</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BDAC0967274E48C561626F6C53D5D91E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>0D7B5E4AE6A4970B11406BEC028BFAEA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B6564E1D0DFEA9EF8B2E5B57449ACB7E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>0E1BB3171CF49E1281927332E78A5D82</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPGeoCoordinate.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Request/YLPGeoCoordinate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0E4508C1FC3ED56F76CC79325C911FAA</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPClient+PhoneSearch.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Client/YLPClient+PhoneSearch.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0F2B47286F7AE09C434D384743245513</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>TDOAuth.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0F30FB7347C59423CE791D2E82D1DD2D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>YelpAPI-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0FE24A6C646B1366523E331118C75872</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AC1C3D980136D23077F0EC928740BE62</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>11FE79864FBF0CAA8DB9B9A5986115E7</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>4B682942B45A2EE3E4B6AABF4EE55345</string>
+				<string>878A4A1C6C171E6F0AFCD520BBCF9BDD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>120126E18D4D17F9048AE376A29EC477</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4B9EB1AC201D3AC9F61A3F8F6C26DA35</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>1453AF7D6A4DE1BEE298E6F1C7533232</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>156813B0E6FD715344498CDCB5DF2831</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>0F2B47286F7AE09C434D384743245513</string>
+				<string>54D420DEC2A28B41A1D04CD90F6EE559</string>
+				<string>E0D2E1299CC8D36146D97D159707B6B2</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>TDOAuth</string>
+			<key>path</key>
+			<string>TDOAuth</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>171F53E1419BF96FB533077098AFD5F2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-FoodTalk-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>17B88450A4B21EBD6E3FBDEBF8B2EC8C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0F2B47286F7AE09C434D384743245513</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>1943243AB793C4926555F1330CC61D29</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>19F6E52548954A93F4356D692322DB84</string>
+				<string>68289CD736A59720E7F7CC852EABA5C0</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>19F6E52548954A93F4356D692322DB84</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>31DBC04FDB5B461943720469E76CD4E0</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/TDOAuth/TDOAuth-prefix.pch</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>1CA5E5B427016F8F21C95D7088C3FA48</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8B629A4F82B57E37D30B2A540150AA8A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1DDD6EE1269275D25BC961570FAD8017</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>4ECC47BF01474B8EE08CAE61F507A5C8</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>250ADAB07F9E5A5434482EC5D89E2632</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>30BC7CB4EFFB8AA5E05ED54F36D8E91C</string>
+				<string>37292BFEEFEB283250624F4E72E1CFB3</string>
+				<string>0F30FB7347C59423CE791D2E82D1DD2D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/YelpAPI</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2A3FCA5D136A825A3E24D1C5D765DFF5</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F98E8F394D4E18E6C4518CA44EEDA61D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2AB05E8AE7DF294E1706C94A4A056E36</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>A3563F70F763C931C23396059C1DEAC8</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>2B389FAB51F6EEA43F72CA7BDC8E8E28</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>STRIP_INSTALLED_PRODUCT</key>
+				<string>NO</string>
+				<key>SYMROOT</key>
+				<string>${SRCROOT}/../build</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>2D63E83D7E5237D9E0B4A32FC209849D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>B8EFBE7F69BC925048EA1F60D6B078A5</string>
+				<string>156813B0E6FD715344498CDCB5DF2831</string>
+				<string>DFD7D749F78F646B8BF24D075B238E49</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2D8E8EC45A3A1A1D94AE762CB5028504</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>2B389FAB51F6EEA43F72CA7BDC8E8E28</string>
+				<string>5A0C6FE968931D888F00C9EC18DDF5BC</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>2FA4C5C2EC5B4C3EA89F22A1F16F476C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPClient.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Client/YLPClient.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>300CC37F48AF77E06656DF9D62A4A258</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPGeoBoundingBox.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Request/YLPGeoBoundingBox.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>30BC7CB4EFFB8AA5E05ED54F36D8E91C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>YelpAPI.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>30DAA83F83C7A789892C40FA46C00A35</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D46D2B12B30B31C3699CA5715AA596BC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>31DBC04FDB5B461943720469E76CD4E0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>TDOAuth.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3264C90F727B61848C1D64362B1F0256</key>
+		<dict>
+			<key>fileRef</key>
+			<string>300CC37F48AF77E06656DF9D62A4A258</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>368B11345634A507E364A79709327E30</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libPods-FoodTalk.a</string>
+			<key>path</key>
+			<string>libPods-FoodTalk.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>36E43C2F34D63DB78F7BED3EE6997927</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F2B07E1B8CECD827ABBA901DF896AFE8</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>37292BFEEFEB283250624F4E72E1CFB3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>YelpAPI-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>37CFDAD6793E1C6CDCC82649A61BD3C6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B79701FE98D70C6EAAAAEFB10956742C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>37FB44731CEFA43A74259725973F30A1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>72EF9F210C457290756527DB4121A2AD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>3AB55837D27DCE6C884FF60833A8E1DC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-FoodTalk-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3BF2E84FB36CBBD3534FA2806DAB9491</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPUser.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPUser.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3CD610E63CADCC89A15EFD277ACB5E42</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3E4E89230EF59BC255123B67864ACF77</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>3CF65AE0AA599AC39118199B4CC7F4C3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4F3C5BB36126EE8D4A96C6A7E7EA05AB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>3E4E89230EF59BC255123B67864ACF77</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>3FE1C38ABB63A5B50E807C05A7CF10B9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>TDOAuth-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4037AADD9CB3942DC59572468FC56562</key>
+		<dict>
+			<key>fileRef</key>
+			<string>458B4D52219485CEE9CF1D5D52585F30</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>404FB865B91324687C0D56C3147B1C3F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPClient+Search.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Client/YLPClient+Search.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>41A4B69F4423BD93032CEFA6E45F114D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPLocation.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPLocation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>425F69A757B2F5F823B76015FBFB1221</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>56E044B939FA2DE4F639E057339E6D54</string>
+			<key>remoteInfo</key>
+			<string>TDOAuth</string>
+		</dict>
+		<key>44B6044171CE44FFBBDB2FFFAC56B6F2</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libTDOAuth.a</string>
+			<key>path</key>
+			<string>libTDOAuth.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>458B4D52219485CEE9CF1D5D52585F30</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPClient+Business.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Client/YLPClient+Business.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>473B3F618FB4573BFF60BA7CF0836081</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>30BC7CB4EFFB8AA5E05ED54F36D8E91C</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/YelpAPI/YelpAPI-prefix.pch</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>48FD54B161094645748D2BACA8DE4A5B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>05C713E142F27E95E9CC4491198FA48E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>4AC6B7C1A729BFA3E148B32DCF60CA6F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6E791C9A70CA2917AEF5CF53B1AB3057</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>4AD2297F42DB036348D9DDB24282A124</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0E1BB3171CF49E1281927332E78A5D82</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>4B682942B45A2EE3E4B6AABF4EE55345</key>
+		<dict>
+			<key>fileRef</key>
+			<string>63523A7986BDDD5E3BBD929BE658B6E4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>4B9EB1AC201D3AC9F61A3F8F6C26DA35</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPCoordinateDelta.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPCoordinateDelta.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4ECC47BF01474B8EE08CAE61F507A5C8</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-FoodTalk.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4F3C5BB36126EE8D4A96C6A7E7EA05AB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPSearch.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPSearch.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4F48EFB3BB3D973FFBB50324526793D4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9C51C07B4DB7DFD31846BEA38A991A7C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>4F5C22C16ABD92938480FB7D5A7F49AE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CB29DF1321F2B21125BE2D5D77850BA6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>5369514447576BAC8C24B19A1B2662D1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EFAD7F107C003C8DE2B9E29F7530789C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>54385E420EA3CABF7AA67273B44A1462</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPGeoBoundingBox.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Request/YLPGeoBoundingBox.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>54D420DEC2A28B41A1D04CD90F6EE559</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>TDOAuth.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>552C334B39FA76BD6A53B99D624DE2D1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>59D0505AD44912EED804D8CF23A0AD04</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>56552E1EA9868A1D3F16B67B129B7011</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>YelpAPI-YelpAPI</string>
+			<key>target</key>
+			<string>CBAC502682C59632928733393232116D</string>
+			<key>targetProxy</key>
+			<string>8508DB50FF8C0677FA8F8E98C5A8AA31</string>
+		</dict>
+		<key>56E044B939FA2DE4F639E057339E6D54</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>1943243AB793C4926555F1330CC61D29</string>
+			<key>buildPhases</key>
+			<array>
+				<string>11FE79864FBF0CAA8DB9B9A5986115E7</string>
+				<string>C88B11781694DDA1C92DF9B6CFA3762E</string>
+				<string>BE005C355B7A018D87A7E645D53EC02E</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>AA4D62278A10956AAB1A2E97F04BDF14</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>TDOAuth</string>
+			<key>productName</key>
+			<string>TDOAuth</string>
+			<key>productReference</key>
+			<string>44B6044171CE44FFBBDB2FFFAC56B6F2</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>5753BC10A254763D9663BF27AF279784</key>
+		<dict>
+			<key>fileRef</key>
+			<string>404FB865B91324687C0D56C3147B1C3F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>599A6356ECC3C333115F54C189FB3110</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPPhoneSearch.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPPhoneSearch.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>59D0505AD44912EED804D8CF23A0AD04</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPCoordinate.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Common/YLPCoordinate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5A0C6FE968931D888F00C9EC18DDF5BC</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>RELEASE=1</string>
+				</array>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>STRIP_INSTALLED_PRODUCT</key>
+				<string>NO</string>
+				<key>SYMROOT</key>
+				<string>${SRCROOT}/../build</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>5AE69805046AB1822BAFEC93CBB54CA1</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>1CA5E5B427016F8F21C95D7088C3FA48</string>
+				<string>48FD54B161094645748D2BACA8DE4A5B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>5E854EE85833736FE5C399AEE2626661</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C779CA6AF0907D9E44C36F248C68E716</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>5F6EAF9F70A1F27B58CB34851E3D72DF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>54385E420EA3CABF7AA67273B44A1462</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>6285C8F420B7A9F314412B6D2100A4EB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2FA4C5C2EC5B4C3EA89F22A1F16F476C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>63523A7986BDDD5E3BBD929BE658B6E4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>TDOAuth-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>642A24954ADA07C516450E5A065D0027</key>
+		<dict>
+			<key>fileRef</key>
+			<string>37292BFEEFEB283250624F4E72E1CFB3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>679185ECC01651959F59F29A6C78DA8C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>883EBA00FDC95CA584344DBF2CA00E00</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>68289CD736A59720E7F7CC852EABA5C0</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>31DBC04FDB5B461943720469E76CD4E0</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/TDOAuth/TDOAuth-prefix.pch</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>6BA059678A8732487F69EB681733149F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3E4E89230EF59BC255123B67864ACF77</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6CB714DAD171272D84F101CF8B817A26</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>OMGUserAgent.h</string>
+			<key>path</key>
+			<string>Sources/OMGUserAgent.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6E791C9A70CA2917AEF5CF53B1AB3057</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPGiftCertificateOption.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPGiftCertificateOption.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F150957B5F7BBB906C1B9236FCD3BAE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F8274EAF1BA8761EB2CD75ED6451D160</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>716B223BE20DC98AF3D1A243D2902080</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPDeal.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPDeal.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>71855CAD7ABD31291BC830508C289C45</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B26861BC846C277A0DA2E8470D39F667</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>72EF9F210C457290756527DB4121A2AD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPResponsePrivate.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPResponsePrivate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>74B268339E5F6CA39DB4EDBA74A1EFAF</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>99CB32DE065CA2989F7FFEFEBC588FCE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Targets Support Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7926F4CB391DAA8FECD8C8ADE2DB04B1</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>FCD660E6CD2216BA204430C04B61EFFF</string>
+			<key>remoteInfo</key>
+			<string>OMGHTTPURLRQ</string>
+		</dict>
+		<key>7B3E177253436259F58B5B9268446C29</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7CA0B316F658BE2E2D1B8BEF2066B8A5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7CA0B316F658BE2E2D1B8BEF2066B8A5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPSearch.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPSearch.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7DB346D0F39D3F0E887471402A8071AB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BA6428E9F66FD5A23C0A2E06ED26CD2F</string>
+				<string>BC3CA7F9E30CC8F7E2DD044DD34432FC</string>
+				<string>2D63E83D7E5237D9E0B4A32FC209849D</string>
+				<string>8F1F7B55E07CD4640963FC8ADDFE8F05</string>
+				<string>74B268339E5F6CA39DB4EDBA74A1EFAF</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7F2214C254E1D306A868D66283AD40C3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A8E0B395F6BE26BA834B21AEC39CB3D0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7F6F834742AF889E525061FC937F48F7</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>30BC7CB4EFFB8AA5E05ED54F36D8E91C</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>PRODUCT_NAME</key>
+				<string>YelpAPI</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>bundle</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>831462D60370DE66F14CE5AA0A4C9A6B</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>A60465201B0357A6F13AB6CBF7ED9D6C</string>
+			<key>buildPhases</key>
+			<array>
+				<string>ECCEE6E4CAC85929C92FE00A6243ECAD</string>
+				<string>8C47DE81F963E87B80B6B689B6AFA85C</string>
+				<string>B6E813CD28096058AE4381E5D87A44D0</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>CF6F1BEF077A5995B2B9065E056E60F9</string>
+				<string>56552E1EA9868A1D3F16B67B129B7011</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>YelpAPI</string>
+			<key>productName</key>
+			<string>YelpAPI</string>
+			<key>productReference</key>
+			<string>E34B0F8525D8C4701E1F96319BE707F8</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>831A57DBD8D3950DA5B92A418447E61F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPCommonPrivate.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Common/YLPCommonPrivate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8508DB50FF8C0677FA8F8E98C5A8AA31</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>CBAC502682C59632928733393232116D</string>
+			<key>remoteInfo</key>
+			<string>YelpAPI-YelpAPI</string>
+		</dict>
+		<key>878A4A1C6C171E6F0AFCD520BBCF9BDD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>54D420DEC2A28B41A1D04CD90F6EE559</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>883EBA00FDC95CA584344DBF2CA00E00</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPDealOption.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPDealOption.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8AB9DF71976DA17839368485E7D39201</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>FCD660E6CD2216BA204430C04B61EFFF</string>
+			<key>remoteInfo</key>
+			<string>OMGHTTPURLRQ</string>
+		</dict>
+		<key>8B629A4F82B57E37D30B2A540150AA8A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>OMGHTTPURLRQ-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8C47DE81F963E87B80B6B689B6AFA85C</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>D1279B95537BB6B036DCBE99DAFE91D8</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8F1F7B55E07CD4640963FC8ADDFE8F05</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>A85048B1B98D0596877BB9376059FD33</string>
+				<string>368B11345634A507E364A79709327E30</string>
+				<string>44B6044171CE44FFBBDB2FFFAC56B6F2</string>
+				<string>E34B0F8525D8C4701E1F96319BE707F8</string>
+				<string>C869B0E6B3A6626D4BF3379597078035</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FE4CC9B5CCDEC971D1F2C9B82F5E29F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPClient+PhoneSearch.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Client/YLPClient+PhoneSearch.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>915AD546968643DA6DC21D3A9B4D96B5</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>06ADD5E8F78FBF2232D8549656E44D76</string>
+			<key>buildPhases</key>
+			<array>
+				<string>F7C0083EC374A2B75652F20D8E73A5E6</string>
+				<string>2AB05E8AE7DF294E1706C94A4A056E36</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>0615790CDAE9FE1C3A4965F60AAFAB91</string>
+				<string>97D2A322DED2F4C62FC3541BE966DF60</string>
+				<string>F022E49ADF03E90D4642B9D2B400B8CA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-FoodTalk</string>
+			<key>productName</key>
+			<string>Pods-FoodTalk</string>
+			<key>productReference</key>
+			<string>368B11345634A507E364A79709327E30</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>92B7C455E217D035322725FF81F7F9DE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>97D2A322DED2F4C62FC3541BE966DF60</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>TDOAuth</string>
+			<key>target</key>
+			<string>56E044B939FA2DE4F639E057339E6D54</string>
+			<key>targetProxy</key>
+			<string>A0CE0FCCBEA916A6D85700B34438FEA1</string>
+		</dict>
+		<key>99CB32DE065CA2989F7FFEFEBC588FCE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>171F53E1419BF96FB533077098AFD5F2</string>
+				<string>3AB55837D27DCE6C884FF60833A8E1DC</string>
+				<string>0961A21F664B4D5AD78208C4D177F73E</string>
+				<string>D849742E6685FC8783471BC46AFF5888</string>
+				<string>B74DF1BB5FCB775584561D622034C4D6</string>
+				<string>4ECC47BF01474B8EE08CAE61F507A5C8</string>
+				<string>C47693EC2BFF2EDF6531BF8F92897E2A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-FoodTalk</string>
+			<key>path</key>
+			<string>Target Support Files/Pods-FoodTalk</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9C51C07B4DB7DFD31846BEA38A991A7C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPCoordinateDelta.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPCoordinateDelta.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9E6821C2A71F957BE46996A92DF70D18</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DABF248DBDD5B46C149AF5DA5D754290</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>9F6218CFC796C07DAA0CCED178734EB8</key>
+		<dict>
+			<key>fileRef</key>
+			<string>599A6356ECC3C333115F54C189FB3110</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A0CE0FCCBEA916A6D85700B34438FEA1</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>56E044B939FA2DE4F639E057339E6D54</string>
+			<key>remoteInfo</key>
+			<string>TDOAuth</string>
+		</dict>
+		<key>A3563F70F763C931C23396059C1DEAC8</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3E4E89230EF59BC255123B67864ACF77</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A53F1A69839A17642AAD9CF4678A51AD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FE4CC9B5CCDEC971D1F2C9B82F5E29F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>A60465201B0357A6F13AB6CBF7ED9D6C</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>473B3F618FB4573BFF60BA7CF0836081</string>
+				<string>E8F666C9A196EB2965CF587B865CA5D4</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>A6605D17D650EAD92C125D6402AF934E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C8D034E254C14570C1C3FB0EE9145232</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>A85048B1B98D0596877BB9376059FD33</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libOMGHTTPURLRQ.a</string>
+			<key>path</key>
+			<string>libOMGHTTPURLRQ.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>A8E0B395F6BE26BA834B21AEC39CB3D0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPRegion.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPRegion.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AA4D62278A10956AAB1A2E97F04BDF14</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>OMGHTTPURLRQ</string>
+			<key>target</key>
+			<string>FCD660E6CD2216BA204430C04B61EFFF</string>
+			<key>targetProxy</key>
+			<string>8AB9DF71976DA17839368485E7D39201</string>
+		</dict>
+		<key>AA989E2E19793BF712D5C1FA19B66721</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>30BC7CB4EFFB8AA5E05ED54F36D8E91C</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>PRODUCT_NAME</key>
+				<string>YelpAPI</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>bundle</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>AC1C3D980136D23077F0EC928740BE62</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPUser.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPUser.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ACF8761DF6DA13E3A0EA4D35EB306468</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>E40C2B34D5B8CC0592BE18C45E125BE3</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/OMGHTTPURLRQ/OMGHTTPURLRQ-prefix.pch</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>B1071F03DE5980D7312E2B91A43C1DB6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F70AD731F06BAB610E415BB8D9626E1D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>B26861BC846C277A0DA2E8470D39F667</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPDeal.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPDeal.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B49E92690208BE044BF35CF4415CE719</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPBusiness.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPBusiness.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B4A10A5E833884094866BCCE4F7F5AEF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3BF2E84FB36CBBD3534FA2806DAB9491</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>B4B385D54C5B1B16BC18A92B0C61260D</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>831462D60370DE66F14CE5AA0A4C9A6B</string>
+			<key>remoteInfo</key>
+			<string>YelpAPI</string>
+		</dict>
+		<key>B6564E1D0DFEA9EF8B2E5B57449ACB7E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPCategory.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPCategory.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B6E813CD28096058AE4381E5D87A44D0</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>0580A68CAE1F24B27839AF36C650F87B</string>
+				<string>0D7B5E4AE6A4970B11406BEC028BFAEA</string>
+				<string>4037AADD9CB3942DC59572468FC56562</string>
+				<string>A53F1A69839A17642AAD9CF4678A51AD</string>
+				<string>5753BC10A254763D9663BF27AF279784</string>
+				<string>6285C8F420B7A9F314412B6D2100A4EB</string>
+				<string>9E6821C2A71F957BE46996A92DF70D18</string>
+				<string>BD3F2596A17EAD748F196809B5E8BF4C</string>
+				<string>0D783095E4935DAC4DC3BBE3D3C4B564</string>
+				<string>120126E18D4D17F9048AE376A29EC477</string>
+				<string>DA32A70C53F0D7F919FC3625180C474A</string>
+				<string>679185ECC01651959F59F29A6C78DA8C</string>
+				<string>5F6EAF9F70A1F27B58CB34851E3D72DF</string>
+				<string>4AD2297F42DB036348D9DDB24282A124</string>
+				<string>A6605D17D650EAD92C125D6402AF934E</string>
+				<string>B1071F03DE5980D7312E2B91A43C1DB6</string>
+				<string>E46F96663CB6D6AFDE7D7108F201D24C</string>
+				<string>FE7EE70C4746908171EFE695F006DC8A</string>
+				<string>30DAA83F83C7A789892C40FA46C00A35</string>
+				<string>37FB44731CEFA43A74259725973F30A1</string>
+				<string>BE2CF19C42B06B3E794CEC37A4642832</string>
+				<string>3CF65AE0AA599AC39118199B4CC7F4C3</string>
+				<string>E42C4679C21714B51DB3E09D99AFAB59</string>
+				<string>B4A10A5E833884094866BCCE4F7F5AEF</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>B74DF1BB5FCB775584561D622034C4D6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-FoodTalk-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B79701FE98D70C6EAAAAEFB10956742C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPGiftCertificate.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPGiftCertificate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B8EFBE7F69BC925048EA1F60D6B078A5</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D9633881B3CA24F3DA1A24EC284073A5</string>
+				<string>E46FC65F0321ECCB3A3A8363AF309B87</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>OMGHTTPURLRQ</string>
+			<key>path</key>
+			<string>OMGHTTPURLRQ</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BA0836B21B5D9A4FD266F6BA3807D71E</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>E40C2B34D5B8CC0592BE18C45E125BE3</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/OMGHTTPURLRQ/OMGHTTPURLRQ-prefix.pch</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>BA6428E9F66FD5A23C0A2E06ED26CD2F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>Podfile</string>
+			<key>path</key>
+			<string>../Podfile</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+			<key>xcLanguageSpecificationIdentifier</key>
+			<string>xcode.lang.ruby</string>
+		</dict>
+		<key>BB6F2D5607579A73C779E3BEF1FD4A66</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPClient+Search.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Client/YLPClient+Search.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BC3CA7F9E30CC8F7E2DD044DD34432FC</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BF6342C8B29F4CEEA088EFF7AB4DE362</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BCDAA84180B46191D5FDD1F3233A04FE</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>ACF8761DF6DA13E3A0EA4D35EB306468</string>
+				<string>BA0836B21B5D9A4FD266F6BA3807D71E</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>BD3F2596A17EAD748F196809B5E8BF4C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>831A57DBD8D3950DA5B92A418447E61F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>BDAC0967274E48C561626F6C53D5D91E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPCoordinate.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Common/YLPCoordinate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BE005C355B7A018D87A7E645D53EC02E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>17B88450A4B21EBD6E3FBDEBF8B2EC8C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>BE2CF19C42B06B3E794CEC37A4642832</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D1C5CD1497D7DB2922F8F3043AC89888</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>BF6342C8B29F4CEEA088EFF7AB4DE362</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>3E4E89230EF59BC255123B67864ACF77</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>iOS</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BFB9957C541DE160BA5E2C35EF779763</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B49E92690208BE044BF35CF4415CE719</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>C2D2649BFDDFE165EAB58FB329E31D75</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPBusiness.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPBusiness.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C46B1B2248038D58B7A9923C26B11B29</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>F29C6CB87595941B74EE3F238D78B367</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>C47693EC2BFF2EDF6531BF8F92897E2A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-FoodTalk.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C54C839FBBCB9F9126D8EB6F18156BA6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPLocation.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPLocation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C779CA6AF0907D9E44C36F248C68E716</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPClient.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Client/YLPClient.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C869B0E6B3A6626D4BF3379597078035</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>YelpAPI.bundle</string>
+			<key>path</key>
+			<string>YelpAPI.bundle</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>C88B11781694DDA1C92DF9B6CFA3762E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>3CD610E63CADCC89A15EFD277ACB5E42</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>C8D034E254C14570C1C3FB0EE9145232</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPGiftCertificate.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPGiftCertificate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CB29DF1321F2B21125BE2D5D77850BA6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPClient+Business.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Client/YLPClient+Business.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CBAC502682C59632928733393232116D</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>05F0E9FD3643C9144718B381BA526617</string>
+			<key>buildPhases</key>
+			<array>
+				<string>92B7C455E217D035322725FF81F7F9DE</string>
+				<string>E95A2F837C8C7691592E702E15FC0EB0</string>
+				<string>1453AF7D6A4DE1BEE298E6F1C7533232</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>YelpAPI-YelpAPI</string>
+			<key>productName</key>
+			<string>YelpAPI-YelpAPI</string>
+			<key>productReference</key>
+			<string>C869B0E6B3A6626D4BF3379597078035</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle</string>
+		</dict>
+		<key>CF6F1BEF077A5995B2B9065E056E60F9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>TDOAuth</string>
+			<key>target</key>
+			<string>56E044B939FA2DE4F639E057339E6D54</string>
+			<key>targetProxy</key>
+			<string>425F69A757B2F5F823B76015FBFB1221</string>
+		</dict>
+		<key>D1279B95537BB6B036DCBE99DAFE91D8</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3E4E89230EF59BC255123B67864ACF77</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D1C5CD1497D7DB2922F8F3043AC89888</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPReview.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPReview.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D41D8CD98F00B204E9800998ECF8427E</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastSwiftUpdateCheck</key>
+				<string>0700</string>
+				<key>LastUpgradeCheck</key>
+				<string>0700</string>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>2D8E8EC45A3A1A1D94AE762CB5028504</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+			</array>
+			<key>mainGroup</key>
+			<string>7DB346D0F39D3F0E887471402A8071AB</string>
+			<key>productRefGroup</key>
+			<string>8F1F7B55E07CD4640963FC8ADDFE8F05</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>FCD660E6CD2216BA204430C04B61EFFF</string>
+				<string>915AD546968643DA6DC21D3A9B4D96B5</string>
+				<string>56E044B939FA2DE4F639E057339E6D54</string>
+				<string>831462D60370DE66F14CE5AA0A4C9A6B</string>
+				<string>CBAC502682C59632928733393232116D</string>
+			</array>
+		</dict>
+		<key>D46D2B12B30B31C3699CA5715AA596BC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPRegion.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPRegion.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D61A56C6FD4492A4E023A26ADF050E06</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPPhoneSearch.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPPhoneSearch.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D849742E6685FC8783471BC46AFF5888</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-FoodTalk-frameworks.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D9633881B3CA24F3DA1A24EC284073A5</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E40C2B34D5B8CC0592BE18C45E125BE3</string>
+				<string>8B629A4F82B57E37D30B2A540150AA8A</string>
+				<string>ED6DD6220EF3DDD98AAC78D7792A8FB7</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/OMGHTTPURLRQ</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D9D2258AB682E491E2BD9D1A7FF62FE6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BB6F2D5607579A73C779E3BEF1FD4A66</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DA32A70C53F0D7F919FC3625180C474A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>716B223BE20DC98AF3D1A243D2902080</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>DABF248DBDD5B46C149AF5DA5D754290</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPClientPrivate.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Client/YLPClientPrivate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DB543C4EBD283048E766B3D3FCA2FE2C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0961A21F664B4D5AD78208C4D177F73E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DFD7D749F78F646B8BF24D075B238E49</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>C2D2649BFDDFE165EAB58FB329E31D75</string>
+				<string>B49E92690208BE044BF35CF4415CE719</string>
+				<string>B6564E1D0DFEA9EF8B2E5B57449ACB7E</string>
+				<string>F8274EAF1BA8761EB2CD75ED6451D160</string>
+				<string>2FA4C5C2EC5B4C3EA89F22A1F16F476C</string>
+				<string>C779CA6AF0907D9E44C36F248C68E716</string>
+				<string>458B4D52219485CEE9CF1D5D52585F30</string>
+				<string>CB29DF1321F2B21125BE2D5D77850BA6</string>
+				<string>8FE4CC9B5CCDEC971D1F2C9B82F5E29F</string>
+				<string>0E4508C1FC3ED56F76CC79325C911FAA</string>
+				<string>404FB865B91324687C0D56C3147B1C3F</string>
+				<string>BB6F2D5607579A73C779E3BEF1FD4A66</string>
+				<string>DABF248DBDD5B46C149AF5DA5D754290</string>
+				<string>831A57DBD8D3950DA5B92A418447E61F</string>
+				<string>BDAC0967274E48C561626F6C53D5D91E</string>
+				<string>59D0505AD44912EED804D8CF23A0AD04</string>
+				<string>4B9EB1AC201D3AC9F61A3F8F6C26DA35</string>
+				<string>9C51C07B4DB7DFD31846BEA38A991A7C</string>
+				<string>716B223BE20DC98AF3D1A243D2902080</string>
+				<string>B26861BC846C277A0DA2E8470D39F667</string>
+				<string>883EBA00FDC95CA584344DBF2CA00E00</string>
+				<string>F98E8F394D4E18E6C4518CA44EEDA61D</string>
+				<string>54385E420EA3CABF7AA67273B44A1462</string>
+				<string>300CC37F48AF77E06656DF9D62A4A258</string>
+				<string>0E1BB3171CF49E1281927332E78A5D82</string>
+				<string>EFAD7F107C003C8DE2B9E29F7530789C</string>
+				<string>C8D034E254C14570C1C3FB0EE9145232</string>
+				<string>B79701FE98D70C6EAAAAEFB10956742C</string>
+				<string>F70AD731F06BAB610E415BB8D9626E1D</string>
+				<string>6E791C9A70CA2917AEF5CF53B1AB3057</string>
+				<string>41A4B69F4423BD93032CEFA6E45F114D</string>
+				<string>C54C839FBBCB9F9126D8EB6F18156BA6</string>
+				<string>D61A56C6FD4492A4E023A26ADF050E06</string>
+				<string>599A6356ECC3C333115F54C189FB3110</string>
+				<string>D46D2B12B30B31C3699CA5715AA596BC</string>
+				<string>A8E0B395F6BE26BA834B21AEC39CB3D0</string>
+				<string>72EF9F210C457290756527DB4121A2AD</string>
+				<string>D1C5CD1497D7DB2922F8F3043AC89888</string>
+				<string>F2B07E1B8CECD827ABBA901DF896AFE8</string>
+				<string>4F3C5BB36126EE8D4A96C6A7E7EA05AB</string>
+				<string>7CA0B316F658BE2E2D1B8BEF2066B8A5</string>
+				<string>F54DDCA61990D2254956EA6C856820B6</string>
+				<string>3BF2E84FB36CBBD3534FA2806DAB9491</string>
+				<string>AC1C3D980136D23077F0EC928740BE62</string>
+				<string>250ADAB07F9E5A5434482EC5D89E2632</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>YelpAPI</string>
+			<key>path</key>
+			<string>YelpAPI</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E0D2E1299CC8D36146D97D159707B6B2</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>31DBC04FDB5B461943720469E76CD4E0</string>
+				<string>63523A7986BDDD5E3BBD929BE658B6E4</string>
+				<string>3FE1C38ABB63A5B50E807C05A7CF10B9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/TDOAuth</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E34B0F8525D8C4701E1F96319BE707F8</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libYelpAPI.a</string>
+			<key>path</key>
+			<string>libYelpAPI.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>E40C2B34D5B8CC0592BE18C45E125BE3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>OMGHTTPURLRQ.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E42C4679C21714B51DB3E09D99AFAB59</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F54DDCA61990D2254956EA6C856820B6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E44CBD80E1AFB738D0EB321C5B94D4E4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0E4508C1FC3ED56F76CC79325C911FAA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E46F96663CB6D6AFDE7D7108F201D24C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>41A4B69F4423BD93032CEFA6E45F114D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E46FC65F0321ECCB3A3A8363AF309B87</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6CB714DAD171272D84F101CF8B817A26</string>
+				<string>05C713E142F27E95E9CC4491198FA48E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>UserAgent</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E8F666C9A196EB2965CF587B865CA5D4</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>30BC7CB4EFFB8AA5E05ED54F36D8E91C</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/YelpAPI/YelpAPI-prefix.pch</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>E95A2F837C8C7691592E702E15FC0EB0</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>EB9AF8D145E1A9B95210016A93DA8FFE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C54C839FBBCB9F9126D8EB6F18156BA6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>ECCEE6E4CAC85929C92FE00A6243ECAD</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>642A24954ADA07C516450E5A065D0027</string>
+				<string>BFB9957C541DE160BA5E2C35EF779763</string>
+				<string>6F150957B5F7BBB906C1B9236FCD3BAE</string>
+				<string>4F5C22C16ABD92938480FB7D5A7F49AE</string>
+				<string>E44CBD80E1AFB738D0EB321C5B94D4E4</string>
+				<string>D9D2258AB682E491E2BD9D1A7FF62FE6</string>
+				<string>5E854EE85833736FE5C399AEE2626661</string>
+				<string>552C334B39FA76BD6A53B99D624DE2D1</string>
+				<string>4F48EFB3BB3D973FFBB50324526793D4</string>
+				<string>71855CAD7ABD31291BC830508C289C45</string>
+				<string>2A3FCA5D136A825A3E24D1C5D765DFF5</string>
+				<string>3264C90F727B61848C1D64362B1F0256</string>
+				<string>5369514447576BAC8C24B19A1B2662D1</string>
+				<string>37CFDAD6793E1C6CDCC82649A61BD3C6</string>
+				<string>4AC6B7C1A729BFA3E148B32DCF60CA6F</string>
+				<string>EB9AF8D145E1A9B95210016A93DA8FFE</string>
+				<string>9F6218CFC796C07DAA0CCED178734EB8</string>
+				<string>7F2214C254E1D306A868D66283AD40C3</string>
+				<string>36E43C2F34D63DB78F7BED3EE6997927</string>
+				<string>7B3E177253436259F58B5B9268446C29</string>
+				<string>0FE24A6C646B1366523E331118C75872</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>ED6DD6220EF3DDD98AAC78D7792A8FB7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>OMGHTTPURLRQ-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EFAD7F107C003C8DE2B9E29F7530789C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPGeoCoordinate.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Request/YLPGeoCoordinate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F022E49ADF03E90D4642B9D2B400B8CA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>YelpAPI</string>
+			<key>target</key>
+			<string>831462D60370DE66F14CE5AA0A4C9A6B</string>
+			<key>targetProxy</key>
+			<string>B4B385D54C5B1B16BC18A92B0C61260D</string>
+		</dict>
+		<key>F29C6CB87595941B74EE3F238D78B367</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6CB714DAD171272D84F101CF8B817A26</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>F2B07E1B8CECD827ABBA901DF896AFE8</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPReview.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPReview.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F54DDCA61990D2254956EA6C856820B6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPSortType.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Request/YLPSortType.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F70AD731F06BAB610E415BB8D9626E1D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>YLPGiftCertificateOption.h</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPGiftCertificateOption.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F7C0083EC374A2B75652F20D8E73A5E6</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>DB543C4EBD283048E766B3D3FCA2FE2C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>F8274EAF1BA8761EB2CD75ED6451D160</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPCategory.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPCategory.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F98E8F394D4E18E6C4518CA44EEDA61D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>YLPDealOption.m</string>
+			<key>path</key>
+			<string>Pod/Classes/Response/YLPDealOption.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FCD660E6CD2216BA204430C04B61EFFF</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>BCDAA84180B46191D5FDD1F3233A04FE</string>
+			<key>buildPhases</key>
+			<array>
+				<string>5AE69805046AB1822BAFEC93CBB54CA1</string>
+				<string>06DF07A7F70611A3E1FD76D182EE36DE</string>
+				<string>C46B1B2248038D58B7A9923C26B11B29</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>OMGHTTPURLRQ</string>
+			<key>productName</key>
+			<string>OMGHTTPURLRQ</string>
+			<key>productReference</key>
+			<string>A85048B1B98D0596877BB9376059FD33</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>FE7EE70C4746908171EFE695F006DC8A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D61A56C6FD4492A4E023A26ADF050E06</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>D41D8CD98F00B204E9800998ECF8427E</string>
+</dict>
+</plist>
