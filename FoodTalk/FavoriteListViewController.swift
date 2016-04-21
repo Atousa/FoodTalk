@@ -9,10 +9,21 @@
 import UIKit
 
 class FavoriteListViewController: UIViewController {
+    
+    
+    let consumerKey = "LRm2QLqnKWviXdVCf6O-mA";
+    let consumerSecret = "79_-HyVtKeKTjrl_MgsSaLoq5qA";
+    let token = "QKQQYxDxrPp3lJFw9dIsOy_n_X-ifcsV";
+    let tokenSecret = "ip0M1FBKwgRViXxZIChEjvNFwnw";
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let client = YLPClient.init(consumerKey: consumerKey, consumerSecret: consumerSecret, token: token, tokenSecret: tokenSecret)
+        
+        client.searchWithLocation("San Francisco, CA") { (search, error) in
+            print(search!)
+        }
         
     }
 
