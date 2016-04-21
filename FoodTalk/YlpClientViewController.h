@@ -82,7 +82,14 @@
 
 -(void)businessWithId:(NSString *)businessId completionHandler:(YLPBusinessCompletionHandler)completionHandler;
 
+#pragma mark - Phone Search Methods
 
+-(void)businessWithPhoneNumber:(NSString *)phoneNumber
+                   countryCode:(nullable NSString *)countryCode
+                      category:(nullable NSString *)category
+             completionHandler:(YLPPhoneSearchCompletionHandler)completionHandler;
+
+-(void)businessWithPhoneNumber:(NSString *)phoneNumber completionHandler:(YLPPhoneSearchCompletionHandler)completionHandler;
 
 
 
