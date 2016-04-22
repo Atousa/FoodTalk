@@ -21,11 +21,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="397" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DialogueCell" rowHeight="145" id="KJM-AI-Yao" customClass="DialogueCell" customModule="FoodTalk" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DialogueCell1" rowHeight="145" id="KJM-AI-Yao" customClass="DialogueCell" customModule="FoodTalk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="397" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KJM-AI-Yao" id="q7g-MF-ePi">
-                                            <rect key="frame" x="0.0" y="0.0" width="397" height="144"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="397" height="144.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Vt-gX-48M">
@@ -33,43 +33,43 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="188" y="8" width="132" height="30"/>
-                                                    </variation>
-                                                </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xXN-qf-qBf">
-                                                    <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="48" y="82" width="97" height="30"/>
+                                                        <rect key="frame" x="59" y="13" width="341" height="30"/>
                                                     </variation>
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7ez-Rq-u2B">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="127" y="5" width="60" height="33"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="55"/>
                                                     </variation>
                                                 </imageView>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xXN-qf-qBf">
+                                                    <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <variation key="widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="59" y="77" width="341" height="30"/>
+                                                    </variation>
+                                                </textField>
                                             </subviews>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="2Vt-gX-48M"/>
-                                                    <exclude reference="xXN-qf-qBf"/>
                                                     <exclude reference="7ez-Rq-u2B"/>
+                                                    <exclude reference="xXN-qf-qBf"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
                                                 <mask key="subviews">
                                                     <include reference="2Vt-gX-48M"/>
-                                                    <include reference="xXN-qf-qBf"/>
                                                     <include reference="7ez-Rq-u2B"/>
+                                                    <include reference="xXN-qf-qBf"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="DialogueImage" destination="7ez-Rq-u2B" id="vT2-Sc-5Ky"/>
-                                            <outlet property="DialogueTextField" destination="2Vt-gX-48M" id="Uac-0A-yad"/>
-                                            <outlet property="myDialogueTextField" destination="xXN-qf-qBf" id="grC-p6-96C"/>
+                                            <outlet property="WatsonDialogueImage" destination="7ez-Rq-u2B" id="CeB-aY-cBu"/>
+                                            <outlet property="WatsonDialogueTextField" destination="2Vt-gX-48M" id="bAm-yx-a7C"/>
+                                            <outlet property="myDialogueTextField" destination="xXN-qf-qBf" id="O9L-Jz-b25"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -85,27 +85,17 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="French"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="5" y="468" width="80" height="40"/>
+                                    <rect key="frame" x="0.0" y="511" width="80" height="40"/>
                                 </variation>
                                 <connections>
                                     <action selector="OnPressedEthnicity:" destination="zsU-2L-Dml" eventType="touchUpInside" id="9pj-Mq-U74"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnL-7h-pk8">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Chinease"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="229" y="465" width="80" height="40"/>
-                                </variation>
-                                <connections>
-                                    <action selector="OnPressedEthnicity:" destination="zsU-2L-Dml" eventType="touchUpInside" id="Xsg-Tg-7aK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZfW-Lh-Jw6">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Persian"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="14" y="521" width="80" height="40"/>
+                                    <rect key="frame" x="0.0" y="560" width="80" height="40"/>
                                 </variation>
                                 <connections>
                                     <action selector="OnPressedEthnicity:" destination="zsU-2L-Dml" eventType="touchUpInside" id="9W6-Z0-MDD"/>
@@ -115,7 +105,7 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Italian"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="102" y="511" width="80" height="40"/>
+                                    <rect key="frame" x="105" y="511" width="80" height="40"/>
                                 </variation>
                                 <connections>
                                     <action selector="OnPressedEthnicity:" destination="zsU-2L-Dml" eventType="touchUpInside" id="6p8-zX-87U"/>
@@ -135,7 +125,7 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Thai"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="283" y="553" width="80" height="40"/>
+                                    <rect key="frame" x="105" y="561" width="80" height="40"/>
                                 </variation>
                                 <connections>
                                     <action selector="OnPressedEthnicity:" destination="zsU-2L-Dml" eventType="touchUpInside" id="Fno-Ft-fzz"/>
@@ -145,10 +135,20 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Indian"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="110" y="468" width="80" height="40"/>
+                                    <rect key="frame" x="229" y="561" width="80" height="40"/>
                                 </variation>
                                 <connections>
                                     <action selector="OnPressedEthnicity:" destination="zsU-2L-Dml" eventType="touchUpInside" id="YDt-IZ-eWl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnL-7h-pk8">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Chinease"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="320" y="511" width="80" height="40"/>
+                                </variation>
+                                <connections>
+                                    <action selector="OnPressedEthnicity:" destination="zsU-2L-Dml" eventType="touchUpInside" id="Xsg-Tg-7aK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -156,23 +156,23 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="R9q-9Z-qND"/>
-                                <exclude reference="nnL-7h-pk8"/>
                                 <exclude reference="ZfW-Lh-Jw6"/>
                                 <exclude reference="Kgk-C2-rmQ"/>
                                 <exclude reference="lTT-xM-lvA"/>
                                 <exclude reference="dQJ-FJ-HgR"/>
                                 <exclude reference="ido-ZA-71q"/>
+                                <exclude reference="nnL-7h-pk8"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="R9q-9Z-qND"/>
-                                <include reference="nnL-7h-pk8"/>
                                 <include reference="ZfW-Lh-Jw6"/>
                                 <include reference="Kgk-C2-rmQ"/>
                                 <include reference="lTT-xM-lvA"/>
                                 <include reference="dQJ-FJ-HgR"/>
                                 <include reference="ido-ZA-71q"/>
+                                <include reference="nnL-7h-pk8"/>
                             </mask>
                         </variation>
                     </view>

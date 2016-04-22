@@ -12,12 +12,11 @@ import UIKit
 class DialogueCell: UITableViewCell {
     
     
-    @IBOutlet weak var WatsonDialogueTextField: UITextField!
+    @IBOutlet weak var WatsonDialogueTextField: UITextView!
     
-    @IBOutlet weak var WatsonDialogueImage:
-    UIImageView!
+    @IBOutlet weak var WatsonDialogueImage: UIImageView!
     
-    @IBOutlet weak var myDialogueTextField: UITextField!
+    @IBOutlet weak var myDialogueTextField: UITextView!
     
     
     
