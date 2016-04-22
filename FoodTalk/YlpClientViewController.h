@@ -40,56 +40,6 @@
 @property NSString *token;
 @property NSString *tokenSecret;
 
-#pragma mark - Search With Location Methods
-
--(void)searchWithLocation:(NSString *)location
-           currentLatLong:(nullable YLPCurrentLatLong *)cll
-                     term:(nullable NSString *)term
-                    limit:(NSUInteger)limit
-                   offset:(NSUInteger)offset sort:(NSUInteger)sort
-        completionHandler:(YLPSearchCompletionHandler)completionHandler;
-
--(void)searchWithLocation:(NSString *)location
-        completionHandler:(YLPSearchCompletionHandler)completionHandler;
-
-#pragma mark - Search with Geographic Bounding Box Methods
-
--(void)searchWithBounds:(YLPGeoBoundingBox *)bounds
-         currentLatLong:(nullable YLPCurrentLatLong *)cll
-                   term:(nullable NSString *)term
-                  limit:(NSUInteger)limit
-                 offset:(NSUInteger)offset
-                   sort:(NSUInteger)sort
-      completionHandler:(YLPSearchCompletionHandler)completionHandler;
-
--(void)searchWithBounds:(YLPGeoBoundingBox *)bounds completionHandler:(YLPSearchCompletionHandler)completionHandler;
-
-#pragma mark - Search With Geographic Coordinate Methods
-
--(void)searchWithGeoCoordinate:(YLPGeoCoordinate *)geoCoordiante currentLatLong:(nullable YLPCurrentLatLong *)cll term:(nullable NSString *)term limit:(NSUInteger)limit offset:(NSUInteger)offset sort:(NSUInteger)sort completionHandler:(YLPSearchCompletionHandler)completionHandler;
-
--(void)searchWithGeoCoordinate:(YLPCoordinate *)geoCoordiante completionHandler:(YLPSearchCompletionHandler)completionHandler;
-
-#pragma mark - Business Methods
-
--(void)businessWithId:(NSString *)businessId
-          countryCode:(nullable NSString *)countryCode
-         languageCode:(nullable NSString *)countryCode
-         languageCode:(nullable NSString *)languageCode
-       languageFilter:(BOOL)languageFilter
-          actionLinks:(BOOL)actionLinks
-    completionHandler:(YLPBusinessCompletionHandler)completionHandler;
-
--(void)businessWithId:(NSString *)businessId completionHandler:(YLPBusinessCompletionHandler)completionHandler;
-
-#pragma mark - Phone Search Methods
-
--(void)businessWithPhoneNumber:(NSString *)phoneNumber
-                   countryCode:(nullable NSString *)countryCode
-                      category:(nullable NSString *)category
-             completionHandler:(YLPPhoneSearchCompletionHandler)completionHandler;
-
--(void)businessWithPhoneNumber:(NSString *)phoneNumber completionHandler:(YLPPhoneSearchCompletionHandler)completionHandler;
 
 
 
