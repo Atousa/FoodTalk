@@ -3,12 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Favorite List View Controller-->
         <scene sceneID="Gdr-JI-dxw">
             <objects>
-                <viewController id="YWC-PN-V9s" sceneMemberID="viewController">
+                <viewController id="YWC-PN-V9s" customClass="FavoriteListViewController" customModule="FoodTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tai-cf-mgW"/>
                         <viewControllerLayoutGuide type="bottom" id="PPv-dR-Hph"/>
@@ -16,9 +17,38 @@
                     <view key="view" contentMode="scaleToFill" id="ah1-ZV-Lun">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="26" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="818-uD-bsE">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" rowHeight="26" id="NwA-SI-3Dl">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="26"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NwA-SI-3Dl" id="OcF-Si-m9x">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="25"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="YWC-PN-V9s" id="pBb-dl-9kn"/>
+                                    <outlet property="delegate" destination="YWC-PN-V9s" id="3IF-WG-P1N"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="818-uD-bsE" firstAttribute="leading" secondItem="ah1-ZV-Lun" secondAttribute="leadingMargin" constant="-20" id="0vm-VK-1wF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="818-uD-bsE" secondAttribute="trailing" constant="-20" id="5jz-i3-jJ1"/>
+                            <constraint firstItem="818-uD-bsE" firstAttribute="top" secondItem="Tai-cf-mgW" secondAttribute="bottom" id="AVH-WT-y60"/>
+                            <constraint firstItem="PPv-dR-Hph" firstAttribute="top" secondItem="818-uD-bsE" secondAttribute="bottom" id="tV8-0e-sez"/>
+                        </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="818-uD-bsE" id="bIU-91-lEY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZMu-r7-ab9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
