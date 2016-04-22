@@ -10,6 +10,7 @@ import UIKit
 
 class FavoriteListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var tableView: UITableView!
     let consumerKey = "LRm2QLqnKWviXdVCf6O-mA";
     let consumerSecret = "79_-HyVtKeKTjrl_MgsSaLoq5qA";
     let token = "QKQQYxDxrPp3lJFw9dIsOy_n_X-ifcsV";
@@ -17,7 +18,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     
     var searchResult:YLPSearch?
     var businessResult:NSArray?
-    var arrayOfBusiness: NSMutableArray?
+    var arrayOfBusinesses: [AnyObject] = []
     
 
     override func viewDidLoad() {
@@ -34,22 +35,23 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
             self.businessResult = (self.searchResult?.businesses)! as NSArray
             
             for business in self.businessResult! {
-                self.arrayOfBusiness?.addObject(business)
+                self.arrayOfBusinesses.append(business)
             }
-            
+            self.tableView.reloadData()
         }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.arrayOfBusinesses.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell", forIndexPath: indexPath)
-        
-        cell.textLabel?.text = self.arrayOfBusiness?[indexPath.row].name
+
+        cell.textLabel?.text = self.arrayOfBusinesses[indexPath.row].name
         
         return cell
+
     }
 
     override func didReceiveMemoryWarning() {
