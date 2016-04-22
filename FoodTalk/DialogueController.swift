@@ -10,7 +10,7 @@ import UIKit
 import WatsonDeveloperCloud
 import AVFoundation
 
-class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextViewDelegate, AVAudioRecorderDelegate {
+class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate, AVAudioRecorderDelegate {
     
 
     @IBOutlet weak var DialogueTableView: UITableView!
@@ -20,7 +20,8 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var service: Dialog?
     var tts: TextToSpeech?
     var dialogID: Dialog.DialogID?
-    var dialogLog: [String] = []
+    var watsonLog: [String] = []
+    var userLog: [String] = []
     
     
     override func viewDidLoad() {
@@ -31,7 +32,7 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
         //self.tts = TextToSpeech(username: "846d202a-20ad-4fbb-b033-dee0a559c4b4", password: "LQJNUGIkfNrc")
         
         
-        let dialogName = "nameo"
+        let dialogName = "xmlchanged1"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -59,6 +60,21 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
         }
     }
 
+    func tableViewScrollToBottom(animated: Bool) {
+        let delay = 0 //0.1 * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        
+        dispatch_after(time, dispatch_get_main_queue(), {
+            
+            let numberOfSections = self.DialogueTableView.numberOfSections
+            let numberOfRows = self.DialogueTableView.numberOfRowsInSection(numberOfSections-1)
+            
+            if numberOfRows > 0 {
+                let indexPath = NSIndexPath(forRow: numberOfRows-1, inSection: (numberOfSections-1))
+                self.DialogueTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: animated)
+            }
+        })
+    }
 
     func startDialogue() {
         self.service!.converse(self.dialogID!) { response, error in
@@ -68,7 +84,7 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
             }
             self.conversationID = response?.conversationID
             self.clientID = response?.clientID
-            self.dialogLog.append((response?.response![0])!)
+            self.watsonLog.append((response?.response![0])!)
 
             //reload tableview from main thread
             dispatch_async(dispatch_get_main_queue()) {
@@ -94,10 +110,11 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }*/
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        print(textField.text!)
-        self.dialogLog.append(textField.text!)
-        print("Array: \(self.dialogLog)")
-
+        if(textField.text == nil || textField.text! == "") {
+            return false
+        }
+        self.userLog.append(textField.text!)
+        textField.enabled = false
         resignFirstResponder()
         
         self.service!.converse(self.dialogID!, conversationID:  self.conversationID!,
@@ -110,8 +127,7 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
                                         //print("\(ans)> "+(response?.response![ans])!)
                                         //self.speak((response?.response![ans])!)
                                 
-                                        self.dialogLog.append((response?.response![i])!)
-                                        print("Array: \(self.dialogLog)")
+                                        self.watsonLog.append((response?.response![i])!)
                                         break;
                                     }
                                     i+=1
@@ -120,6 +136,7 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
                                 //reload tableview from main thread
                                 dispatch_async(dispatch_get_main_queue()) {
                                     self.DialogueTableView.reloadData()
+                                    self.tableViewScrollToBottom(true)
                                 }
         }
 
@@ -127,21 +144,18 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       print("Cell count: \((self.dialogLog.count+1)/2)")
-       print("Array: \(self.dialogLog)")
-       return (self.dialogLog.count+1)/2
+       return self.watsonLog.count
     }
     
     
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("DialogueCell1") as! DialogueCell
+        
         cell.myDialogueTextField.delegate = self
-        print("Cell: \(indexPath.row) : Watson: \(self.dialogLog[2*indexPath.row])")
-        cell.WatsonDialogueTextField.text = self.dialogLog[2*indexPath.row]
-        if (2*indexPath.row+1 < self.dialogLog.count) {
-            print("Cell: \(indexPath.row) : Answer: \(self.dialogLog[2*indexPath.row+1])")
-            cell.myDialogueTextField.text = self.dialogLog[2*indexPath.row+1]
+        cell.WatsonDialogueTextField.text = self.watsonLog[indexPath.row]
+        if (indexPath.row < self.userLog.count) {
+            cell.myDialogueTextField.text = self.userLog[indexPath.row]
         } else {
             cell.myDialogueTextField.text = ""
         }
