@@ -18,6 +18,7 @@
 		1A4FE0AD1CC702A400EE8787 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */; };
 		1A4FE0B31CC702E200EE8787 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE0B21CC702E200EE8787 /* MainViewController.swift */; };
 		1A4FE0EA1CC83D8200EE8787 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1A4FE0E91CC83D8200EE8787 /* Podfile */; };
+		1A5E5A511CCACE9F00BBA6A1 /* YlpClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E5A501CCACE9F00BBA6A1 /* YlpClientViewController.m */; };
 		711FF97C1CCA0111000180B6 /* pizza_sample.xml in Resources */ = {isa = PBXBuildFile; fileRef = 711FF97B1CCA0111000180B6 /* pizza_sample.xml */; };
 		7171CB4B1CC94CBC00B9E706 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB451CC94CBC00B9E706 /* Alamofire.framework */; };
 		7171CB4C1CC94CBC00B9E706 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB461CC94CBC00B9E706 /* AlamofireObjectMapper.framework */; };
@@ -67,6 +68,9 @@
 		1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
 		1A4FE0B21CC702E200EE8787 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1A4FE0E91CC83D8200EE8787 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		1A5E5A4E1CCACE9E00BBA6A1 /* FoodTalk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodTalk-Bridging-Header.h"; sourceTree = "<group>"; };
+		1A5E5A4F1CCACE9F00BBA6A1 /* YlpClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YlpClientViewController.h; sourceTree = "<group>"; };
+		1A5E5A501CCACE9F00BBA6A1 /* YlpClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YlpClientViewController.m; sourceTree = "<group>"; };
 		482FED0ADB4A4DD453B75CD1 /* Pods-FoodTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTalk/Pods-FoodTalk.release.xcconfig"; sourceTree = "<group>"; };
 		711FF97B1CCA0111000180B6 /* pizza_sample.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = pizza_sample.xml; sourceTree = SOURCE_ROOT; };
 		7171CB451CC94CBC00B9E706 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -150,6 +154,9 @@
 			children = (
 				1A4FE0A21CC701B600EE8787 /* FavoritesList.storyboard */,
 				1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */,
+				1A5E5A4F1CCACE9F00BBA6A1 /* YlpClientViewController.h */,
+				1A5E5A501CCACE9F00BBA6A1 /* YlpClientViewController.m */,
+				1A5E5A4E1CCACE9E00BBA6A1 /* FoodTalk-Bridging-Header.h */,
 			);
 			name = FavoriteList;
 			sourceTree = "<group>";
@@ -316,6 +323,7 @@
 				1A4FE0941CC6FDA000EE8787 /* FoodTalk.xcdatamodeld in Sources */,
 				1A4FE0B31CC702E200EE8787 /* MainViewController.swift in Sources */,
 				717E624B1CC7FAE80078B71A /* DialogueCell.swift in Sources */,
+				1A5E5A511CCACE9F00BBA6A1 /* YlpClientViewController.m in Sources */,
 				1A4FE0AB1CC7029100EE8787 /* DialogueController.swift in Sources */,
 				1A4FE08C1CC6FDA000EE8787 /* AppDelegate.swift in Sources */,
 			);
@@ -441,6 +449,7 @@
 			baseConfigurationReference = BE515C11C657E22E9652E8F9 /* Pods-FoodTalk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -449,6 +458,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.EricDHong.FoodTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FoodTalk/FoodTalk-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -457,6 +468,7 @@
 			baseConfigurationReference = 482FED0ADB4A4DD453B75CD1 /* Pods-FoodTalk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -465,6 +477,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.EricDHong.FoodTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FoodTalk/FoodTalk-Bridging-Header.h";
 			};
 			name = Release;
 		};
