@@ -165,6 +165,8 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
 
     @IBAction func OnPressedEthnicity(sender: AnyObject) {
+        //let svc = UIViewController()
+        //sev.... = userlog
         
     }
     

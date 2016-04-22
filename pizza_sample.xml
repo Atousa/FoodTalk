@@ -4,7 +4,7 @@
         <folder label="Main">
             <output>
                 <prompt selectionType="RANDOM">
-                    <item>Hi, I'm Watson! I can help you to find a resturant, what type of food would you like?</item>
+                    <item>Hi Atousa and Eric, I'm Watson! I can help you to find a resturant, what type of food would you like?</item>
                 </prompt>
                 <goto ref="getUserInput_2442994"/>
             </output>
@@ -41,13 +41,13 @@
                     </grammar>
                     <input>
                         <grammar>
-                            <item>$ (Size)</item>
-                            <item>size</item>
-                            <item>sizes</item>
+                            <item>$ (Distance)</item>
+                            <item>distance</item>
+                            <item>distances</item>
                         </grammar>
                         <output>
                             <prompt selectionType="RANDOM">
-                                <item>We have small, medium, large, and extra large</item>
+                                <item> 1 , 5, and 10</item>
                             </prompt>
                         </output>
                     </input>
