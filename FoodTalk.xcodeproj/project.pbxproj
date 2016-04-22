@@ -18,11 +18,48 @@
 		1A4FE0AD1CC702A400EE8787 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */; };
 		1A4FE0B31CC702E200EE8787 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE0B21CC702E200EE8787 /* MainViewController.swift */; };
 		1A4FE0EA1CC83D8200EE8787 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1A4FE0E91CC83D8200EE8787 /* Podfile */; };
+<<<<<<< HEAD
 		1A4FE11A1CC881C700EE8787 /* YlpClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE1191CC881C700EE8787 /* YlpClientViewController.m */; };
+=======
+		711FF97C1CCA0111000180B6 /* pizza_sample.xml in Resources */ = {isa = PBXBuildFile; fileRef = 711FF97B1CCA0111000180B6 /* pizza_sample.xml */; };
+		7171CB4B1CC94CBC00B9E706 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB451CC94CBC00B9E706 /* Alamofire.framework */; };
+		7171CB4C1CC94CBC00B9E706 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB461CC94CBC00B9E706 /* AlamofireObjectMapper.framework */; };
+		7171CB4D1CC94CBC00B9E706 /* HTTPStatusCodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB471CC94CBC00B9E706 /* HTTPStatusCodes.framework */; };
+		7171CB4E1CC94CBC00B9E706 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB481CC94CBC00B9E706 /* ObjectMapper.framework */; };
+		7171CB4F1CC94CBC00B9E706 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB491CC94CBC00B9E706 /* Starscream.framework */; };
+		7171CB501CC94CBC00B9E706 /* WatsonDeveloperCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB4A1CC94CBC00B9E706 /* WatsonDeveloperCloud.framework */; };
+		7171CB521CC94F3700B9E706 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7171CB451CC94CBC00B9E706 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7171CB531CC94F3700B9E706 /* AlamofireObjectMapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7171CB461CC94CBC00B9E706 /* AlamofireObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7171CB541CC94F3700B9E706 /* HTTPStatusCodes.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7171CB471CC94CBC00B9E706 /* HTTPStatusCodes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7171CB551CC94F3700B9E706 /* ObjectMapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7171CB481CC94CBC00B9E706 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7171CB561CC94F3700B9E706 /* Starscream.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7171CB491CC94CBC00B9E706 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7171CB571CC94F3700B9E706 /* WatsonDeveloperCloud.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7171CB4A1CC94CBC00B9E706 /* WatsonDeveloperCloud.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+>>>>>>> master
 		717E624B1CC7FAE80078B71A /* DialogueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717E624A1CC7FAE80078B71A /* DialogueCell.swift */; };
 		AAFBBE1BFA0FCD5976BC1EE4 /* libPods-FoodTalk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A28D315F5090215C804647 /* libPods-FoodTalk.a */; };
 /* End PBXBuildFile section */
 
+<<<<<<< HEAD
+=======
+/* Begin PBXCopyFilesBuildPhase section */
+		7171CB511CC94ECB00B9E706 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7171CB521CC94F3700B9E706 /* Alamofire.framework in CopyFiles */,
+				7171CB531CC94F3700B9E706 /* AlamofireObjectMapper.framework in CopyFiles */,
+				7171CB541CC94F3700B9E706 /* HTTPStatusCodes.framework in CopyFiles */,
+				7171CB551CC94F3700B9E706 /* ObjectMapper.framework in CopyFiles */,
+				7171CB561CC94F3700B9E706 /* Starscream.framework in CopyFiles */,
+				7171CB571CC94F3700B9E706 /* WatsonDeveloperCloud.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+>>>>>>> master
 /* Begin PBXFileReference section */
 		1A4FE0881CC6FDA000EE8787 /* FoodTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A4FE08B1CC6FDA000EE8787 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,10 +74,21 @@
 		1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
 		1A4FE0B21CC702E200EE8787 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1A4FE0E91CC83D8200EE8787 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		1A4FE1171CC881C600EE8787 /* FoodTalk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodTalk-Bridging-Header.h"; sourceTree = "<group>"; };
 		1A4FE1181CC881C700EE8787 /* YlpClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YlpClientViewController.h; sourceTree = "<group>"; };
 		1A4FE1191CC881C700EE8787 /* YlpClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YlpClientViewController.m; sourceTree = "<group>"; };
 		482FED0ADB4A4DD453B75CD1 /* Pods-FoodTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTalk/Pods-FoodTalk.release.xcconfig"; sourceTree = "<group>"; };
+=======
+		482FED0ADB4A4DD453B75CD1 /* Pods-FoodTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTalk/Pods-FoodTalk.release.xcconfig"; sourceTree = "<group>"; };
+		711FF97B1CCA0111000180B6 /* pizza_sample.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = pizza_sample.xml; sourceTree = SOURCE_ROOT; };
+		7171CB451CC94CBC00B9E706 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		7171CB461CC94CBC00B9E706 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = Carthage/Build/iOS/AlamofireObjectMapper.framework; sourceTree = "<group>"; };
+		7171CB471CC94CBC00B9E706 /* HTTPStatusCodes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HTTPStatusCodes.framework; path = Carthage/Build/iOS/HTTPStatusCodes.framework; sourceTree = "<group>"; };
+		7171CB481CC94CBC00B9E706 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
+		7171CB491CC94CBC00B9E706 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
+		7171CB4A1CC94CBC00B9E706 /* WatsonDeveloperCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatsonDeveloperCloud.framework; path = Carthage/Build/iOS/WatsonDeveloperCloud.framework; sourceTree = "<group>"; };
+>>>>>>> master
 		717E624A1CC7FAE80078B71A /* DialogueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogueCell.swift; sourceTree = "<group>"; };
 		87A28D315F5090215C804647 /* libPods-FoodTalk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodTalk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE515C11C657E22E9652E8F9 /* Pods-FoodTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTalk/Pods-FoodTalk.debug.xcconfig"; sourceTree = "<group>"; };
@@ -52,6 +100,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAFBBE1BFA0FCD5976BC1EE4 /* libPods-FoodTalk.a in Frameworks */,
+<<<<<<< HEAD
+=======
+				7171CB4F1CC94CBC00B9E706 /* Starscream.framework in Frameworks */,
+				7171CB4C1CC94CBC00B9E706 /* AlamofireObjectMapper.framework in Frameworks */,
+				7171CB4E1CC94CBC00B9E706 /* ObjectMapper.framework in Frameworks */,
+				7171CB4B1CC94CBC00B9E706 /* Alamofire.framework in Frameworks */,
+				7171CB501CC94CBC00B9E706 /* WatsonDeveloperCloud.framework in Frameworks */,
+				7171CB4D1CC94CBC00B9E706 /* HTTPStatusCodes.framework in Frameworks */,
+>>>>>>> master
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +118,10 @@
 		1A4FE07F1CC6FDA000EE8787 = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+=======
+				7171CB441CC9499D00B9E706 /* Framework */,
+>>>>>>> master
 				1A4FE0E91CC83D8200EE8787 /* Podfile */,
 				1A4FE08A1CC6FDA000EE8787 /* FoodTalk */,
 				1A4FE0891CC6FDA000EE8787 /* Products */,
@@ -80,6 +141,10 @@
 		1A4FE08A1CC6FDA000EE8787 /* FoodTalk */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+=======
+				711FF97B1CCA0111000180B6 /* pizza_sample.xml */,
+>>>>>>> master
 				1A4FE08B1CC6FDA000EE8787 /* AppDelegate.swift */,
 				1A4FE0B21CC702E200EE8787 /* MainViewController.swift */,
 				1A4FE08F1CC6FDA000EE8787 /* Main.storyboard */,
@@ -108,13 +173,32 @@
 			children = (
 				1A4FE0A21CC701B600EE8787 /* FavoritesList.storyboard */,
 				1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */,
+<<<<<<< HEAD
 				1A4FE1181CC881C700EE8787 /* YlpClientViewController.h */,
 				1A4FE1191CC881C700EE8787 /* YlpClientViewController.m */,
 				1A4FE1171CC881C600EE8787 /* FoodTalk-Bridging-Header.h */,
+=======
+>>>>>>> master
 			);
 			name = FavoriteList;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
+=======
+		7171CB441CC9499D00B9E706 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				7171CB451CC94CBC00B9E706 /* Alamofire.framework */,
+				7171CB461CC94CBC00B9E706 /* AlamofireObjectMapper.framework */,
+				7171CB471CC94CBC00B9E706 /* HTTPStatusCodes.framework */,
+				7171CB481CC94CBC00B9E706 /* ObjectMapper.framework */,
+				7171CB491CC94CBC00B9E706 /* Starscream.framework */,
+				7171CB4A1CC94CBC00B9E706 /* WatsonDeveloperCloud.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+>>>>>>> master
 		B6422A68C5F14D006391E905 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +229,10 @@
 				1A4FE0861CC6FDA000EE8787 /* Resources */,
 				3F689431A6A6E2AED12995DA /* Embed Pods Frameworks */,
 				D9002B18E642BBEDE8D5B7A7 /* Copy Pods Resources */,
+<<<<<<< HEAD
+=======
+				7171CB511CC94ECB00B9E706 /* CopyFiles */,
+>>>>>>> master
 			);
 			buildRules = (
 			);
@@ -194,6 +282,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
+=======
+				711FF97C1CCA0111000180B6 /* pizza_sample.xml in Resources */,
+>>>>>>> master
 				1A4FE0EA1CC83D8200EE8787 /* Podfile in Resources */,
 				1A4FE0A11CC7017500EE8787 /* Dialogue.storyboard in Resources */,
 				1A4FE0991CC6FDA000EE8787 /* LaunchScreen.storyboard in Resources */,
@@ -262,7 +354,10 @@
 				1A4FE0941CC6FDA000EE8787 /* FoodTalk.xcdatamodeld in Sources */,
 				1A4FE0B31CC702E200EE8787 /* MainViewController.swift in Sources */,
 				717E624B1CC7FAE80078B71A /* DialogueCell.swift in Sources */,
+<<<<<<< HEAD
 				1A4FE11A1CC881C700EE8787 /* YlpClientViewController.m in Sources */,
+=======
+>>>>>>> master
 				1A4FE0AB1CC7029100EE8787 /* DialogueController.swift in Sources */,
 				1A4FE08C1CC6FDA000EE8787 /* AppDelegate.swift in Sources */,
 			);
@@ -388,13 +483,23 @@
 			baseConfigurationReference = BE515C11C657E22E9652E8F9 /* Pods-FoodTalk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+<<<<<<< HEAD
 				CLANG_ENABLE_MODULES = YES;
+=======
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+>>>>>>> master
 				INFOPLIST_FILE = FoodTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.EricDHong.FoodTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+<<<<<<< HEAD
 				SWIFT_OBJC_BRIDGING_HEADER = "FoodTalk/FoodTalk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+=======
+>>>>>>> master
 			};
 			name = Debug;
 		};
@@ -403,12 +508,22 @@
 			baseConfigurationReference = 482FED0ADB4A4DD453B75CD1 /* Pods-FoodTalk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+<<<<<<< HEAD
 				CLANG_ENABLE_MODULES = YES;
+=======
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+>>>>>>> master
 				INFOPLIST_FILE = FoodTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.EricDHong.FoodTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+<<<<<<< HEAD
 				SWIFT_OBJC_BRIDGING_HEADER = "FoodTalk/FoodTalk-Bridging-Header.h";
+=======
+>>>>>>> master
 			};
 			name = Release;
 		};
