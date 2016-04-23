@@ -34,7 +34,9 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     override func viewWillAppear(animated: Bool) {
         let client = YLPClient.init(consumerKey: consumerKey, consumerSecret: consumerSecret, token: token, tokenSecret: tokenSecret)
         
-            client.searchWithLocation("San Francisco, CA") { (search, error) in
+        
+        
+        client.searchWithLocation("San Francisco, CA") { (search, error) in
                 self.searchResult = search
                 self.businessResult = (self.searchResult?.businesses)! as NSArray
             
