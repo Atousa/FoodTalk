@@ -1,9 +1,9 @@
 //
-//  Resturant+CoreDataProperties.swift
-//  
+//  Restaurant+CoreDataProperties.swift
+//  FoodTalk
 //
 //  Created by Atousa Duprat on 4/23/16.
-//
+//  Copyright © 2016 EricDHong. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.
@@ -12,16 +12,15 @@
 import Foundation
 import CoreData
 
-extension Resturant {
+extension Restaurant {
 
     @NSManaged var name: String?
     @NSManaged var longitude: NSNumber?
     @NSManaged var latitude: NSNumber?
-    @NSManaged var dates: NSDate?
-    @NSManaged var images: NSData?
     @NSManaged var city: String?
     @NSManaged var country: String?
-    @NSManaged var favoritDishes: String?
-    @NSManaged var rate: NSNumber?
+    @NSManaged var address: String?
+    @NSManaged var state: String?
+    @NSManaged var visits: NSSet?
 
 }
