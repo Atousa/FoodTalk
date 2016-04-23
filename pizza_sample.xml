@@ -4,7 +4,7 @@
         <folder label="Main">
             <output>
                 <prompt selectionType="RANDOM">
-                    <item>Hi Atousa and Eric, I'm Watson! I can help you to find a resturant, what type of food would you like?</item>
+                    <item>Hello there! My name is Watson and I will assist you in deciding what to eat. Please enter the city and state (City, State)</item>
                 </prompt>
                 <goto ref="getUserInput_2442994"/>
             </output>
@@ -101,7 +101,7 @@
                         <action varName="size" operator="SET_TO">{size.value:main}</action>
                         <output>
                             <prompt selectionType="RANDOM">
-                                <item>What toppings are you in the mood for? (Limit 4)</item>
+                                <item>What type of food are you in the mood for? </item>
                             </prompt>
                             <getUserInput>
                                 <input>

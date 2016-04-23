@@ -19,6 +19,8 @@
 		1A4FE0B31CC702E200EE8787 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE0B21CC702E200EE8787 /* MainViewController.swift */; };
 		1A4FE0EA1CC83D8200EE8787 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1A4FE0E91CC83D8200EE8787 /* Podfile */; };
 		1A5E5A511CCACE9F00BBA6A1 /* YlpClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E5A501CCACE9F00BBA6A1 /* YlpClientViewController.m */; };
+		1A5E5A531CCAE24900BBA6A1 /* SearchFoodPlaces.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E5A521CCAE24900BBA6A1 /* SearchFoodPlaces.storyboard */; };
+		1A5E5A551CCAE2AA00BBA6A1 /* SearchFoodPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E5A541CCAE2AA00BBA6A1 /* SearchFoodPlacesViewController.swift */; };
 		711FF97C1CCA0111000180B6 /* pizza_sample.xml in Resources */ = {isa = PBXBuildFile; fileRef = 711FF97B1CCA0111000180B6 /* pizza_sample.xml */; };
 		7171CB4B1CC94CBC00B9E706 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB451CC94CBC00B9E706 /* Alamofire.framework */; };
 		7171CB4C1CC94CBC00B9E706 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB461CC94CBC00B9E706 /* AlamofireObjectMapper.framework */; };
@@ -71,6 +73,8 @@
 		1A5E5A4E1CCACE9E00BBA6A1 /* FoodTalk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodTalk-Bridging-Header.h"; sourceTree = "<group>"; };
 		1A5E5A4F1CCACE9F00BBA6A1 /* YlpClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YlpClientViewController.h; sourceTree = "<group>"; };
 		1A5E5A501CCACE9F00BBA6A1 /* YlpClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YlpClientViewController.m; sourceTree = "<group>"; };
+		1A5E5A521CCAE24900BBA6A1 /* SearchFoodPlaces.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchFoodPlaces.storyboard; sourceTree = "<group>"; };
+		1A5E5A541CCAE2AA00BBA6A1 /* SearchFoodPlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFoodPlacesViewController.swift; sourceTree = "<group>"; };
 		482FED0ADB4A4DD453B75CD1 /* Pods-FoodTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTalk/Pods-FoodTalk.release.xcconfig"; sourceTree = "<group>"; };
 		711FF97B1CCA0111000180B6 /* pizza_sample.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = pizza_sample.xml; sourceTree = SOURCE_ROOT; };
 		7171CB451CC94CBC00B9E706 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				1A4FE0A01CC7017500EE8787 /* Dialogue.storyboard */,
 				1A4FE0AA1CC7029100EE8787 /* DialogueController.swift */,
 				717E624A1CC7FAE80078B71A /* DialogueCell.swift */,
+				1A5E5A561CCAE2B700BBA6A1 /* Search Food Places */,
 			);
 			name = Dialogue;
 			sourceTree = "<group>";
@@ -159,6 +164,15 @@
 				1A5E5A4E1CCACE9E00BBA6A1 /* FoodTalk-Bridging-Header.h */,
 			);
 			name = FavoriteList;
+			sourceTree = "<group>";
+		};
+		1A5E5A561CCAE2B700BBA6A1 /* Search Food Places */ = {
+			isa = PBXGroup;
+			children = (
+				1A5E5A521CCAE24900BBA6A1 /* SearchFoodPlaces.storyboard */,
+				1A5E5A541CCAE2AA00BBA6A1 /* SearchFoodPlacesViewController.swift */,
+			);
+			name = "Search Food Places";
 			sourceTree = "<group>";
 		};
 		7171CB441CC9499D00B9E706 /* Framework */ = {
@@ -254,6 +268,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A5E5A531CCAE24900BBA6A1 /* SearchFoodPlaces.storyboard in Resources */,
 				711FF97C1CCA0111000180B6 /* pizza_sample.xml in Resources */,
 				1A4FE0EA1CC83D8200EE8787 /* Podfile in Resources */,
 				1A4FE0A11CC7017500EE8787 /* Dialogue.storyboard in Resources */,
@@ -323,6 +338,7 @@
 				1A4FE0941CC6FDA000EE8787 /* FoodTalk.xcdatamodeld in Sources */,
 				1A4FE0B31CC702E200EE8787 /* MainViewController.swift in Sources */,
 				717E624B1CC7FAE80078B71A /* DialogueCell.swift in Sources */,
+				1A5E5A551CCAE2AA00BBA6A1 /* SearchFoodPlacesViewController.swift in Sources */,
 				1A5E5A511CCACE9F00BBA6A1 /* YlpClientViewController.m in Sources */,
 				1A4FE0AB1CC7029100EE8787 /* DialogueController.swift in Sources */,
 				1A4FE08C1CC6FDA000EE8787 /* AppDelegate.swift in Sources */,

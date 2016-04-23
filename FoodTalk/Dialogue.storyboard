@@ -27,7 +27,7 @@
                                         <rect key="frame" x="0.0" y="92" width="397" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KJM-AI-Yao" id="q7g-MF-ePi">
-                                            <rect key="frame" x="0.0" y="0.0" width="397" height="144.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="397" height="144"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7ez-Rq-u2B">
@@ -141,6 +141,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="OnPressedEthnicity:" destination="zsU-2L-Dml" eventType="touchUpInside" id="IKu-hy-aVe"/>
+                                    <segue destination="7Ei-sc-uvs" kind="show" id="y5u-OP-89u"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -164,6 +165,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kr1-uX-Fr8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1749" y="387"/>
+        </scene>
+        <!--SearchFoodPlaces-->
+        <scene sceneID="p1s-Qr-455">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SearchFoodPlaces" id="7Ei-sc-uvs" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0h9-uE-Hpb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2408" y="390"/>
         </scene>
     </scenes>
 </document>

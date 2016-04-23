@@ -16,6 +16,8 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     let token = "QKQQYxDxrPp3lJFw9dIsOy_n_X-ifcsV";
     let tokenSecret = "ip0M1FBKwgRViXxZIChEjvNFwnw";
     
+    var locationFromWatson:String?
+    
     var searchResult:YLPSearch?
     var businessResult:NSArray?
     var arrayOfBusinesses: [AnyObject] = []
@@ -30,15 +32,20 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     override func viewWillAppear(animated: Bool) {
         let client = YLPClient.init(consumerKey: consumerKey, consumerSecret: consumerSecret, token: token, tokenSecret: tokenSecret)
         
-        client.searchWithLocation("Nob Hill, San Francisco, CA") { (search, error) in
-            self.searchResult = search
-            self.businessResult = (self.searchResult?.businesses)! as NSArray
+        if let locationString = locationFromWatson {
+            client.searchWithLocation(locationString) { (search, error) in
+                self.searchResult = search
+                self.businessResult = (self.searchResult?.businesses)! as NSArray
             
-            for business in self.businessResult! {
-                self.arrayOfBusinesses.append(business)
+                for business in self.businessResult! {
+                    self.arrayOfBusinesses.append(business)
+                    
+                }
+                self.tableView.reloadData()
             }
-            self.tableView.reloadData()
         }
+        
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
