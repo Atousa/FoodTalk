@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Search Food Places View Controller-->
         <scene sceneID="xH5-II-z7m">
             <objects>
-                <viewController id="yjY-8K-SLg" sceneMemberID="viewController">
+                <viewController id="yjY-8K-SLg" customClass="SearchFoodPlacesViewController" customModule="FoodTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fMk-pp-nwf"/>
                         <viewControllerLayoutGuide type="bottom" id="m22-ZR-HeT"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Cjn-3G-LJm">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" id="Cjn-3G-LJm">
                                         <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cjn-3G-LJm" id="4Zv-lT-0to">
@@ -42,6 +42,9 @@
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="searchListTableView" destination="HYo-aY-E8F" id="4zM-WW-l4B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYa-Gu-GNk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

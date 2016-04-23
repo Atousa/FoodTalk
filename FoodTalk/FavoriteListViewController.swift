@@ -11,6 +11,7 @@ import UIKit
 class FavoriteListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
     let consumerKey = "LRm2QLqnKWviXdVCf6O-mA";
     let consumerSecret = "79_-HyVtKeKTjrl_MgsSaLoq5qA";
     let token = "QKQQYxDxrPp3lJFw9dIsOy_n_X-ifcsV";
@@ -29,11 +30,11 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         
     }
     
+    
     override func viewWillAppear(animated: Bool) {
         let client = YLPClient.init(consumerKey: consumerKey, consumerSecret: consumerSecret, token: token, tokenSecret: tokenSecret)
         
-        if let locationString = locationFromWatson {
-            client.searchWithLocation(locationString) { (search, error) in
+            client.searchWithLocation("San Francisco, CA") { (search, error) in
                 self.searchResult = search
                 self.businessResult = (self.searchResult?.businesses)! as NSArray
             
@@ -43,8 +44,6 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
                 }
                 self.tableView.reloadData()
             }
-        }
-        
         
     }
     
@@ -55,7 +54,23 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell", forIndexPath: indexPath)
 
-        cell.textLabel?.text = self.arrayOfBusinesses[indexPath.row].name
+        let business = self.arrayOfBusinesses[indexPath.row]
+        
+        let ratingOfBusiness = business.rating
+        let numOfReviews = business.reviewCount
+        let isBusinessClosed = business.closed
+        let stringFormatNumOfReviews = String(numOfReviews)
+        let stringFormatratingOfBusiness = String(ratingOfBusiness)
+        let stringFormatIsBusinessClosed = String(isBusinessClosed)
+        
+        cell.textLabel?.text = business.name
+        cell.textLabel?.numberOfLines = 0
+        
+        cell.detailTextLabel?.text = stringFormatratingOfBusiness + " of " + stringFormatNumOfReviews + "reviews. " + stringFormatIsBusinessClosed
+        
+        
+        cell.imageView?.image = UIImage(named: "watson")
+        
         
         return cell
 
