@@ -29,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.arrayOfBusinesses = [NSMutableArray new];
+    
     self.searchTableView.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1];
     
     self.consumerKey = @"LRm2QLqnKWviXdVCf6O-mA";

@@ -16,7 +16,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.whiteColor()
+
         
     }
 
