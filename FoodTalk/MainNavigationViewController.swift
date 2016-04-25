@@ -13,7 +13,7 @@ class MainNavigationViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.navigationBar.barTintColor = UIColor(red: 255, green: 0, blue: 0, alpha: 1)
     }
 
     override func didReceiveMemoryWarning() {

@@ -62,6 +62,7 @@
 //    Set the background color of tableView and text color
     cell.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1.0];
     cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.font = [UIFont fontWithName:@"Copperplate" size:21];
     
     cell.textLabel.text = businessOfMany.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.1f of %lu reviews.", businessOfMany.rating, (unsigned long)businessOfMany.reviewCount];
