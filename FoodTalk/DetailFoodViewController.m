@@ -1,18 +1,18 @@
 //
-//  FavoriteListViewController.m
+//  DetailFoodViewController.m
 //  FoodTalk
 //
-//  Created by Eric Hong on 4/22/16.
+//  Created by Eric Hong on 4/25/16.
 //  Copyright © 2016 EricDHong. All rights reserved.
 //
 
-#import "FavoriteListViewController.h"
+#import "DetailFoodViewController.h"
 
-@interface FavoriteListViewController ()
+@interface DetailFoodViewController ()
 
 @end
 
-@implementation FavoriteListViewController
+@implementation DetailFoodViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -1,8 +1,8 @@
 //
-//  YelpClientViewController.h
+//  SearchResultViewController.h
 //  FoodTalk
 //
-//  Created by Eric Hong on 4/22/16.
+//  Created by Eric Hong on 4/25/16.
 //  Copyright © 2016 EricDHong. All rights reserved.
 //
 
@@ -31,8 +31,13 @@
 #import "YLPSearch.h"
 #import "YLPSortType.h"
 #import "YLPUser.h"
-    
 
-@interface YelpClientViewController : UIViewController
+@interface SearchResultViewController : UIViewController
+
+@property NSString *locationFromWatson;
+@property NSString *searchTerm;
+@property NSUInteger searchLimit;
+@property NSUInteger searchSort;
+@property NSUInteger searchOffset;
 
 @end
