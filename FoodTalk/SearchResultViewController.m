@@ -7,6 +7,7 @@
 //
 
 #import "SearchResultViewController.h"
+#import "DetailFoodViewController.h"
 
 @interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -28,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.arrayOfBusinesses = [NSMutableArray new];
+    self.searchTableView.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1];
     
     self.consumerKey = @"LRm2QLqnKWviXdVCf6O-mA";
     self.consumerSecret = @"79_-HyVtKeKTjrl_MgsSaLoq5qA";
@@ -36,21 +38,17 @@
     
     YLPClient *client = [[YLPClient alloc]initWithConsumerKey:self.consumerKey consumerSecret:self.consumerSecret token:self.token tokenSecret:self.tokenSecret];
     
-//    YLPCoordinate *coordinate = [[YLPCoordinate alloc]initWithLatitude:(37.7) longitude:-122.40];
-    
     self.searchTerm = @"food";
     
     [client searchWithLocation:@"San Francisco, CA" currentLatLong:nil term:self.searchTerm limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
         for (YLPBusiness *business in search.businesses) {
-            NSLog(@"%@", business);
             [self.arrayOfBusinesses addObject:business];
-            NSLog(@"Array of Businesses: %@", self.arrayOfBusinesses);
         }
         [self.searchTableView reloadData];
-        NSLog(@"%@", self.arrayOfBusinesses);
     }];
-    
 }
+
+#pragma mark - TableView Methods
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.arrayOfBusinesses.count;
@@ -61,12 +59,26 @@
 
     YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
     
+//    Set the background color of tableView and text color
+    cell.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1.0];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    
     cell.textLabel.text = businessOfMany.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%f of %lu reviews.", businessOfMany.rating, (unsigned long)businessOfMany.reviewCount];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.1f of %lu reviews.", businessOfMany.rating, (unsigned long)businessOfMany.reviewCount];
     cell.imageView.image = [UIImage imageNamed:@"watson"];
     
     return cell;
 }
+
+#pragma mark - Segue
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    DetailFoodViewController *destVC = segue.destinationViewController;
+    NSIndexPath *indexPath = [self.searchTableView indexPathForCell:sender];
+    destVC.selectedBusiness = self.arrayOfBusinesses[indexPath.row];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

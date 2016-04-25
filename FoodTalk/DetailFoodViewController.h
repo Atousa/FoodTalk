@@ -10,4 +10,6 @@
 
 @interface DetailFoodViewController : UIViewController
 
+@property YLPBusiness *selectedBusiness;
+
 @end
