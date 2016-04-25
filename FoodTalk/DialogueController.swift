@@ -10,7 +10,7 @@ import UIKit
 import WatsonDeveloperCloud
 import AVFoundation
 
-class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate, AVAudioRecorderDelegate {
+class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDelegate, AVAudioRecorderDelegate,UITableViewDataSource {
     
 
     @IBOutlet weak var DialogueTableView: UITableView!
@@ -29,7 +29,7 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
         self.DialogueTableView.separatorStyle = .None
         
         self.service = Dialog(username: "585c94ca-d7e2-4b6e-9b8c-e28e00d27b55", password: "keuvuyZjRb7O")
-        //self.tts = TextToSpeech(username: "846d202a-20ad-4fbb-b033-dee0a559c4b4", password: "LQJNUGIkfNrc")
+        self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         
         
         let dialogName = "xmlchanged1"
@@ -85,6 +85,7 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
             self.conversationID = response?.conversationID
             self.clientID = response?.clientID
             self.watsonLog.append((response?.response![0])!)
+            self.speak((response?.response![0])!)
 
             //reload tableview from main thread
             dispatch_async(dispatch_get_main_queue()) {
@@ -93,7 +94,7 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
         }
     }
     
-    /*func speak(text: String) {
+    func speak(text: String) {
         self.tts!.synthesize(text) {
             data, error in
             if let data = data {
@@ -105,9 +106,11 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 } catch {
                     NSLog("Bad sound data")
                 }
+            } else {
+                print(error)
             }
         }
-    }*/
+    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if(textField.text == nil || textField.text! == "") {
@@ -125,8 +128,7 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
                                     //let ans = Int(arc4random_uniform(UInt32(size!)))
                                     if((response?.response![i])! != "") {
                                         //print("\(ans)> "+(response?.response![ans])!)
-                                        //self.speak((response?.response![ans])!)
-                                
+                                        self.speak((response?.response![i])!)
                                         self.watsonLog.append((response?.response![i])!)
                                         break;
                                     }
@@ -150,10 +152,12 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("DialogueCell1") as! DialogueCell
         
+    
+        let cell = tableView.dequeueReusableCellWithIdentifier("DialogueCell1") as! DialogueCell
         cell.myDialogueTextField.delegate = self
         cell.WatsonDialogueTextField.text = self.watsonLog[indexPath.row]
+        cell.myDialogueTextField.enabled = true
         if (indexPath.row < self.userLog.count) {
             cell.myDialogueTextField.text = self.userLog[indexPath.row]
         } else {
@@ -163,12 +167,13 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
         cell.WatsonDialogueImage.image = UIImage(named: "watson.png")
         return cell
     }
+    
 
-    @IBAction func OnPressedEthnicity(sender: AnyObject) {
+   // @IBAction func OnPressedEthnicity(sender: AnyObject) {
         //let svc = UIViewController()
         //sev.... = userlog
         
-    }
+   // }
     
 }
 
