@@ -7,7 +7,7 @@
 //
 
 #import "SearchResultViewController.h"
-#import "DetailFoodViewController.h"
+
 
 @interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -59,26 +59,24 @@
 
     YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
     
-//    Set the background color of tableView and text color
+//    Set the background color of tableView
     cell.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1.0];
+    
+//    Set the textLabel color, font, and text
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.font = [UIFont fontWithName:@"Copperplate" size:21];
-    
     cell.textLabel.text = businessOfMany.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.1f of %lu reviews.", businessOfMany.rating, (unsigned long)businessOfMany.reviewCount];
-    cell.imageView.image = [UIImage imageNamed:@"watson"];
+    
+//    Set the detailTextLabel text, font
+    cell.detailTextLabel.font = [UIFont fontWithName:@"SanFranciscoDisplay-Black" size:16];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.1f of %lu reviews", businessOfMany.rating, (unsigned long)businessOfMany.reviewCount];
+    
+//    Set the imageView's image and size
+//    cell.imageView.image = [UIImage imageNamed:@"Satellites-100"];
+    
     
     return cell;
 }
-
-#pragma mark - Segue
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    DetailFoodViewController *destVC = segue.destinationViewController;
-    NSIndexPath *indexPath = [self.searchTableView indexPathForCell:sender];
-    destVC.selectedBusiness = self.arrayOfBusinesses[indexPath.row];
-}
-
 
 
 - (void)didReceiveMemoryWarning {

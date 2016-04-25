@@ -45,9 +45,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="8Iw-L1-FJy" kind="show" id="eih-cC-VnJ"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -72,24 +69,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYa-Gu-GNk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2408" y="390"/>
-        </scene>
-        <!--Detail Food View Controller-->
-        <scene sceneID="nli-Ec-JPN">
-            <objects>
-                <viewController id="8Iw-L1-FJy" customClass="DetailFoodViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5Cy-1l-v3h"/>
-                        <viewControllerLayoutGuide type="bottom" id="HDX-qs-BQd"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qHh-3T-e4w">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8m8-wQ-6DU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3088" y="390"/>
         </scene>
     </scenes>
 </document>
