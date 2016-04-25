@@ -17,13 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wXa-0x-Zfv">
-                                <rect key="frame" x="194" y="200" width="212" height="200"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wXa-0x-Zfv">
+                                <rect key="frame" x="194" y="200" width="225" height="200"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGO-vM-b4E">
-                                        <rect key="frame" x="0.0" y="0.0" width="212" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="225" height="100"/>
                                         <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="21"/>
-                                        <state key="normal" title="New Place" image="Satellites-100">
+                                        <state key="normal" title="  New Place" image="Satellites-100">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -31,10 +31,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imm-4e-CyZ">
-                                        <rect key="frame" x="0.0" y="100" width="212" height="100"/>
+                                        <rect key="frame" x="0.0" y="100" width="225" height="100"/>
                                         <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="21"/>
-                                        <inset key="contentEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Favorite" image="Like-100">
+                                        <inset key="contentEdgeInsets" minX="-11" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="   Favorite" image="Like-100">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
