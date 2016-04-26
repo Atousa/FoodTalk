@@ -12,6 +12,7 @@
 @interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *searchActivityIndicator;
 
 
 @property NSString *consumerKey;
@@ -42,11 +43,13 @@
     self.searchTerm = @"thai food";
     
     [client searchWithLocation:@"San Francisco, CA" currentLatLong:nil term:self.searchTerm limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
+        [self.searchActivityIndicator startAnimating];
         for (YLPBusiness *business in search.businesses) {
             [self.arrayOfBusinesses addObject:business];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.searchTableView reloadData];
+            [self.searchActivityIndicator stopAnimating];
         });
     }];
 }
