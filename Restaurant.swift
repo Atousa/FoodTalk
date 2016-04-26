@@ -11,7 +11,5 @@ import CoreData
 
 
 class Restaurant: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
-
 }
+

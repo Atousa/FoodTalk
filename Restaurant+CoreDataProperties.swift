@@ -12,6 +12,17 @@
 import Foundation
 import CoreData
 
+
+class restaurantDescriptor {
+    var name: String = ""
+    var longitude: Double = 0
+    var latitude: Double = 0
+    var city: String = ""
+    var country: String = ""
+    var address: String = ""
+    var state: String = ""
+}
+
 extension Restaurant {
 
     @NSManaged var name: String?
@@ -24,3 +35,4 @@ extension Restaurant {
     @NSManaged var visits: NSSet?
 
 }
+
