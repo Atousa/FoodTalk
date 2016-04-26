@@ -62,7 +62,7 @@
 
     YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
     NSMutableArray *categories = [NSMutableArray new];
-    NSString *detailText;
+    
     
     for (YLPCategory *category in businessOfMany.categories) {
         [categories addObject:category.name];
