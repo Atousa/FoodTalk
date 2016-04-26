@@ -98,11 +98,12 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDe
         self.tts!.synthesize(text) {
             data, error in
             if let data = data {
-                do {
+               do {
                     let audioPlayer = try AVAudioPlayer(data: data)
                     audioPlayer.prepareToPlay()
                     audioPlayer.play()
                     sleep(UInt32(audioPlayer.duration+1))
+                    print("foo!")
                 } catch {
                     NSLog("Bad sound data")
                 }
