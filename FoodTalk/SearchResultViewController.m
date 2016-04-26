@@ -45,7 +45,9 @@
         for (YLPBusiness *business in search.businesses) {
             [self.arrayOfBusinesses addObject:business];
         }
-        [self.searchTableView reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.searchTableView reloadData];
+        });
     }];
 }
 
@@ -60,6 +62,7 @@
 
     YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
     NSMutableArray *categories = [NSMutableArray new];
+    NSString *detailText;
     
     for (YLPCategory *category in businessOfMany.categories) {
         [categories addObject:category.name];
@@ -76,8 +79,9 @@
     
 //    Set the detailTextLabel text, font
     cell.detailTextLabel.font = [UIFont fontWithName:@"SanFranciscoDisplay-Black" size:16];
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.1f of %lu reviews", businessOfMany.rating, (unsigned long)businessOfMany.reviewCount];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@""];
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", categories];
+    
+    
     
 //    Set the imageView's image and size
     NSData *data = [NSData dataWithContentsOfURL:businessOfMany.imageURL];
