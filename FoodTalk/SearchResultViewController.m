@@ -39,7 +39,7 @@
     
     YLPClient *client = [[YLPClient alloc]initWithConsumerKey:self.consumerKey consumerSecret:self.consumerSecret token:self.token tokenSecret:self.tokenSecret];
     
-    self.searchTerm = @"food";
+    self.searchTerm = @"thai food";
     
     [client searchWithLocation:@"San Francisco, CA" currentLatLong:nil term:self.searchTerm limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
         for (YLPBusiness *business in search.businesses) {
@@ -80,7 +80,8 @@
     cell.detailTextLabel.text = [NSString stringWithFormat:@""];
     
 //    Set the imageView's image and size
-//    cell.imageView.image = [UIImage imageNamed:@"Satellites-100"];
+    NSData *data = [NSData dataWithContentsOfURL:businessOfMany.imageURL];
+    cell.imageView.image = [UIImage imageWithData:data];
     
     
     return cell;
