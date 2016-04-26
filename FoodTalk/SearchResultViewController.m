@@ -59,6 +59,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
 
     YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
+    NSMutableArray *categories = [NSMutableArray new];
+    
+    for (YLPCategory *category in businessOfMany.categories) {
+        [categories addObject:category.name];
+        NSLog(@"%@", categories);
+    }
     
 //    Set the background color of tableView
     cell.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1.0];
@@ -70,7 +76,8 @@
     
 //    Set the detailTextLabel text, font
     cell.detailTextLabel.font = [UIFont fontWithName:@"SanFranciscoDisplay-Black" size:16];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.1f of %lu reviews", businessOfMany.rating, (unsigned long)businessOfMany.reviewCount];
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.1f of %lu reviews", businessOfMany.rating, (unsigned long)businessOfMany.reviewCount];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@""];
     
 //    Set the imageView's image and size
 //    cell.imageView.image = [UIImage imageNamed:@"Satellites-100"];
