@@ -10,10 +10,15 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var newPlaceButton: UIButton!
+    @IBOutlet weak var favoritePlaceButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.whiteColor()
+
+        
     }
 
     override func didReceiveMemoryWarning() {

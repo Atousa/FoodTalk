@@ -17,39 +17,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGO-vM-b4E">
-                                <rect key="frame" x="173" y="285" width="72" height="30"/>
-                                <state key="normal" title="New Place"/>
-                                <connections>
-                                    <segue destination="KZb-md-CTb" kind="show" id="aZB-bE-ddZ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imm-4e-CyZ">
-                                <rect key="frame" x="173" y="328" width="72" height="30"/>
-                                <state key="normal" title="Favorite"/>
-                                <connections>
-                                    <segue destination="Bwa-So-jQZ" kind="show" id="D02-qj-vtf"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wXa-0x-Zfv">
+                                <rect key="frame" x="194" y="200" width="225" height="200"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGO-vM-b4E">
+                                        <rect key="frame" x="0.0" y="0.0" width="225" height="100"/>
+                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="21"/>
+                                        <state key="normal" title="  New Place" image="Satellites-100">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="KZb-md-CTb" kind="show" id="aZB-bE-ddZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imm-4e-CyZ">
+                                        <rect key="frame" x="0.0" y="100" width="225" height="100"/>
+                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="21"/>
+                                        <inset key="contentEdgeInsets" minX="-11" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="   Favorite" image="Like-100">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Bwa-So-jQZ" kind="show" id="D02-qj-vtf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wXa-0x-Zfv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1FX-Ss-lu8"/>
+                            <constraint firstItem="wXa-0x-Zfv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ypc-TD-PLS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ueo-jH-RWx"/>
+                    <connections>
+                        <outlet property="favoritePlaceButton" destination="Imm-4e-CyZ" id="glo-sT-cVt"/>
+                        <outlet property="newPlaceButton" destination="BGO-vM-b4E" id="xKK-Q5-Mgb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1117" y="387"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Main Navigation View Controller-->
         <scene sceneID="K1H-Au-i6i">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K9l-mZ-uLO" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K9l-mZ-uLO" customClass="MainNavigationViewController" customModule="FoodTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OwK-Fp-rzw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="YrQ-Ur-gML">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="8bc-BG-4Aa"/>
                     </connections>
@@ -75,4 +99,8 @@
             <point key="canvasLocation" x="1711" y="572"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Like-100" width="100" height="100"/>
+        <image name="Satellites-100" width="100" height="100"/>
+    </resources>
 </document>

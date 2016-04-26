@@ -10,7 +10,6 @@ import UIKit
 import CoreLocation
 import CoreData
 
-
 class FavoriteListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,CLLocationManagerDelegate {
     
    
@@ -155,6 +154,4 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         // Dispose of any resources that can be recreated.
     }
     
-
-
 }
