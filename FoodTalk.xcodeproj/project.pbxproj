@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A4F6E981CCE78AE009E6702 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F6E971CCE78AE009E6702 /* SearchResultViewController.m */; };
 		1A4F6E9D1CCEA4EB009E6702 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F6E9C1CCEA4EB009E6702 /* MainNavigationViewController.swift */; };
-		1A4F6E9F1CCED00C009E6702 /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F6E9E1CCED00C009E6702 /* ResultsTableViewCell.swift */; };
+		1A4F6EA21CCEEBE3009E6702 /* ResultsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F6EA11CCEEBE3009E6702 /* ResultsTableViewCell.m */; };
 		1A4FE08C1CC6FDA000EE8787 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE08B1CC6FDA000EE8787 /* AppDelegate.swift */; };
 		1A4FE0911CC6FDA000EE8787 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A4FE08F1CC6FDA000EE8787 /* Main.storyboard */; };
 		1A4FE0941CC6FDA000EE8787 /* FoodTalk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE0921CC6FDA000EE8787 /* FoodTalk.xcdatamodeld */; };
@@ -61,7 +61,8 @@
 		1A4F6E961CCE78AE009E6702 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		1A4F6E971CCE78AE009E6702 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
 		1A4F6E9C1CCEA4EB009E6702 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
-		1A4F6E9E1CCED00C009E6702 /* ResultsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTableViewCell.swift; sourceTree = "<group>"; };
+		1A4F6EA01CCEEBE3009E6702 /* ResultsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsTableViewCell.h; sourceTree = "<group>"; };
+		1A4F6EA11CCEEBE3009E6702 /* ResultsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsTableViewCell.m; sourceTree = "<group>"; };
 		1A4FE0881CC6FDA000EE8787 /* FoodTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A4FE08B1CC6FDA000EE8787 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A4FE0901CC6FDA000EE8787 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -173,7 +174,8 @@
 				1A5E5A521CCAE24900BBA6A1 /* SearchFoodPlaces.storyboard */,
 				1A4F6E961CCE78AE009E6702 /* SearchResultViewController.h */,
 				1A4F6E971CCE78AE009E6702 /* SearchResultViewController.m */,
-				1A4F6E9E1CCED00C009E6702 /* ResultsTableViewCell.swift */,
+				1A4F6EA01CCEEBE3009E6702 /* ResultsTableViewCell.h */,
+				1A4F6EA11CCEEBE3009E6702 /* ResultsTableViewCell.m */,
 			);
 			name = "Search Food Places";
 			sourceTree = "<group>";
@@ -339,9 +341,9 @@
 			files = (
 				1A4FE0AD1CC702A400EE8787 /* FavoriteListViewController.swift in Sources */,
 				1A4F6E9D1CCEA4EB009E6702 /* MainNavigationViewController.swift in Sources */,
-				1A4F6E9F1CCED00C009E6702 /* ResultsTableViewCell.swift in Sources */,
 				1A4FE0941CC6FDA000EE8787 /* FoodTalk.xcdatamodeld in Sources */,
 				1A4F6E981CCE78AE009E6702 /* SearchResultViewController.m in Sources */,
+				1A4F6EA21CCEEBE3009E6702 /* ResultsTableViewCell.m in Sources */,
 				1A4FE0B31CC702E200EE8787 /* MainViewController.swift in Sources */,
 				717E624B1CC7FAE80078B71A /* DialogueCell.swift in Sources */,
 				1A4FE0AB1CC7029100EE8787 /* DialogueController.swift in Sources */,

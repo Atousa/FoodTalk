@@ -13,7 +13,7 @@ class MainNavigationViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationBar.barTintColor = UIColor(red: 255, green: 0, blue: 0, alpha: 1)
+        self.navigationBar.barTintColor = UIColor.redColor()
         
 //        Changes the back button on the nav bar to be white
         self.navigationBar.barStyle = UIBarStyle.Black
