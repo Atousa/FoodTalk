@@ -18,19 +18,20 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var dialogID: Dialog.DialogID?
     var watsonLog: [String] = []
     var userLog: [String] = []
-//    var infoFromWatson: [String] = []
+    //    var infoFromWatson: [String] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.DialogueTableView.separatorStyle = .None
         self.responseTextField.delegate = self
         
-        self.service = Dialog(username: "585c94ca-d7e2-4b6e-9b8c-e28e00d27b55", password: "keuvuyZjRb7O")
+        self.service = Dialog(username: "b9b42757-5fa9-4633-8cb6-39f92fe7e18c", password: "GiDY7J5THqx3")
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         
         
-        let dialogName = "xmlchanged1"
+        let dialogName = "xmlchanged10"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -121,11 +122,11 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     
     func parse(text: String)-> Void {
         let keywords = [ "dim sum", "chinese", "vietnamese", "american", "italian", "french", "korean", "japanese", "mexican", "peruvian", "british" ]
-        let distances = [ "1 mile", "2 miles", "5 miles", "10 miles" ]
+        let distances = [ "2 blocks", "6 blocks", "1 mile", "5 miles", "25 miles" ]
         var foodType = "american"
-//        infoFromWatson.append(foodType)
+        //        infoFromWatson.append(foodType)
         var dist = "10 miles"
-//        infoFromWatson.append(dist)
+        //        infoFromWatson.append(dist)
         for word in keywords {
             if text.lowercaseString.rangeOfString(word) != nil {
                 foodType = word
@@ -157,9 +158,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.userLog.append(text!)
         
         if(text == "Bye!") {
-            //To Do Eric
-//            SearchResultViewController.infoFromWatson = self.infoFromWatson
-            
+            //            SearchResultViewController.infoFromWatson = self.infoFromWatson
             performSegueWithIdentifier("SearchSegue", sender: self)
             
         }

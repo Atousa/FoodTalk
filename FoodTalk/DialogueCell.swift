@@ -19,8 +19,6 @@ class DialogueCell: UITableViewCell {
     @IBOutlet weak var myDialogueTextField: UITextView!
     
     
-    
-    
 }
 
     
