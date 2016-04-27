@@ -12,6 +12,7 @@
 @interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *searchActivityIndicator;
 
 
 @property NSString *consumerKey;
@@ -39,13 +40,17 @@
     
     YLPClient *client = [[YLPClient alloc]initWithConsumerKey:self.consumerKey consumerSecret:self.consumerSecret token:self.token tokenSecret:self.tokenSecret];
     
-    self.searchTerm = @"food";
+    self.searchTerm = @"thai food";
     
     [client searchWithLocation:@"San Francisco, CA" currentLatLong:nil term:self.searchTerm limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
+        [self.searchActivityIndicator startAnimating];
         for (YLPBusiness *business in search.businesses) {
             [self.arrayOfBusinesses addObject:business];
         }
-        [self.searchTableView reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.searchTableView reloadData];
+            [self.searchActivityIndicator stopAnimating];
+        });
     }];
 }
 
@@ -60,6 +65,7 @@
 
     YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
     NSMutableArray *categories = [NSMutableArray new];
+    
     
     for (YLPCategory *category in businessOfMany.categories) {
         [categories addObject:category.name];
@@ -76,11 +82,13 @@
     
 //    Set the detailTextLabel text, font
     cell.detailTextLabel.font = [UIFont fontWithName:@"SanFranciscoDisplay-Black" size:16];
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.1f of %lu reviews", businessOfMany.rating, (unsigned long)businessOfMany.reviewCount];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@""];
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", categories];
+    
+    
     
 //    Set the imageView's image and size
-//    cell.imageView.image = [UIImage imageNamed:@"Satellites-100"];
+    NSData *data = [NSData dataWithContentsOfURL:businessOfMany.imageURL];
+    cell.imageView.image = [UIImage imageWithData:data];
     
     
     return cell;

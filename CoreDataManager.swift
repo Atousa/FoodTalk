@@ -1,5 +1,4 @@
-//
-//  CoreDataManager.swift
+//  CoreDataManger.swift
 //  FoodTalk
 //
 //  Created by Atousa Duprat on 4/23/16.
@@ -157,8 +156,6 @@ func deletePhoto(visit:Visit){
     moc.deleteObject(visit)
     
 }*/
-
-
 
 
 

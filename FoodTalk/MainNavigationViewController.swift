@@ -18,6 +18,9 @@ class MainNavigationViewController: UINavigationController {
 //        Changes the back button on the nav bar to be white
         self.navigationBar.barStyle = UIBarStyle.Black
         self.navigationBar.tintColor = UIColor.whiteColor()
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

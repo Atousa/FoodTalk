@@ -39,5 +39,6 @@
 @property NSUInteger searchLimit;
 @property NSUInteger searchSort;
 @property NSUInteger searchOffset;
+@property NSArray *infoFromWatson;
 
 @end
