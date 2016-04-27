@@ -7,9 +7,9 @@
 //
 
 #import "SearchResultViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
-
-@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *searchActivityIndicator;
@@ -23,26 +23,51 @@
 @property YLPSearch *searchResult;
 @property NSMutableArray *arrayOfBusinesses;
 
+@property CLLocationManager *locationManager;
+@property CLLocation *location;
+@property NSString *myAddress;
+
 @end
 
 @implementation SearchResultViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager requestWhenInUseAuthorization];
+    
+    if ([CLLocationManager locationServicesEnabled]) {
+        [self.locationManager startUpdatingLocation];
+    }
+    
+    self.locationManager = [[CLLocationManager alloc]init];
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager startUpdatingLocation];
+    
     self.arrayOfBusinesses = [NSMutableArray new];
     
     self.searchTableView.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1];
+    [self searchForFoodPlaces:@"San Francisco, CA" searchString:self.searchTerm];
     
+}
+
+-(void)instantiateYelpAuthTokens {
     self.consumerKey = @"LRm2QLqnKWviXdVCf6O-mA";
     self.consumerSecret = @"79_-HyVtKeKTjrl_MgsSaLoq5qA";
     self.token = @"QKQQYxDxrPp3lJFw9dIsOy_n_X-ifcsV";
     self.tokenSecret = @"ip0M1FBKwgRViXxZIChEjvNFwnw";
+}
+
+-(void)searchForFoodPlaces:(NSString *)place searchString:(NSString *)searchString {
+    [self instantiateYelpAuthTokens];
     
     YLPClient *client = [[YLPClient alloc]initWithConsumerKey:self.consumerKey consumerSecret:self.consumerSecret token:self.token tokenSecret:self.tokenSecret];
     
     self.searchTerm = @"thai food";
     
-    [client searchWithLocation:@"San Francisco, CA" currentLatLong:nil term:self.searchTerm limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
+    [client searchWithLocation:@"11121 Flanagan Lane Germantown, MD" currentLatLong:nil term:self.searchTerm limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
         [self.searchActivityIndicator startAnimating];
         for (YLPBusiness *business in search.businesses) {
             [self.arrayOfBusinesses addObject:business];
@@ -53,6 +78,29 @@
         });
     }];
 }
+
+#pragma mark - Location methods
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    [self.locationManager stopUpdatingLocation];
+    self.location = [locations lastObject];
+    NSLog(@"%f", self.location.coordinate.latitude);
+}
+//  Atousa, fix this please. We need to grab the location
+//- (void)reverseGeocode:(CLLocation *)location {
+//    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+//    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+//        NSLog(@"Finding address");
+//        if (error) {
+//            NSLog(@"Error %@", error.description);
+//        } else {
+//            CLPlacemark *placemark = [placemarks lastObject];
+//            self.myAddress = [NSString stringWithFormat:@"%@", ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO)];
+//        }
+//    }];
+//}
+
+
 
 #pragma mark - TableView Methods
 
@@ -69,7 +117,7 @@
     
     for (YLPCategory *category in businessOfMany.categories) {
         [categories addObject:category.name];
-        NSLog(@"%@", categories);
+        
     }
     
 //    Set the background color of tableView

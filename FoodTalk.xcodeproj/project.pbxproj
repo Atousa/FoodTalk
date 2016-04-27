@@ -134,6 +134,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A0FA45C1CD1773E00278299 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
 		1A4FE07F1CC6FDA000EE8787 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +166,7 @@
 		1A4FE08A1CC6FDA000EE8787 /* FoodTalk */ = {
 			isa = PBXGroup;
 			children = (
+				1A0FA45C1CD1773E00278299 /* Data Model */,
 				1A5E5A4E1CCACE9E00BBA6A1 /* FoodTalk-Bridging-Header.h */,
 				711FF97B1CCA0111000180B6 /* pizza_sample.xml */,
 				1AD77C381CD10BAA00CDF00F /* AppDelegate.swift */,
