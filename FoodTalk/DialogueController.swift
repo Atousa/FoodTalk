@@ -10,12 +10,14 @@ import UIKit
 import WatsonDeveloperCloud
 import AVFoundation
 
-class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDelegate, AVAudioRecorderDelegate,UITableViewDataSource {
+class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioRecorderDelegate, UITableViewDataSource, UITextFieldDelegate {
     
 
     @IBOutlet weak var DialogueTableView: UITableView!
     
     @IBOutlet weak var spacerBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var responseTextField: UITextField!
     
     var conversationID: Int?
     var clientID: Int?
@@ -29,6 +31,7 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDe
     override func viewDidLoad() {
         super.viewDidLoad()
         self.DialogueTableView.separatorStyle = .None
+        self.responseTextField.delegate = self
         
         self.service = Dialog(username: "585c94ca-d7e2-4b6e-9b8c-e28e00d27b55", password: "keuvuyZjRb7O")
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
@@ -115,16 +118,15 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDe
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if(textField.text == nil || textField.text! == "") {
+    func responseFromUser(text: String?) -> Bool {
+        if(text == nil || text! == "") {
             return false
         }
-        self.userLog.append(textField.text!)
-        textField.enabled = false
+        self.userLog.append(text!)
         resignFirstResponder()
         
         self.service!.converse(self.dialogID!, conversationID:  self.conversationID!,
-                               clientID: self.clientID!, input: textField.text!) { response, error in
+                               clientID: self.clientID!, input: text!) { response, error in
                                 let size = response?.response!.count
                                 var i = 0
                                 while (i<size) {
@@ -158,26 +160,16 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDe
         
     
         let cell = tableView.dequeueReusableCellWithIdentifier("DialogueCell1") as! DialogueCell
-        cell.myDialogueTextField.delegate = self
         cell.WatsonDialogueTextField.text = self.watsonLog[indexPath.row]
-        cell.myDialogueTextField.enabled = true
         if (indexPath.row < self.userLog.count) {
             cell.myDialogueTextField.text = self.userLog[indexPath.row]
         } else {
             cell.myDialogueTextField.text = ""
         }
         
-        cell.WatsonDialogueImage.image = UIImage(named: "watson.png")
+        cell.WatsonDialogueImage.image = UIImage(named: "Satellites-100.png")
         return cell
     }
-    
-
-   // @IBAction func OnPressedEthnicity(sender: AnyObject) {
-        //let svc = UIViewController()
-        //sev.... = userlog
-        
-   // }
-    
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -212,10 +204,25 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDe
         spacerBottomConstraint.constant = CGRectGetMinY(convertedKeyboardEndFrame)-CGRectGetMaxY(view.bounds)
         
         UIView.animateWithDuration(animationDuration, delay: 0.0, options: animationCurve, animations: {
-            self.view.layoutIfNeeded()
-            }, completion: nil)
+                self.view.layoutIfNeeded()
+            }, completion: { finished in 
+                self.tableViewScrollToBottom(true)
+            })
     }
 
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if(textField.text == nil || textField.text! == "") {
+            return false
+        }
+        self.responseFromUser(responseTextField.text)
+        responseTextField.text = ""
+        return true
+    }
+
+    @IBAction func onSendButtonPressed(sender: AnyObject) {
+        self.responseFromUser(responseTextField.text)
+        responseTextField.text = ""
+    }
 }
 
 
