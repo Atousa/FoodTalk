@@ -16,7 +16,7 @@ class DialogueCell: UITableViewCell {
     
     @IBOutlet weak var WatsonDialogueImage: UIImageView!
 
-    @IBOutlet weak var myDialogueTextField: UITextField!
+    @IBOutlet weak var myDialogueTextField: UITextView!
     
     
     
