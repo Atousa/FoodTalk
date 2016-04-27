@@ -1,19 +1,15 @@
-//
-//  DialogueViewController.swift
-//  FoodTalk
-//
-//  Created by Eric Hong on 4/19/16.
-//  Copyright © 2016 EricDHong. All rights reserved.
-//
-
 import UIKit
 import WatsonDeveloperCloud
 import AVFoundation
 
-class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate, AVAudioRecorderDelegate {
+class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioRecorderDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-
+    
     @IBOutlet weak var DialogueTableView: UITableView!
+    
+    @IBOutlet weak var spacerBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var responseTextField: UITextField!
     
     var conversationID: Int?
     var clientID: Int?
@@ -22,17 +18,19 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var dialogID: Dialog.DialogID?
     var watsonLog: [String] = []
     var userLog: [String] = []
+//    var infoFromWatson: [String] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.DialogueTableView.separatorStyle = .None
+        self.responseTextField.delegate = self
         
         self.service = Dialog(username: "585c94ca-d7e2-4b6e-9b8c-e28e00d27b55", password: "keuvuyZjRb7O")
-        //self.tts = TextToSpeech(username: "846d202a-20ad-4fbb-b033-dee0a559c4b4", password: "LQJNUGIkfNrc")
+        self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         
         
-        let dialogName = "xmlchanged1"
+        let dialogName = "xmlchanged2"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -48,7 +46,7 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
             }
         }
         
-        let path = NSBundle.mainBundle().pathForResource("pizza_sample", ofType: "xml")
+        let path = NSBundle.mainBundle().pathForResource("FoodDialogue", ofType: "xml")
         let url = NSURL.fileURLWithPath(path!)
         self.service!.createDialog(dialogName, fileURL: url) { dialogID, error in
             if error != nil {
@@ -59,7 +57,15 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
             self.startDialogue()
         }
     }
-
+    
+    func tableViewScrollToTop(animated: Bool) {
+        dispatch_after(0, dispatch_get_main_queue(), {
+            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            self.DialogueTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: animated)
+        })
+    }
+    
+    
     func tableViewScrollToBottom(animated: Bool) {
         let delay = 0 //0.1 * Double(NSEC_PER_SEC)
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
@@ -75,7 +81,7 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
             }
         })
     }
-
+    
     func startDialogue() {
         self.service!.converse(self.dialogID!) { response, error in
             if error != nil {
@@ -85,7 +91,8 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
             self.conversationID = response?.conversationID
             self.clientID = response?.clientID
             self.watsonLog.append((response?.response![0])!)
-
+            self.speak((response?.response![0])!)
+            
             //reload tableview from main thread
             dispatch_async(dispatch_get_main_queue()) {
                 self.DialogueTableView.reloadData()
@@ -93,7 +100,7 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
         }
     }
     
-    /*func speak(text: String) {
+    func speak(text: String) {
         self.tts!.synthesize(text) {
             data, error in
             if let data = data {
@@ -105,28 +112,68 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 } catch {
                     NSLog("Bad sound data")
                 }
+            } else {
+                print(error)
             }
         }
-    }*/
+    }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if(textField.text == nil || textField.text! == "") {
+    
+    func parse(text: String)-> Void {
+        let keywords = [ "dim sum", "chinese", "vietnamese", "american", "italian", "french", "korean", "japanese", "mexican", "peruvian", "british" ]
+        let distances = [ "1 mile", "2 miles", "5 miles", "10 miles" ]
+        var foodType = "american"
+//        infoFromWatson.append(foodType)
+        var dist = "10 miles"
+//        infoFromWatson.append(dist)
+        for word in keywords {
+            if text.lowercaseString.rangeOfString(word) != nil {
+                foodType = word
+                switch(word) {
+                case "dim sum":
+                    foodType = "chinese"
+                    break
+                default:
+                    break
+                }
+                print("food type: " + foodType)
+            }
+        }
+        for word in distances {
+            if text.rangeOfString(word) != nil {
+                dist = word
+                print("distance: " + dist)
+            }
+        }
+        
+        // do the yelp query here based on the foodType and distance
+        
+    }
+    
+    func responseFromUser(text: String?) -> Bool {
+        if(text == nil || text! == "") {
             return false
         }
-        self.userLog.append(textField.text!)
-        textField.enabled = false
-        resignFirstResponder()
+        self.userLog.append(text!)
+        
+        if(text == "Bye!") {
+            //To Do Eric
+//            SearchResultViewController.infoFromWatson = self.infoFromWatson
+            
+            performSegueWithIdentifier("SearchSegue", sender: self)
+            
+        }
+        parse(text!)
         
         self.service!.converse(self.dialogID!, conversationID:  self.conversationID!,
-                               clientID: self.clientID!, input: textField.text!) { response, error in
+                               clientID: self.clientID!, input: text!) { response, error in
                                 let size = response?.response!.count
                                 var i = 0
                                 while (i<size) {
                                     //let ans = Int(arc4random_uniform(UInt32(size!)))
                                     if((response?.response![i])! != "") {
                                         //print("\(ans)> "+(response?.response![ans])!)
-                                        //self.speak((response?.response![ans])!)
-                                
+                                        self.speak((response?.response![i])!)
                                         self.watsonLog.append((response?.response![i])!)
                                         break;
                                     }
@@ -139,20 +186,20 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
                                     self.tableViewScrollToBottom(true)
                                 }
         }
-
+        
         return true
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return self.watsonLog.count
+        return self.watsonLog.count
     }
     
     
-
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("DialogueCell1") as! DialogueCell
         
-        cell.myDialogueTextField.delegate = self
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("DialogueCell1") as! DialogueCell
         cell.WatsonDialogueTextField.text = self.watsonLog[indexPath.row]
         if (indexPath.row < self.userLog.count) {
             cell.myDialogueTextField.text = self.userLog[indexPath.row]
@@ -160,19 +207,60 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITableViewDa
             cell.myDialogueTextField.text = ""
         }
         
-        cell.WatsonDialogueImage.image = UIImage(named: "watson.png")
+        cell.WatsonDialogueImage.image = UIImage(named: "Satellites-100.png")
         return cell
     }
-
-    @IBAction func OnPressedEthnicity(sender: AnyObject) {
-        //let svc = UIViewController()
-        //sev.... = userlog
-        
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHideNotification(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
-}
-
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+    }
     
-
-   
-
+    func keyboardWillShowNotification(notification: NSNotification) {
+        updateBottomLayoutConstraintWithNotificationUpdateKeyboard(notification)
+    }
+    
+    func keyboardWillHideNotification(notification: NSNotification) {
+        updateBottomLayoutConstraintWithNotificationUpdateKeyboard(notification)
+    }
+    
+    func updateBottomLayoutConstraintWithNotificationUpdateKeyboard(notification: NSNotification) {
+        
+        let userInfo = notification.userInfo!
+        
+        let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        let keyboardEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        let convertedKeyboardEndFrame = view.convertRect(keyboardEndFrame, fromView: view.window)
+        let rawAnimationCurve = (notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).unsignedIntValue << 16
+        let animationCurve = UIViewAnimationOptions(rawValue: (UInt(rawAnimationCurve)|UInt(1<<2)))
+        
+        spacerBottomConstraint.constant = CGRectGetMinY(convertedKeyboardEndFrame)-CGRectGetMaxY(view.bounds)
+        
+        UIView.animateWithDuration(animationDuration, delay: 0.0, options: animationCurve, animations: {
+            self.view.layoutIfNeeded()
+            }, completion: { finished in
+                self.tableViewScrollToBottom(true)
+        })
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if(textField.text == nil || textField.text! == "") {
+            return false
+        }
+        self.responseFromUser(responseTextField.text)
+        responseTextField.text = ""
+        return true
+    }
+    
+    @IBAction func onSendButtonPressed(sender: AnyObject) {
+        self.responseFromUser(responseTextField.text)
+        responseTextField.text = ""
+    }
+}
