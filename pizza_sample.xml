@@ -4,20 +4,20 @@
         <folder label="Main">
             <output>
                 <prompt selectionType="RANDOM">
-                    <item>Hello there! My name is Watson and I will assist you in deciding what to eat. Please enter the city and state (City, State)</item>
+                    <item>Watson here! I can help you decide what to eat. What type of food would you like to eat?</item>
                 </prompt>
                 <goto ref="getUserInput_2442994"/>
             </output>
             <output>
                 <prompt selectionType="SEQUENTIAL">
-                    <item>What distance?</item>
+                    <item>What type of food would you like to eat?</item>
                 </prompt>
                 <getUserInput id="getUserInput_2442994">
                     <search ref="folder_2442998"/>
                     <default>
                         <output>
                             <prompt selectionType="RANDOM">
-                                <item>I'm sorry I did not understand your question. All I can do is find a resturant...</item>
+                                <item>I'm sorry I did not understand your question. All I can do is help you decide on a location</item>
                                 <item>I did not quite get that.</item>
                                 <item>I didnt grasp what you said.</item>
                                 <item>I'm not following you at the moment.</item>
@@ -29,46 +29,6 @@
         </folder>
         <folder label="Library">
             <folder label="Live Content" id="folder_2442998">
-                <input>
-                    <grammar>
-                        <item>What do you have?</item>
-                        <item>$ What * do you have</item>
-                        <item>$ what * do you carry</item>
-                        <item>$ What * is there</item>
-                        <item>$ What are my choices</item>
-                        <item>$ do you have *</item>
-                        <item>$ which * do you have</item>
-                    </grammar>
-                    <input>
-                        <grammar>
-                            <item>$ (Distance)</item>
-                            <item>distance</item>
-                            <item>distances</item>
-                        </grammar>
-                        <output>
-                            <prompt selectionType="RANDOM">
-                                <item> 1 , 5, and 10</item>
-                            </prompt>
-                        </output>
-                    </input>
-                    <input>
-                        <grammar>
-                            <item>$ (Toppings)</item>
-                            <item>$ topping</item>
-                            <item>$ toppings</item>
-                        </grammar>
-                        <output>
-                            <prompt selectionType="RANDOM">
-                                <item>We have cheese, pepperoni, olives, mushrooms, etc.</item>
-                            </prompt>
-                        </output>
-                    </input>
-                    <output>
-                        <prompt selectionType="RANDOM">
-                            <item>We have small, medium, large and extra large, as well as all the normal toppings.</item>
-                        </prompt>
-                    </output>
-                </input>
                 <input>
                     <grammar>
                         <item>I want a small pizza</item>
@@ -101,63 +61,63 @@
                         <action varName="size" operator="SET_TO">{size.value:main}</action>
                         <output>
                             <prompt selectionType="RANDOM">
-                                <item>What type of food are you in the mood for? </item>
+                                <item>What toppings are you in the mood for? (Limit 4)</item>
                             </prompt>
                             <getUserInput>
                                 <input>
                                     <grammar>
-                                    <item>No toppings</item>
-                                    <item>$ (Toppings)={topping1} * (Toppings)={topping2} * (Toppings)={topping3} * (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} * (Toppings)={topping2} * (Toppings)={topping3} (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} * (Toppings)={topping2} (Toppings)={topping3} * (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} (Toppings)={topping2} * (Toppings)={topping3} * (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} (Toppings)={topping2} (Toppings)={topping3} * (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} * (Toppings)={topping2} (Toppings)={topping3} (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} (Toppings)={topping2} * (Toppings)={topping3} (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} (Toppings)={topping2} (Toppings)={topping3} (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} * (Toppings)={topping2} * (Toppings)={topping3}</item>
-                                    <item>$ (Toppings)={topping1} (Toppings)={topping2} * (Toppings)={topping3}</item>
-                                    <item>$ (Toppings)={topping1} * (Toppings)={topping2} (Toppings)={topping3}</item>
-                                    <item>$ (Toppings)={topping1} (Toppings)={topping2} (Toppings)={topping3}</item>
-                                    <item>$ (Toppings)={topping1} * (Toppings)={topping2} </item>
-                                    <item>$ (Toppings)={topping1} (Toppings)={topping2}</item>
-                                    <item>$ (Toppings)={topping1}</item>
+                                        <item>No toppings</item>
+                                        <item>$ (Toppings)={topping1} * (Toppings)={topping2} * (Toppings)={topping3} * (Toppings)={topping4}</item>
+                                        <item>$ (Toppings)={topping1} * (Toppings)={topping2} * (Toppings)={topping3} (Toppings)={topping4}</item>
+                                        <item>$ (Toppings)={topping1} * (Toppings)={topping2} (Toppings)={topping3} * (Toppings)={topping4}</item>
+                                        <item>$ (Toppings)={topping1} (Toppings)={topping2} * (Toppings)={topping3} * (Toppings)={topping4}</item>
+                                        <item>$ (Toppings)={topping1} (Toppings)={topping2} (Toppings)={topping3} * (Toppings)={topping4}</item>
+                                        <item>$ (Toppings)={topping1} * (Toppings)={topping2} (Toppings)={topping3} (Toppings)={topping4}</item>
+                                        <item>$ (Toppings)={topping1} (Toppings)={topping2} * (Toppings)={topping3} (Toppings)={topping4}</item>
+                                        <item>$ (Toppings)={topping1} (Toppings)={topping2} (Toppings)={topping3} (Toppings)={topping4}</item>
+                                        <item>$ (Toppings)={topping1} * (Toppings)={topping2} * (Toppings)={topping3}</item>
+                                        <item>$ (Toppings)={topping1} (Toppings)={topping2} * (Toppings)={topping3}</item>
+                                        <item>$ (Toppings)={topping1} * (Toppings)={topping2} (Toppings)={topping3}</item>
+                                        <item>$ (Toppings)={topping1} (Toppings)={topping2} (Toppings)={topping3}</item>
+                                        <item>$ (Toppings)={topping1} * (Toppings)={topping2} </item>
+                                        <item>$ (Toppings)={topping1} (Toppings)={topping2}</item>
+                                        <item>$ (Toppings)={topping1}</item>
                                     </grammar>
                                     <output id="output_2469801">
-                                    <prompt selectionType="RANDOM"/>
-                                    <action varName="topping1" operator="SET_TO">{topping1.value:main}</action>
-                                    <action varName="topping2" operator="SET_TO">{topping2.value:main}</action>
-                                    <action varName="topping3" operator="SET_TO">{topping3.value:main}</action>
-                                    <action varName="topping4" operator="SET_TO">{topping4.value:main}</action>
-                                    <output id="output_2469831">
-                                    <prompt selectionType="RANDOM">
-                                    <item>Do you prefer pickup or delivery?</item>
-                                    </prompt>
-                                    <getUserInput>
-                                    <input>
-                                    <grammar>
-                                    <item>I prefer pickup</item>
-                                    <item>$ pickup</item>
-                                    <item>$ pick up</item>
-                                    <item>$ pick it up</item>
-                                    </grammar>
-                                    <action
-                                    varName="method" operator="SET_TO">pickup</action>
-                                    <goto ref="profileCheck_2469744"/>
-                                    </input>
-                                    <input>
-                                    <grammar>
-                                    <item>I want it delivered</item>
-                                    <item>$ deliver</item>
-                                    <item>$ delivery</item>
-                                    <item>$ delivered</item>
-                                    </grammar>
-                                    <action
-                                    varName="method" operator="SET_TO">delivery</action>
-                                    <goto ref="profileCheck_2469744"/>
-                                    </input>
-                                    </getUserInput>
-                                    </output>
+                                        <prompt selectionType="RANDOM"/>
+                                        <action varName="topping1" operator="SET_TO">{topping1.value:main}</action>
+                                        <action varName="topping2" operator="SET_TO">{topping2.value:main}</action>
+                                        <action varName="topping3" operator="SET_TO">{topping3.value:main}</action>
+                                        <action varName="topping4" operator="SET_TO">{topping4.value:main}</action>
+                                        <output id="output_2469831">
+                                            <prompt selectionType="RANDOM">
+                                                <item>Do you prefer pickup or delivery?</item>
+                                            </prompt>
+                                            <getUserInput>
+                                                <input>
+                                                    <grammar>
+                                                        <item>I prefer pickup</item>
+                                                        <item>$ pickup</item>
+                                                        <item>$ pick up</item>
+                                                        <item>$ pick it up</item>
+                                                    </grammar>
+                                                    <action
+                                                        varName="method" operator="SET_TO">pickup</action>
+                                                    <goto ref="profileCheck_2469744"/>
+                                                </input>
+                                                <input>
+                                                    <grammar>
+                                                        <item>I want it delivered</item>
+                                                        <item>$ deliver</item>
+                                                        <item>$ delivery</item>
+                                                        <item>$ delivered</item>
+                                                    </grammar>
+                                                    <action
+                                                        varName="method" operator="SET_TO">delivery</action>
+                                                    <goto ref="profileCheck_2469744"/>
+                                                </input>
+                                            </getUserInput>
+                                        </output>
                                     </output>
                                 </input>
                             </getUserInput>
@@ -1463,7 +1423,7 @@
                             <output>
                                 <prompt selectionType="RANDOM">
                                     <item>Ok, I have one {size} {topping1} &amp; {topping2} pizza for {method}. Is that correct?
-</item>
+                                    </item>
                                 </prompt>
                                 <goto ref="getUserInput_2469815"/>
                             </output>
@@ -1473,7 +1433,7 @@
                             <output>
                                 <prompt selectionType="RANDOM">
                                     <item>Ok, I have one {size} {topping1} pizza for {method}. Is that correct?
-</item>
+                                    </item>
                                 </prompt>
                                 <goto ref="getUserInput_2469815"/>
                             </output>
@@ -1485,87 +1445,87 @@
                             <getUserInput id="getUserInput_2469815">
                                 <input>
                                     <grammar>
-                                    <item>yes</item>
-                                    <item>$ yes</item>
-                                    <item>$ yep</item>
-                                    <item>$ yup</item>
-                                    <item>$ good</item>
+                                        <item>yes</item>
+                                        <item>$ yes</item>
+                                        <item>$ yep</item>
+                                        <item>$ yup</item>
+                                        <item>$ good</item>
                                     </grammar>
                                     <output>
-                                    <prompt selectionType="RANDOM">
-                                    <item>Sounds good! Your pizza will be ready in 20 minutes. Do you want to order another?</item>
-                                    </prompt>
-                                    <getUserInput>
-                                    <input>
-                                    <grammar>
-                                    <item>$ yes</item>
-                                    <item>$ yeah</item>
-                                    <item>$ yep</item>
-                                    <item>$ yup</item>
-                                    </grammar>
-                                    <output>
-                                    <prompt selectionType="RANDOM">
-                                    <item>Okay, let's make a pizza! What size would you like?</item>
-                                    </prompt>
-                                    <action
-                                    varName="method" operator="SET_TO_BLANK"/>
-                                    <action
-                                    varName="size" operator="SET_TO_BLANK"/>
-                                    <action
-                                    varName="topping1" operator="SET_TO_BLANK"/>
-                                    <action
-                                    varName="topping2" operator="SET_TO_BLANK"/>
-                                    <action
-                                    varName="topping3" operator="SET_TO_BLANK"/>
-                                    <action
-                                    varName="topping4" operator="SET_TO_BLANK"/>
-                                    <goto ref="getUserInput_2442994"/>
-                                    </output>
-                                    </input>
-                                    <input>
-                                    <grammar>
-                                    <item>$ no</item>
-                                    </grammar>
-                                    <output>
-                                    <prompt selectionType="RANDOM">
-                                    <item>Okay, thank you for your order! Just let me know if you want to place another order.</item>
-                                    </prompt>
-                                    <goto ref="getUserInput_2442994">
-                                    <action
-                                    varName="method" operator="SET_TO_BLANK"/>
-                                    <action
-                                    varName="size" operator="SET_TO_BLANK"/>
-                                    <action
-                                    varName="topping1" operator="SET_TO_BLANK"/>
-                                    <action
-                                    varName="topping2" operator="SET_TO_BLANK"/>
-                                    <action
-                                    varName="topping3" operator="SET_TO_BLANK"/>
-                                    <action
-                                    varName="topping4" operator="SET_TO_BLANK"/>
-                                    </goto>
-                                    </output>
-                                    </input>
-                                    </getUserInput>
+                                        <prompt selectionType="RANDOM">
+                                            <item>Sounds good! Your pizza will be ready in 20 minutes. Do you want to order another?</item>
+                                        </prompt>
+                                        <getUserInput>
+                                            <input>
+                                                <grammar>
+                                                    <item>$ yes</item>
+                                                    <item>$ yeah</item>
+                                                    <item>$ yep</item>
+                                                    <item>$ yup</item>
+                                                </grammar>
+                                                <output>
+                                                    <prompt selectionType="RANDOM">
+                                                        <item>Okay, let's make a pizza! What size would you like?</item>
+                                                    </prompt>
+                                                    <action
+                                                    varName="method" operator="SET_TO_BLANK"/>
+                                                    <action
+                                                    varName="size" operator="SET_TO_BLANK"/>
+                                                    <action
+                                                    varName="topping1" operator="SET_TO_BLANK"/>
+                                                    <action
+                                                    varName="topping2" operator="SET_TO_BLANK"/>
+                                                    <action
+                                                    varName="topping3" operator="SET_TO_BLANK"/>
+                                                    <action
+                                                    varName="topping4" operator="SET_TO_BLANK"/>
+                                                    <goto ref="getUserInput_2442994"/>
+                                                </output>
+                                            </input>
+                                            <input>
+                                                <grammar>
+                                                    <item>$ no</item>
+                                                </grammar>
+                                                <output>
+                                                    <prompt selectionType="RANDOM">
+                                                        <item>Okay, thank you for your order! Just let me know if you want to place another order.</item>
+                                                    </prompt>
+                                                    <goto ref="getUserInput_2442994">
+                                                        <action
+                                                        varName="method" operator="SET_TO_BLANK"/>
+                                                        <action
+                                                        varName="size" operator="SET_TO_BLANK"/>
+                                                        <action
+                                                        varName="topping1" operator="SET_TO_BLANK"/>
+                                                        <action
+                                                        varName="topping2" operator="SET_TO_BLANK"/>
+                                                        <action
+                                                        varName="topping3" operator="SET_TO_BLANK"/>
+                                                        <action
+                                                        varName="topping4" operator="SET_TO_BLANK"/>
+                                                    </goto>
+                                                </output>
+                                            </input>
+                                        </getUserInput>
                                     </output>
                                 </input>
                                 <input>
                                     <grammar>
-                                    <item>no</item>
-                                    <item>$ no</item>
+                                        <item>no</item>
+                                        <item>$ no</item>
                                     </grammar>
                                     <output>
-                                    <prompt selectionType="RANDOM">
-                                    <item>Oops! Let's start over. What size would you like?</item>
-                                    </prompt>
-                                    <goto ref="getUserInput_2442994">
-                                    <action varName="topping2" operator="SET_TO_BLANK"/>
-                                    <action varName="topping3" operator="SET_TO_BLANK"/>
-                                    <action varName="topping4" operator="SET_TO_BLANK"/>
-                                    <action varName="method" operator="SET_TO_BLANK"/>
-                                    <action varName="size" operator="SET_TO_BLANK"/>
-                                    <action varName="topping1" operator="SET_TO_BLANK"/>
-                                    </goto>
+                                        <prompt selectionType="RANDOM">
+                                            <item>Oops! Let's start over. What size would you like?</item>
+                                        </prompt>
+                                        <goto ref="getUserInput_2442994">
+                                            <action varName="topping2" operator="SET_TO_BLANK"/>
+                                            <action varName="topping3" operator="SET_TO_BLANK"/>
+                                            <action varName="topping4" operator="SET_TO_BLANK"/>
+                                            <action varName="method" operator="SET_TO_BLANK"/>
+                                            <action varName="size" operator="SET_TO_BLANK"/>
+                                            <action varName="topping1" operator="SET_TO_BLANK"/>
+                                        </goto>
                                     </output>
                                 </input>
                             </getUserInput>
@@ -1583,14 +1543,14 @@
                                 </prompt>
                                 <getUserInput>
                                     <input>
-                                    <grammar>
-                                    <item>$ (Size)={size}</item>
-                                    </grammar>
-                                    <output>
-                                    <prompt/>
-                                    <action varName="size" operator="SET_TO">{size.value:main}</action>
-                                    <goto ref="profileCheck_2469744"/>
-                                    </output>
+                                        <grammar>
+                                            <item>$ (Size)={size}</item>
+                                        </grammar>
+                                        <output>
+                                            <prompt/>
+                                            <action varName="size" operator="SET_TO">{size.value:main}</action>
+                                            <goto ref="profileCheck_2469744"/>
+                                        </output>
                                     </input>
                                 </getUserInput>
                             </output>
