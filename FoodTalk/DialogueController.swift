@@ -65,6 +65,14 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         }
     }
 
+    func tableViewScrollToTop(animated: Bool) {
+        dispatch_after(0, dispatch_get_main_queue(), {
+            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            self.DialogueTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: animated)
+        })
+    }
+    
+
     func tableViewScrollToBottom(animated: Bool) {
         let delay = 0 //0.1 * Double(NSEC_PER_SEC)
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
@@ -108,7 +116,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                     audioPlayer.prepareToPlay()
                     audioPlayer.play()
                     sleep(UInt32(audioPlayer.duration+1))
-                    print("foo!")
                 } catch {
                     NSLog("Bad sound data")
                 }
@@ -118,12 +125,46 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         }
     }
     
+    
+    func parse(text: String)-> Void {
+        let keywords = [ "sushi", "italian", "dim sum" ]
+        let distances = [ "1 mile", "2 miles", "5 miles", "10 miles" ]
+        var foodType = ""
+        var dist = "10"
+        for word in keywords {
+            if text.rangeOfString(word) != nil {
+                foodType = word
+                print("food type: " + foodType)
+                switch(word) {
+                case "dim sum":
+                    print("Chinese!")
+                    break
+                default:
+                    break
+                }
+            }
+        }
+        for word in distances {
+            if text.rangeOfString(word) != nil {
+                dist = word
+                print("distance: " + dist)
+            }
+        }
+
+        // do the yelp query here based on the foodType and distance
+
+    }
+    
     func responseFromUser(text: String?) -> Bool {
         if(text == nil || text! == "") {
             return false
         }
         self.userLog.append(text!)
-        resignFirstResponder()
+
+        if(text == "Bye!") {
+            performSegueWithIdentifier("SearchSegue", sender: self)
+        }
+        parse(text!)
         
         self.service!.converse(self.dialogID!, conversationID:  self.conversationID!,
                                clientID: self.clientID!, input: text!) { response, error in

@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -128,16 +127,19 @@
                         <outlet property="SpacerBottomConstraint" destination="1Af-vw-Ehg" id="EkA-2c-UT9"/>
                         <outlet property="responseTextField" destination="ttI-Rz-EUT" id="G9I-du-gnJ"/>
                         <outlet property="spacerBottomConstraint" destination="1Af-vw-Ehg" id="r0q-G1-dLx"/>
+                        <segue destination="7Ei-sc-uvs" kind="push" identifier="SearchSegue" id="UPQ-OL-fGt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kr1-uX-Fr8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="932" y="366"/>
+            <point key="canvasLocation" x="947" y="369"/>
         </scene>
         <!--SearchFoodPlaces-->
         <scene sceneID="p1s-Qr-455">
             <objects>
-                <viewControllerPlaceholder storyboardName="SearchFoodPlaces" id="7Ei-sc-uvs" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SearchFoodPlaces" id="7Ei-sc-uvs" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="M03-9x-Eol"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0h9-uE-Hpb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1284.2666666666667" y="369.19999999999999"/>
