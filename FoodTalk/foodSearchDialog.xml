@@ -3,7 +3,7 @@
         <folder label="Main" id="Main">
             <output>
                 <prompt selectionType="RANDOM">
-                    <item>Greeting: Enter the type of food you want.</item>
+                    <item>Greeting: Hello, welcome to Watson</item>
                 </prompt>
                 <goto ref="getUserInput_2449614"/>
             </output>
@@ -13,7 +13,7 @@
                     <output>
                         <prompt selectionType="RANDOM">
                             <item>
-                                Error: I am sorry, I did not understand
+                                Error:I am sorry, I did not understand
                                 your question. Please try asking
                                 another one.
                             </item>
@@ -23,23 +23,8 @@
             </getUserInput>
         </folder>
         <folder label="Library" id="Library">
-            <folder label="Live Content" id="folder_2449611">
-                <input>
-                    <grammar>
-                        <item>What type of food do you have?</item>
-                        <item>$ What type of food do you have?</item>
-                        <item>$ list of type</item>
-                        <item>What * type * have</item>
-                        <item>$ list type * available</item>
-                        <item>$ what type do you have</item>
-                    </grammar>
-                    <output>
-                        <prompt selectionType="RANDOM">
-                            <item>We have Chinese, Vietnamese, American, Italian, French, Korean, Japanese, Mexican, Peruvian, British</item>
-                        </prompt>
-                    </output>
-                </input>
-            </folder>
+            <folder label="Live Content" id="Live Content"></folder>
+            <folder label="Storage" id="Storage"></folder>
         </folder>
         <folder label="Concepts" id="Concepts"></folder>
     </flow>

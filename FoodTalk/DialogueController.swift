@@ -30,7 +30,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         
         
-        let dialogName = "xmlchanged2"
+        let dialogName = "xmlchanged3"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -46,7 +46,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             }
         }
         
-        let path = NSBundle.mainBundle().pathForResource("FoodDialogue", ofType: "xml")
+        let path = NSBundle.mainBundle().pathForResource("foodSearchDialog", ofType: "xml")
         let url = NSURL.fileURLWithPath(path!)
         self.service!.createDialog(dialogName, fileURL: url) { dialogID, error in
             if error != nil {
