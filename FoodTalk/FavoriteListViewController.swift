@@ -41,7 +41,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         let resDemo2 = restaurantDescriptor()
         
         resDemo2.name = "Chez Panisse"
-        resDemo2.address =  " 1517 Shattuck Ave"
+        resDemo2.address =  "1517 Shattuck Ave"
         resDemo2.city = "Berkeley"
         resDemo2.state = "CA"
         resDemo2.country = "United States"
@@ -50,7 +50,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         let resDemo3 = restaurantDescriptor()
         
         resDemo3.name = "Flour + Water"
-        resDemo3.address =  " 2401 Harrison St"
+        resDemo3.address =  "2401 Harrison St"
         resDemo3.city = "San Francisco"
         resDemo3.state = "CA"
         resDemo3.country = "United States"

@@ -34,12 +34,6 @@
                                                         <rect key="frame" x="8" y="-8" width="119" height="47"/>
                                                     </variation>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zUX-bw-x1i">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                    <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="303" y="15" width="89" height="35"/>
-                                                    </variation>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLM-qQ-HKa">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -62,7 +56,6 @@
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="5gE-47-e95"/>
-                                                    <exclude reference="zUX-bw-x1i"/>
                                                     <exclude reference="RLM-qQ-HKa"/>
                                                     <exclude reference="dS0-Ph-00B"/>
                                                 </mask>
@@ -70,7 +63,6 @@
                                             <variation key="widthClass=compact">
                                                 <mask key="subviews">
                                                     <include reference="5gE-47-e95"/>
-                                                    <include reference="zUX-bw-x1i"/>
                                                     <include reference="RLM-qQ-HKa"/>
                                                     <include reference="dS0-Ph-00B"/>
                                                 </mask>
@@ -78,7 +70,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="RLM-qQ-HKa" id="8fT-aT-cBu"/>
-                                            <outlet property="myImage" destination="zUX-bw-x1i" id="Sop-Or-Knd"/>
                                             <outlet property="myRatingImage" destination="5gE-47-e95" id="3RV-MZ-bQC"/>
                                             <outlet property="nameOfResturant" destination="dS0-Ph-00B" id="f2a-PB-En8"/>
                                         </connections>

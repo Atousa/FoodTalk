@@ -166,7 +166,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
 
         if(text == "Bye!") {
             //To Do Eric
-            SearchResultViewController.infoFromWatson = self.infoFromWatson
+            //SearchResultViewController.infoFromWatson = self.infoFromWatson
 
             performSegueWithIdentifier("SearchSegue", sender: self)
             
