@@ -10,8 +10,8 @@ import UIKit
 
 class FavoriteListCell: UITableViewCell {
     
-    @IBOutlet weak var myRateLabel: UILabel!
+    @IBOutlet weak var Date: UILabel!
     @IBOutlet weak var nameOfResturant: UILabel!
-    @IBOutlet weak var myImage: UIImageView!
+    @IBOutlet weak var myRatingImage: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
 }

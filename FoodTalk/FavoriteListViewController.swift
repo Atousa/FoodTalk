@@ -19,27 +19,44 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     var location = CLLocation()
     var restaurant = [Restaurant]()
     let predicate = NSPredicate()
-    var persistentStoreCoordinator = NSPersistentStoreCoordinator()
-    var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        persistentStoreCoordinator = appDelegate.persistentStoreCoordinator
-        managedObjectContext = appDelegate.managedObjectContext
+        
 
-        let resDemo = restaurantDescriptor()
+        let resDemo1 = restaurantDescriptor()
         //var visitDemo = Visit()
         //var photo = Photo()
         
         
-        resDemo.name = "Farmhouse Kitchen"
-        resDemo.address =  "710 Florida St"
-        resDemo.city = "San Francisco"
-        resDemo.state = "CA"
-        resDemo.country = "United States"
-        addRestaurant(resDemo)
+        resDemo1.name = "Farmhouse Kitchen"
+        resDemo1.address =  "710 Florida St"
+        resDemo1.city = "San Francisco"
+        resDemo1.state = "CA"
+        resDemo1.country = "United States"
+        
+        addRestaurant(resDemo1)
+        
+        let resDemo2 = restaurantDescriptor()
+        
+        resDemo2.name = "Chez Panisse"
+        resDemo2.address =  " 1517 Shattuck Ave"
+        resDemo2.city = "Berkeley"
+        resDemo2.state = "CA"
+        resDemo2.country = "United States"
+        addRestaurant(resDemo2)
+        
+        let resDemo3 = restaurantDescriptor()
+        
+        resDemo3.name = "Flour + Water"
+        resDemo3.address =  " 2401 Harrison St"
+        resDemo3.city = "San Francisco"
+        resDemo3.state = "CA"
+        resDemo3.country = "United States"
+        addRestaurant(resDemo3)
+        
+        
         /*
         visitDemo.restaurant = resDemo
         
@@ -62,7 +79,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestAlwaysAuthorization()
-        //self.locationManager.requestWhenInUseAuthorization()
+        
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
@@ -72,6 +89,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     func locationManager(manager: CLLocationManager, didUpdateLocations loc: [CLLocation]) {
         self.location = loc.last!
         self.restaurant = self.findNearbyRestaurants(loc.last!)
+        print(self.restaurant.count)
         self.tableView.reloadData()
     }
     
@@ -79,13 +97,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         print("Location detection needs to be enabled in the simulator")
     }
 
-    //should go to service
-    func makeRequest()->NSFetchRequest {
-        let request = NSFetchRequest()
-        let entityDescription = NSEntityDescription.entityForName("Restaurant", inManagedObjectContext: self.managedObjectContext)
-        request.entity = entityDescription
-        return request
-    }
+   
     
     
     func closeEnough(candidate: Restaurant) -> Bool {
@@ -93,32 +105,45 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
 
         let distance = calculateDistanceBetweenTwoLocations(self.location, destination: dest)
         
-        return distance <= 10
+        return distance <= 0.2
     }
     
     
     func findNearbyRestaurants(location:CLLocation)-> [Restaurant] {
-        let request = self.makeRequest()
-/*
-        let closeEnoughPredicate = NSPredicate { (candidate, _) in
+        let request = makeRequest("Restaurant")
+
+        /*let closeEnoughPredicate = NSPredicate { (candidate, _) in
             let dest =  CLLocation(latitude: Double(candidate.latitude!),longitude: Double(candidate.longitude!))
             
             let distance = self.calculateDistanceBetweenTwoLocations(self.location, destination: dest)
             
             return distance <= 10
-        }
-        request.predicate = closeEnoughPredicate
- */
-        let sort = NSSortDescriptor(key:"name", ascending:true)//closure
+        }*/
+        
+        //request.predicate = closeEnoughPredicate
+        //print(request.predicate)
+ 
+        let sort = NSSortDescriptor(key:"name", ascending:true)
         request.sortDescriptors = [sort]
         
         do {
-            let results = try self.managedObjectContext.executeFetchRequest(request)
+            let results = try moc.executeFetchRequest(request)
+            
+            let closeEnoughPredicate = NSPredicate { (results, _) in
+                let dest =  CLLocation(latitude: Double(results.latitude!),longitude: Double(results.longitude!))
+                
+                let distance = self.calculateDistanceBetweenTwoLocations(self.location, destination: dest)
+                
+                return distance <= 1.0
+            }
+
+            
             return results as! [Restaurant]
         } catch {
             let fetchError = error as NSError
             print(fetchError)
         }
+        
         return []
     }
     
@@ -129,12 +154,13 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         
         var distanceMeters = source.distanceFromLocation(destination)
         var distanceKM = distanceMeters / 1000
-        let roundedTwoDigit = distanceKM //?
+        let roundedTwoDigit = distanceKM
         return roundedTwoDigit
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(self.restaurant.count)
         return self.restaurant.count
     }
 
@@ -143,7 +169,6 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell", forIndexPath: indexPath) as! FavoriteListCell
         let r = self.restaurant[indexPath.row]
         cell.nameOfResturant.text = r.name
-    
         return cell
         
         

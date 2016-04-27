@@ -15,6 +15,8 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDe
 
     @IBOutlet weak var DialogueTableView: UITableView!
     
+    @IBOutlet weak var spacerBottomConstraint: NSLayoutConstraint!
+    
     var conversationID: Int?
     var clientID: Int?
     var service: Dialog?
@@ -176,9 +178,47 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDe
         
    // }
     
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHideNotification(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+    }
+
+    func keyboardWillShowNotification(notification: NSNotification) {
+        updateBottomLayoutConstraintWithNotificationUpdateKeyboard(notification)
+    }
+
+    func keyboardWillHideNotification(notification: NSNotification) {
+        updateBottomLayoutConstraintWithNotificationUpdateKeyboard(notification)
+    }
+
+    func updateBottomLayoutConstraintWithNotificationUpdateKeyboard(notification: NSNotification) {
+        
+        let userInfo = notification.userInfo!
+        
+        let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        let keyboardEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        let convertedKeyboardEndFrame = view.convertRect(keyboardEndFrame, fromView: view.window)
+        let rawAnimationCurve = (notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).unsignedIntValue << 16
+        let animationCurve = UIViewAnimationOptions(rawValue: (UInt(rawAnimationCurve)|UInt(1<<2)))
+        
+        spacerBottomConstraint.constant = CGRectGetMinY(convertedKeyboardEndFrame)-CGRectGetMaxY(view.bounds)
+        
+        UIView.animateWithDuration(animationDuration, delay: 0.0, options: animationCurve, animations: {
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+    }
+
 }
 
-    
 
-   
+
+
 
