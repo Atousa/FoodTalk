@@ -31,12 +31,10 @@
             <folder label="Live Content" id="folder_2442998">
                 <input>
                     <grammar>
-                        <item>I want a small pizza</item>
-                        <item>$ (Size)={size}</item>
+                        <item>$ (searchTerm)={searchTerm}</item>
                     </grammar>
                     <input>
                         <grammar>
-                            <item>No toppings</item>
                             <item>$ (Toppings)={topping1} * (Toppings)={topping2} * (Toppings)={topping3} * (Toppings)={topping4}</item>
                             <item>$ (Toppings)={topping1} * (Toppings)={topping2} * (Toppings)={topping3} (Toppings)={topping4}</item>
                             <item>$ (Toppings)={topping1} * (Toppings)={topping2} (Toppings)={topping3} * (Toppings)={topping4}</item>
@@ -53,12 +51,12 @@
                             <item>$ (Toppings)={topping1} (Toppings)={topping2}</item>
                             <item>$ (Toppings)={topping1}</item>
                         </grammar>
-                        <action varName="size" operator="SET_TO">{size.value:main}</action>
+                        <action varName="searchTerm" operator="SET_TO">{searchTerm.value:main}</action>
                         <goto ref="output_2469801"/>
                     </input>
                     <output>
                         <prompt/>
-                        <action varName="size" operator="SET_TO">{size.value:main}</action>
+                        <action varName="searchTerm" operator="SET_TO">{searchTerm.value:main}</action>
                         <output>
                             <prompt selectionType="RANDOM">
                                 <item>What toppings are you in the mood for? (Limit 4)</item>
@@ -1843,124 +1841,209 @@
         </folder>
     </flow>
     <entities>
-        <entity name="Toppings">
-            <value name="Pepperoni" value="Pepperoni">
+        <entity name="searchTerm">
+            <value name="food" value="food">
                 <grammar>
-                    <item>roni</item>
+                    <item>food</item>
+                    <item>Food</item>
+                    <item>foods</item>
+                    <item>Foods</item>
+                    <item>foood</item>
                 </grammar>
             </value>
-            <value name="Mushroom" value="Mushrooms">
+            <value name="restaurant" value="restaurant">
                 <grammar>
-                    <item>shrooms</item>
+                    <item>restaurant</item>
+                    <item>Restaurant</item>
+                    <item>restaurante</item>
+                    <item>Restaurante</item>
                 </grammar>
             </value>
-            <value name="Sausages" value="Sausage"/>
-            <value name="Onions" value="Onions"/>
-            <value name="Peppers" value="Peppers">
+            <value name="Chinese food" value="Chinese food">
                 <grammar>
-                    <item>red peppers</item>
-                    <item>green peppers</item>
+                    <item>Chinese Food</item>
+                    <item>Chinese food</item>
+                    <item>chinese Food</item>
+                    <item>Chinese</item>
+                    <item>chinese food</item>
                 </grammar>
             </value>
-            <value name="Anchovy" value="Anchovy">
+            <value name="Japanese food" value="Japanese food">
                 <grammar>
-                    <item>Chovies</item>
+                    <item>Japanese Food</item>
+                    <item>Japanese food</item>
+                    <item>japanese Food</item>
+                    <item>Japanese</item>
+                    <item>japanese food</item>
                 </grammar>
             </value>
-            <value name="Pineapple" value="Pineapple"/>
-            <value name="Chicken" value="Chicken"/>
-            <value name="Broccoli" value="Broccoli"/>
-            <value name="Pesto" value="Pesto"/>
-            <value name="Shrimps" value="Shrimp"/>
-            <value name="Garlic" value="Garlic"/>
-            <value name="Olive" value="Olives"/>
-            <value name="Cheese" value="Cheese">
+            <value name="Korean food" value="Korean food">
                 <grammar>
-                    <item>mozarella</item>
+                    <item>Korean Food</item>
+                    <item>Korean food</item>
+                    <item>korean Food</item>
+                    <item>Korean</item>
+                    <item>korean food</item>
                 </grammar>
             </value>
-            <value name="Jalapeno" value="Jalapenos"/>
-            <value name="bacon" value="bacon"/>
-            <value name="canadian bacon" value="canadian bacon">
+            <value name="Thai food" value="Thai food">
                 <grammar>
-                    <item>ham</item>
+                    <item>Thai Food</item>
+                    <item>Thai food</item>
+                    <item>thai food</item>
+                    <item>Thai</item>
+                    <item>thai food</item>
                 </grammar>
             </value>
-            <value name="tomatoe" value="tomatoes">
+            <value name="Vietnamese food" value="Vietnamese food">
                 <grammar>
-                    <item>tomato</item>
+                    <item>Vietnamese Food</item>
+                    <item>Vietnamese food</item>
+                    <item>vietnamese Food</item>
+                    <item>Vietnamese</item>
+                    <item>vietnamese food</item>
+                    <item>Viet Food</item>
+                    <item>Viet food</item>
+                    <item>viet food</item>
+                    <item>Viet</item>
+                    <item>viet food</item>
+                    <item>Pho</item>
+                    <item>pho</item>
                 </grammar>
             </value>
-            <value name="apples" value="apples"/>
+            <value name="Mongolian food" value="Mongolian food">
+                <grammar>
+                    <item>Mongolian Food</item>
+                    <item>Mongolian food</item>
+                    <item>mongolian Food</item>
+                    <item>Mongolian</item>
+                    <item>mongolian food</item>
+                </grammar>
+            </value>
+            <value name="Taiwanese food" value="Taiwanese food">
+                <grammar>
+                    <item>Taiwanese Food</item>
+                    <item>Taiwanese food</item>
+                    <item>taiwanese Food</item>
+                    <item>Taiwanese</item>
+                    <item>taiwanese food</item>
+                </grammar>
+            </value>
+            <value name="American food" value="American food">
+                <grammar>
+                    <item>American Food</item>
+                    <item>American food</item>
+                    <item>american Food</item>
+                    <item>American</item>
+                    <item>american food</item>
+                </grammar>
+            </value>
+            <value name="Italian food" value="Italian food">
+                <grammar>
+                    <item>Italian Food</item>
+                    <item>Italian food</item>
+                    <item>italian Food</item>
+                    <item>Italian</item>
+                    <item>italian food</item>
+                </grammar>
+            </value>
+            <value name="French food" value="French food">
+                <grammar>
+                    <item>French Food</item>
+                    <item>French food</item>
+                    <item>french Food</item>
+                    <item>French</item>
+                    <item>french food</item>
+                </grammar>
+            </value>
+            <value name="Mexican food" value="Mexican food">
+                <grammar>
+                    <item>Mexican Food</item>
+                    <item>Mexican food</item>
+                    <item>mexican Food</item>
+                    <item>Mexican</item>
+                    <item>mexican food</item>
+                </grammar>
+            </value>
+            <value name="Peruvian food" value="Peruvian food">
+                <grammar>
+                    <item>Peruvian Food</item>
+                    <item>Peruvian food</item>
+                    <item>peruvian Food</item>
+                    <item>Peruvian</item>
+                    <item>peruvian food</item>
+                </grammar>
+            </value>
         </entity>
-        <entity name="Crust">
-            <value name="Thin" value="Thin">
+        <entity name="distance">
+            <value name="321 meters" value="321">
                 <grammar>
-                    <item>thin crust</item>
-                    <item>NY style</item>
+                    <item>2 blocks</item>
+                    <item>2 Blocks</item>
+                    <item>Two blocks</item>
+                    <item>Two Blocks</item>
+                    <item>two blocks</item>
+                    <item>two Blocks</item>
+                    <item>2blocks</item>
+                    <item>2Blocks</item>
+                    <item>2block</item>
+                    <item>2Block</item>
                 </grammar>
             </value>
-            <value name="Deep Dish" value="Deep Dish">
+            <value name="965 meters" value="965">
                 <grammar>
-                    <item>deep dish</item>
-                    <item>pan pizza</item>
+                    <item>6 blocks</item>
+                    <item>6 Blocks</item>
+                    <item>Six blocks</item>
+                    <item>Six Blocks</item>
+                    <item>six blocks</item>
+                    <item>six Blocks</item>
+                    <item>6blocks</item>
+                    <item>6Blocks</item>
+                    <item>6block</item>
+                    <item>6Block</item>
                 </grammar>
             </value>
-            <value name="Sicilian" value="Sicilian">
+            <value name="1609 meters" value="1609">
                 <grammar>
-                    <item>thick</item>
+                    <item>1 mile</item>
+                    <item>1 Mile</item>
+                    <item>One mile</item>
+                    <item>One Mile</item>
+                    <item>one mile</item>
+                    <item>one Mile</item>
+                    <item>1mile</item>
+                    <item>1Mile</item>
+                    <item>1mile</item>
+                    <item>1Mile</item>
                 </grammar>
             </value>
-            <value name="Traditional" value="Traditional"/>
-        </entity>
-        <entity name="Sauce">
-            <value name="Tomato Sauce" value="Tomato">
+            <value name="8046 meters" value="8046">
                 <grammar>
-                    <item>Gravy</item>
-                    <item>Red Sauce</item>
+                    <item>5 mile</item>
+                    <item>5 Mile</item>
+                    <item>Five mile</item>
+                    <item>Five Mile</item>
+                    <item>five mile</item>
+                    <item>five Mile</item>
+                    <item>5mile</item>
+                    <item>5Mile</item>
+                    <item>5mile</item>
+                    <item>5Mile</item>
                 </grammar>
             </value>
-            <value name="Alfredo Sauce" value="Alfredo">
+            <value name="32186 meters" value="32186">
                 <grammar>
-                    <item>Cheese</item>
-                    <item>White</item>
-                </grammar>
-            </value>
-            <value name="Pesto Sauce" value="Pesto Sauce">
-                <grammar>
-                    <item>Pesto</item>
-                </grammar>
-            </value>
-        </entity>
-        <entity name="Size">
-            <value name="small" value="Small">
-                <grammar>
-                    <item>sm</item>
-                    <item>smallest</item>
-                    <item>tiny</item>
-                    <item>little</item>
-                </grammar>
-            </value>
-            <value name="Medium" value="Medium">
-                <grammar>
-                    <item>Med</item>
-                </grammar>
-            </value>
-            <value name="large" value="Large">
-                <grammar>
-                    <item>lg</item>
-                    <item>lrg</item>
-                    <item>big</item>
-                </grammar>
-            </value>
-            <value name="extra large" value="extra large">
-                <grammar>
-                    <item>xl</item>
-                    <item>xlrg</item>
-                    <item>x-large</item>
-                    <item>xtra</item>
-                    <item>huge</item>
-                    <item>biggest</item>
+                    <item>20 mile</item>
+                    <item>20 Mile</item>
+                    <item>Twenty mile</item>
+                    <item>Twenty Mile</item>
+                    <item>twenty mile</item>
+                    <item>twenty Mile</item>
+                    <item>20mile</item>
+                    <item>20Mile</item>
+                    <item>20mile</item>
+                    <item>20Mile</item>
                 </grammar>
             </value>
         </entity>
@@ -1974,14 +2057,8 @@
     </constants>
     <variables>
         <var_folder name="Home">
-            <var name="topping1" type="TEXT"/>
-            <var name="topping2" type="TEXT"/>
-            <var name="topping3" type="TEXT"/>
-            <var name="topping4" type="TEXT"/>
-            <var name="sauce" type="TEXT" description="Describes the type of sauce to top a pizza with"/>
-            <var name="crust" type="TEXT"/>
-            <var name="size" type="TEXT" description="small, medium, large, or extra large"/>
-            <var name="method" type="TEXT" description="pickup or delivery"/>
+            <var name="searchTerm" type="TEXT" description="coffee, thai food, tea, etc."/>
+            <var name="distance" type="TEXT" description="distance from current location"/>
         </var_folder>
     </variables>
     <settings>

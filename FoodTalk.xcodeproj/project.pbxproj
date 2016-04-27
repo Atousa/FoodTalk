@@ -21,6 +21,7 @@
 		1A4FE0AD1CC702A400EE8787 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */; };
 		1A4FE0B31CC702E200EE8787 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4FE0B21CC702E200EE8787 /* MainViewController.swift */; };
 		1A4FE0EA1CC83D8200EE8787 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1A4FE0E91CC83D8200EE8787 /* Podfile */; };
+		1A583A8F1CD09191008A0D9C /* FoodDialog.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1A583A8E1CD09191008A0D9C /* FoodDialog.xml */; };
 		1A5E5A531CCAE24900BBA6A1 /* SearchFoodPlaces.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E5A521CCAE24900BBA6A1 /* SearchFoodPlaces.storyboard */; };
 		711FF97C1CCA0111000180B6 /* pizza_sample.xml in Resources */ = {isa = PBXBuildFile; fileRef = 711FF97B1CCA0111000180B6 /* pizza_sample.xml */; };
 		7171CB4B1CC94CBC00B9E706 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB451CC94CBC00B9E706 /* Alamofire.framework */; };
@@ -76,6 +77,7 @@
 		1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
 		1A4FE0B21CC702E200EE8787 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1A4FE0E91CC83D8200EE8787 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		1A583A8E1CD09191008A0D9C /* FoodDialog.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FoodDialog.xml; sourceTree = SOURCE_ROOT; };
 		1A5E5A4E1CCACE9E00BBA6A1 /* FoodTalk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodTalk-Bridging-Header.h"; sourceTree = "<group>"; };
 		1A5E5A521CCAE24900BBA6A1 /* SearchFoodPlaces.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchFoodPlaces.storyboard; sourceTree = "<group>"; };
 		482FED0ADB4A4DD453B75CD1 /* Pods-FoodTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTalk/Pods-FoodTalk.release.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			children = (
 				1A5E5A4E1CCACE9E00BBA6A1 /* FoodTalk-Bridging-Header.h */,
 				711FF97B1CCA0111000180B6 /* pizza_sample.xml */,
+				1A583A8E1CD09191008A0D9C /* FoodDialog.xml */,
 				1A4FE08B1CC6FDA000EE8787 /* AppDelegate.swift */,
 				1A4FE0B21CC702E200EE8787 /* MainViewController.swift */,
 				1A4F6E9C1CCEA4EB009E6702 /* MainNavigationViewController.swift */,
@@ -279,6 +282,7 @@
 				1A4FE0A11CC7017500EE8787 /* Dialogue.storyboard in Resources */,
 				1A4FE0991CC6FDA000EE8787 /* LaunchScreen.storyboard in Resources */,
 				1A4FE0A41CC701B600EE8787 /* FavoritesList.storyboard in Resources */,
+				1A583A8F1CD09191008A0D9C /* FoodDialog.xml in Resources */,
 				1A4FE0961CC6FDA000EE8787 /* Assets.xcassets in Resources */,
 				1A4FE0911CC6FDA000EE8787 /* Main.storyboard in Resources */,
 			);
