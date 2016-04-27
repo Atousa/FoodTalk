@@ -26,6 +26,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var dialogID: Dialog.DialogID?
     var watsonLog: [String] = []
     var userLog: [String] = []
+    var infoFromWatson: [String] = []
     
     
     override func viewDidLoad() {
@@ -130,7 +131,9 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         let keywords = [ "dim sum", "chinese", "vietnamese", "american", "italian", "french", "korean", "japanese", "mexican", "peruvian", "british" ]
         let distances = [ "1 mile", "2 miles", "5 miles", "10 miles" ]
         var foodType = "american"
+        infoFromWatson.append(foodType)
         var dist = "10 miles"
+        infoFromWatson.append(dist)
         for word in keywords {
             if text.lowercaseString.rangeOfString(word) != nil {
                 foodType = word
@@ -162,7 +165,11 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.userLog.append(text!)
 
         if(text == "Bye!") {
+            //To Do Eric
+            SearchResultViewController.infoFromWatson = self.infoFromWatson
+
             performSegueWithIdentifier("SearchSegue", sender: self)
+            
         }
         parse(text!)
         
