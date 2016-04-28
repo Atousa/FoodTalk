@@ -1,19 +1,15 @@
-//
-//  DialogueViewController.swift
-//  FoodTalk
-//
-//  Created by Eric Hong on 4/19/16.
-//  Copyright © 2016 EricDHong. All rights reserved.
-//
-
 import UIKit
 import WatsonDeveloperCloud
 import AVFoundation
 
-class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDelegate, AVAudioRecorderDelegate,UITableViewDataSource {
+class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioRecorderDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-
+    
     @IBOutlet weak var DialogueTableView: UITableView!
+    
+    @IBOutlet weak var spacerBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var responseTextField: UITextField!
     
     var conversationID: Int?
     var clientID: Int?
@@ -22,17 +18,21 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDe
     var dialogID: Dialog.DialogID?
     var watsonLog: [String] = []
     var userLog: [String] = []
+    var foodType = String()
+    var dist = String()
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.DialogueTableView.separatorStyle = .None
+        self.responseTextField.delegate = self
         
-        self.service = Dialog(username: "585c94ca-d7e2-4b6e-9b8c-e28e00d27b55", password: "keuvuyZjRb7O")
+        self.service = Dialog(username: "b9b42757-5fa9-4633-8cb6-39f92fe7e18c", password: "GiDY7J5THqx3")
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         
         
-        let dialogName = "xmlchanged1"
+        let dialogName = "xmlchanged6"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -48,7 +48,7 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDe
             }
         }
         
-        let path = NSBundle.mainBundle().pathForResource("pizza_sample", ofType: "xml")
+        let path = NSBundle.mainBundle().pathForResource("foodSearchDialog", ofType: "xml")
         let url = NSURL.fileURLWithPath(path!)
         self.service!.createDialog(dialogName, fileURL: url) { dialogID, error in
             if error != nil {
@@ -59,7 +59,15 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDe
             self.startDialogue()
         }
     }
-
+    
+    func tableViewScrollToTop(animated: Bool) {
+        dispatch_after(0, dispatch_get_main_queue(), {
+            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            self.DialogueTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: animated)
+        })
+    }
+    
+    
     func tableViewScrollToBottom(animated: Bool) {
         let delay = 0 //0.1 * Double(NSEC_PER_SEC)
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
@@ -75,7 +83,7 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDe
             }
         })
     }
-
+    
     func startDialogue() {
         self.service!.converse(self.dialogID!) { response, error in
             if error != nil {
@@ -86,7 +94,7 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDe
             self.clientID = response?.clientID
             self.watsonLog.append((response?.response![0])!)
             self.speak((response?.response![0])!)
-
+            
             //reload tableview from main thread
             dispatch_async(dispatch_get_main_queue()) {
                 self.DialogueTableView.reloadData()
@@ -112,16 +120,51 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDe
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if(textField.text == nil || textField.text! == "") {
+    
+    func parse(text: String)-> Void {
+        let keywords = [ "dim sum", "chinese", "vietnamese", "american", "italian", "french", "korean", "japanese", "thai", "mexican", "peruvian", "british",
+                         "mongolian", "taiwanese"]
+        let distances = [ "1 mile", "5 miles", "20 miles", "2 blocks", "6 blocks" ]
+        for word in keywords {
+            if text.lowercaseString.rangeOfString(word) != nil {
+                foodType = word
+                switch(word) {
+                case "dim sum":
+                    foodType = "chinese"
+                    break
+                case "sushi":
+                    foodType = "japanese"
+                    break
+                default:
+                    break
+                }
+                print("food type: " + foodType)
+            }
+        }
+        for word in distances {
+            if text.rangeOfString(word) != nil {
+                dist = word
+                print("distance: " + dist)
+            }
+        }
+        
+        
+    }
+    
+    func responseFromUser(text: String?) -> Bool {
+        if(text == nil || text! == "") {
             return false
         }
-        self.userLog.append(textField.text!)
-        textField.enabled = false
-        resignFirstResponder()
+        self.userLog.append(text!)
+        
+        if(text == "Bye!") {
+            performSegueWithIdentifier("SearchSegue", sender: self)
+            
+        }
+        parse(text!)
         
         self.service!.converse(self.dialogID!, conversationID:  self.conversationID!,
-                               clientID: self.clientID!, input: textField.text!) { response, error in
+                               clientID: self.clientID!, input: text!) { response, error in
                                 let size = response?.response!.count
                                 var i = 0
                                 while (i<size) {
@@ -141,43 +184,85 @@ class DialogueViewController: UIViewController,UITableViewDelegate,UITextFieldDe
                                     self.tableViewScrollToBottom(true)
                                 }
         }
-
+        
         return true
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return self.watsonLog.count
+        return self.watsonLog.count
     }
     
-    
-
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-    
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("DialogueCell1") as! DialogueCell
-        cell.myDialogueTextField.delegate = self
         cell.WatsonDialogueTextField.text = self.watsonLog[indexPath.row]
-        cell.myDialogueTextField.enabled = true
         if (indexPath.row < self.userLog.count) {
             cell.myDialogueTextField.text = self.userLog[indexPath.row]
         } else {
             cell.myDialogueTextField.text = ""
         }
         
-        cell.WatsonDialogueImage.image = UIImage(named: "watson.png")
+        cell.WatsonDialogueImage.image = UIImage(named: "Satellites-100.png")
         return cell
     }
     
-
-   // @IBAction func OnPressedEthnicity(sender: AnyObject) {
-        //let svc = UIViewController()
-        //sev.... = userlog
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHideNotification(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+    }
+    
+    func keyboardWillShowNotification(notification: NSNotification) {
+        updateBottomLayoutConstraintWithNotificationUpdateKeyboard(notification)
+    }
+    
+    func keyboardWillHideNotification(notification: NSNotification) {
+        updateBottomLayoutConstraintWithNotificationUpdateKeyboard(notification)
+    }
+    
+    func updateBottomLayoutConstraintWithNotificationUpdateKeyboard(notification: NSNotification) {
         
-   // }
+        let userInfo = notification.userInfo!
+        
+        let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        let keyboardEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        let convertedKeyboardEndFrame = view.convertRect(keyboardEndFrame, fromView: view.window)
+        let rawAnimationCurve = (notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).unsignedIntValue << 16
+        let animationCurve = UIViewAnimationOptions(rawValue: (UInt(rawAnimationCurve)|UInt(1<<2)))
+        
+        spacerBottomConstraint.constant = CGRectGetMinY(convertedKeyboardEndFrame)-CGRectGetMaxY(view.bounds)
+        
+        UIView.animateWithDuration(animationDuration, delay: 0.0, options: animationCurve, animations: {
+            self.view.layoutIfNeeded()
+            }, completion: { finished in
+                self.tableViewScrollToBottom(true)
+        })
+    }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if(textField.text == nil || textField.text! == "") {
+            return false
+        }
+        self.responseFromUser(responseTextField.text)
+        responseTextField.text = ""
+        return true
+    }
+    
+    @IBAction func onSendButtonPressed(sender: AnyObject) {
+        self.responseFromUser(responseTextField.text)
+        responseTextField.text = ""
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let srvc = segue.destinationViewController as! SearchResultViewController
+        srvc.distance = dist
+        srvc.type = foodType
+    }
 }
-
-    
-
-   
-
