@@ -12,6 +12,7 @@ import CoreLocation
 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 let poc = appDelegate.persistentStoreCoordinator
 let moc = appDelegate.managedObjectContext
+var window:UIWindow?
 
 
 func makeRequest(entity:String)->NSFetchRequest {
@@ -72,11 +73,12 @@ func createRestaurantFromDescriptor(d: restaurantDescriptor)->Restaurant {
     return r
 }
 
-func addRestaurant(descr: restaurantDescriptor) {
+func addRestaurant(descr: restaurantDescriptor, presentViewController: UIViewController) {
     if let result = findRestaurant(descr) {
-        ///UIAlertController
-        return
-    } else {
+        let alert = UIAlertController(title: "Alert", message: "This place is in your favorite list", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+        presentViewController.presentViewController(alert, animated: true, completion: nil)
+    }else {
         var r = createRestaurantFromDescriptor(descr)
         let v = NSEntityDescription.insertNewObjectForEntityForName("Visit", inManagedObjectContext:  moc) as! Visit
         

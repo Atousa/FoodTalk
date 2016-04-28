@@ -1,31 +1,843 @@
-<dialog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="WatsonDialogDocument_1.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<dialog xsi:noNamespaceSchemaLocation="WatsonDialogDocument_1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <flow>
-        <folder label="Main" id="Main">
+        <folder label="Main">
             <output>
                 <prompt selectionType="RANDOM">
-                    <item>Greeting: Hello, welcome to Watson</item>
+                    <item>Watson here! I can help you decide what to eat. What type of food would you like to eat?</item>
                 </prompt>
-                <goto ref="getUserInput_2449614"/>
+                <goto ref="getUserInput_2442994"/>
             </output>
-            <getUserInput id="getUserInput_2449614">
-                <search ref="folder_2449611"/>
-                <default>
+            <output>
+                <prompt selectionType="SEQUENTIAL">
+                    <item>What type of food would you like to eat?</item>
+                </prompt>
+                <getUserInput id="getUserInput_2442994">
+                    <search ref="folder_2442998"/>
+                    <default>
+                        <output>
+                            <prompt selectionType="RANDOM">
+                                <item>I'm sorry I did not understand your question. All I can do is help you decide on a place to eat</item>
+                                <item>I did not quite get that.</item>
+                                <item>I didnt grasp what you said.</item>
+                                <item>I'm not following you at the moment.</item>
+                            </prompt>
+                        </output>
+                    </default>
+                </getUserInput>
+            </output>
+        </folder>
+
+        <folder label="Library">
+            <folder label="Live Content" id="folder_2442998">
+                <input>
+                    <grammar>
+                        <item>$ (searchTerm)={searchTerm}</item>
+                    </grammar>
+                    <action varName="searchTerm" operator="SET_TO">{searchTerm.value:main}</action>
+                    <goto ref="output_2469801"/>
+                    <output>
+                        <prompt/>
+                        <action varName="searchTerm" operator="SET_TO">{searchTerm.value:main}</action>
+                        <output>
+                            <prompt selectionType="RANDOM">
+                                <item>What type of food are you in the mood for?</item>
+                            </prompt>
+                            <getUserInput>
+                                <input>
+                                    <output id="output_2469801">
+                                        <prompt selectionType="RANDOM">
+                                            <action varName="searchTerm" operator="SET_TO">{searchTerm.value:main}</action>
+                                            <item>How far are you willing to travel?</item>
+                                        </prompt>
+                                    </output>
+                                    <getUserInput>
+                                        <input>
+                                            <grammar>
+                                                <item>2 blocks</item>
+                                                <item>2 Blocks</item>
+                                                <item>Two Blocks</item>
+                                                <item>Two blocks</item>
+                                                <item>two blocks</item>
+                                            </grammar>
+                                            <action
+                                                varName="distance" operator="SET_TO">321</action>
+                                            <goto ref="profileCheck_2469744"/>
+                                        </input>
+                                        <input>
+                                            <grammar>
+                                                <item>6 blocks</item>
+                                                <item>6 Blocks</item>
+                                                <item>Six Blocks</item>
+                                                <item>Six blocks</item>
+                                                <item>six blocks</item>
+                                            </grammar>
+                                            <action
+                                                varName="method" operator="SET_TO">delivery</action>
+                                            <goto ref="profileCheck_2469744"/>
+                                        </input>
+                                    </getUserInput>
+                                </input>
+                            </getUserInput>
+                        </output>
+                    </output>
+                </input>
+            </folder>
+        </folder>
+
+        <folder label="Greetings">
+            <input>
+                <grammar>
+                    <item>Goodbye</item>
+                    <item>bye bye</item>
+                    <item>bye bye *</item>
+                    <item>sayonara</item>
+                    <item>so long</item>
+                    <item>by by</item>
+                    <item>cheers</item>
+                    <item>ciao means goodbye</item>
+                    <item>good by</item>
+                    <item>goodby</item>
+                    <item>ta ta</item>
+                    <item>hasta *</item>
+                    <item>hasta la vista</item>
+                    <item>hasta la vista *</item>
+                    <item>asta la vista *</item>
+                    <item>hasta luego</item>
+                    <item>be well</item>
+                    <item>um * bye</item>
+                    <item>um * byebye</item>
+                    <item>ok then bye</item>
+                    <item>ok bye</item>
+                    <item>$ Goodbye</item>
+                    <item>$ good bye</item>
+                    <item>$ bye</item>
+                    <item>$ take care</item>
+                    <item>$ Have a * day</item>
+                    <item>$ Have a nice day</item>
+                    <item>$ have a lovely day</item>
+                    <item>$ Ok goodbye</item>
+                    <item>$ I am gone</item>
+                    <item>$ Peace out</item>
+                    <item>$ good Goodbye</item>
+                    <item>$ good good bye</item>
+                    <item>$ good bye for now</item>
+                    <item>$ goodbye for now</item>
+                </grammar>
+                <output>
+                    <prompt selectionType="RANDOM">
+                        <item>I hope you come and chat to me again soon. Bye</item>
+                        <item>Take care.</item>
+                        <item>Goodbye. Come and chat again soon.</item>
+                        <item>Thanks for chatting. Bye.</item>
+                        <item>See you later.</item>
+                        <item>Thanks for the chat. Bye.</item>
+                        <item>I hope we get the chance to chat again. See you later.</item>
+                    </prompt>
+                </output>
+            </input>
+            <input>
+                <grammar>
+                    <item>I will see you later</item>
+                    <item>see you late</item>
+
+                </grammar>
+                <output>
+                    <prompt selectionType="RANDOM">
+                        <item>See you later. Hope to speak with you again soon.</item>
+                        <item>I look forward to chatting with you again soon. See you.</item>
+                    </prompt>
+                </output>
+            </input>
+        </folder>
+
+        <folder label="Check Out">
+            <if id="profileCheck_2469744">
+                <cond varName="searchTerm" operator="HAS_VALUE"/>
+                <cond varName="distance" operator="HAS_VALUE"/>
+                <if>
+                    <cond varName="topping2" operator="HAS_VALUE"/>
                     <output>
                         <prompt selectionType="RANDOM">
-                            <item>
-                                Error:I am sorry, I did not understand
-                                your question. Please try asking
-                                another one.
+                            <item>Ok, I have one {size} {topping1} &amp; {topping2} pizza for {method}. Is that correct?
                             </item>
                         </prompt>
+                        <goto ref="getUserInput_2469815"/>
                     </output>
-                </default>
-            </getUserInput>
+                </if>
+                <if>
+                    <cond varName="topping1" operator="HAS_VALUE"/>
+                    <output>
+                        <prompt selectionType="RANDOM">
+                            <item>Ok, I have one {size} {topping1} pizza for {method}. Is that correct?
+                            </item>
+                        </prompt>
+                        <goto ref="getUserInput_2469815"/>
+                    </output>
+                </if>
+                <output>
+                    <prompt selectionType="RANDOM">
+                        <item>Ok, I have one {size} pizza with no toppings for {method}. Is that correct?</item>
+                    </prompt>
+                    <getUserInput id="getUserInput_2469815">
+                        <input>
+                            <grammar>
+                                <item>yes</item>
+                                <item>$ yes</item>
+                                <item>$ yep</item>
+                                <item>$ yup</item>
+                                <item>$ good</item>
+                            </grammar>
+                            <output>
+                                <prompt selectionType="RANDOM">
+                                    <item>Sounds good! Your pizza will be ready in 20 minutes. Do you want to order another?</item>
+                                </prompt>
+                                <getUserInput>
+                                    <input>
+                                        <grammar>
+                                            <item>$ yes</item>
+                                            <item>$ yeah</item>
+                                            <item>$ yep</item>
+                                            <item>$ yup</item>
+                                        </grammar>
+                                        <output>
+                                            <prompt selectionType="RANDOM">
+                                                <item>Okay, let's make a pizza! What size would you like?</item>
+                                            </prompt>
+                                            <action
+                                            varName="method" operator="SET_TO_BLANK"/>
+                                            <action
+                                            varName="size" operator="SET_TO_BLANK"/>
+                                            <action
+                                            varName="topping1" operator="SET_TO_BLANK"/>
+                                            <action
+                                            varName="topping2" operator="SET_TO_BLANK"/>
+                                            <action
+                                            varName="topping3" operator="SET_TO_BLANK"/>
+                                            <action
+                                            varName="topping4" operator="SET_TO_BLANK"/>
+                                            <goto ref="getUserInput_2442994"/>
+                                        </output>
+                                    </input>
+                                    <input>
+                                        <grammar>
+                                            <item>$ no</item>
+                                        </grammar>
+                                        <output>
+                                            <prompt selectionType="RANDOM">
+                                                <item>Okay, thank you for your order! Just let me know if you want to place another order.</item>
+                                            </prompt>
+                                            <goto ref="getUserInput_2442994">
+                                                <action
+                                                varName="topping1" operator="SET_TO_BLANK"/>
+                                                <action
+                                                varName="topping2" operator="SET_TO_BLANK"/>
+                                            </goto>
+                                        </output>
+                                    </input>
+                                </getUserInput>
+                            </output>
+                        </input>
+                        <input>
+                            <grammar>
+                                <item>no</item>
+                                <item>$ no</item>
+                            </grammar>
+                            <output>
+                                <prompt selectionType="RANDOM">
+                                    <item>Oops! Let's start over. What type of food would you like?</item>
+                                </prompt>
+                                <goto ref="getUserInput_2442994">
+                                    <action varName="searchTerm" operator="SET_TO_BLANK"/>
+                                    <action varName="distance" operator="SET_TO_BLANK"/>
+                                </goto>
+                            </output>
+                        </input>
+                    </getUserInput>
+                </output>
+            </if>
+            <output>
+                <prompt selectionType="RANDOM">
+                    <item>Your order is incomplete. </item>
+                </prompt>
+                <if>
+                    <cond varName="size" operator="IS_BLANK"/>
+                    <output>
+                        <prompt selectionType="RANDOM">
+                            <item>What size would you like?</item>
+                        </prompt>
+                        <getUserInput>
+                            <input>
+                                <grammar>
+                                    <item>$ (Size)={size}</item>
+                                </grammar>
+                                <output>
+                                    <prompt/>
+                                    <action varName="size" operator="SET_TO">{size.value:main}</action>
+                                    <goto ref="profileCheck_2469744"/>
+                                </output>
+                            </input>
+                        </getUserInput>
+                    </output>
+                </if>
+                <if>
+                    <cond varName="method" operator="IS_BLANK"/>
+                    <goto ref="output_2469831"/>
+                </if>
+            </output>
         </folder>
-        <folder label="Library" id="Library">
-            <folder label="Live Content" id="Live Content"></folder>
-            <folder label="Storage" id="Storage"></folder>
-        </folder>
-        <folder label="Concepts" id="Concepts"></folder>
     </flow>
+    <folder label="Storage"/>
+    <folder label="Global"/>
+    <folder label="Concepts">
+        <concept>
+            <grammar>
+                <item>Type</item>
+                <item>kind</item>
+                <item>sort</item>
+                <item>variety</item>
+                <item>types</item>
+                <item>kinds</item>
+                <item>sorts</item>
+                <item>varieties</item>
+            </grammar>
+        </concept>
+        <concept>
+            <grammar>
+                <item>sure</item>
+                <item>certain</item>
+                <item>definite</item>
+                <item>positive</item>
+            </grammar>
+        </concept>
+        <concept>
+            <grammar>
+                <item>No</item>
+                <item>absolutely not</item>
+                <item>apparently not</item>
+                <item>Are not</item>
+                <item>By no means</item>
+                <item>Certainly not</item>
+                <item>Definitely not</item>
+                <item>Hardly</item>
+                <item>Heck no</item>
+                <item>Hell no</item>
+                <item>I suppose not</item>
+                <item>Negative</item>
+                <item>never </item>
+                <item>nix  </item>
+                <item>no no</item>
+                <item>no no no</item>
+                <item>No not at all</item>
+                <item>No not really</item>
+                <item>No thank you</item>
+                <item>no thanks</item>
+                <item>No way</item>
+                <item>Non</item>
+                <item>None</item>
+                <item>nope</item>
+                <item>not at all  </item>
+                <item>not by any means</item>
+                <item>Not completely</item>
+                <item>Not especially</item>
+                <item>Not particularly</item>
+                <item>not really</item>
+                <item>not right now</item>
+                <item>Not that I know of</item>
+                <item>of course not</item>
+                <item>please no</item>
+                <item>probably not</item>
+                <item>nopeity-nope-nope</item>
+                <item>n-n-n-no</item>
+                <item>n-o</item>
+            </grammar>
+        </concept>
+        <concept description="OI 15/7/11: Item &quot;Sure&quot; was removed from this list as it was causing issues with matches when two different input nodes had &quot;I am not sure&quot; and &quot;$ yes&quot;.  OI: 4/8/11: &quot;fine&quot; and &quot;Good&quot; were removed as well  MO 18/10/12 removed &quot;all right&quot; and &quot;alright&quot; as they were causing conflict in perfect boyfriend  MO 29/10/12 removed &quot;always&quot;">
+            <grammar>
+                <item>yes</item>
+                <item>Absolutely</item>
+                <item>absolutely correct</item>
+                <item>absolutely yes</item>
+                <item>Affirmative</item>
+                <item>affirmative yes</item>
+                <item>Ah yes</item>
+                <item>Apparently</item>
+                <item>Apparently so</item>
+                <item>As far as I know</item>
+                <item>aye</item>
+                <item>by all means </item>
+                <item>certainly</item>
+                <item>Completely</item>
+                <item>Constantly</item>
+                <item>Correct</item>
+                <item>dam right</item>
+                <item>damn right</item>
+                <item>Definite</item>
+                <item>Definitely</item>
+                <item>Especially</item>
+                <item>Evidently</item>
+                <item>exactly</item>
+                <item>Extremely</item>
+                <item>For sure</item>
+                <item>Fully</item>
+                <item>Generally</item>
+                <item>gladly  </item>
+                <item>good enough</item>
+                <item>granted</item>
+                <item>heck yes</item>
+                <item>Hell yes</item>
+                <item>I believe so</item>
+                <item>I decided yes</item>
+                <item>I think so</item>
+                <item>In this case</item>
+                <item>indeed</item>
+                <item>Ja</item>
+                <item>Most definitely</item>
+                <item>naturally</item>
+                <item>of course </item>
+                <item>Okie dokie</item>
+                <item>Oui</item>
+                <item>please yes</item>
+                <item>positively</item>
+                <item>positively yes</item>
+                <item>precisely</item>
+                <item>right on</item>
+                <item>Si</item>
+                <item>spot on</item>
+                <item>sure thing</item>
+                <item>surely</item>
+                <item>Uh huh</item>
+                <item>uh-huh</item>
+                <item>undoubtedly</item>
+                <item>unquestionably</item>
+                <item>very well  </item>
+                <item>why yes</item>
+                <item>willingly</item>
+                <item>without fail</item>
+                <item>word</item>
+                <item>yah</item>
+                <item>yeah</item>
+                <item>yep</item>
+                <item>yes please</item>
+                <item>Yes really</item>
+                <item>Yes right</item>
+                <item>Yes sometimes</item>
+                <item>Yes sure</item>
+                <item>yes yes</item>
+                <item>yes yes yes</item>
+                <item>Yes you</item>
+                <item>you bet</item>
+                <item>you got it</item>
+                <item>yup</item>
+                <item>yyeah</item>
+                <item>yyep</item>
+                <item>yyes</item>
+                <item>yyyyyyyyyyyyyyyyesssssss</item>
+                <item>yuup</item>
+                <item>yuupp</item>
+                <item>yuur</item>
+                <item>yuuu</item>
+                <item>yuuup</item>
+                <item>yuuupppp</item>
+                <item>yus</item>
+                <item>yuperoo</item>
+                <item>yuperz</item>
+                <item>yupidydoda</item>
+                <item>yupiii</item>
+                <item>yupo</item>
+                <item>yupp</item>
+                <item>yuppers</item>
+                <item>yupperz</item>
+                <item>yuppie</item>
+                <item>yuppp</item>
+                <item>yuppper</item>
+                <item>yupppers</item>
+                <item>yupppp</item>
+                <item>yupppppp</item>
+                <item>yups</item>
+                <item>yupyup</item>
+                <item>yupz</item>
+                <item>yupzz</item>
+                <item>yesz</item>
+                <item>yesyes</item>
+                <item>yesyesyes</item>
+                <item>yesyesyesyes</item>
+                <item>yesyesyesyesyes</item>
+                <item>yesyesyesyesyesyes</item>
+                <item>yesyesyesyesyesyesyes</item>
+                <item>yez</item>
+                <item>yezz</item>
+                <item>yezzir</item>
+                <item>yha</item>
+                <item>yipyesg</item>
+                <item>yesh</item>
+                <item>yeshum</item>
+                <item>yeshums</item>
+                <item>yesi i</item>
+                <item>yesish</item>
+                <item>yesit it</item>
+                <item>yesly</item>
+                <item>yesm</item>
+                <item>yesn</item>
+                <item>yesq</item>
+                <item>yess</item>
+                <item>yesseess</item>
+                <item>yesshhh</item>
+                <item>yessiere</item>
+                <item>yessin</item>
+                <item>yessir</item>
+                <item>yessiree</item>
+                <item>yessireeee</item>
+                <item>yessm</item>
+                <item>yesss</item>
+                <item>yessss</item>
+                <item>yessum</item>
+                <item>yeper</item>
+                <item>yeperdoodles</item>
+                <item>yepers</item>
+                <item>yeples</item>
+                <item>yepo</item>
+                <item>yepp</item>
+                <item>yeppah</item>
+                <item>yepper</item>
+                <item>yeppers</item>
+                <item>yepperz</item>
+                <item>yeppie</item>
+                <item>yeppo</item>
+                <item>yeppp</item>
+                <item>yeppppppp</item>
+                <item>yepppppppppppppppppppppp</item>
+                <item>yeppurs</item>
+                <item>yeppy</item>
+                <item>yeppz</item>
+                <item>yeps</item>
+                <item>yepsiree</item>
+                <item>yepster</item>
+                <item>yepyep</item>
+                <item>yepyepyepyepyepyepy</item>
+                <item>yepz</item>
+                <item>yer</item>
+                <item>yeess</item>
+                <item>yeesss</item>
+                <item>yeessss</item>
+                <item>yeesssss</item>
+                <item>yehh</item>
+                <item>yehhh</item>
+                <item>yehhhh</item>
+                <item>yeh</item>
+                <item>yehhhhhhhhh</item>
+                <item>yerr</item>
+                <item>yerrr</item>
+                <item>yerrrr</item>
+                <item>yeea</item>
+                <item>yeeaaah</item>
+                <item>yeeaah</item>
+                <item>yeeaahh</item>
+                <item>yeeaahhh</item>
+                <item>yeeah</item>
+                <item>yeeargh</item>
+                <item>yeeeah</item>
+                <item>yeeeeaaaaaaah</item>
+                <item>yeeeeaaaaahhh</item>
+                <item>yeeeeaaah</item>
+                <item>yeeeeah</item>
+                <item>yeeeee</item>
+                <item>yeeeeeah</item>
+                <item>sure</item>
+            </grammar>
+        </concept>
+        <concept>
+            <grammar>
+                <item>I would like</item>
+                <item>I want</item>
+                <item>Give me</item>
+                <item>Lets do</item>
+                <item>I choose</item>
+            </grammar>
+        </concept>
+    </folder>
+    <entities>
+        <entity name="searchTerm">
+            <value name="food" value="food">
+                <grammar>
+                    <item>food</item>
+                    <item>Food</item>
+                    <item>foods</item>
+                    <item>Foods</item>
+                    <item>foood</item>
+                </grammar>
+            </value>
+            <value name="restaurant" value="restaurant">
+                <grammar>
+                    <item>restaurant</item>
+                    <item>Restaurant</item>
+                    <item>restaurante</item>
+                    <item>Restaurante</item>
+                </grammar>
+            </value>
+            <value name="Chinese food" value="Chinese food">
+                <grammar>
+                    <item>Chinese Food</item>
+                    <item>Chinese food</item>
+                    <item>chinese Food</item>
+                    <item>Chinese</item>
+                    <item>chinese food</item>
+                </grammar>
+            </value>
+            <value name="Japanese food" value="Japanese food">
+                <grammar>
+                    <item>Japanese Food</item>
+                    <item>Japanese food</item>
+                    <item>japanese Food</item>
+                    <item>Japanese</item>
+                    <item>japanese food</item>
+                </grammar>
+            </value>
+            <value name="Korean food" value="Korean food">
+                <grammar>
+                    <item>Korean Food</item>
+                    <item>Korean food</item>
+                    <item>korean Food</item>
+                    <item>Korean</item>
+                    <item>korean food</item>
+                </grammar>
+            </value>
+            <value name="Thai food" value="Thai food">
+                <grammar>
+                    <item>Thai Food</item>
+                    <item>Thai food</item>
+                    <item>thai food</item>
+                    <item>Thai</item>
+                    <item>thai food</item>
+                </grammar>
+            </value>
+            <value name="Vietnamese food" value="Vietnamese food">
+                <grammar>
+                    <item>Vietnamese Food</item>
+                    <item>Vietnamese food</item>
+                    <item>vietnamese Food</item>
+                    <item>Vietnamese</item>
+                    <item>vietnamese food</item>
+                    <item>Viet Food</item>
+                    <item>Viet food</item>
+                    <item>viet food</item>
+                    <item>Viet</item>
+                    <item>viet food</item>
+                    <item>Pho</item>
+                    <item>pho</item>
+                </grammar>
+            </value>
+            <value name="Mongolian food" value="Mongolian food">
+                <grammar>
+                    <item>Mongolian Food</item>
+                    <item>Mongolian food</item>
+                    <item>mongolian Food</item>
+                    <item>Mongolian</item>
+                    <item>mongolian food</item>
+                </grammar>
+            </value>
+            <value name="Taiwanese food" value="Taiwanese food">
+                <grammar>
+                    <item>Taiwanese Food</item>
+                    <item>Taiwanese food</item>
+                    <item>taiwanese Food</item>
+                    <item>Taiwanese</item>
+                    <item>taiwanese food</item>
+                </grammar>
+            </value>
+            <value name="American food" value="American food">
+                <grammar>
+                    <item>American Food</item>
+                    <item>American food</item>
+                    <item>american Food</item>
+                    <item>American</item>
+                    <item>american food</item>
+                </grammar>
+            </value>
+            <value name="Italian food" value="Italian food">
+                <grammar>
+                    <item>Italian Food</item>
+                    <item>Italian food</item>
+                    <item>italian Food</item>
+                    <item>Italian</item>
+                    <item>italian food</item>
+                </grammar>
+            </value>
+            <value name="French food" value="French food">
+                <grammar>
+                    <item>French Food</item>
+                    <item>French food</item>
+                    <item>french Food</item>
+                    <item>French</item>
+                    <item>french food</item>
+                </grammar>
+            </value>
+            <value name="Mexican food" value="Mexican food">
+                <grammar>
+                    <item>Mexican Food</item>
+                    <item>Mexican food</item>
+                    <item>mexican Food</item>
+                    <item>Mexican</item>
+                    <item>mexican food</item>
+                </grammar>
+            </value>
+            <value name="Peruvian food" value="Peruvian food">
+                <grammar>
+                    <item>Peruvian Food</item>
+                    <item>Peruvian food</item>
+                    <item>peruvian Food</item>
+                    <item>Peruvian</item>
+                    <item>peruvian food</item>
+                </grammar>
+            </value>
+        </entity>
+        <entity name="distance">
+            <value name="321 meters" value="321">
+                <grammar>
+                    <item>2 blocks</item>
+                    <item>2 Blocks</item>
+                    <item>Two blocks</item>
+                    <item>Two Blocks</item>
+                    <item>two blocks</item>
+                    <item>two Blocks</item>
+                    <item>2blocks</item>
+                    <item>2Blocks</item>
+                    <item>2block</item>
+                    <item>2Block</item>
+                </grammar>
+            </value>
+            <value name="965 meters" value="965">
+                <grammar>
+                    <item>6 blocks</item>
+                    <item>6 Blocks</item>
+                    <item>Six blocks</item>
+                    <item>Six Blocks</item>
+                    <item>six blocks</item>
+                    <item>six Blocks</item>
+                    <item>6blocks</item>
+                    <item>6Blocks</item>
+                    <item>6block</item>
+                    <item>6Block</item>
+                </grammar>
+            </value>
+            <value name="1609 meters" value="1609">
+                <grammar>
+                    <item>1 mile</item>
+                    <item>1 Mile</item>
+                    <item>One mile</item>
+                    <item>One Mile</item>
+                    <item>one mile</item>
+                    <item>one Mile</item>
+                    <item>1mile</item>
+                    <item>1Mile</item>
+                    <item>1mile</item>
+                    <item>1Mile</item>
+                </grammar>
+            </value>
+            <value name="8046 meters" value="8046">
+                <grammar>
+                    <item>5 mile</item>
+                    <item>5 Mile</item>
+                    <item>Five mile</item>
+                    <item>Five Mile</item>
+                    <item>five mile</item>
+                    <item>five Mile</item>
+                    <item>5mile</item>
+                    <item>5Mile</item>
+                    <item>5mile</item>
+                    <item>5Mile</item>
+                </grammar>
+            </value>
+            <value name="32186 meters" value="32186">
+                <grammar>
+                    <item>20 mile</item>
+                    <item>20 Mile</item>
+                    <item>Twenty mile</item>
+                    <item>Twenty Mile</item>
+                    <item>twenty mile</item>
+                    <item>twenty Mile</item>
+                    <item>20mile</item>
+                    <item>20Mile</item>
+                    <item>20mile</item>
+                    <item>20Mile</item>
+                </grammar>
+            </value>
+        </entity>
+    </entities>
+    <constants>
+        <var_folder name="Home">
+            <var_folder name="General" type="CONST">
+                <var name="VA" type="TAG" description="Name of the virtual agent">Peppe</var>
+            </var_folder>
+        </var_folder>
+    </constants>
+    <variables>
+        <var_folder name="Home">
+            <var name="searchTerm" type="TEXT" description="coffee, thai food, tea, etc."/>
+            <var name="distance" type="TEXT" description="distance from current location"/>
+        </var_folder>
+    </variables>
+    <settings>
+        <setting name="USERIDNUM" type="USER">759</setting>
+        <setting name="EMAIL" type="USER"></setting>
+        <setting name="PASSWORD" type="USER"></setting>
+        <setting name="FIRSTNAME" type="USER">IBM</setting>
+        <setting name="LASTNAME" type="USER">Watson</setting>
+        <setting name="COUNTRY" type="USER">USA</setting>
+        <setting name="STATE" type="USER">NY State</setting>
+        <setting name="CITY" type="USER">NY</setting>
+        <setting name="BDAY" type="USER">1</setting>
+        <setting name="BMONTH" type="USER">1</setting>
+        <setting name="BYEAR" type="USER">2000</setting>
+        <setting name="SEX" type="USER">Male</setting>
+        <setting name="DISPLAYNAME" type="USER">IBM Watson</setting>
+        <setting name="PROVIDESECURITYPASSWORD" type="USER">false</setting>
+        <setting name="SECURITYPASSWORD" type="USER"></setting>
+        <setting name="SHOWPERSPROFILE" type="USER">false</setting>
+        <setting name="USETYPE" type="USER">0</setting>
+        <setting name="DATEJOINED" type="USER">2015-08-07 16:27:53.281</setting>
+        <setting name="LASTLOGIN" type="USER">2015-08-07 16:27:53.281</setting>
+        <setting name="LOGINCOUNT" type="USER">0</setting>
+        <setting name="CREDIT" type="USER">100</setting>
+        <setting name="CONVCOUNT" type="USER">4</setting>
+        <setting name="PERSONALITYTYPEID" type="USER">0</setting>
+        <setting name="SHOWSENDMESSAGE" type="USER">true</setting>
+        <setting name="ACTIVATED" type="USER">true</setting>
+        <setting name="MESSENGEREMAIL" type="USER"></setting>
+        <setting name="MESSENGERPASSWORD" type="USER"></setting>
+        <setting name="SENDCHATEMAIL" type="USER">true</setting>
+        <setting name="SENDFAVEMAIL" type="USER">true</setting>
+        <setting name="CACHE" type="USER">true</setting>
+        <setting name="CLASSTYPE" type="USER">3</setting>
+        <setting name="AUTOLEARN" type="USER">false</setting>
+        <setting name="LANGUAGE" type="USER">EN</setting>
+        <setting name="RESPONSETIME" type="USER">-2</setting>
+        <setting name="MAXAUTOLEARNITEMS" type="USER">0</setting>
+        <setting name="NUMAUTOSETRELATED" type="USER">0</setting>
+        <setting name="TIMEZONEID" type="USER">Australia/Sydney</setting>
+        <setting name="AUTOSETRELATEDNODEID" type="USER">0</setting>
+        <setting name="RETURNTOCHATNODEID" type="USER">0</setting>
+        <setting name="INPUTMASKTYPE" type="USER">0</setting>
+        <setting name="NUMLOGINATTEMPTS" type="USER">0</setting>
+        <setting name="CONCEPTMATCHING" type="USER">0</setting>
+        <setting name="UI_COLOUR"></setting>
+        <setting name="USE_CONCEPTS">3</setting>
+        <setting name="AL_NONE_LABEL">None of the above</setting>
+        <setting name="ASR_RANDOM">true</setting>
+        <setting name="DYNAMIC_MESSAGING">false</setting>
+        <setting name="DOCBASE_NUM_RESULTS">3</setting>
+        <setting name="DOCBASE_DESC_LEN">250</setting>
+        <setting name="STATUS">0</setting>
+        <setting name="DEFAULT_DNR_RETURN_POINT_CANDIDATE">-1</setting>
+        <setting name="ENTITIES_SCOPE">3</setting>
+        <setting name="POSTNODEID"></setting>
+        <setting name="MULTISENT">0</setting>
+        <setting name="DNR_NODE_ID">-15</setting>
+        <setting name="CLEARCACHE">sd6pprd-dfd2 sd6pprd-1e75</setting>
+    </settings>
+    <specialSettings>
+        <specialSetting label="DNR Join Statement">
+            <variations/>
+        </specialSetting>
+    </specialSettings>
 </dialog>

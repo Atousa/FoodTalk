@@ -35,8 +35,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         resDemo1.city = "San Francisco"
         resDemo1.state = "CA"
         resDemo1.country = "United States"
-        
-        addRestaurant(resDemo1)
+        addRestaurant(resDemo1,presentViewController:self)
         
         let resDemo2 = restaurantDescriptor()
         
@@ -45,7 +44,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         resDemo2.city = "Berkeley"
         resDemo2.state = "CA"
         resDemo2.country = "United States"
-        addRestaurant(resDemo2)
+        addRestaurant(resDemo2, presentViewController: self)
         
         let resDemo3 = restaurantDescriptor()
         
@@ -54,7 +53,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         resDemo3.city = "San Francisco"
         resDemo3.state = "CA"
         resDemo3.country = "United States"
-        addRestaurant(resDemo3)
+        addRestaurant(resDemo3, presentViewController: self)
         
         
         /*
@@ -79,6 +78,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
         
         
         if CLLocationManager.locationServicesEnabled() {
@@ -87,6 +87,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations loc: [CLLocation]) {
+        locationManager.stopUpdatingLocation()
         self.location = loc.last!
         self.restaurant = self.findNearbyRestaurants(loc.last!)
         print(self.restaurant.count)
@@ -160,7 +161,6 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(self.restaurant.count)
         return self.restaurant.count
     }
 

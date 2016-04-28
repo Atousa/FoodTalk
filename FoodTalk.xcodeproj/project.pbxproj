@@ -23,7 +23,6 @@
 		1A5E5A531CCAE24900BBA6A1 /* SearchFoodPlaces.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E5A521CCAE24900BBA6A1 /* SearchFoodPlaces.storyboard */; };
 		1A5E5A551CCAE2AA00BBA6A1 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		1AD77C391CD10BAA00CDF00F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD77C381CD10BAA00CDF00F /* AppDelegate.swift */; };
-		1AD77C3D1CD10CCF00CDF00F /* foodSearchDialog.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1AD77C3C1CD10CCF00CDF00F /* foodSearchDialog.xml */; };
 		711BAD951CCF47820011C7F8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 711BAD941CCF47820011C7F8 /* CoreLocation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		711BAD971CCF4A300011C7F8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 711BAD961CCF4A300011C7F8 /* MapKit.framework */; };
 		711FF97C1CCA0111000180B6 /* pizza_sample.xml in Resources */ = {isa = PBXBuildFile; fileRef = 711FF97B1CCA0111000180B6 /* pizza_sample.xml */; };
@@ -35,6 +34,7 @@
 		7133116A1CCC0902006CE651 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713311641CCC0902006CE651 /* Photo+CoreDataProperties.swift */; };
 		7133116B1CCC0902006CE651 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713311651CCC0902006CE651 /* Photo.swift */; };
 		7133116F1CCC8F64006CE651 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7133116E1CCC8F64006CE651 /* CoreDataManager.swift */; };
+		714EF7F31CD15E8F0036F514 /* foodSearchDialog.xml in Resources */ = {isa = PBXBuildFile; fileRef = 714EF7F21CD15E8F0036F514 /* foodSearchDialog.xml */; };
 		7171CB4B1CC94CBC00B9E706 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB451CC94CBC00B9E706 /* Alamofire.framework */; };
 		7171CB4C1CC94CBC00B9E706 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB461CC94CBC00B9E706 /* AlamofireObjectMapper.framework */; };
 		7171CB4D1CC94CBC00B9E706 /* HTTPStatusCodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB471CC94CBC00B9E706 /* HTTPStatusCodes.framework */; };
@@ -90,7 +90,6 @@
 		1A5E5A4E1CCACE9E00BBA6A1 /* FoodTalk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodTalk-Bridging-Header.h"; sourceTree = "<group>"; };
 		1A5E5A521CCAE24900BBA6A1 /* SearchFoodPlaces.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchFoodPlaces.storyboard; sourceTree = "<group>"; };
 		1AD77C381CD10BAA00CDF00F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1AD77C3C1CD10CCF00CDF00F /* foodSearchDialog.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = foodSearchDialog.xml; sourceTree = "<group>"; };
 		482FED0ADB4A4DD453B75CD1 /* Pods-FoodTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTalk/Pods-FoodTalk.release.xcconfig"; sourceTree = "<group>"; };
 		711BAD941CCF47820011C7F8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		711BAD961CCF4A300011C7F8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -103,6 +102,7 @@
 		713311641CCC0902006CE651 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		713311651CCC0902006CE651 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		7133116E1CCC8F64006CE651 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		714EF7F21CD15E8F0036F514 /* foodSearchDialog.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = foodSearchDialog.xml; sourceTree = "<group>"; };
 		7171CB451CC94CBC00B9E706 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		7171CB461CC94CBC00B9E706 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = Carthage/Build/iOS/AlamofireObjectMapper.framework; sourceTree = "<group>"; };
 		7171CB471CC94CBC00B9E706 /* HTTPStatusCodes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HTTPStatusCodes.framework; path = Carthage/Build/iOS/HTTPStatusCodes.framework; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 		1A4FE0A71CC7022C00EE8787 /* Dialogue */ = {
 			isa = PBXGroup;
 			children = (
-				1AD77C3C1CD10CCF00CDF00F /* foodSearchDialog.xml */,
+				714EF7F21CD15E8F0036F514 /* foodSearchDialog.xml */,
 				1A4FE0A01CC7017500EE8787 /* Dialogue.storyboard */,
 				1A4FE0AA1CC7029100EE8787 /* DialogueController.swift */,
 				717E624A1CC7FAE80078B71A /* DialogueCell.swift */,
@@ -331,13 +331,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A5E5A531CCAE24900BBA6A1 /* SearchFoodPlaces.storyboard in Resources */,
-				1AD77C3D1CD10CCF00CDF00F /* foodSearchDialog.xml in Resources */,
 				711FF97C1CCA0111000180B6 /* pizza_sample.xml in Resources */,
 				1A4FE0EA1CC83D8200EE8787 /* Podfile in Resources */,
 				1A4FE0A11CC7017500EE8787 /* Dialogue.storyboard in Resources */,
 				1A4FE0991CC6FDA000EE8787 /* LaunchScreen.storyboard in Resources */,
 				1A4FE0A41CC701B600EE8787 /* FavoritesList.storyboard in Resources */,
 				1A4FE0961CC6FDA000EE8787 /* Assets.xcassets in Resources */,
+				714EF7F31CD15E8F0036F514 /* foodSearchDialog.xml in Resources */,
 				1A4FE0911CC6FDA000EE8787 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

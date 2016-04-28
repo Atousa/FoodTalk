@@ -26,11 +26,11 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.DialogueTableView.separatorStyle = .None
         self.responseTextField.delegate = self
         
-        self.service = Dialog(username: "585c94ca-d7e2-4b6e-9b8c-e28e00d27b55", password: "keuvuyZjRb7O")
+        self.service = Dialog(username: "b9b42757-5fa9-4633-8cb6-39f92fe7e18c", password: "GiDY7J5THqx3")
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         
         
-        let dialogName = "xmlchanged3"
+        let dialogName = "xmlchanged6"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
