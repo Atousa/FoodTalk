@@ -4,8 +4,9 @@
         <folder label="Main">
             <output>
                 <prompt selectionType="RANDOM">
-                    <item>What food you want fam?</item>
-                    <item>I am at your service. What type of food would you like to eat?</item>
+                    <item>What type of food do you want?</item>
+                    <item>What type of food would you like to eat?</item>
+                    <item>Name a type like American, Italian, Chinese, etc.</item>
                 </prompt>
                 <goto ref="getUserInput_2442994"/>
             </output>
@@ -18,7 +19,7 @@
                     <default>
                         <output>
                             <prompt selectionType="RANDOM">
-                                <item>Sorry fam, I didn't get that'</item>
+                                <item>Sorry fam, I didn't get that</item>
                                 <item>I don't know what you're tryna say</item>
                                 <item>I didnt grasp what you said.</item>
                                 <item>I'm not following you at the moment.</item>
@@ -49,8 +50,8 @@
                                     <output id="output_2469801">
                                         <prompt selectionType="RANDOM">
                                             <action varName="searchTerm" operator="SET_TO">{searchTerm.value:main}</action>
-                                            <item>Cool cool. How far are you willing to travel?</item>
-                                            <item>Awesomesauce. How far would you like to go?</item>
+                                            <item>Cool. How far are you willing to travel?</item>
+                                            <item>Awesome. How far would you like to go?</item>
                                         </prompt>
                                     </output>
                                     <getUserInput>
@@ -62,8 +63,7 @@
                                                 <item>Two blocks</item>
                                                 <item>two blocks</item>
                                             </grammar>
-                                            <action
-                                                varName="distance" operator="SET_TO">321 meters</action>
+                                            <action varName="distance" operator="SET_TO">{distance.value:main}</action>
                                             <goto ref="profileCheck_2469744"/>
                                         </input>
                                         <input>
@@ -74,8 +74,7 @@
                                                 <item>Six blocks</item>
                                                 <item>six blocks</item>
                                             </grammar>
-                                            <action
-                                                varName="method" operator="SET_TO">965 meters</action>
+                                            <action varName="distance" operator="SET_TO">{distance.value:main}</action>
                                             <goto ref="profileCheck_2469744"/>
                                         </input>
                                         <input>
@@ -86,8 +85,7 @@
                                                 <item>One mile</item>
                                                 <item>one mile</item>
                                             </grammar>
-                                            <action
-                                                varName="method" operator="SET_TO">1609 meters</action>
+                                            <action varName="distance" operator="SET_TO">{distance.value:main}</action>
                                             <goto ref="profileCheck_2469744"/>
                                         </input>
                                         <input>
@@ -98,8 +96,7 @@
                                                 <item>Five mile</item>
                                                 <item>five mile</item>
                                             </grammar>
-                                            <action
-                                                varName="method" operator="SET_TO">8046 meters</action>
+                                            <action varName="distance" operator="SET_TO">{distance.value:main}</action>
                                             <goto ref="profileCheck_2469744"/>
                                         </input>
                                         <input>
@@ -111,8 +108,7 @@
                                                 <item>twentyfive miles</item>
                                                 <item>Twenty-five miles</item>
                                             </grammar>
-                                            <action
-                                                varName="method" operator="SET_TO">delivery</action>
+                                            <action varName="distance" operator="SET_TO">{distance.value:main}</action>
                                             <goto ref="profileCheck_2469744"/>
                                         </input>
                                     </getUserInput>
@@ -121,6 +117,7 @@
                         </output>
                     </output>
                 </input>
+                
             </folder>
         </folder>
         
@@ -1389,29 +1386,9 @@
             <if id="profileCheck_2469744">
                 <cond varName="searchTerm" operator="HAS_VALUE"/>
                 <cond varName="distance" operator="HAS_VALUE"/>
-                <if>
-                    <cond varName="topping2" operator="HAS_VALUE"/>
-                    <output>
-                        <prompt selectionType="RANDOM">
-                            <item>Ok, I have one {size} {topping1} &amp; {topping2} pizza for {method}. Is that correct?
-                            </item>
-                        </prompt>
-                        <goto ref="getUserInput_2469815"/>
-                    </output>
-                </if>
-                <if>
-                    <cond varName="topping1" operator="HAS_VALUE"/>
-                    <output>
-                        <prompt selectionType="RANDOM">
-                            <item>Ok, I have one {size} {topping1} pizza for {method}. Is that correct?
-                            </item>
-                        </prompt>
-                        <goto ref="getUserInput_2469815"/>
-                    </output>
-                </if>
                 <output>
                     <prompt selectionType="RANDOM">
-                        <item>Ok, I have one {size} pizza with no toppings for {method}. Is that correct?</item>
+                        <item>Ok, you want {searchTerm} within {distance}. Is that correct?</item>
                     </prompt>
                     <getUserInput id="getUserInput_2469815">
                         <input>
@@ -1422,64 +1399,19 @@
                                 <item>$ yup</item>
                                 <item>$ good</item>
                             </grammar>
-                            <output>
-                                <prompt selectionType="RANDOM">
-                                    <item>Sounds good! Your pizza will be ready in 20 minutes. Do you want to order another?</item>
-                                </prompt>
-                                <getUserInput>
-                                    <input>
-                                        <grammar>
-                                            <item>$ yes</item>
-                                            <item>$ yeah</item>
-                                            <item>$ yep</item>
-                                            <item>$ yup</item>
-                                        </grammar>
-                                        <output>
-                                            <prompt selectionType="RANDOM">
-                                                <item>Okay, let's make a pizza! What size would you like?</item>
-                                            </prompt>
-                                            <action
-                                            varName="method" operator="SET_TO_BLANK"/>
-                                            <action
-                                            varName="size" operator="SET_TO_BLANK"/>
-                                            <action
-                                            varName="topping1" operator="SET_TO_BLANK"/>
-                                            <action
-                                            varName="topping2" operator="SET_TO_BLANK"/>
-                                            <action
-                                            varName="topping3" operator="SET_TO_BLANK"/>
-                                            <action
-                                            varName="topping4" operator="SET_TO_BLANK"/>
-                                            <goto ref="getUserInput_2442994"/>
-                                        </output>
-                                    </input>
-                                    <input>
-                                        <grammar>
-                                            <item>$ no</item>
-                                        </grammar>
-                                        <output>
-                                            <prompt selectionType="RANDOM">
-                                                <item>Okay, thank you for your order! Just let me know if you want to place another order.</item>
-                                            </prompt>
-                                            <goto ref="getUserInput_2442994">
-                                                <action
-                                                varName="topping1" operator="SET_TO_BLANK"/>
-                                                <action
-                                                varName="topping2" operator="SET_TO_BLANK"/>
-                                            </goto>
-                                        </output>
-                                    </input>
-                                </getUserInput>
-                            </output>
                         </input>
                         <input>
                             <grammar>
                                 <item>no</item>
                                 <item>$ no</item>
+                                <item>nah</item>
+                                <item>$ nah</item>
+                                <item>naw</item>
+                                <item>$ naw</item>
                             </grammar>
                             <output>
                                 <prompt selectionType="RANDOM">
-                                    <item>Oops! Let's start over. What type of food would you like?</item>
+                                    <item>I see. Let's start over. What type of food would you like?</item>
                                 </prompt>
                                 <goto ref="getUserInput_2442994">
                                     <action varName="searchTerm" operator="SET_TO_BLANK"/>
@@ -1490,35 +1422,6 @@
                     </getUserInput>
                 </output>
             </if>
-            <output>
-                <prompt selectionType="RANDOM">
-                    <item>Your order is incomplete. </item>
-                </prompt>
-                <if>
-                    <cond varName="size" operator="IS_BLANK"/>
-                    <output>
-                        <prompt selectionType="RANDOM">
-                            <item>What size would you like?</item>
-                        </prompt>
-                        <getUserInput>
-                            <input>
-                                <grammar>
-                                    <item>$ (Size)={size}</item>
-                                </grammar>
-                                <output>
-                                    <prompt/>
-                                    <action varName="size" operator="SET_TO">{size.value:main}</action>
-                                    <goto ref="profileCheck_2469744"/>
-                                </output>
-                            </input>
-                        </getUserInput>
-                    </output>
-                </if>
-                <if>
-                    <cond varName="method" operator="IS_BLANK"/>
-                    <goto ref="output_2469831"/>
-                </if>
-            </output>
         </folder>
     </flow>
     <folder label="Storage"/>
@@ -1926,7 +1829,7 @@
             </value>
         </entity>
         <entity name="distance">
-            <value name="321 meters" value="321">
+            <value name="2 blocks" value="2 blocks">
                 <grammar>
                     <item>2 blocks</item>
                     <item>2 Blocks</item>
@@ -1940,7 +1843,7 @@
                     <item>2Block</item>
                 </grammar>
             </value>
-            <value name="965 meters" value="965">
+            <value name="6 blocks" value="6 blocks">
                 <grammar>
                     <item>6 blocks</item>
                     <item>6 Blocks</item>
@@ -1954,7 +1857,7 @@
                     <item>6Block</item>
                 </grammar>
             </value>
-            <value name="1609 meters" value="1609">
+            <value name="1 mile" value="1 mile">
                 <grammar>
                     <item>1 mile</item>
                     <item>1 Mile</item>
@@ -1968,32 +1871,32 @@
                     <item>1Mile</item>
                 </grammar>
             </value>
-            <value name="8046 meters" value="8046">
+            <value name="5 miles" value="5 miles">
                 <grammar>
-                    <item>5 mile</item>
-                    <item>5 Mile</item>
-                    <item>Five mile</item>
-                    <item>Five Mile</item>
-                    <item>five mile</item>
-                    <item>five Mile</item>
-                    <item>5mile</item>
-                    <item>5Mile</item>
-                    <item>5mile</item>
-                    <item>5Mile</item>
+                    <item>5 miles</item>
+                    <item>5 Miles</item>
+                    <item>Five miles</item>
+                    <item>Five Miles</item>
+                    <item>five miles</item>
+                    <item>five Miles</item>
+                    <item>5miles</item>
+                    <item>5Miles</item>
+                    <item>5miles</item>
+                    <item>5Miles</item>
                 </grammar>
             </value>
-            <value name="32186 meters" value="32186">
+            <value name="20 miles" value="20 miles">
                 <grammar>
-                    <item>20 mile</item>
-                    <item>20 Mile</item>
-                    <item>Twenty mile</item>
-                    <item>Twenty Mile</item>
-                    <item>twenty mile</item>
-                    <item>twenty Mile</item>
-                    <item>20mile</item>
-                    <item>20Mile</item>
-                    <item>20mile</item>
-                    <item>20Mile</item>
+                    <item>20 miles</item>
+                    <item>20 Miles</item>
+                    <item>Twenty miles</item>
+                    <item>Twenty Miles</item>
+                    <item>twenty miles</item>
+                    <item>twenty Miles</item>
+                    <item>20miles</item>
+                    <item>20Miles</item>
+                    <item>20miles</item>
+                    <item>20Miles</item>
                 </grammar>
             </value>
         </entity>
