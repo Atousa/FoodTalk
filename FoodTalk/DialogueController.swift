@@ -18,7 +18,9 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var dialogID: Dialog.DialogID?
     var watsonLog: [String] = []
     var userLog: [String] = []
-//    var infoFromWatson: [String] = []
+    var foodType = String()
+    var dist = String()
+
     
     
     override func viewDidLoad() {
@@ -120,18 +122,18 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     
     
     func parse(text: String)-> Void {
-        let keywords = [ "dim sum", "chinese", "vietnamese", "american", "italian", "french", "korean", "japanese", "mexican", "peruvian", "british" ]
-        let distances = [ "1 mile", "2 miles", "5 miles", "10 miles" ]
-        var foodType = "american"
-//        infoFromWatson.append(foodType)
-        var dist = "10 miles"
-//        infoFromWatson.append(dist)
+        let keywords = [ "dim sum", "chinese", "vietnamese", "american", "italian", "french", "korean", "japanese", "thai", "mexican", "peruvian", "british",
+                         "mongolian", "taiwanese"]
+        let distances = [ "1 mile", "5 miles", "20 miles", "2 blocks", "6 blocks" ]
         for word in keywords {
             if text.lowercaseString.rangeOfString(word) != nil {
                 foodType = word
                 switch(word) {
                 case "dim sum":
                     foodType = "chinese"
+                    break
+                case "sushi":
+                    foodType = "japanese"
                     break
                 default:
                     break
@@ -145,8 +147,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                 print("distance: " + dist)
             }
         }
-        
-        // do the yelp query here based on the foodType and distance
+
         
     }
     
@@ -157,7 +158,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.userLog.append(text!)
         
         if(text == "Bye!") {
-//            SearchResultViewController.infoFromWatson = self.infoFromWatson
             performSegueWithIdentifier("SearchSegue", sender: self)
             
         }
@@ -191,8 +191,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.watsonLog.count
     }
-    
-    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -260,5 +258,11 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     @IBAction func onSendButtonPressed(sender: AnyObject) {
         self.responseFromUser(responseTextField.text)
         responseTextField.text = ""
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+            let srvc = segue.destinationViewController as! SearchResultViewController
+            srvc.distance = dist
+            srvc.type = foodType
     }
 }

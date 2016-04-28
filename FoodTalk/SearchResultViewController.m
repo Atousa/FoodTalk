@@ -20,6 +20,7 @@
 @property NSString *token;
 @property NSString *tokenSecret;
 
+
 @property YLPSearch *searchResult;
 @property NSMutableArray *arrayOfBusinesses;
 
@@ -40,7 +41,8 @@
     
     YLPClient *client = [[YLPClient alloc]initWithConsumerKey:self.consumerKey consumerSecret:self.consumerSecret token:self.token tokenSecret:self.tokenSecret];
     
-    self.searchTerm = @"thai food";
+    self.searchTerm = self.type;
+    NSLog(@"%@",self.type);
     
     [client searchWithLocation:@"San Francisco, CA" currentLatLong:nil term:self.searchTerm limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
         [self.searchActivityIndicator startAnimating];
