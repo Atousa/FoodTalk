@@ -7,9 +7,12 @@
 //
 
 #import "SearchResultViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 
-@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
+
+@property CLLocationManager *locationManager;
 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *searchActivityIndicator;
@@ -41,6 +44,15 @@
     
     YLPClient *client = [[YLPClient alloc]initWithConsumerKey:self.consumerKey consumerSecret:self.consumerSecret token:self.token tokenSecret:self.tokenSecret];
     
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager startUpdatingLocation];
+    
+    
+    
     self.searchTerm = self.type;
     NSLog(@"%@",self.type);
     
@@ -55,6 +67,13 @@
         });
     }];
 }
+
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations {
+    CLLocation *location = [locations lastObject];
+    NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
+}
+
 
 #pragma mark - TableView Methods
 
