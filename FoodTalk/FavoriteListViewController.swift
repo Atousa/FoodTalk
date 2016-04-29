@@ -18,9 +18,12 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     let locationManager = CLLocationManager()
     var location = CLLocation()
     var restaurant = [Restaurant]()
+    var r : Restaurant!
     let predicate = NSPredicate()
     let resDemo1 = restaurantDescriptor()
     let resDemo2 = restaurantDescriptor()
+    
+    
     let resDemo3 = restaurantDescriptor()
     let visit1 = visitDescriptor()
     let visit2 = visitDescriptor()
@@ -30,6 +33,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.delegate = self
         
         
         //var photo = Photo()
@@ -200,19 +204,25 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell", forIndexPath: indexPath) as! FavoriteListCell
-        let r = self.restaurant[indexPath.row]
+        self.r = self.restaurant[indexPath.row]
         cell.nameOfResturant.text = r.name
-        var enumerator: NSEnumerator = (self.restaurant[indexPath.row].visits?.objectEnumerator())!
-        while var myVisit = enumerator.nextObject() as! Visit?{
-            print(myVisit.date)
-            print(myVisit.notes)
-            print(myVisit.rating)
+        return cell
             
         }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
+        r = restaurant[indexPath!.row]
         
-        return cell
+        let enumeratore = self.r.visits?.objectEnumerator()
+               while let myVisit = enumeratore!.nextObject() as! Visit? {
+                    print(myVisit.notes)
+        }
         
-        
+        let vc = segue.destinationViewController as! FavoriteListDetails
+        vc.r = r
+    
     }
 
     override func didReceiveMemoryWarning() {

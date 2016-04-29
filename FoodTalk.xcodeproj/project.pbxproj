@@ -35,6 +35,7 @@
 		7133116B1CCC0902006CE651 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713311651CCC0902006CE651 /* Photo.swift */; };
 		7133116F1CCC8F64006CE651 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7133116E1CCC8F64006CE651 /* CoreDataManager.swift */; };
 		714EF7F31CD15E8F0036F514 /* foodSearchDialog.xml in Resources */ = {isa = PBXBuildFile; fileRef = 714EF7F21CD15E8F0036F514 /* foodSearchDialog.xml */; };
+		717116891CD3C0AA0076A6AF /* FavoriteListDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717116881CD3C0AA0076A6AF /* FavoriteListDetails.swift */; };
 		7171CB4B1CC94CBC00B9E706 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB451CC94CBC00B9E706 /* Alamofire.framework */; };
 		7171CB4C1CC94CBC00B9E706 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB461CC94CBC00B9E706 /* AlamofireObjectMapper.framework */; };
 		7171CB4D1CC94CBC00B9E706 /* HTTPStatusCodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7171CB471CC94CBC00B9E706 /* HTTPStatusCodes.framework */; };
@@ -105,6 +106,7 @@
 		713311651CCC0902006CE651 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		7133116E1CCC8F64006CE651 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		714EF7F21CD15E8F0036F514 /* foodSearchDialog.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = foodSearchDialog.xml; sourceTree = "<group>"; };
+		717116881CD3C0AA0076A6AF /* FavoriteListDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteListDetails.swift; path = ../FavoriteListDetails.swift; sourceTree = "<group>"; };
 		7171CB451CC94CBC00B9E706 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		7171CB461CC94CBC00B9E706 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = Carthage/Build/iOS/AlamofireObjectMapper.framework; sourceTree = "<group>"; };
 		7171CB471CC94CBC00B9E706 /* HTTPStatusCodes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HTTPStatusCodes.framework; path = Carthage/Build/iOS/HTTPStatusCodes.framework; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			children = (
 				1A4FE0A21CC701B600EE8787 /* FavoritesList.storyboard */,
 				71A4D6061CD2AECF002EBE83 /* FavoritesListDetails.storyboard */,
+				717116881CD3C0AA0076A6AF /* FavoriteListDetails.swift */,
 				1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */,
 				71A4D6041CD2A597002EBE83 /* foodSearchDialog-8.xml */,
 				713311571CCBEEBD006CE651 /* FavoriteListCell.swift */,
@@ -417,6 +420,7 @@
 				713311681CCC0902006CE651 /* Restaurant+CoreDataProperties.swift in Sources */,
 				7133116B1CCC0902006CE651 /* Photo.swift in Sources */,
 				1A5E5A551CCAE2AA00BBA6A1 /* (null) in Sources */,
+				717116891CD3C0AA0076A6AF /* FavoriteListDetails.swift in Sources */,
 				1AD77C391CD10BAA00CDF00F /* AppDelegate.swift in Sources */,
 				7133116F1CCC8F64006CE651 /* CoreDataManager.swift in Sources */,
 				1A4F6E981CCE78AE009E6702 /* SearchResultViewController.m in Sources */,

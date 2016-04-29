@@ -81,23 +81,14 @@ func addRestaurant(descr: restaurantDescriptor, presentViewController: UIViewCon
         presentViewController.presentViewController(alert, animated: true, completion: nil)
     }else {
         var r = createRestaurantFromDescriptor(descr)
-        //let v = NSEntityDescription.insertNewObjectForEntityForName("Visit", inManagedObjectContext:  moc) as! Visit
-        
-        //let dateFormatter = NSDateFormatter()
-        //dateFormatter.timeZone = NSTimeZone(name:"UTC")
-        // FIXME!
-        //let date = dateFormatter.dateFromString("2016-02-05")
-        //v.date = date
-       // v.rating = -1
-        //v.notes = ""
-        //v.restaurant = r
         do {
             try moc.save()
         } catch let error as NSError {
             print(error)
         }
     }
-        
+    
+    
 }
 
 
@@ -127,15 +118,15 @@ func addVisit(restaurant: Restaurant, descr: visitDescriptor) {
 func updateVisit(visit:Visit){}
 
 
-/*
 
-func findPhoto(restaurant: Restaurant, photo:Photo)->Photo {return Photo()
+
+/*func findPhoto(restaurant: Restaurant, photo:Photo)->Photo {return Photo()
 }
 
 func addPhoto(restaurant: Restaurant, visit:Visit, photo:Photo) {
     let v = NSEntityDescription.insertNewObjectForEntityForName("Photo", inManagedObjectContext:  moc) as! Photo
     
-    visit.restaurant = restaurant
+    photo.visit = visit
     photo.visit = visit
     do {
         try moc.save()
@@ -145,14 +136,10 @@ func addPhoto(restaurant: Restaurant, visit:Visit, photo:Photo) {
 }
 
 
-func updatePhoto(visit:Visit){}
+func updatePhoto(visit:Visit){}*?*/
 
 
-func deletePhoto(visit:Visit){
-    initMoc()
-    moc.deleteObject(visit)
-    
-}*/
+
 
 
 

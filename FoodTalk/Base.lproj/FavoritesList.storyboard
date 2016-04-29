@@ -72,12 +72,12 @@
                                             <outlet property="dateLabel" destination="RLM-qQ-HKa" id="8fT-aT-cBu"/>
                                             <outlet property="myRatingImage" destination="5gE-47-e95" id="3RV-MZ-bQC"/>
                                             <outlet property="nameOfResturant" destination="dS0-Ph-00B" id="f2a-PB-En8"/>
-                                            <segue destination="Lig-Wq-Ixe" kind="show" id="h1N-3p-djK"/>
+                                            <segue destination="Lig-Wq-Ixe" kind="show" identifier="FavoriteListDetailsSeque" id="Rlc-bc-LpV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="-15" y="56" width="301" height="536"/>
+                                    <rect key="frame" x="-15" y="56" width="410" height="536"/>
                                 </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="YWC-PN-V9s" id="pBb-dl-9kn"/>
