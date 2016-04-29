@@ -22,12 +22,16 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     let resDemo1 = restaurantDescriptor()
     let resDemo2 = restaurantDescriptor()
     let resDemo3 = restaurantDescriptor()
+    let visit1 = visitDescriptor()
+    let visit2 = visitDescriptor()
+    let visit3 = visitDescriptor()
+    
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //var visitDemo = Visit()
+        
         //var photo = Photo()
         
         
@@ -50,24 +54,39 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         resDemo3.country = "United States"
         
         
-        
-        /*
-        visitDemo.restaurant = resDemo
-        
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeZone = NSTimeZone(name:"UTC")
-        let date = dateFormatter.dateFromString("2016-02-05")
-        visitDemo.date = date
-        visitDemo.rating = 4
-        visitDemo.notes = " I loved the vibe of the resturant with all Thai new year decoration with my family, all the dished looks fantastic"
-        photo.visit = visitDemo
+        
+        let date1 = dateFormatter.dateFromString("2016-01-14")
+        visit1.date = date1
+        visit2.favoriteDishes = ""
+        visit2.notes = " it is always fun to be here and watch Laetitia drinking coco water"
+        visit2.rating = 4.5
+        
+        
+        let date2 = dateFormatter.dateFromString("2016-02-05")
+        visit2.date = date2
+        visit2.favoriteDishes = ""
+        visit2.notes = " We want to show my mom Laetitia's favorite resturant, she usually eats very well here"
+        visit2.rating = 4.5
+        
+        
+        let date3 = dateFormatter.dateFromString("2016-04-13")
+        visit3.date = date3
+        visit3.rating = 4
+        visit3.notes = " I loved the vibe of the resturant with all Thai new year decoration with my family, all the dished looks fantastic"
+        visit1.favoriteDishes = ""
+        
+        
+        
+        
+        /*photo.visit = visitDemo
         photo.comment = "pictures with my family"
         let image = UIImage(contentsOfFile: "IMG_2152")
         photo.image = UIImagePNGRepresentation(image!)! as NSData
         */
         
-        //addVisit(resDemo,visit:visitDemo)
-        //addPhoto(resDemo, visit: visitDemo, photo: photo)
+       
         
         title = "\"List of My Favorite Restaurants\""
         self.locationManager.delegate = self
@@ -99,14 +118,6 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     
     
     
-    
-   /* func locationManager(manager: CLLocationManager, didUpdateLocations loc: [CLLocation]) {
-        locationManager.stopUpdatingLocation()
-        self.location = loc.last!
-        self.restaurant = self.findNearbyRestaurants(loc.last!)
-        print(self.restaurant.count)
-        self.tableView.reloadData()
-    }*/
     
 
     func closeEnough(candidate: Restaurant) -> Bool {
@@ -175,6 +186,10 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
              addRestaurant(resDemo1, presentViewController: self)
              addRestaurant(resDemo2, presentViewController: self)
              addRestaurant(resDemo3, presentViewController: self)
+             let r = findRestaurant(resDemo1)! as Restaurant
+             addVisit(r, descr: visit1)
+             addVisit(r, descr: visit2)
+             addVisit(r, descr: visit3)
              self.restaurant = findNearbyRestaurants(location)
             
         }
@@ -187,6 +202,14 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell", forIndexPath: indexPath) as! FavoriteListCell
         let r = self.restaurant[indexPath.row]
         cell.nameOfResturant.text = r.name
+        var enumerator: NSEnumerator = (self.restaurant[indexPath.row].visits?.objectEnumerator())!
+        while var myVisit = enumerator.nextObject() as! Visit?{
+            print(myVisit.date)
+            print(myVisit.notes)
+            print(myVisit.rating)
+            
+        }
+        
         return cell
         
         

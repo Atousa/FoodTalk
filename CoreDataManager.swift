@@ -103,19 +103,19 @@ func addRestaurant(descr: restaurantDescriptor, presentViewController: UIViewCon
 
 func updateRestaurant(restaurant:Restaurant){}
 
-/*
+
 func findVisit(restaurant: Restaurant, visit:Visit)->Visit {return Visit()
 }
 
 
-func addVisit(restaurant: Restaurant, visit:Visit) {
-    initMoc()
+func addVisit(restaurant: Restaurant, descr: visitDescriptor) {
     let v = NSEntityDescription.insertNewObjectForEntityForName("Visit", inManagedObjectContext:  moc) as! Visit
-    v.date = visit.date
-    v.favoriteDishes = visit.favoriteDishes
-    v.notes = visit.notes
-    v.rating = visit.rating
+    v.date = descr.date
+    v.favoriteDishes = descr.favoriteDishes
+    v.notes = descr.notes
+    v.rating = descr.rating
     v.restaurant = restaurant
+    
     do {
         try moc.save()
     } catch let error as NSError {
@@ -127,18 +127,12 @@ func addVisit(restaurant: Restaurant, visit:Visit) {
 func updateVisit(visit:Visit){}
 
 
-func deleteVisit(visit:Visit){ //remove entity? not class
-    initMoc()
-    moc.deleteObject(visit)
-    
-}
-
+/*
 
 func findPhoto(restaurant: Restaurant, photo:Photo)->Photo {return Photo()
 }
 
 func addPhoto(restaurant: Restaurant, visit:Visit, photo:Photo) {
-    initMoc()
     let v = NSEntityDescription.insertNewObjectForEntityForName("Photo", inManagedObjectContext:  moc) as! Photo
     
     visit.restaurant = restaurant
@@ -159,6 +153,7 @@ func deletePhoto(visit:Visit){
     moc.deleteObject(visit)
     
 }*/
+
 
 
 
