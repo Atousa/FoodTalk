@@ -12,11 +12,9 @@ import CoreLocation
 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 let poc = appDelegate.persistentStoreCoordinator
 let moc = appDelegate.managedObjectContext
-var window:UIWindow?
 
 
 func makeRequest(entity:String)->NSFetchRequest {
-    //initMoc()
     let request = NSFetchRequest()
     let entityDescription = NSEntityDescription.entityForName(entity, inManagedObjectContext: moc)
     request.entity = entityDescription
@@ -28,10 +26,11 @@ func deleteObject(object:NSManagedObject){
     moc.deleteObject(object)
 }
 
+
 func findRestaurant(descr: restaurantDescriptor)->Restaurant? {
     let request = makeRequest("Restaurant")
     var returnItem : Restaurant? = nil
-    let predicate = NSPredicate(format: "name LIKE %@ AND address LIKE %@ AND city LIKE %@ AND state LIKE %@ AND country LIKE %@", descr.name, descr.address, descr.city, descr.state, descr.country)
+    let predicate = NSPredicate(format: "name LIKE %@ AND address LIKE %@" , descr.name, descr.address)
     request.predicate = predicate
     do {
         let results = try moc.executeFetchRequest(request)
@@ -73,23 +72,25 @@ func createRestaurantFromDescriptor(d: restaurantDescriptor)->Restaurant {
     return r
 }
 
+
 func addRestaurant(descr: restaurantDescriptor, presentViewController: UIViewController) {
-    if let result = findRestaurant(descr) {
+    let result = findRestaurant(descr)
+    if result != nil {
         let alert = UIAlertController(title: "Alert", message: "This place is in your favorite list", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
         presentViewController.presentViewController(alert, animated: true, completion: nil)
     }else {
         var r = createRestaurantFromDescriptor(descr)
-        let v = NSEntityDescription.insertNewObjectForEntityForName("Visit", inManagedObjectContext:  moc) as! Visit
+        //let v = NSEntityDescription.insertNewObjectForEntityForName("Visit", inManagedObjectContext:  moc) as! Visit
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeZone = NSTimeZone(name:"UTC")
+        //let dateFormatter = NSDateFormatter()
+        //dateFormatter.timeZone = NSTimeZone(name:"UTC")
         // FIXME!
-        let date = dateFormatter.dateFromString("2016-02-05")
-        v.date = date
-        v.rating = -1
-        v.notes = ""
-        v.restaurant = r
+        //let date = dateFormatter.dateFromString("2016-02-05")
+        //v.date = date
+       // v.rating = -1
+        //v.notes = ""
+        //v.restaurant = r
         do {
             try moc.save()
         } catch let error as NSError {

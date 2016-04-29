@@ -19,13 +19,14 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     var location = CLLocation()
     var restaurant = [Restaurant]()
     let predicate = NSPredicate()
+    let resDemo1 = restaurantDescriptor()
+    let resDemo2 = restaurantDescriptor()
+    let resDemo3 = restaurantDescriptor()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        let resDemo1 = restaurantDescriptor()
         //var visitDemo = Visit()
         //var photo = Photo()
         
@@ -35,25 +36,19 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         resDemo1.city = "San Francisco"
         resDemo1.state = "CA"
         resDemo1.country = "United States"
-        addRestaurant(resDemo1,presentViewController:self)
-        
-        let resDemo2 = restaurantDescriptor()
-        
+       
         resDemo2.name = "Chez Panisse"
         resDemo2.address =  "1517 Shattuck Ave"
         resDemo2.city = "Berkeley"
         resDemo2.state = "CA"
         resDemo2.country = "United States"
-        addRestaurant(resDemo2, presentViewController: self)
-        
-        let resDemo3 = restaurantDescriptor()
         
         resDemo3.name = "Flour + Water"
         resDemo3.address =  "2401 Harrison St"
         resDemo3.city = "San Francisco"
         resDemo3.state = "CA"
         resDemo3.country = "United States"
-        addRestaurant(resDemo3, presentViewController: self)
+        
         
         
         /*
@@ -84,23 +79,36 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
         }
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations loc: [CLLocation]) {
-        locationManager.stopUpdatingLocation()
-        self.location = loc.last!
-        self.restaurant = self.findNearbyRestaurants(loc.last!)
-        print(self.restaurant.count)
+        self.restaurant = self.findNearbyRestaurants(location)
         self.tableView.reloadData()
+
+        
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Location detection needs to be enabled in the simulator")
     }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        location = locations.last!
+        locationManager.stopUpdatingLocation()
+        print(location.coordinate.latitude)
+        print(location.coordinate.longitude)
+        
+    }
+    
+    
+    
+    
+   /* func locationManager(manager: CLLocationManager, didUpdateLocations loc: [CLLocation]) {
+        locationManager.stopUpdatingLocation()
+        self.location = loc.last!
+        self.restaurant = self.findNearbyRestaurants(loc.last!)
+        print(self.restaurant.count)
+        self.tableView.reloadData()
+    }*/
+    
 
-   
-    
-    
     func closeEnough(candidate: Restaurant) -> Bool {
         let dest =  CLLocation(latitude: Double(candidate.latitude!),longitude: Double(candidate.longitude!))
 
@@ -129,23 +137,25 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         
         do {
             let results = try moc.executeFetchRequest(request)
+            self.restaurant = results  as! [Restaurant]
             
-            let closeEnoughPredicate = NSPredicate { (results, _) in
-                let dest =  CLLocation(latitude: Double(results.latitude!),longitude: Double(results.longitude!))
+            //let closeEnoughPredicate = NSPredicate { (results, _) in
+                //let dest =  CLLocation(latitude: Double(results.latitude!),longitude: Double(results.longitude!))
                 
-                let distance = self.calculateDistanceBetweenTwoLocations(self.location, destination: dest)
+                //let distance = self.calculateDistanceBetweenTwoLocations(self.location, destination: dest)
                 
-                return distance <= 1.0
-            }
+                //return distance <= 10
+            
 
             
-            return results as! [Restaurant]
+            //return results as! [Restaurant]
+        
         } catch {
             let fetchError = error as NSError
             print(fetchError)
         }
         
-        return []
+       return self.restaurant
     }
     
         
@@ -161,6 +171,14 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.restaurant.count == 0  {
+             addRestaurant(resDemo1, presentViewController: self)
+             addRestaurant(resDemo2, presentViewController: self)
+             addRestaurant(resDemo3, presentViewController: self)
+             self.restaurant = findNearbyRestaurants(location)
+            
+        }
+        
         return self.restaurant.count
     }
 

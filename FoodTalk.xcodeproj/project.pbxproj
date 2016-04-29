@@ -48,6 +48,8 @@
 		7171CB561CC94F3700B9E706 /* Starscream.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7171CB491CC94CBC00B9E706 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7171CB571CC94F3700B9E706 /* WatsonDeveloperCloud.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7171CB4A1CC94CBC00B9E706 /* WatsonDeveloperCloud.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		717E624B1CC7FAE80078B71A /* DialogueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717E624A1CC7FAE80078B71A /* DialogueCell.swift */; };
+		71A4D6051CD2A597002EBE83 /* foodSearchDialog-8.xml in Resources */ = {isa = PBXBuildFile; fileRef = 71A4D6041CD2A597002EBE83 /* foodSearchDialog-8.xml */; };
+		71A4D6081CD2AECF002EBE83 /* FavoritesListDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71A4D6061CD2AECF002EBE83 /* FavoritesListDetails.storyboard */; };
 		AAFBBE1BFA0FCD5976BC1EE4 /* libPods-FoodTalk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A28D315F5090215C804647 /* libPods-FoodTalk.a */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +112,8 @@
 		7171CB491CC94CBC00B9E706 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
 		7171CB4A1CC94CBC00B9E706 /* WatsonDeveloperCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatsonDeveloperCloud.framework; path = Carthage/Build/iOS/WatsonDeveloperCloud.framework; sourceTree = "<group>"; };
 		717E624A1CC7FAE80078B71A /* DialogueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogueCell.swift; sourceTree = "<group>"; };
+		71A4D6041CD2A597002EBE83 /* foodSearchDialog-8.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "foodSearchDialog-8.xml"; sourceTree = "<group>"; };
+		71A4D6071CD2AECF002EBE83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FavoritesListDetails.storyboard; sourceTree = "<group>"; };
 		87A28D315F5090215C804647 /* libPods-FoodTalk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodTalk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE515C11C657E22E9652E8F9 /* Pods-FoodTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodTalk/Pods-FoodTalk.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,7 +194,9 @@
 			isa = PBXGroup;
 			children = (
 				1A4FE0A21CC701B600EE8787 /* FavoritesList.storyboard */,
+				71A4D6061CD2AECF002EBE83 /* FavoritesListDetails.storyboard */,
 				1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */,
+				71A4D6041CD2A597002EBE83 /* foodSearchDialog-8.xml */,
 				713311571CCBEEBD006CE651 /* FavoriteListCell.swift */,
 			);
 			name = FavoriteList;
@@ -332,8 +338,10 @@
 			files = (
 				1A5E5A531CCAE24900BBA6A1 /* SearchFoodPlaces.storyboard in Resources */,
 				711FF97C1CCA0111000180B6 /* pizza_sample.xml in Resources */,
+				71A4D6051CD2A597002EBE83 /* foodSearchDialog-8.xml in Resources */,
 				1A4FE0EA1CC83D8200EE8787 /* Podfile in Resources */,
 				1A4FE0A11CC7017500EE8787 /* Dialogue.storyboard in Resources */,
+				71A4D6081CD2AECF002EBE83 /* FavoritesListDetails.storyboard in Resources */,
 				1A4FE0991CC6FDA000EE8787 /* LaunchScreen.storyboard in Resources */,
 				1A4FE0A41CC701B600EE8787 /* FavoritesList.storyboard in Resources */,
 				1A4FE0961CC6FDA000EE8787 /* Assets.xcassets in Resources */,
@@ -443,6 +451,14 @@
 				1A4FE0A31CC701B600EE8787 /* Base */,
 			);
 			name = FavoritesList.storyboard;
+			sourceTree = "<group>";
+		};
+		71A4D6061CD2AECF002EBE83 /* FavoritesListDetails.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71A4D6071CD2AECF002EBE83 /* Base */,
+			);
+			name = FavoritesListDetails.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

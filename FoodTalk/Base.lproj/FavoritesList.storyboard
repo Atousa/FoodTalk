@@ -72,6 +72,7 @@
                                             <outlet property="dateLabel" destination="RLM-qQ-HKa" id="8fT-aT-cBu"/>
                                             <outlet property="myRatingImage" destination="5gE-47-e95" id="3RV-MZ-bQC"/>
                                             <outlet property="nameOfResturant" destination="dS0-Ph-00B" id="f2a-PB-En8"/>
+                                            <segue destination="Lig-Wq-Ixe" kind="show" id="h1N-3p-djK"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -94,6 +95,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZMu-r7-ab9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1872" y="590"/>
+        </scene>
+        <!--FavoritesListDetails-->
+        <scene sceneID="IZK-bY-wIX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FavoritesListDetails" id="Lig-Wq-Ixe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="16u-6y-sDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2655" y="629"/>
         </scene>
     </scenes>
 </document>
