@@ -7,12 +7,12 @@
 
 #import "SearchResultViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "ResultsTableViewCell.h"
 
-@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
+@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, ResultsTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *searchActivityIndicator;
-
 
 @property NSString *consumerKey;
 @property NSString *consumerSecret;
@@ -108,7 +108,9 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
+    ResultsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
+
+    cell.delegateCheckmark = self;
     
     YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
     NSMutableArray *categories = [NSMutableArray new];
@@ -116,26 +118,17 @@
     
     for (YLPCategory *category in businessOfMany.categories) {
         [categories addObject:category.name];
-        
     }
     
-    //    Set the background color of tableView
-    cell.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1.0];
-    
-    //    Set the textLabel color, font, and text
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.textLabel.font = [UIFont fontWithName:@"Copperplate" size:21];
-    cell.textLabel.text = businessOfMany.name;
-    
-    //    Set the detailTextLabel text, font
-    cell.detailTextLabel.font = [UIFont fontWithName:@"SanFranciscoDisplay-Black" size:16];
-    //    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", categories];
-    
-    
-    
-    //    Set the imageView's image and size
-    NSData *data = [NSData dataWithContentsOfURL:businessOfMany.imageURL];
-    cell.imageView.image = [UIImage imageWithData:data];
+//    Set the background color of tableView
+//    cell.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1.0];
+//    
+//    Set the textLabel color, font, and text
+//    cell.textLabel.textColor = [UIColor whiteColor];
+//    cell.textLabel.font = [UIFont fontWithName:@"Copperplate" size:21];
+//    cell.textLabel.text = businessOfMany.name;
+//    cell.detailTextLabel.font = [UIFont fontWithName:@"SanFranciscoDisplay-Black" size:16];
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", categories];
     
     
     return cell;
@@ -143,6 +136,21 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(void)resultsTableViewCell:(id)cell didFavoriteButton:(UIButton *)favoriteButton {
+    
+    UIImage *checkedBox = [UIImage imageNamed:@"Checkedbox"];
+    UIImage *uncheckedBox = [UIImage imageNamed:@"Uncheckedbox"];
+    
+    if ([favoriteButton.imageView.image isEqual: uncheckedBox]) {
+        //        Save this object Atousa
+        [favoriteButton setImage:checkedBox forState:UIControlStateNormal];
+    } else {
+        //        Delete this object from core data Atousa
+        [favoriteButton setImage:uncheckedBox forState:UIControlStateNormal];
+    }
+    NSLog(@"It worked from VC");
 }
 
 
