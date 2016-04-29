@@ -7,19 +7,24 @@
 //
 
 import UIKit
+import CoreLocation
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var newPlaceButton: UIButton!
     @IBOutlet weak var favoritePlaceButton: UIButton!
     
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.whiteColor()
-
         
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -1,8 +1,9 @@
 import UIKit
 import WatsonDeveloperCloud
 import AVFoundation
+import CoreLocation
 
-class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioRecorderDelegate, UITableViewDataSource, UITextFieldDelegate {
+class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioRecorderDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate {
     
     
     @IBOutlet weak var DialogueTableView: UITableView!
@@ -20,11 +21,15 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var userLog: [String] = []
     var foodType = String()
     var dist = String()
+    var currentLocation: String?
     
-    
+    let newLocationManger = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        newLocationManger.delegate = self
+        newLocationManger.requestLocation()
+        
         self.DialogueTableView.separatorStyle = .None
         self.responseTextField.delegate = self
         
@@ -59,6 +64,29 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             self.startDialogue()
         }
     }
+
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print(error)
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.first
+        if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000 {
+            print("Location not found. Reverse goe-coding")
+            reverseGeoCode(location!)
+        }
+    }
+    
+    func reverseGeoCode(location: CLLocation) {
+        let geoCoder = CLGeocoder()
+        
+        geoCoder.reverseGeocodeLocation(location) { (placemark, error) in
+            let placemark = placemark?.first
+            self.currentLocation = "\(placemark!.subThoroughfare!) \(placemark!.thoroughfare!) \(placemark!.locality!), \(placemark!.administrativeArea!)"
+            
+        }
+    }
+
     
     func tableViewScrollToTop(animated: Bool) {
         dispatch_after(0, dispatch_get_main_queue(), {
@@ -263,6 +291,11 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let srvc = segue.destinationViewController as! SearchResultViewController
         srvc.distance = dist
-        srvc.type = foodType
+        srvc.searchTerm = foodType
+        if ((self.currentLocation) != nil) {
+            srvc.locationFromWatson = self.currentLocation
+        } else {
+            print("ERROR WE DIDNT GET LOCATION")
+        }
     }
 }
