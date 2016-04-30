@@ -182,7 +182,7 @@
     rd.country = business.location.countryCode;
     rd.latitude = business.location.coordinate.latitude;
     rd.longitude = business.location.coordinate.longitude;
-    NSLog(@"%@,%@,%@,%@,%@,%f,%f", rd.name, rd.address, rd.city, rd.state, rd.country, rd.latitude, rd.longitude);
+    //NSLog(@"%@,%@,%@,%@,%@,%f,%f", rd.name, rd.address, rd.city, rd.state, rd.country, rd.latitude, rd.longitude);
 
     if ([favoriteButton.imageView.image isEqual: uncheckedBox]) {
         [CDM addRestaurant: rd presentViewController: self];

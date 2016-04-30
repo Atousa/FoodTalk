@@ -115,8 +115,8 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = locations.last!
         locationManager.stopUpdatingLocation()
-        print(location.coordinate.latitude)
-        print(location.coordinate.longitude)
+        //print(location.coordinate.latitude)
+        //print(location.coordinate.longitude)
         
     }
     

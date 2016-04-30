@@ -26,7 +26,6 @@ class FavoriteListDetails: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(" hello there: ",r.visits?.count)
         return (r.visits?.count)!
     }
     

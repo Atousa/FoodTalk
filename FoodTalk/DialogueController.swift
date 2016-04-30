@@ -167,13 +167,11 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                 default:
                     break
                 }
-                print("food type: " + foodType)
             }
         }
         for word in distances {
             if text.rangeOfString(word) != nil {
                 dist = word
-                print("distance: " + dist)
             }
         }
         
