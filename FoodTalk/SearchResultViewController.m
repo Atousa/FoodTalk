@@ -8,8 +8,12 @@
 #import "SearchResultViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "ResultsTableViewCell.h"
+#import "FoodTalk-Swift.h"
+
 
 @interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, ResultsTableViewCellDelegate>
+
+
 
 #pragma mark - Outlets
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
@@ -30,7 +34,6 @@
 @property CLLocationManager *locationManager;
 @property CLLocation *location;
 @property NSString *myAddress;
-
 @end
 
 @implementation SearchResultViewController
@@ -40,6 +43,7 @@
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager requestWhenInUseAuthorization];
+
     
     if ([CLLocationManager locationServicesEnabled]) {
         [self.locationManager startUpdatingLocation];
@@ -168,12 +172,24 @@
     
     UIImage *checkedBox = [UIImage imageNamed:@"Checkedbox"];
     UIImage *uncheckedBox = [UIImage imageNamed:@"Uncheckedbox"];
-    
+    restaurantDescriptor *rd = [[restaurantDescriptor alloc] init];
+    long index = [self.searchTableView indexPathForCell:cell].row;
+    YLPBusiness *business = self.arrayOfBusinesses[index];
+    rd.name = business.name;
+    rd.state = business.location.stateCode;
+    rd.city = business.location.countryCode;
+    rd.address = business.location.address[0];
+    rd.country = business.location.countryCode;
+    rd.latitude = business.location.coordinate.latitude;
+    rd.longitude = business.location.coordinate.longitude;
+    NSLog(@"%@,%@,%@,%@,%@,%f,%f", rd.name, rd.address, rd.city, rd.state, rd.country, rd.latitude, rd.longitude);
+
     if ([favoriteButton.imageView.image isEqual: uncheckedBox]) {
-        //        Save this object Atousa
+        [CDM addRestaurant: rd presentViewController: self];
         [favoriteButton setImage:checkedBox forState:UIControlStateNormal];
     } else {
-        //        Delete this object from core data Atousa
+        Restaurant *r = [CDM findRestaurant:rd];
+        [CDM deleteObject:r];
         [favoriteButton setImage:uncheckedBox forState:UIControlStateNormal];
     }
 }

@@ -1,4 +1,4 @@
-//  CoreDataManger.swift
+//  CoreDataManager.swift
 //  FoodTalk
 //
 //  Created by Atousa Duprat on 4/23/16.
@@ -13,8 +13,9 @@ let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 let poc = appDelegate.persistentStoreCoordinator
 let moc = appDelegate.managedObjectContext
 
+@objc class CDM : NSObject {
 
-func makeRequest(entity:String)->NSFetchRequest {
+static func makeRequest(entity:String)->NSFetchRequest {
     let request = NSFetchRequest()
     let entityDescription = NSEntityDescription.entityForName(entity, inManagedObjectContext: moc)
     request.entity = entityDescription
@@ -22,12 +23,17 @@ func makeRequest(entity:String)->NSFetchRequest {
 }
 
 
-func deleteObject(object:NSManagedObject){
+static func deleteObject(object:NSManagedObject){
     moc.deleteObject(object)
+    do {
+        try moc.save()
+    } catch let error as NSError {
+        print(error)
+    }
 }
 
 
-func findRestaurant(descr: restaurantDescriptor)->Restaurant? {
+static func findRestaurant(descr: restaurantDescriptor)->Restaurant? {
     let request = makeRequest("Restaurant")
     var returnItem : Restaurant? = nil
     let predicate = NSPredicate(format: "name LIKE %@ AND address LIKE %@" , descr.name, descr.address)
@@ -45,7 +51,7 @@ func findRestaurant(descr: restaurantDescriptor)->Restaurant? {
 }
 
 
-func createRestaurantFromDescriptor(d: restaurantDescriptor)->Restaurant {
+static func createRestaurantFromDescriptor(d: restaurantDescriptor)->Restaurant {
     let r = NSEntityDescription.insertNewObjectForEntityForName("Restaurant",
                                                                 inManagedObjectContext: moc) as! Restaurant
     r.name = d.name
@@ -73,13 +79,13 @@ func createRestaurantFromDescriptor(d: restaurantDescriptor)->Restaurant {
 }
 
 
-func addRestaurant(descr: restaurantDescriptor, presentViewController: UIViewController) {
+static func addRestaurant(descr: restaurantDescriptor, presentViewController: UIViewController) {
     let result = findRestaurant(descr)
     if result != nil {
         let alert = UIAlertController(title: "Alert", message: "This place is in your favorite list", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
         presentViewController.presentViewController(alert, animated: true, completion: nil)
-    }else {
+    } else {
         var r = createRestaurantFromDescriptor(descr)
         do {
             try moc.save()
@@ -90,13 +96,13 @@ func addRestaurant(descr: restaurantDescriptor, presentViewController: UIViewCon
 }
 
 
-func updateRestaurant(restaurant:Restaurant){}
+static func updateRestaurant(restaurant:Restaurant){}
 
-func findVisit(restaurant: Restaurant, visit:Visit)->Visit {return Visit()
+static func findVisit(restaurant: Restaurant, visit:Visit)->Visit {return Visit()
 }
 
 
-func addVisit(restaurant: Restaurant, descr: visitDescriptor) {
+static func addVisit(restaurant: Restaurant, descr: visitDescriptor) {
     let v = NSEntityDescription.insertNewObjectForEntityForName("Visit", inManagedObjectContext:  moc) as! Visit
     v.date = descr.date
     v.favoriteDishes = descr.favoriteDishes
@@ -112,15 +118,16 @@ func addVisit(restaurant: Restaurant, descr: visitDescriptor) {
 }
 
 
-func updateVisit(visit:Visit){}
+static func updateVisit(visit:Visit){}
 
 
 
 
-/*func findPhoto(restaurant: Restaurant, photo:Photo)->Photo {return Photo()
+/* 
+static func findPhoto(restaurant: Restaurant, photo:Photo)->Photo {return Photo()
 }
 
-func addPhoto(restaurant: Restaurant, visit:Visit, photo:Photo) {
+static func addPhoto(restaurant: Restaurant, visit:Visit, photo:Photo) {
     let v = NSEntityDescription.insertNewObjectForEntityForName("Photo", inManagedObjectContext:  moc) as! Photo
     
     photo.visit = visit
@@ -133,5 +140,8 @@ func addPhoto(restaurant: Restaurant, visit:Visit, photo:Photo) {
 }
 
 
-func updatePhoto(visit:Visit){}*?*/
+static func updatePhoto(visit:Visit){}
+     
+*/
 
+}

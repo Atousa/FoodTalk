@@ -134,7 +134,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     
     
     func findNearbyRestaurants(location:CLLocation)-> [Restaurant] {
-        let request = makeRequest("Restaurant")
+        let request = CDM.makeRequest("Restaurant")
 
         /*let closeEnoughPredicate = NSPredicate { (candidate, _) in
             let dest =  CLLocation(latitude: Double(candidate.latitude!),longitude: Double(candidate.longitude!))
@@ -187,13 +187,13 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.restaurant.count == 0  {
-             addRestaurant(resDemo1, presentViewController: self)
-             addRestaurant(resDemo2, presentViewController: self)
-             addRestaurant(resDemo3, presentViewController: self)
-             let r = findRestaurant(resDemo1)! as Restaurant
-             addVisit(r, descr: visit1)
-             addVisit(r, descr: visit2)
-             addVisit(r, descr: visit3)
+             CDM.addRestaurant(resDemo1, presentViewController: self)
+             CDM.addRestaurant(resDemo2, presentViewController: self)
+             CDM.addRestaurant(resDemo3, presentViewController: self)
+             let r = CDM.findRestaurant(resDemo1)! as Restaurant
+             CDM.addVisit(r, descr: visit1)
+             CDM.addVisit(r, descr: visit2)
+             CDM.addVisit(r, descr: visit3)
              self.restaurant = findNearbyRestaurants(location)
             
         }
