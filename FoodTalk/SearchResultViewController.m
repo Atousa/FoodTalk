@@ -54,7 +54,7 @@
     
     
     [self searchForFoodPlaces:
-     @"San Francisco, CA" searchString:self.searchTerm];
+     self.locationFromWatson searchString:self.searchTerm];
     
 }
 
@@ -70,7 +70,7 @@
     
     YLPClient *client = [[YLPClient alloc]initWithConsumerKey:self.consumerKey consumerSecret:self.consumerSecret token:self.token tokenSecret:self.tokenSecret];
     
-    [client searchWithLocation:self.locationFromWatson currentLatLong:nil term:self.searchTerm limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
+    [client searchWithLocation:place currentLatLong:nil term:searchString limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
         [self.searchActivityIndicator startAnimating];
         for (YLPBusiness *business in search.businesses) {
             [self.arrayOfBusinesses addObject:business];
@@ -119,6 +119,8 @@
     
     YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
     NSMutableArray *categories = [NSMutableArray new];
+    
+    cell.yelpImageView.image =
     
     NSLog(@"%@", businessOfMany.name);
     for (YLPCategory *category in businessOfMany.categories) {
