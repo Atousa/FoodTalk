@@ -11,9 +11,14 @@
 
 @interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, ResultsTableViewCellDelegate>
 
+#pragma mark - Outlets
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *searchActivityIndicator;
 
+
+
+
+#pragma mark - Properties
 @property NSString *consumerKey;
 @property NSString *consumerSecret;
 @property NSString *token;
@@ -47,8 +52,9 @@
     
     self.arrayOfBusinesses = [NSMutableArray new];
     
-    self.searchTableView.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1];
-    [self searchForFoodPlaces:@"San Francisco, CA" searchString:self.searchTerm];
+    
+    [self searchForFoodPlaces:
+     @"San Francisco, CA" searchString:self.searchTerm];
     
 }
 
@@ -64,9 +70,7 @@
     
     YLPClient *client = [[YLPClient alloc]initWithConsumerKey:self.consumerKey consumerSecret:self.consumerSecret token:self.token tokenSecret:self.tokenSecret];
     
-    self.searchTerm = @"thai food";
-    
-    [client searchWithLocation:@"11121 Flanagan Lane Germantown, MD" currentLatLong:nil term:self.searchTerm limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
+    [client searchWithLocation:self.locationFromWatson currentLatLong:nil term:self.searchTerm limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
         [self.searchActivityIndicator startAnimating];
         for (YLPBusiness *business in search.businesses) {
             [self.arrayOfBusinesses addObject:business];
@@ -85,19 +89,20 @@
     self.location = [locations lastObject];
     NSLog(@"%f", self.location.coordinate.latitude);
 }
-//  Atousa, fix this please. We need to grab the location
-//- (void)reverseGeocode:(CLLocation *)location {
-//    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-//    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-//        NSLog(@"Finding address");
-//        if (error) {
-//            NSLog(@"Error %@", error.description);
-//        } else {
-//            CLPlacemark *placemark = [placemarks lastObject];
+
+- (void)reverseGeocode:(CLLocation *)location {
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        NSLog(@"Finding address");
+        if (error) {
+            NSLog(@"Error %@", error.description);
+        } else {
+            CLPlacemark *placemark = [placemarks lastObject];
+            NSLog(@"%@", placemark.addressDictionary);
 //            self.myAddress = [NSString stringWithFormat:@"%@", ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO)];
-//        }
-//    }];
-//}
+        }
+    }];
+}
 
 
 
@@ -115,14 +120,25 @@
     YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
     NSMutableArray *categories = [NSMutableArray new];
     
-    
+    NSLog(@"%@", businessOfMany.name);
     for (YLPCategory *category in businessOfMany.categories) {
         [categories addObject:category.name];
     }
     
-//    Set the background color of tableView
-//    cell.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1.0];
+    UIColor *makeWhiteTextColor = [UIColor whiteColor];
+    UIFont *makeFontAndSize = [UIFont fontWithName:@"Copperplate" size:21];
+    
+    
+//    self.restaurantName.textColor = makeWhiteTextColor;
+//    self.restaurantName.font = makeFontAndSize;
+//    self.restaurantName.text = businessOfMany.name;
 //    
+//    self.restaurantStreet.textColor = makeWhiteTextColor;
+//    self.restaurantStreet.font = makeFontAndSize;
+//    self.restaurantStreet.text = [businessOfMany.location.displayAddress objectAtIndex:0];
+    
+    
+//
 //    Set the textLabel color, font, and text
 //    cell.textLabel.textColor = [UIColor whiteColor];
 //    cell.textLabel.font = [UIFont fontWithName:@"Copperplate" size:21];
@@ -150,7 +166,6 @@
         //        Delete this object from core data Atousa
         [favoriteButton setImage:uncheckedBox forState:UIControlStateNormal];
     }
-    NSLog(@"It worked from VC");
 }
 
 

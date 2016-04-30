@@ -20,4 +20,6 @@
 
 @property (nonatomic, assign) id<ResultsTableViewCellDelegate>delegateCheckmark;
 
+
+
 @end

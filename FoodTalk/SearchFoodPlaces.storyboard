@@ -33,75 +33,32 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="451"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sPq-tp-aFM">
-                                                    <rect key="frame" x="261" y="38" width="317" height="342"/>
-                                                </mapView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FUH-86-rE4">
-                                                    <rect key="frame" x="56" y="171" width="155" height="155"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Boston Creme Donut" translatesAutoresizingMaskIntoConstraints="NO" id="FUH-86-rE4">
+                                                    <rect key="frame" x="13" y="8" width="113" height="121"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tZF-JS-0mv">
-                                                    <rect key="frame" x="56" y="334" width="155" height="46"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="46" id="agR-O0-Vdb"/>
-                                                    </constraints>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="10x10_1-5" translatesAutoresizingMaskIntoConstraints="NO" id="tZF-JS-0mv">
+                                                    <rect key="frame" x="243" y="47" width="80" height="46"/>
                                                 </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Thai Yum" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EXX-wA-XCL">
-                                                    <rect key="frame" x="24" y="42" width="122" height="42"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EXX-wA-XCL">
+                                                    <rect key="frame" x="123" y="19" width="135" height="110"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="122" id="Ixn-sh-0p4"/>
-                                                    </constraints>
+                                                    <string key="text">Thai Yum
+Address
+City, State</string>
                                                     <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="25"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="13507 Frederick Road" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ers-OZ-vOL">
-                                                    <rect key="frame" x="16" y="83" width="234" height="37"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="37" id="wr7-9N-ouA"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Rockville, CA 29537" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bkd-sR-QOk">
-                                                    <rect key="frame" x="24" y="116" width="218" height="37"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Jl-k0-LZ6">
-                                                    <rect key="frame" x="190" y="38" width="50" height="50"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Jl-k0-LZ6">
+                                                    <rect key="frame" x="331" y="49" width="50" height="50"/>
                                                     <state key="normal" image="Uncheckedbox"/>
                                                     <connections>
                                                         <action selector="onFavoriteButtonPressed:" destination="Cjn-3G-LJm" eventType="touchUpInside" id="2Ts-EH-OD5"/>
                                                     </connections>
                                                 </button>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sPq-tp-aFM">
+                                                    <rect key="frame" x="0.0" y="137" width="360" height="298"/>
+                                                </mapView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="sPq-tp-aFM" firstAttribute="leading" secondItem="3Jl-k0-LZ6" secondAttribute="trailing" constant="21" id="2GY-cC-oC0"/>
-                                                <constraint firstItem="Ers-OZ-vOL" firstAttribute="leading" secondItem="4Zv-lT-0to" secondAttribute="leadingMargin" constant="8" id="4lH-8l-onA"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="tZF-JS-0mv" secondAttribute="bottom" constant="63" id="7ZF-1s-1o4"/>
-                                                <constraint firstItem="sPq-tp-aFM" firstAttribute="leading" secondItem="Ers-OZ-vOL" secondAttribute="trailing" constant="11" id="ADY-hC-Wqi"/>
-                                                <constraint firstItem="tZF-JS-0mv" firstAttribute="top" secondItem="FUH-86-rE4" secondAttribute="bottom" constant="8" symbolic="YES" id="BGr-Ho-JE5"/>
-                                                <constraint firstItem="3Jl-k0-LZ6" firstAttribute="leading" secondItem="EXX-wA-XCL" secondAttribute="trailing" constant="44" id="BME-R0-pxS"/>
-                                                <constraint firstItem="sPq-tp-aFM" firstAttribute="leading" secondItem="bkd-sR-QOk" secondAttribute="trailing" constant="19" id="Dbz-3q-xE9"/>
-                                                <constraint firstItem="bkd-sR-QOk" firstAttribute="centerX" secondItem="FUH-86-rE4" secondAttribute="centerX" id="Dqb-3U-bbH"/>
-                                                <constraint firstItem="EXX-wA-XCL" firstAttribute="centerY" secondItem="3Jl-k0-LZ6" secondAttribute="centerY" id="Ima-mo-OOo"/>
-                                                <constraint firstItem="FUH-86-rE4" firstAttribute="trailing" secondItem="tZF-JS-0mv" secondAttribute="trailing" id="JIm-wH-WzW"/>
-                                                <constraint firstItem="FUH-86-rE4" firstAttribute="leading" secondItem="tZF-JS-0mv" secondAttribute="leading" id="NyM-Id-RV5"/>
-                                                <constraint firstItem="bkd-sR-QOk" firstAttribute="top" secondItem="3Jl-k0-LZ6" secondAttribute="bottom" constant="28" id="QIf-Gm-5Sh"/>
-                                                <constraint firstItem="3Jl-k0-LZ6" firstAttribute="top" secondItem="sPq-tp-aFM" secondAttribute="top" id="Qg2-WT-g28"/>
-                                                <constraint firstItem="FUH-86-rE4" firstAttribute="top" secondItem="Ers-OZ-vOL" secondAttribute="bottom" constant="51" id="UWJ-At-8Lq"/>
-                                                <constraint firstItem="sPq-tp-aFM" firstAttribute="leading" secondItem="FUH-86-rE4" secondAttribute="trailing" constant="50" id="Vqg-1d-HBy"/>
-                                                <constraint firstItem="EXX-wA-XCL" firstAttribute="leading" secondItem="bkd-sR-QOk" secondAttribute="leading" id="WiH-zX-MTp"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="sPq-tp-aFM" secondAttribute="trailing" constant="14" id="XFY-3u-gbL"/>
-                                                <constraint firstItem="FUH-86-rE4" firstAttribute="top" secondItem="bkd-sR-QOk" secondAttribute="bottom" constant="18" id="cgz-xw-1da"/>
-                                                <constraint firstItem="tZF-JS-0mv" firstAttribute="bottom" secondItem="sPq-tp-aFM" secondAttribute="bottom" id="jzW-Dv-v5k"/>
-                                                <constraint firstItem="Ers-OZ-vOL" firstAttribute="centerX" secondItem="bkd-sR-QOk" secondAttribute="centerX" id="plf-nJ-xWQ"/>
-                                                <constraint firstItem="3Jl-k0-LZ6" firstAttribute="top" secondItem="4Zv-lT-0to" secondAttribute="topMargin" constant="30" id="pua-0z-8nc"/>
-                                                <constraint firstItem="bkd-sR-QOk" firstAttribute="top" secondItem="EXX-wA-XCL" secondAttribute="bottom" constant="32" id="ufV-MZ-iay"/>
-                                                <constraint firstItem="Ers-OZ-vOL" firstAttribute="top" secondItem="4Zv-lT-0to" secondAttribute="topMargin" constant="75" id="wH5-9m-bRH"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -122,7 +79,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="searchActivityIndicator" destination="mCU-Rx-YeB" id="SFD-PF-Rje"/>
-                        <outlet property="searchTableView" destination="HYo-aY-E8F" id="0wc-PB-KTE"/>
+                        <outlet property="searchTableView" destination="HYo-aY-E8F" id="YDE-Tv-T1k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYa-Gu-GNk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -131,6 +88,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="10x10_1-5" width="10" height="10"/>
+        <image name="Boston Creme Donut" width="2820" height="1840"/>
         <image name="Uncheckedbox" width="50" height="50"/>
     </resources>
 </document>
