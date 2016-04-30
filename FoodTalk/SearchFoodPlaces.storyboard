@@ -60,6 +60,9 @@ City, State</string>
                                                 </mapView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="yelpImageView" destination="FUH-86-rE4" id="KmA-Hu-blN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
