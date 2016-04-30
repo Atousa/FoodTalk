@@ -33,40 +33,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="451"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sPq-tp-aFM">
-                                                    <rect key="frame" x="298" y="38" width="280" height="342"/>
-                                                </mapView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FUH-86-rE4">
-                                                    <rect key="frame" x="56" y="171" width="155" height="155"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Boston Creme Donut" translatesAutoresizingMaskIntoConstraints="NO" id="FUH-86-rE4">
+                                                    <rect key="frame" x="13" y="8" width="113" height="121"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tZF-JS-0mv">
-                                                    <rect key="frame" x="56" y="334" width="155" height="46"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="10x10_1-5" translatesAutoresizingMaskIntoConstraints="NO" id="tZF-JS-0mv">
+                                                    <rect key="frame" x="243" y="47" width="80" height="46"/>
                                                 </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Thai Yum" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EXX-wA-XCL">
-                                                    <rect key="frame" x="24" y="48" width="149" height="40"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EXX-wA-XCL">
+                                                    <rect key="frame" x="123" y="19" width="135" height="110"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Thai Yum
+Address
+City, State</string>
                                                     <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="25"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="13507 Frederick Road" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ers-OZ-vOL">
-                                                    <rect key="frame" x="16" y="89" width="234" height="37"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Jl-k0-LZ6">
-                                                    <rect key="frame" x="192" y="42" width="50" height="50"/>
+                                                    <rect key="frame" x="331" y="49" width="50" height="50"/>
                                                     <state key="normal" image="Uncheckedbox"/>
                                                     <connections>
                                                         <action selector="onFavoriteButtonPressed:" destination="Cjn-3G-LJm" eventType="touchUpInside" id="2Ts-EH-OD5"/>
                                                     </connections>
                                                 </button>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Rockville, CA 29537" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bkd-sR-QOk">
-                                                    <rect key="frame" x="24" y="126" width="218" height="37"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sPq-tp-aFM">
+                                                    <rect key="frame" x="0.0" y="137" width="360" height="298"/>
+                                                </mapView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -97,6 +88,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="10x10_1-5" width="10" height="10"/>
+        <image name="Boston Creme Donut" width="2820" height="1840"/>
         <image name="Uncheckedbox" width="50" height="50"/>
     </resources>
 </document>

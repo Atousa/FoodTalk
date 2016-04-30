@@ -52,7 +52,7 @@
     
     self.arrayOfBusinesses = [NSMutableArray new];
     
-    self.searchTableView.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1];
+    
     [self searchForFoodPlaces:
      @"San Francisco, CA" searchString:self.searchTerm];
     
@@ -69,8 +69,6 @@
     [self instantiateYelpAuthTokens];
     
     YLPClient *client = [[YLPClient alloc]initWithConsumerKey:self.consumerKey consumerSecret:self.consumerSecret token:self.token tokenSecret:self.tokenSecret];
-    
-    self.searchTerm = @"thai food";
     
     [client searchWithLocation:self.locationFromWatson currentLatLong:nil term:self.searchTerm limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
         [self.searchActivityIndicator startAnimating];
@@ -122,7 +120,7 @@
     YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
     NSMutableArray *categories = [NSMutableArray new];
     
-    
+    NSLog(@"%@", businessOfMany.name);
     for (YLPCategory *category in businessOfMany.categories) {
         [categories addObject:category.name];
     }
@@ -130,8 +128,6 @@
     UIColor *makeWhiteTextColor = [UIColor whiteColor];
     UIFont *makeFontAndSize = [UIFont fontWithName:@"Copperplate" size:21];
     
-//    Set the background color of tableView
-    cell.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1.0];
     
 //    self.restaurantName.textColor = makeWhiteTextColor;
 //    self.restaurantName.font = makeFontAndSize;

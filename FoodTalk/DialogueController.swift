@@ -83,6 +83,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         geoCoder.reverseGeocodeLocation(location) { (placemark, error) in
             let placemark = placemark?.first
             self.currentLocation = "\(placemark!.subThoroughfare!) \(placemark!.thoroughfare!) \(placemark!.locality!), \(placemark!.administrativeArea!)"
+            print(self.currentLocation!)
             
         }
     }
@@ -292,10 +293,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         let srvc = segue.destinationViewController as! SearchResultViewController
         srvc.distance = dist
         srvc.searchTerm = foodType
-        if ((self.currentLocation) != nil) {
-            srvc.locationFromWatson = self.currentLocation
-        } else {
-            print("ERROR WE DIDNT GET LOCATION")
-        }
+        srvc.locationFromWatson = self.currentLocation!
+
     }
 }
