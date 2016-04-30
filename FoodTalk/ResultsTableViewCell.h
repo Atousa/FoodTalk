@@ -21,6 +21,8 @@
 @property (nonatomic, assign) id<ResultsTableViewCellDelegate>delegateCheckmark;
 
 @property (weak, nonatomic) IBOutlet UIImageView *yelpImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *yelpRatingImageView;
+@property (weak, nonatomic) IBOutlet UITextView *yelpRestaurantTitleAddress;
 
 
 @end

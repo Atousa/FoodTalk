@@ -80,6 +80,8 @@
             [self.searchActivityIndicator stopAnimating];
         });
     }];
+    
+    
 }
 
 #pragma mark - Location methods
@@ -120,15 +122,21 @@
     YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
     NSMutableArray *categories = [NSMutableArray new];
     
-    cell.yelpImageView.image =
+    NSData *data = [NSData dataWithContentsOfURL:businessOfMany.imageURL];
+    NSData *ratingImageData = [NSData dataWithContentsOfURL:businessOfMany.ratingImgURL];
+    cell.yelpImageView.image = [UIImage imageWithData:data];
+    cell.yelpRatingImageView.image = [UIImage imageWithData:ratingImageData];
+    
+    NSString *streetAddress = [businessOfMany.location.displayAddress objectAtIndex:0];
+
+    cell.yelpRestaurantTitleAddress.text = [NSString stringWithFormat:@"%@ \n %@ \n %@, %@", businessOfMany.name, streetAddress, businessOfMany.location.city, businessOfMany.location.stateCode];
     
     NSLog(@"%@", businessOfMany.name);
     for (YLPCategory *category in businessOfMany.categories) {
         [categories addObject:category.name];
     }
     
-    UIColor *makeWhiteTextColor = [UIColor whiteColor];
-    UIFont *makeFontAndSize = [UIFont fontWithName:@"Copperplate" size:21];
+    
     
     
 //    self.restaurantName.textColor = makeWhiteTextColor;
