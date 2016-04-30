@@ -8,9 +8,13 @@
 #import "SearchResultViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "ResultsTableViewCell.h"
+#import "FoodTalk-Swift.h"
+
 
 
 @interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, ResultsTableViewCellDelegate>
+
+
 
 #pragma mark - Outlets
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
@@ -31,7 +35,6 @@
 @property CLLocationManager *locationManager;
 @property CLLocation *location;
 @property NSString *myAddress;
-
 @end
 
 @implementation SearchResultViewController
@@ -41,6 +44,7 @@
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager requestWhenInUseAuthorization];
+
     
     if ([CLLocationManager locationServicesEnabled]) {
         [self.locationManager startUpdatingLocation];
@@ -72,8 +76,16 @@
     
     [client searchWithLocation:place currentLatLong:nil term:searchString limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
         [self.searchActivityIndicator startAnimating];
+        restaurantDescriptor *r = [[restaurantDescriptor alloc] init];
         for (YLPBusiness *business in search.businesses) {
-            [self.arrayOfBusinesses addObject:business];
+            r.name = business.name;
+            r.address = business.location.address[0];
+            r.city = business.location.city;
+            r.latitude = business.location.coordinate.latitude;
+            r.longitude = business.location.coordinate.longitude;
+            if (![CDM findRestaurant:r]) {
+                [self.arrayOfBusinesses addObject:business];
+            }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.searchTableView reloadData];
@@ -166,14 +178,27 @@
 
 -(void)resultsTableViewCell:(id)cell didFavoriteButton:(UIButton *)favoriteButton {
     
+
     UIImage *checkedBox = [UIImage imageNamed:@"Checkedbox-100"];
     UIImage *uncheckedBox = [UIImage imageNamed:@"Uncheckedbox-100"];
-    
+    restaurantDescriptor *rd = [[restaurantDescriptor alloc] init];
+    long index = [self.searchTableView indexPathForCell:cell].row;
+    YLPBusiness *business = self.arrayOfBusinesses[index];
+    rd.name = business.name;
+    rd.state = business.location.stateCode;
+    rd.city = business.location.countryCode;
+    rd.address = business.location.address[0];
+    rd.country = business.location.countryCode;
+    rd.latitude = business.location.coordinate.latitude;
+    rd.longitude = business.location.coordinate.longitude;
+    //NSLog(@"%@,%@,%@,%@,%@,%f,%f", rd.name, rd.address, rd.city, rd.state, rd.country, rd.latitude, rd.longitude);
+
     if ([favoriteButton.imageView.image isEqual: uncheckedBox]) {
-        //        Save this object Atousa
+        [CDM addRestaurant: rd presentViewController: self];
         [favoriteButton setImage:checkedBox forState:UIControlStateNormal];
     } else {
-        //        Delete this object from core data Atousa
+        Restaurant *r = [CDM findRestaurant:rd];
+        [CDM deleteObject:r];
         [favoriteButton setImage:uncheckedBox forState:UIControlStateNormal];
     }
 }

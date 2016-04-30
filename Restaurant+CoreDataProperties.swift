@@ -13,7 +13,7 @@ import Foundation
 import CoreData
 
 
-class restaurantDescriptor {
+@objc class restaurantDescriptor : NSObject {
     var name: String = ""
     var longitude: Double = 0
     var latitude: Double = 0

@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:FavoriteListDetails.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Downloads/foodSearchDialog-6.xml">
+   </FileRef>
+   <FileRef
       location = "group:FoodTalk.xcodeproj">
    </FileRef>
    <FileRef

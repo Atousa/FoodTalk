@@ -32,6 +32,7 @@
 #import "YLPSortType.h"
 #import "YLPUser.h"
 
+
 @interface SearchResultViewController : UIViewController
 
 @property NSString *locationFromWatson;

@@ -37,7 +37,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         
         
-        let dialogName = "xmlchanged6"
+        let dialogName = "xmlchanged9"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -53,7 +53,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             }
         }
         
-        let path = NSBundle.mainBundle().pathForResource("foodSearchDialog", ofType: "xml")
+        let path = NSBundle.mainBundle().pathForResource("foodSearchDialog-8", ofType: "xml")
         let url = NSURL.fileURLWithPath(path!)
         self.service!.createDialog(dialogName, fileURL: url) { dialogID, error in
             if error != nil {
@@ -70,9 +70,9 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.first
+        let location = locations.last
         if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000 {
-            print("Location not found. Reverse goe-coding")
+            print("Location not found. Reverse geo-coding")
             reverseGeoCode(location!)
         }
     }
@@ -167,13 +167,11 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                 default:
                     break
                 }
-                print("food type: " + foodType)
             }
         }
         for word in distances {
             if text.rangeOfString(word) != nil {
                 dist = word
-                print("distance: " + dist)
             }
         }
         

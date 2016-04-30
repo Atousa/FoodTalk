@@ -72,11 +72,12 @@
                                             <outlet property="dateLabel" destination="RLM-qQ-HKa" id="8fT-aT-cBu"/>
                                             <outlet property="myRatingImage" destination="5gE-47-e95" id="3RV-MZ-bQC"/>
                                             <outlet property="nameOfResturant" destination="dS0-Ph-00B" id="f2a-PB-En8"/>
+                                            <segue destination="Lig-Wq-Ixe" kind="show" identifier="FavoriteListDetailsSeque" id="Rlc-bc-LpV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="-15" y="56" width="301" height="536"/>
+                                    <rect key="frame" x="-15" y="56" width="410" height="536"/>
                                 </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="YWC-PN-V9s" id="pBb-dl-9kn"/>
@@ -94,6 +95,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZMu-r7-ab9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1872" y="590"/>
+        </scene>
+        <!--FavoritesListDetails-->
+        <scene sceneID="IZK-bY-wIX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FavoritesListDetails" id="Lig-Wq-Ixe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="16u-6y-sDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2655" y="629"/>
         </scene>
     </scenes>
 </document>

@@ -12,6 +12,16 @@
 import Foundation
 import CoreData
 
+class visitDescriptor {
+    
+    var date: NSDate? = nil
+    var rating: NSNumber? = 0
+    var favoriteDishes: String? = ""
+    var notes: String? = ""
+    var photos: NSSet? = nil
+    
+}
+
 extension Visit {
 
     @NSManaged var date: NSDate?
