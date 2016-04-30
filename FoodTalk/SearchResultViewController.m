@@ -54,8 +54,7 @@
     self.arrayOfBusinesses = [NSMutableArray new];
     
     
-    [self searchForFoodPlaces:
-     self.locationFromWatson searchString:self.searchTerm];
+    [self searchForFoodPlaces:self.locationFromWatson searchString:self.searchTerm];
     
 }
 
