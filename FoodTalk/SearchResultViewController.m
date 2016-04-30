@@ -76,8 +76,16 @@
     
     [client searchWithLocation:place currentLatLong:nil term:searchString limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
         [self.searchActivityIndicator startAnimating];
+        restaurantDescriptor *r = [[restaurantDescriptor alloc] init];
         for (YLPBusiness *business in search.businesses) {
-            [self.arrayOfBusinesses addObject:business];
+            r.name = business.name;
+            r.address = business.location.address[0];
+            r.city = business.location.city;
+            r.latitude = business.location.coordinate.latitude;
+            r.longitude = business.location.coordinate.longitude;
+            if (![CDM findRestaurant:r]) {
+                [self.arrayOfBusinesses addObject:business];
+            }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.searchTableView reloadData];
