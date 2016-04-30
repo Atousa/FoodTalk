@@ -8,6 +8,10 @@
 
 #import "ResultsTableViewCell.h"
 
+@interface ResultsTableViewCell()
+
+@end
+
 @implementation ResultsTableViewCell
 
 - (void)awakeFromNib {
@@ -20,5 +24,22 @@
 
     // Configure the view for the selected state
 }
+
+- (IBAction)onFavoriteButtonPressed:(UIButton *)sender {
+        [self.delegateCheckmark resultsTableViewCell:self didFavoriteButton:sender];
+    
+    UIImage *checkedBox = [UIImage imageNamed:@"Checkedbox"];
+    UIImage *uncheckedBox = [UIImage imageNamed:@"Uncheckedbox"];
+    
+    if (sender.imageView.image == uncheckedBox) {
+        //        Save this object Atousa
+        sender.imageView.image = checkedBox;
+    } else {
+        //        Delete this object from core data Atousa
+        sender.imageView.image = uncheckedBox;
+    }
+}
+
+
 
 @end

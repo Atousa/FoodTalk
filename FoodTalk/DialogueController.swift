@@ -20,7 +20,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var userLog: [String] = []
     var foodType = String()
     var dist = String()
-
+    
     
     
     override func viewDidLoad() {
@@ -147,7 +147,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                 print("distance: " + dist)
             }
         }
-
+        
         
     }
     
@@ -261,8 +261,8 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-            let srvc = segue.destinationViewController as! SearchResultViewController
-            srvc.distance = dist
-            srvc.type = foodType
+        let srvc = segue.destinationViewController as! SearchResultViewController
+        srvc.distance = dist
+        srvc.type = foodType
     }
 }

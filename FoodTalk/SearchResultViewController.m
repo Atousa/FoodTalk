@@ -1,4 +1,3 @@
-//
 //  SearchResultViewController.m
 //  FoodTalk
 //
@@ -8,26 +7,24 @@
 
 #import "SearchResultViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "ResultsTableViewCell.h"
 
-
-@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
-
-@property CLLocationManager *locationManager;
-@property double latitude;
-@property double longitude;
+@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, ResultsTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *searchActivityIndicator;
-
 
 @property NSString *consumerKey;
 @property NSString *consumerSecret;
 @property NSString *token;
 @property NSString *tokenSecret;
 
-
 @property YLPSearch *searchResult;
 @property NSMutableArray *arrayOfBusinesses;
+
+@property CLLocationManager *locationManager;
+@property CLLocation *location;
+@property NSString *myAddress;
 
 @end
 
@@ -35,45 +32,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager requestWhenInUseAuthorization];
+    
+    if ([CLLocationManager locationServicesEnabled]) {
+        [self.locationManager startUpdatingLocation];
+    }
+    
+    self.locationManager = [[CLLocationManager alloc]init];
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager startUpdatingLocation];
+    
     self.arrayOfBusinesses = [NSMutableArray new];
     
     self.searchTableView.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1];
+    [self searchForFoodPlaces:@"San Francisco, CA" searchString:self.searchTerm];
     
+}
+
+-(void)instantiateYelpAuthTokens {
     self.consumerKey = @"LRm2QLqnKWviXdVCf6O-mA";
     self.consumerSecret = @"79_-HyVtKeKTjrl_MgsSaLoq5qA";
     self.token = @"QKQQYxDxrPp3lJFw9dIsOy_n_X-ifcsV";
     self.tokenSecret = @"ip0M1FBKwgRViXxZIChEjvNFwnw";
-    
-    self.latitude = 0;
-    self.longitude = 0;
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.searchActivityIndicator startAnimating];
-    [self.locationManager requestWhenInUseAuthorization];
-    [self.locationManager startUpdatingLocation];
-    
-    self.searchTerm = self.type;
-    
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray *)locations {
-    CLLocation *location = [locations lastObject];
-    [self.locationManager stopUpdatingLocation];
+-(void)searchForFoodPlaces:(NSString *)place searchString:(NSString *)searchString {
+    [self instantiateYelpAuthTokens];
     
-    NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
-    self.latitude = location.coordinate.latitude;
-    self.longitude = location.coordinate.longitude;
-
     YLPClient *client = [[YLPClient alloc]initWithConsumerKey:self.consumerKey consumerSecret:self.consumerSecret token:self.token tokenSecret:self.tokenSecret];
     
-    //Eric you have latitude and Longitude(look at @property), now you can use these to make this search dynamic, I have already changed the searchTerm , now it searches based on the user preferences. You also have distance (@property NSString *type;@property NSString *distance; in case that you want to do search based on the distance
- 
-
-
-    [client searchWithLocation:@"San Francisco, CA" currentLatLong:nil term:self.searchTerm limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
+    self.searchTerm = @"thai food";
+    
+    [client searchWithLocation:@"11121 Flanagan Lane Germantown, MD" currentLatLong:nil term:self.searchTerm limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
+        [self.searchActivityIndicator startAnimating];
         for (YLPBusiness *business in search.businesses) {
             [self.arrayOfBusinesses addObject:business];
         }
@@ -82,8 +76,29 @@
             [self.searchActivityIndicator stopAnimating];
         });
     }];
-
 }
+
+#pragma mark - Location methods
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    [self.locationManager stopUpdatingLocation];
+    self.location = [locations lastObject];
+    NSLog(@"%f", self.location.coordinate.latitude);
+}
+//  Atousa, fix this please. We need to grab the location
+//- (void)reverseGeocode:(CLLocation *)location {
+//    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+//    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+//        NSLog(@"Finding address");
+//        if (error) {
+//            NSLog(@"Error %@", error.description);
+//        } else {
+//            CLPlacemark *placemark = [placemarks lastObject];
+//            self.myAddress = [NSString stringWithFormat:@"%@", ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO)];
+//        }
+//    }];
+//}
+
 
 
 #pragma mark - TableView Methods
@@ -93,37 +108,49 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
+    ResultsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
 
+    cell.delegateCheckmark = self;
+    
     YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
     NSMutableArray *categories = [NSMutableArray new];
     
     
     for (YLPCategory *category in businessOfMany.categories) {
         [categories addObject:category.name];
-        NSLog(@"%@", categories);
     }
     
 //    Set the background color of tableView
-    cell.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1.0];
-    
+//    cell.backgroundColor = [UIColor colorWithRed:255 green:0 blue:0 alpha:1.0];
+//    
 //    Set the textLabel color, font, and text
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.textLabel.font = [UIFont fontWithName:@"Copperplate" size:21];
-    cell.textLabel.text = businessOfMany.name;
-    
-//    Set the detailTextLabel text, font
-    cell.detailTextLabel.font = [UIFont fontWithName:@"SanFranciscoDisplay-Black" size:16];
+//    cell.textLabel.textColor = [UIColor whiteColor];
+//    cell.textLabel.font = [UIFont fontWithName:@"Copperplate" size:21];
+//    cell.textLabel.text = businessOfMany.name;
+//    cell.detailTextLabel.font = [UIFont fontWithName:@"SanFranciscoDisplay-Black" size:16];
 //    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", categories];
     
     
-    
-//    Set the imageView's image and size
-    NSData *data = [NSData dataWithContentsOfURL:businessOfMany.imageURL];
-    cell.imageView.image = [UIImage imageWithData:data];
-    
-    
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(void)resultsTableViewCell:(id)cell didFavoriteButton:(UIButton *)favoriteButton {
+    
+    UIImage *checkedBox = [UIImage imageNamed:@"Checkedbox"];
+    UIImage *uncheckedBox = [UIImage imageNamed:@"Uncheckedbox"];
+    
+    if ([favoriteButton.imageView.image isEqual: uncheckedBox]) {
+        //        Save this object Atousa
+        [favoriteButton setImage:checkedBox forState:UIControlStateNormal];
+    } else {
+        //        Delete this object from core data Atousa
+        [favoriteButton setImage:uncheckedBox forState:UIControlStateNormal];
+    }
+    NSLog(@"It worked from VC");
 }
 
 

@@ -68,7 +68,7 @@ func createRestaurantFromDescriptor(d: restaurantDescriptor)->Restaurant {
             }
         }
     })
-
+    
     return r
 }
 
@@ -87,13 +87,10 @@ func addRestaurant(descr: restaurantDescriptor, presentViewController: UIViewCon
             print(error)
         }
     }
-    
-    
 }
 
 
 func updateRestaurant(restaurant:Restaurant){}
-
 
 func findVisit(restaurant: Restaurant, visit:Visit)->Visit {return Visit()
 }
@@ -137,14 +134,4 @@ func addPhoto(restaurant: Restaurant, visit:Visit, photo:Photo) {
 
 
 func updatePhoto(visit:Visit){}*?*/
-
-
-
-
-
-
-
-
-
-
 

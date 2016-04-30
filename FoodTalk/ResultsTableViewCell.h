@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ResultsTableViewCellDelegate
+
+@optional
+
+-(void)resultsTableViewCell:(id)cell didFavoriteButton:(UIButton *)favoriteButton;
+
+@end
+
 @interface ResultsTableViewCell : UITableViewCell
+
+@property (nonatomic, assign) id<ResultsTableViewCellDelegate>delegateCheckmark;
 
 @end
