@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @protocol ResultsTableViewCellDelegate
 
@@ -23,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *yelpImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *yelpRatingImageView;
 @property (weak, nonatomic) IBOutlet UITextView *yelpRestaurantTitleAddress;
+@property (weak, nonatomic) IBOutlet UITextView *yelpNumOfReviews;
+@property (weak, nonatomic) IBOutlet MKMapView *restaurantMapView;
+
 
 
 @end
