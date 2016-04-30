@@ -28,8 +28,8 @@
 - (IBAction)onFavoriteButtonPressed:(UIButton *)sender {
         [self.delegateCheckmark resultsTableViewCell:self didFavoriteButton:sender];
     
-    UIImage *checkedBox = [UIImage imageNamed:@"Checkedbox"];
-    UIImage *uncheckedBox = [UIImage imageNamed:@"Uncheckedbox"];
+    UIImage *checkedBox = [UIImage imageNamed:@"Checkedbox-100"];
+    UIImage *uncheckedBox = [UIImage imageNamed:@"Uncheckedbox-100"];
     
     if (sender.imageView.image == uncheckedBox) {
         //        Save this object Atousa

@@ -19,7 +19,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var dialogID: Dialog.DialogID?
     var watsonLog: [String] = []
     var userLog: [String] = []
-    var foodType = String()
+    var foodType = "food"
     var dist = String()
     var currentLocation: String?
     

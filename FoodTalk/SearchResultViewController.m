@@ -9,6 +9,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "ResultsTableViewCell.h"
 
+
 @interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, ResultsTableViewCellDelegate>
 
 #pragma mark - Outlets
@@ -123,7 +124,7 @@
     NSMutableArray *categories = [NSMutableArray new];
     
     NSData *data = [NSData dataWithContentsOfURL:businessOfMany.imageURL];
-    NSData *ratingImageData = [NSData dataWithContentsOfURL:businessOfMany.ratingImgURL];
+    NSData *ratingImageData = [NSData dataWithContentsOfURL:businessOfMany.ratingImgURLLarge];
     cell.yelpImageView.image = [UIImage imageWithData:data];
     cell.yelpRatingImageView.image = [UIImage imageWithData:ratingImageData];
     
@@ -166,8 +167,8 @@
 
 -(void)resultsTableViewCell:(id)cell didFavoriteButton:(UIButton *)favoriteButton {
     
-    UIImage *checkedBox = [UIImage imageNamed:@"Checkedbox"];
-    UIImage *uncheckedBox = [UIImage imageNamed:@"Uncheckedbox"];
+    UIImage *checkedBox = [UIImage imageNamed:@"Checkedbox-100"];
+    UIImage *uncheckedBox = [UIImage imageNamed:@"Uncheckedbox-100"];
     
     if ([favoriteButton.imageView.image isEqual: uncheckedBox]) {
         //        Save this object Atousa

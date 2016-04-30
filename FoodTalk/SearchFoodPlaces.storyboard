@@ -18,46 +18,101 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="486" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HYo-aY-E8F">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="379" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HYo-aY-E8F">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" id="mCU-Rx-YeB">
-                                    <rect key="frame" x="0.0" y="514" width="600" height="20"/>
+                                    <rect key="frame" x="0.0" y="407" width="600" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </activityIndicatorView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="486" id="Cjn-3G-LJm" customClass="ResultsTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="486"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="379" id="Cjn-3G-LJm" customClass="ResultsTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="379"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cjn-3G-LJm" id="4Zv-lT-0to">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="485"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="378"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sPq-tp-aFM">
-                                                    <rect key="frame" x="8" y="203" width="340" height="233"/>
-                                                </mapView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Boston Creme Donut" translatesAutoresizingMaskIntoConstraints="NO" id="FUH-86-rE4">
-                                                    <rect key="frame" x="8" y="8" width="152" height="187"/>
-                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="10x10_1-5" translatesAutoresizingMaskIntoConstraints="NO" id="tZF-JS-0mv">
-                                                    <rect key="frame" x="188" y="168" width="103" height="20"/>
+                                                    <rect key="frame" x="199" y="157" width="103" height="20"/>
                                                 </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EXX-wA-XCL">
-                                                    <rect key="frame" x="183" y="14" width="155" height="155"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Thai Yum
-180 Montgomery Street
-City, State</string>
-                                                    <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="19"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Jl-k0-LZ6">
-                                                    <rect key="frame" x="299" y="157" width="50" height="50"/>
-                                                    <state key="normal" image="Uncheckedbox"/>
+                                                    <rect key="frame" x="45" y="142" width="50" height="50"/>
+                                                    <state key="normal" image="Uncheckedbox-100"/>
                                                     <connections>
                                                         <action selector="onFavoriteButtonPressed:" destination="Cjn-3G-LJm" eventType="touchUpInside" id="2Ts-EH-OD5"/>
                                                     </connections>
                                                 </button>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wrd-tG-I5o">
+                                                    <rect key="frame" x="8" y="8" width="325" height="128"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Boston Creme Donut" translatesAutoresizingMaskIntoConstraints="NO" id="FUH-86-rE4">
+                                                            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                                        </imageView>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EXX-wA-XCL">
+                                                            <rect key="frame" x="155" y="5" width="170" height="120"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <string key="text">Thai Yum
+180 Montgomery Street
+City, State
+(4592 Reviews)
+ </string>
+                                                            <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="19"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        </textView>
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="379" translatesAutoresizingMaskIntoConstraints="NO" id="RxL-4H-xpN" customClass="ResultsTableViewCell">
+                                                            <rect key="frame" x="-26" y="-8" width="600" height="379"/>
+                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RxL-4H-xpN" id="eh0-DH-sLs">
+                                                                <rect key="frame" x="0.0" y="0.0" width="600" height="378"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zye-wC-4Ll">
+                                                                        <rect key="frame" x="358" y="242" width="343" height="128"/>
+                                                                    </mapView>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="10x10_1-5" translatesAutoresizingMaskIntoConstraints="NO" id="wlM-Wh-TZt">
+                                                                        <rect key="frame" x="199" y="157" width="103" height="20"/>
+                                                                    </imageView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCU-nQ-dpk">
+                                                                        <rect key="frame" x="45" y="142" width="50" height="50"/>
+                                                                        <state key="normal" image="Uncheckedbox-100"/>
+                                                                        <connections>
+                                                                            <action selector="onFavoriteButtonPressed:" destination="RxL-4H-xpN" eventType="touchUpInside" id="EcA-rz-xGq"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="byA-sz-1yj">
+                                                                        <rect key="frame" x="16" y="8" width="325" height="128"/>
+                                                                        <subviews>
+                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YgF-uV-oSm">
+                                                                                <rect key="frame" x="147" y="5" width="170" height="120"/>
+                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                <string key="text">Thai Yum
+180 Montgomery Street
+City, State
+(4592 Reviews)
+ </string>
+                                                                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="19"/>
+                                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                            </textView>
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Boston Creme Donut" translatesAutoresizingMaskIntoConstraints="NO" id="A15-du-tiS">
+                                                                                <rect key="frame" x="0.0" y="2" width="125" height="125"/>
+                                                                            </imageView>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </view>
+                                                                </subviews>
+                                                            </tableViewCellContentView>
+                                                            <connections>
+                                                                <outlet property="yelpImageView" destination="A15-du-tiS" id="iNs-HG-UZ3"/>
+                                                                <outlet property="yelpRatingImageView" destination="wlM-Wh-TZt" id="t1o-HB-ra2"/>
+                                                                <outlet property="yelpRestaurantTitleAddress" destination="YgF-uV-oSm" id="siN-2i-5ba"/>
+                                                            </connections>
+                                                        </tableViewCell>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sPq-tp-aFM">
+                                                    <rect key="frame" x="8" y="213" width="338" height="128"/>
+                                                </mapView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -95,6 +150,6 @@ City, State</string>
     <resources>
         <image name="10x10_1-5" width="10" height="10"/>
         <image name="Boston Creme Donut" width="2820" height="1840"/>
-        <image name="Uncheckedbox" width="50" height="50"/>
+        <image name="Uncheckedbox-100" width="100" height="100"/>
     </resources>
 </document>
