@@ -71,7 +71,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
-        print(location)
         if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000 {
             print("Location not found. Reverse geo-coding")
             reverseGeoCode(location!)
