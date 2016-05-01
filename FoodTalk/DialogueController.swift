@@ -302,8 +302,8 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     }
     
     @IBAction func onMuteButtonPressed(sender: UIButton) {
-        let unmuteIcon = UIImage(named: "Microphone-30")
-        let muteIcon = UIImage(named: "BlockMicrophone-30")
+        let unmuteIcon = UIImage(named: "High Volume-30")
+        let muteIcon = UIImage(named: "Mute-30")
         
         if (sender.imageView?.image == unmuteIcon) {
             sender.setImage(muteIcon, forState: UIControlState.Normal)
