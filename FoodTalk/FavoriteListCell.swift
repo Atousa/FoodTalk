@@ -14,7 +14,7 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var myRatingImage: UIImageView!
     
-    @IBOutlet weak var adressTextView: UITextView!
+    @IBOutlet weak var addressTextView: UITextView!
     
     @IBOutlet private weak var notesTableView: UITableView!
     
@@ -49,9 +49,11 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (restaurant == nil) {
+            notesTableView.hidden = true
             return 0
         }
         
+        notesTableView.hidden = false
         return (restaurant.visits?.count)!
     }
     
@@ -73,4 +75,15 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
         cell.noteLabel?.text = visit.notes
         return cell
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        // Note that you cannot call tableView.cellForRowAtIndexPath(indexPath) here
+        return 60
+    }
+    
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
+    }
+    
+
 }
