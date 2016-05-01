@@ -1,9 +1,9 @@
 //
 //  Restaurant+CoreDataProperties.swift
-//  FoodTalk
+//  
 //
-//  Created by Atousa Duprat on 4/23/16.
-//  Copyright © 2016 EricDHong. All rights reserved.
+//  Created by Atousa Duprat on 4/30/16.
+//
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.
@@ -11,7 +11,6 @@
 
 import Foundation
 import CoreData
-
 
 @objc class restaurantDescriptor : NSObject {
     var name: String = ""
@@ -21,18 +20,19 @@ import CoreData
     var country: String = ""
     var address: String = ""
     var state: String = ""
+    var type: String = ""
 }
 
 extension Restaurant {
 
-    @NSManaged var name: String?
-    @NSManaged var longitude: NSNumber?
-    @NSManaged var latitude: NSNumber?
+    @NSManaged var address: String?
     @NSManaged var city: String?
     @NSManaged var country: String?
-    @NSManaged var address: String?
+    @NSManaged var latitude: NSNumber?
+    @NSManaged var longitude: NSNumber?
+    @NSManaged var name: String?
     @NSManaged var state: String?
+    @NSManaged var type: String?
     @NSManaged var visits: NSSet?
 
 }
-

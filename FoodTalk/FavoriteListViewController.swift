@@ -15,6 +15,9 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
    
     @IBOutlet weak var tableView: UITableView!
     
+    
+    
+    
     let locationManager = CLLocationManager()
     var location = CLLocation()
     var restaurant = [Restaurant]()
@@ -44,19 +47,22 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         resDemo1.city = "San Francisco"
         resDemo1.state = "CA"
         resDemo1.country = "United States"
-       
+        resDemo1.type = "Type1"
+        
         resDemo2.name = "Chez Panisse"
         resDemo2.address =  "1517 Shattuck Ave"
         resDemo2.city = "Berkeley"
         resDemo2.state = "CA"
         resDemo2.country = "United States"
+        resDemo2.type = "Type2"
         
         resDemo3.name = "Flour + Water"
         resDemo3.address =  "2401 Harrison St"
         resDemo3.city = "San Francisco"
         resDemo3.state = "CA"
         resDemo3.country = "United States"
-        
+        resDemo3.type = "Type3"
+
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeZone = NSTimeZone(name:"UTC")
@@ -206,6 +212,13 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell", forIndexPath: indexPath) as! FavoriteListCell
         self.r = self.restaurant[indexPath.row]
         cell.nameOfResturant.text = r.name
+        cell.typeLabel.text = r.type
+        if r.type != nil {
+            print("TYPE: " + r.type!)
+        }
+        cell.adressTextView.text = r.address
+        
+        
         return cell
             
         }

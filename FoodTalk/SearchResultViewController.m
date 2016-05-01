@@ -146,6 +146,7 @@
     NSLog(@"%@", businessOfMany.name);
     for (YLPCategory *category in businessOfMany.categories) {
         [categories addObject:category.name];
+        NSLog(@"\tCat: %@", category.name);
     }
     
     
@@ -190,6 +191,15 @@
     rd.country = business.location.countryCode;
     rd.latitude = business.location.coordinate.latitude;
     rd.longitude = business.location.coordinate.longitude;
+    NSString *longCategory = @"";
+    for (YLPCategory *category in business.categories) {
+        longCategory=[longCategory stringByAppendingString:category.name];
+        NSLog(@"\tcat: %@", category.name);
+        longCategory=[longCategory stringByAppendingString:@" "];
+    }
+    NSLog(@"\tLong Cat: ***%@***", longCategory);
+
+    rd.type = longCategory;
     //NSLog(@"%@,%@,%@,%@,%@,%f,%f", rd.name, rd.address, rd.city, rd.state, rd.country, rd.latitude, rd.longitude);
 
     if ([favoriteButton.imageView.image isEqual: uncheckedBox]) {

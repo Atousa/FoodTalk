@@ -13,6 +13,7 @@
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="visits" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Visit" inverseName="restaurant" inverseEntity="Visit" syncable="YES"/>
     </entity>
     <entity name="Visit" representedClassName=".Visit" syncable="YES">
@@ -24,8 +25,8 @@
         <relationship name="restaurant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Restaurant" inverseName="visits" inverseEntity="Restaurant" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Restaurant" positionX="-315" positionY="-18" width="128" height="163"/>
-        <element name="Visit" positionX="-306" positionY="54" width="128" height="135"/>
         <element name="Photo" positionX="-288" positionY="72" width="128" height="90"/>
+        <element name="Restaurant" positionX="-315" positionY="-18" width="128" height="180"/>
+        <element name="Visit" positionX="-306" positionY="54" width="128" height="135"/>
     </elements>
 </model>
