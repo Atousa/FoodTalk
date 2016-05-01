@@ -167,9 +167,8 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     
     
     func parse(text: String)-> Void {
-        let keywords = [ "dim sum", "chinese", "vietnamese", "american", "italian", "french", "korean", "japanese", "thai", "mexican", "peruvian", "british",
-                         "mongolian", "taiwanese"]
-        let distances = [ "1 mile", "5 miles", "20 miles", "2 blocks", "6 blocks" ]
+        let keywords = [ "dim sum", "chinese", "vietnamese", "american", "italian", "french", "korean", "japanese", "thai", "mexican", "peruvian", "british","mongolian", "taiwanese", "food", "restaurant", "taco", "tacos", "sushi", "burgers", "pasta", "kbbq", "breakfast", "brunch"]
+        let distances = [ "2 block", "6 blocks", "1 mile", "5 miles", "20 miles"]
         for word in keywords {
             if text.lowercaseString.rangeOfString(word) != nil {
                 foodType = word
