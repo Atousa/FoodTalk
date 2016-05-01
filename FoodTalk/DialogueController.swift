@@ -25,6 +25,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     
     let newLocationManger = CLLocationManager()
     
+//MARK: ViewWillApppear Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         newLocationManger.delegate = self
@@ -64,7 +65,20 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             self.startDialogue()
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHideNotification(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+    }
 
+//Mark: Location Manager
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print(error)
     }
@@ -88,7 +102,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         }
     }
 
-    
+//MARK: Tableview Scroll
     func tableViewScrollToTop(animated: Bool) {
         dispatch_after(0, dispatch_get_main_queue(), {
             let indexPath = NSIndexPath(forRow: 0, inSection: 0)
@@ -113,6 +127,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         })
     }
     
+//MARK: Watson Dialog and Text-to-Speech
     func startDialogue() {
         self.service!.converse(self.dialogID!) { response, error in
             if error != nil {
@@ -215,6 +230,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         return true
     }
     
+//MARK: TableView Methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.watsonLog.count
     }
@@ -230,20 +246,9 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             cell.myDialogueTextField.text = ""
         }
         
+        cell.WatsonDialogueTextField.font = UIFont(name: "Palatino", size: 16)
         cell.WatsonDialogueImage.image = UIImage(named: "Satellites-100.png")
         return cell
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHideNotification(_:)), name: UIKeyboardWillHideNotification, object: nil)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
     }
     
     func keyboardWillShowNotification(notification: NSNotification) {
@@ -287,6 +292,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         responseTextField.text = ""
     }
     
+//MARK: PrepareForSegue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let srvc = segue.destinationViewController as! SearchResultViewController
         srvc.distance = dist
