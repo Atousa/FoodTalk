@@ -199,7 +199,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         }
         self.userLog.append(text!)
         
-        if(text == "Bye!") {
+        if((text == "Done") || (text == "done") || (text == "Done!") || (text == "done!")) {
             performSegueWithIdentifier("SearchSegue", sender: self)
             
         }
