@@ -287,6 +287,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         return true
     }
     
+//MARK: IBAction outlets
     @IBAction func textFieldIsEditing(sender: UITextField) {
         if sender.text == nil || sender.text == "" {
             self.onSendButtonPressed.enabled = false
@@ -299,6 +300,20 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.responseFromUser(responseTextField.text)
         responseTextField.text = ""
     }
+    
+    @IBAction func onMuteButtonPressed(sender: UIButton) {
+        let unmuteIcon = UIImage(named: "Microphone-30")
+        let muteIcon = UIImage(named: "BlockMicrophone-30")
+        
+        if (sender.imageView?.image == unmuteIcon) {
+            sender.setImage(muteIcon, forState: UIControlState.Normal)
+            print("Mute")
+        } else {
+            sender.setImage(unmuteIcon, forState: UIControlState.Normal)
+            print("Unmute")
+        }
+    }
+    
     
 //MARK: PrepareForSegue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

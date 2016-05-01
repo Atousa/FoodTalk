@@ -89,7 +89,7 @@
                                 </connections>
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter response here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ttI-Rz-EUT">
-                                <rect key="frame" x="12" y="528" width="260" height="30"/>
+                                <rect key="frame" x="53" y="528" width="219" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1BD-2Z-nRz"/>
                                 </constraints>
@@ -116,13 +116,26 @@
                                     <action selector="onSendButtonPressed:" destination="zsU-2L-Dml" eventType="touchUpInside" id="Xw2-7O-3IK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQM-Ib-f3r">
+                                <rect key="frame" x="6" y="527" width="44" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="6mn-4h-OuM"/>
+                                </constraints>
+                                <state key="normal" image="Microphone-30"/>
+                                <connections>
+                                    <action selector="onMuteButtonPressed:" destination="zsU-2L-Dml" eventType="touchUpInside" id="dNq-WK-yIF"/>
+                                    <action selector="onSendButtonPressed:" destination="zsU-2L-Dml" eventType="touchUpInside" id="mfH-Qo-nu0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="y2c-Gh-xLO" firstAttribute="bottom" secondItem="RqG-d5-uMx" secondAttribute="top" id="1Af-vw-Ehg"/>
                             <constraint firstItem="ttI-Rz-EUT" firstAttribute="bottom" secondItem="y2c-Gh-xLO" secondAttribute="top" id="2Qf-ne-fYX"/>
+                            <constraint firstItem="pQM-Ib-f3r" firstAttribute="top" secondItem="J5G-qL-H3C" secondAttribute="top" id="8C9-rU-u4O"/>
                             <constraint firstItem="J5G-qL-H3C" firstAttribute="bottom" secondItem="y2c-Gh-xLO" secondAttribute="top" constant="-1" id="ABl-fb-HCu"/>
-                            <constraint firstItem="ttI-Rz-EUT" firstAttribute="leading" secondItem="bKo-MD-QSU" secondAttribute="leadingMargin" constant="-4" id="WDG-qa-AIV"/>
+                            <constraint firstItem="pQM-Ib-f3r" firstAttribute="leading" secondItem="bKo-MD-QSU" secondAttribute="leadingMargin" constant="-10" id="ReN-JM-dxx"/>
+                            <constraint firstItem="ttI-Rz-EUT" firstAttribute="leading" secondItem="bKo-MD-QSU" secondAttribute="leadingMargin" constant="37" id="WDG-qa-AIV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ijA-XV-qfb" secondAttribute="trailing" constant="-20" id="Y2j-72-Qa8"/>
                             <constraint firstItem="y2c-Gh-xLO" firstAttribute="trailing" secondItem="bKo-MD-QSU" secondAttribute="trailingMargin" id="bnt-QE-6pw"/>
                             <constraint firstItem="J5G-qL-H3C" firstAttribute="leading" secondItem="ttI-Rz-EUT" secondAttribute="trailing" constant="-2" id="lKF-aa-B0k"/>
@@ -159,6 +172,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Microphone-30" width="30" height="30"/>
         <image name="Satellites-100" width="100" height="100"/>
     </resources>
 </document>
