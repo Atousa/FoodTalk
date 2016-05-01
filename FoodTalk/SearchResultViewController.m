@@ -9,18 +9,15 @@
 #import <CoreLocation/CoreLocation.h>
 #import "ResultsTableViewCell.h"
 #import "FoodTalk-Swift.h"
+#import <MapKit/MapKit.h>
 
 
-@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, ResultsTableViewCellDelegate>
 
-
+@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, ResultsTableViewCellDelegate, MKMapViewDelegate>
 
 #pragma mark - Outlets
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *searchActivityIndicator;
-
-
-
 
 #pragma mark - Properties
 @property NSString *consumerKey;
@@ -34,12 +31,17 @@
 @property CLLocationManager *locationManager;
 @property CLLocation *location;
 @property NSString *myAddress;
+@property MKPointAnnotation *restaurantAnnotation;
+
+
 @end
 
 @implementation SearchResultViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.restaurantAnnotation = [[MKPointAnnotation alloc]init];
+    
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager requestWhenInUseAuthorization];
@@ -51,14 +53,13 @@
     
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager startUpdatingLocation];
     
     self.arrayOfBusinesses = [NSMutableArray new];
     
     
-    [self searchForFoodPlaces:
-     self.locationFromWatson searchString:self.searchTerm];
+    [self searchForFoodPlaces:self.locationFromWatson searchString:self.searchTerm];
     
 }
 
@@ -131,44 +132,36 @@
 
     cell.delegateCheckmark = self;
     
-    YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
-    NSMutableArray *categories = [NSMutableArray new];
     
+    YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
+    
+//    Get the categories from an array and append them into a string
+    NSMutableString *restaurantCategory = [NSMutableString stringWithFormat:@""];
+    for (YLPCategory *category in businessOfMany.categories) {
+        [restaurantCategory appendFormat:@"%@,",category.name];
+        NSLog(@"%@",restaurantCategory);
+    }
+    
+//    Set the food imageView and rating imageView
     NSData *data = [NSData dataWithContentsOfURL:businessOfMany.imageURL];
-    NSData *ratingImageData = [NSData dataWithContentsOfURL:businessOfMany.ratingImgURL];
+    NSData *ratingImageData = [NSData dataWithContentsOfURL:businessOfMany.ratingImgURLLarge];
     cell.yelpImageView.image = [UIImage imageWithData:data];
     cell.yelpRatingImageView.image = [UIImage imageWithData:ratingImageData];
     
+//    Display the restaurant name + address, also set the number of reviews
     NSString *streetAddress = [businessOfMany.location.displayAddress objectAtIndex:0];
-
-    cell.yelpRestaurantTitleAddress.text = [NSString stringWithFormat:@"%@ \n %@ \n %@, %@", businessOfMany.name, streetAddress, businessOfMany.location.city, businessOfMany.location.stateCode];
     
-    NSLog(@"%@", businessOfMany.name);
-    for (YLPCategory *category in businessOfMany.categories) {
-        [categories addObject:category.name];
-        NSLog(@"\tCat: %@", category.name);
-    }
+    cell.yelpRestaurantTitleAddress.text = [NSString stringWithFormat:@"%@ \n\n%@ \n%@, %@ \n%@", businessOfMany.name, streetAddress, businessOfMany.location.city, businessOfMany.location.stateCode, restaurantCategory];
+    cell.yelpNumOfReviews.text = [NSString stringWithFormat:@"(%0.1lu Reviews)", (unsigned long)businessOfMany.reviewCount];
+    cell.yelpRestaurantTitleAddress.textContainer.lineBreakMode = NSLineBreakByWordWrapping;
     
-    
-    
-    
-//    self.restaurantName.textColor = makeWhiteTextColor;
-//    self.restaurantName.font = makeFontAndSize;
-//    self.restaurantName.text = businessOfMany.name;
-//    
-//    self.restaurantStreet.textColor = makeWhiteTextColor;
-//    self.restaurantStreet.font = makeFontAndSize;
-//    self.restaurantStreet.text = [businessOfMany.location.displayAddress objectAtIndex:0];
-    
-    
-//
-//    Set the textLabel color, font, and text
-//    cell.textLabel.textColor = [UIColor whiteColor];
-//    cell.textLabel.font = [UIFont fontWithName:@"Copperplate" size:21];
-//    cell.textLabel.text = businessOfMany.name;
-//    cell.detailTextLabel.font = [UIFont fontWithName:@"SanFranciscoDisplay-Black" size:16];
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", categories];
-    
+//    Set up the annotation of the restaurant mapView
+    double restaurantLatitude = businessOfMany.location.coordinate.latitude;
+    double restaurantLongitude = businessOfMany.location.coordinate.longitude;
+    self.restaurantAnnotation.coordinate = CLLocationCoordinate2DMake(restaurantLatitude, restaurantLongitude);
+    [cell.restaurantMapView addAnnotation:self.restaurantAnnotation];
+    MKCoordinateRegion region = MKCoordinateRegionMake(self.restaurantAnnotation.coordinate, MKCoordinateSpanMake(0.03, 0.03));
+    [cell.restaurantMapView setRegion:region animated:YES];
     
     return cell;
 }
@@ -177,10 +170,14 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+
+#pragma mark - Delegate method from ResultsTableViewCell
+
 -(void)resultsTableViewCell:(id)cell didFavoriteButton:(UIButton *)favoriteButton {
     
-    UIImage *checkedBox = [UIImage imageNamed:@"Checkedbox"];
-    UIImage *uncheckedBox = [UIImage imageNamed:@"Uncheckedbox"];
+
+    UIImage *checkedBox = [UIImage imageNamed:@"Checkedbox-100"];
+    UIImage *uncheckedBox = [UIImage imageNamed:@"Uncheckedbox-100"];
     restaurantDescriptor *rd = [[restaurantDescriptor alloc] init];
     long index = [self.searchTableView indexPathForCell:cell].row;
     YLPBusiness *business = self.arrayOfBusinesses[index];

@@ -5,13 +5,13 @@ import CoreLocation
 
 class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioRecorderDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate {
     
-    
+//Mark: Outlets
+    @IBOutlet weak var onSendButtonPressed: UIButton!
     @IBOutlet weak var DialogueTableView: UITableView!
-    
     @IBOutlet weak var spacerBottomConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var responseTextField: UITextField!
     
+//Mark: variables/constants
     var conversationID: Int?
     var clientID: Int?
     var service: Dialog?
@@ -19,12 +19,13 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var dialogID: Dialog.DialogID?
     var watsonLog: [String] = []
     var userLog: [String] = []
-    var foodType = String()
+    var foodType = "food"
     var dist = String()
     var currentLocation: String?
     
     let newLocationManger = CLLocationManager()
     
+//MARK: View Load/Appear Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         newLocationManger.delegate = self
@@ -32,12 +33,13 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         
         self.DialogueTableView.separatorStyle = .None
         self.responseTextField.delegate = self
+        self.onSendButtonPressed.enabled = false
         
         self.service = Dialog(username: "b9b42757-5fa9-4633-8cb6-39f92fe7e18c", password: "GiDY7J5THqx3")
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         
         
-        let dialogName = "xmlchanged9"
+        let dialogName = "xmlchanged20"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -64,7 +66,20 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             self.startDialogue()
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHideNotification(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+    }
 
+//Mark: Location Manager
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print(error)
     }
@@ -88,7 +103,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         }
     }
 
-    
+//MARK: Tableview Scroll
     func tableViewScrollToTop(animated: Bool) {
         dispatch_after(0, dispatch_get_main_queue(), {
             let indexPath = NSIndexPath(forRow: 0, inSection: 0)
@@ -113,6 +128,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         })
     }
     
+//MARK: Watson Dialog and Text-to-Speech
     func startDialogue() {
         self.service!.converse(self.dialogID!) { response, error in
             if error != nil {
@@ -151,9 +167,8 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     
     
     func parse(text: String)-> Void {
-        let keywords = [ "dim sum", "chinese", "vietnamese", "american", "italian", "french", "korean", "japanese", "thai", "mexican", "peruvian", "british",
-                         "mongolian", "taiwanese"]
-        let distances = [ "1 mile", "5 miles", "20 miles", "2 blocks", "6 blocks" ]
+        let keywords = [ "dim sum", "chinese", "vietnamese", "american", "italian", "french", "korean", "japanese", "thai", "mexican", "peruvian", "british","mongolian", "taiwanese", "food", "restaurant", "taco", "tacos", "sushi", "burgers", "pasta", "kbbq", "breakfast", "brunch"]
+        let distances = [ "2 block", "6 blocks", "1 mile", "5 miles", "20 miles"]
         for word in keywords {
             if text.lowercaseString.rangeOfString(word) != nil {
                 foodType = word
@@ -184,7 +199,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         }
         self.userLog.append(text!)
         
-        if(text == "Bye!") {
+        if((text == "Done") || (text == "done") || (text == "Done!") || (text == "done!")) {
             performSegueWithIdentifier("SearchSegue", sender: self)
             
         }
@@ -215,6 +230,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         return true
     }
     
+//MARK: TableView Methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.watsonLog.count
     }
@@ -230,20 +246,9 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             cell.myDialogueTextField.text = ""
         }
         
+        cell.WatsonDialogueTextField.font = UIFont(name: "Palatino", size: 16)
         cell.WatsonDialogueImage.image = UIImage(named: "Satellites-100.png")
         return cell
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHideNotification(_:)), name: UIKeyboardWillHideNotification, object: nil)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
     }
     
     func keyboardWillShowNotification(notification: NSNotification) {
@@ -282,11 +287,35 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         return true
     }
     
+//MARK: IBAction outlets
+    @IBAction func textFieldIsEditing(sender: UITextField) {
+        if sender.text == nil || sender.text == "" {
+            self.onSendButtonPressed.enabled = false
+        } else {
+            self.onSendButtonPressed.enabled = true
+        }
+    }
+    
     @IBAction func onSendButtonPressed(sender: AnyObject) {
         self.responseFromUser(responseTextField.text)
         responseTextField.text = ""
     }
     
+    @IBAction func onMuteButtonPressed(sender: UIButton) {
+        let unmuteIcon = UIImage(named: "High Volume-30")
+        let muteIcon = UIImage(named: "Mute-30")
+        
+        if (sender.imageView?.image == unmuteIcon) {
+            sender.setImage(muteIcon, forState: UIControlState.Normal)
+            print("Mute")
+        } else {
+            sender.setImage(unmuteIcon, forState: UIControlState.Normal)
+            print("Unmute")
+        }
+    }
+    
+    
+//MARK: PrepareForSegue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let srvc = segue.destinationViewController as! SearchResultViewController
         srvc.distance = dist

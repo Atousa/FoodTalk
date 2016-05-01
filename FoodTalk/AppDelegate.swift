@@ -1,6 +1,3 @@
-
-
-
 //
 //  AppDelegate.swift
 //  FoodTalk
