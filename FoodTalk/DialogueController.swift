@@ -25,7 +25,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     
     let newLocationManger = CLLocationManager()
     
-//MARK: ViewWillApppear Methods
+//MARK: View Load/Appear Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         newLocationManger.delegate = self
@@ -39,7 +39,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         
         
-        let dialogName = "xmlchanged9"
+        let dialogName = "xmlchanged20"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)

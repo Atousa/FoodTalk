@@ -152,6 +152,7 @@
     NSString *streetAddress = [businessOfMany.location.displayAddress objectAtIndex:0];
     cell.yelpRestaurantTitleAddress.text = [NSString stringWithFormat:@"%@ \n\n%@ \n%@, %@ \n%@", businessOfMany.name, streetAddress, businessOfMany.location.city, businessOfMany.location.stateCode, restaurantCategory];
     cell.yelpNumOfReviews.text = [NSString stringWithFormat:@"(%0.1lu Reviews)", (unsigned long)businessOfMany.reviewCount];
+    cell.yelpRestaurantTitleAddress.textContainer.lineBreakMode = NSLineBreakByWordWrapping;
     
 //    Set up the annotation of the restaurant mapView
     double restaurantLatitude = businessOfMany.location.coordinate.latitude;
@@ -166,7 +167,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
 }
 
 
