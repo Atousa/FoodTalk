@@ -10,7 +10,7 @@ import UIKit
 
 class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var nameOfResturant: UILabel!
+    @IBOutlet weak var nameOfRestaurant: UILabel!
     
     @IBOutlet weak var myRatingImage: UIImageView!
     
@@ -20,22 +20,7 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var typeLabel: UILabel!
     
-    /*
-    func setNoteTableViewDataSourceDelegate
-        <D: protocol<UITableViewDataSource, UITableViewDelegate>>
-        (dataSourceDelegate: D, forRow row: Int) {
-        
-        notesTableView.delegate = dataSourceDelegate
-        notesTableView.dataSource = dataSourceDelegate
-        notesTableView.tag = row
-        notesTableView.reloadData()
-    }
-    */
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupNotesTableView()
-    }
+    var restaurant : Restaurant!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -63,15 +48,29 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if (restaurant == nil) {
+            return 0
+        }
+        
+        return (restaurant.visits?.count)!
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("NotesCell")
-        if(cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "NotesCell")
+        let cell = tableView.dequeueReusableCellWithIdentifier("NotesCell") as! FavoriteListCellNotesSubCell
+        
+        let visit = restaurant.visits?.allObjects[indexPath.row] as! Visit
+
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd" //  "yyyy-MM-dd HH:mm:ss ZZZ"
+
+        //cell.textLabel?.text = "Row " + String(indexPath.row)
+        if (visit.date != nil) {
+            cell.dateLabel?.text = dateFormatter.stringFromDate(visit.date!)
+        } else {
+            cell.dateLabel?.text = ""
         }
-        cell?.textLabel?.text = "Row " + String(indexPath.row)
-        return cell!
+        cell.noteLabel?.text = visit.notes
+        return cell
     }
 }

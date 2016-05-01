@@ -43,49 +43,50 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         
         
         resDemo1.name = "Farmhouse Kitchen"
-        resDemo1.address =  "710 Florida St"
+        resDemo1.address = "710 Florida St"
         resDemo1.city = "San Francisco"
         resDemo1.state = "CA"
         resDemo1.country = "United States"
-        resDemo1.type = "Type1"
+        resDemo1.type = "Thai"
         
         resDemo2.name = "Chez Panisse"
         resDemo2.address =  "1517 Shattuck Ave"
         resDemo2.city = "Berkeley"
         resDemo2.state = "CA"
         resDemo2.country = "United States"
-        resDemo2.type = "Type2"
+        resDemo2.type = "Californian"
         
         resDemo3.name = "Flour + Water"
         resDemo3.address =  "2401 Harrison St"
         resDemo3.city = "San Francisco"
         resDemo3.state = "CA"
         resDemo3.country = "United States"
-        resDemo3.type = "Type3"
+        resDemo3.type = "Italian"
 
         
         let dateFormatter = NSDateFormatter()
-        dateFormatter.timeZone = NSTimeZone(name:"UTC")
-        
+        //dateFormatter.timeZone = NSTimeZone(name:"UTC")
+        dateFormatter.dateFormat = "yyyy-MM-dd" //  "yyyy-MM-dd HH:mm:ss ZZZ"
+
         let date1 = dateFormatter.dateFromString("2016-01-14")
         visit1.date = date1
-        visit2.favoriteDishes = ""
-        visit2.notes = " it is always fun to be here and watch Laetitia drinking coco water"
-        visit2.rating = 4.5
+        visit1.favoriteDishes = ""
+        visit1.notes = "It is always fun to be here and watch Lætitia drinking coco water"
+        visit1.rating = 4.5
         
         
         let date2 = dateFormatter.dateFromString("2016-02-05")
         visit2.date = date2
         visit2.favoriteDishes = ""
-        visit2.notes = " We want to show my mom Laetitia's favorite resturant, she usually eats very well here"
+        visit2.notes = "We wanted to show my mom Lætitia's favorite resturant, she usually eats very well here"
         visit2.rating = 4.5
         
         
         let date3 = dateFormatter.dateFromString("2016-04-13")
         visit3.date = date3
+        visit3.favoriteDishes = ""
         visit3.rating = 4
-        visit3.notes = " I loved the vibe of the resturant with all Thai new year decoration with my family, all the dished looks fantastic"
-        visit1.favoriteDishes = ""
+        visit3.notes = "I loved the vibe of the restaurant with Thai new year decoration with my family, all the dishes looked fantastic"
         
         
         
@@ -98,12 +99,11 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         
        
         
-        title = "\"List of My Favorite Restaurants\""
+        title = "Favorites"
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.requestWhenInUseAuthorization()
-        
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
@@ -126,10 +126,6 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         
     }
     
-    
-    
-    
-
     func closeEnough(candidate: Restaurant) -> Bool {
         let dest =  CLLocation(latitude: Double(candidate.latitude!),longitude: Double(candidate.longitude!))
 
@@ -137,7 +133,6 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         
         return distance <= 0.2
     }
-    
     
     func findNearbyRestaurants(location:CLLocation)-> [Restaurant] {
         let request = CDM.makeRequest("Restaurant")
@@ -179,9 +174,6 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
        return self.restaurant
     }
     
-        
-        
-    
     func calculateDistanceBetweenTwoLocations(source:CLLocation,destination:CLLocation) -> Double{
         
         var distanceMeters = source.distanceFromLocation(destination)
@@ -189,7 +181,6 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         let roundedTwoDigit = distanceKM
         return roundedTwoDigit
     }
-    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.restaurant.count == 0  {
@@ -211,31 +202,26 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell", forIndexPath: indexPath) as! FavoriteListCell
         self.r = self.restaurant[indexPath.row]
-        cell.nameOfResturant.text = r.name
+        cell.restaurant = self.r
+        cell.nameOfRestaurant.text = r.name
         cell.typeLabel.text = r.type
-        if r.type != nil {
-            print("TYPE: " + r.type!)
-        }
-        cell.adressTextView.text = r.address
-        
-        
+        cell.adressTextView.text = r.address! + "\n" + r.city! + ", " + r.state! + "\n" + r.country!
+
         return cell
-            
-        }
+    }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
         r = restaurant[indexPath!.row]
         
-        let enumeratore = self.r.visits?.objectEnumerator()
-               while let myVisit = enumeratore!.nextObject() as! Visit? {
+        let enumerator = self.r.visits?.objectEnumerator()
+               while let myVisit = enumerator!.nextObject() as! Visit? {
                     print(myVisit.notes)
         }
         
         let vc = segue.destinationViewController as! FavoriteListDetails
         vc.r = r
-    
     }
 
     override func didReceiveMemoryWarning() {

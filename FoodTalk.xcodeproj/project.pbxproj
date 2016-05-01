@@ -48,6 +48,7 @@
 		7171CB551CC94F3700B9E706 /* ObjectMapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7171CB481CC94CBC00B9E706 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7171CB561CC94F3700B9E706 /* Starscream.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7171CB491CC94CBC00B9E706 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7171CB571CC94F3700B9E706 /* WatsonDeveloperCloud.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7171CB4A1CC94CBC00B9E706 /* WatsonDeveloperCloud.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7174775D1CD65B8900CD0126 /* FavoriteListCellNotesSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7174775C1CD65B8900CD0126 /* FavoriteListCellNotesSubCell.swift */; };
 		717E624B1CC7FAE80078B71A /* DialogueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717E624A1CC7FAE80078B71A /* DialogueCell.swift */; };
 		71A4D6051CD2A597002EBE83 /* foodSearchDialog-8.xml in Resources */ = {isa = PBXBuildFile; fileRef = 71A4D6041CD2A597002EBE83 /* foodSearchDialog-8.xml */; };
 		71A4D6081CD2AECF002EBE83 /* FavoritesListDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71A4D6061CD2AECF002EBE83 /* FavoritesListDetails.storyboard */; };
@@ -113,6 +114,7 @@
 		7171CB481CC94CBC00B9E706 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		7171CB491CC94CBC00B9E706 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
 		7171CB4A1CC94CBC00B9E706 /* WatsonDeveloperCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatsonDeveloperCloud.framework; path = Carthage/Build/iOS/WatsonDeveloperCloud.framework; sourceTree = "<group>"; };
+		7174775C1CD65B8900CD0126 /* FavoriteListCellNotesSubCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListCellNotesSubCell.swift; sourceTree = "<group>"; };
 		717E624A1CC7FAE80078B71A /* DialogueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogueCell.swift; sourceTree = "<group>"; };
 		71A4D6041CD2A597002EBE83 /* foodSearchDialog-8.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "foodSearchDialog-8.xml"; sourceTree = "<group>"; };
 		71A4D6071CD2AECF002EBE83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FavoritesListDetails.storyboard; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				1A4FE0AC1CC702A400EE8787 /* FavoriteListViewController.swift */,
 				71A4D6041CD2A597002EBE83 /* foodSearchDialog-8.xml */,
 				713311571CCBEEBD006CE651 /* FavoriteListCell.swift */,
+				7174775C1CD65B8900CD0126 /* FavoriteListCellNotesSubCell.swift */,
 			);
 			name = FavoriteList;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				713311691CCC0902006CE651 /* Restaurant.swift in Sources */,
 				1A4FE0AD1CC702A400EE8787 /* FavoriteListViewController.swift in Sources */,
 				1A4F6E9D1CCEA4EB009E6702 /* MainNavigationViewController.swift in Sources */,
+				7174775D1CD65B8900CD0126 /* FavoriteListCellNotesSubCell.swift in Sources */,
 				1A4FE0941CC6FDA000EE8787 /* FoodTalk.xcdatamodeld in Sources */,
 				713311581CCBEEBD006CE651 /* FavoriteListCell.swift in Sources */,
 				713311661CCC0902006CE651 /* Visit+CoreDataProperties.swift in Sources */,

@@ -18,82 +18,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="212" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fq3-lW-Jwc">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="205" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fq3-lW-Jwc">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" rowHeight="212" id="5pS-zq-eZd" customClass="FavoriteListCell" customModule="FoodTalk" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" rowHeight="205" id="5pS-zq-eZd" customClass="FavoriteListCell" customModule="FoodTalk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5pS-zq-eZd" id="nYO-9n-jxA">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P36-pn-9aW">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P36-pn-9aW" userLabel="Name Of Restaurant">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                                    <color key="backgroundColor" red="0.97647058819999999" green="0.49590355470000003" blue="0.37950296610000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="29" y="0.0" width="102" height="33"/>
+                                                        <rect key="frame" x="8" y="0.0" width="167" height="33"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmv-SM-bjd">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmv-SM-bjd">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                                    <color key="backgroundColor" red="0.97647058819999999" green="0.49590355470000003" blue="0.37950296610000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="29" y="41" width="102" height="30"/>
+                                                        <rect key="frame" x="8" y="19" width="123" height="30"/>
                                                     </variation>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="to factor tum poen legum odioque civiuda." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SXL-st-qnO">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Address" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SXL-st-qnO">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                    <color key="backgroundColor" red="0.97647058819999999" green="0.49590355470000003" blue="0.37950296610000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
                                                         <rect key="frame" x="183" y="-4" width="197" height="57"/>
                                                     </variation>
                                                 </textView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rJy-Lh-X6t">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9 Stars" translatesAutoresizingMaskIntoConstraints="NO" id="rJy-Lh-X6t">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="214" y="55" width="186" height="23.5"/>
+                                                        <rect key="frame" x="8" y="41" width="67" height="15.5"/>
                                                     </variation>
                                                 </imageView>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vHj-CB-81n">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <color key="backgroundColor" red="0.5956270414" green="1" blue="0.93333032559999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotesCell" rowHeight="98" id="rOO-Gv-PmN">
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotesCell" rowHeight="98" id="rOO-Gv-PmN" customClass="FavoriteListCellNotesSubCell" customModule="FoodTalk" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rOO-Gv-PmN" id="ugi-wL-OOY">
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y10-uO-mtr">
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Visit Notes" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y10-uO-mtr" userLabel="Note">
                                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <color key="backgroundColor" red="0.8767628205128204" green="0.8767628205128204" blue="0.8767628205128204" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                                                            <rect key="frame" x="80" y="-6" width="240" height="119"/>
+                                                                            <rect key="frame" x="118" y="4" width="274" height="85.5"/>
                                                                         </variation>
                                                                     </textView>
                                                                     <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Q1-tG-khn">
                                                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                                                        <color key="backgroundColor" red="0.087603834950000001" green="0.38513088849999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="backgroundColor" red="0.87676282049999998" green="0.87676282049999998" blue="0.87676282049999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="16"/>
                                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                                                            <rect key="frame" x="8" y="4" width="71" height="21"/>
+                                                                            <rect key="frame" x="8" y="8" width="102" height="21"/>
                                                                         </variation>
                                                                     </label>
                                                                 </subviews>
+                                                                <color key="backgroundColor" red="0.87676282049999998" green="0.87676282049999998" blue="0.87676282049999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <variation key="default">
                                                                     <mask key="subviews">
                                                                         <exclude reference="Y10-uO-mtr"/>
@@ -107,10 +104,14 @@
                                                                     </mask>
                                                                 </variation>
                                                             </tableViewCellContentView>
+                                                            <connections>
+                                                                <outlet property="dateLabel" destination="5Q1-tG-khn" id="8ax-p8-6bd"/>
+                                                                <outlet property="noteLabel" destination="Y10-uO-mtr" id="VnB-hv-rdb"/>
+                                                            </connections>
                                                         </tableViewCell>
                                                     </prototypes>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="0.0" y="79.5" width="400" height="132"/>
+                                                        <rect key="frame" x="0.0" y="61" width="400" height="125"/>
                                                     </variation>
                                                 </tableView>
                                             </subviews>
@@ -137,7 +138,7 @@
                                         <connections>
                                             <outlet property="adressTextView" destination="SXL-st-qnO" id="PX5-x2-jNO"/>
                                             <outlet property="myRatingImage" destination="rJy-Lh-X6t" id="84w-y6-YBh"/>
-                                            <outlet property="nameOfResturant" destination="P36-pn-9aW" id="sNW-wn-r72"/>
+                                            <outlet property="nameOfRestaurant" destination="P36-pn-9aW" id="oai-2D-x8r"/>
                                             <outlet property="notesTableView" destination="vHj-CB-81n" id="lem-ZS-gW2"/>
                                             <outlet property="typeLabel" destination="bmv-SM-bjd" id="BBq-xM-Nkt"/>
                                         </connections>
@@ -181,4 +182,7 @@
             <point key="canvasLocation" x="2655" y="629"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="9 Stars" width="300" height="69"/>
+    </resources>
 </document>

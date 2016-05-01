@@ -25,14 +25,16 @@ import CoreData
 
 extension Restaurant {
 
+    @NSManaged var name: String?
+    @NSManaged var type: String?
+
     @NSManaged var address: String?
     @NSManaged var city: String?
+    @NSManaged var state: String?
     @NSManaged var country: String?
+    
     @NSManaged var latitude: NSNumber?
     @NSManaged var longitude: NSNumber?
-    @NSManaged var name: String?
-    @NSManaged var state: String?
-    @NSManaged var type: String?
-    @NSManaged var visits: NSSet?
 
+    @NSManaged var visits: NSSet?
 }
