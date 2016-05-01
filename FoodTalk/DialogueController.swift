@@ -5,13 +5,13 @@ import CoreLocation
 
 class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioRecorderDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate {
     
-    
+//Mark: Outlets
+    @IBOutlet weak var onSendButtonPressed: UIButton!
     @IBOutlet weak var DialogueTableView: UITableView!
-    
     @IBOutlet weak var spacerBottomConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var responseTextField: UITextField!
     
+//Mark: variables/constants
     var conversationID: Int?
     var clientID: Int?
     var service: Dialog?
@@ -33,6 +33,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         
         self.DialogueTableView.separatorStyle = .None
         self.responseTextField.delegate = self
+        self.onSendButtonPressed.enabled = false
         
         self.service = Dialog(username: "b9b42757-5fa9-4633-8cb6-39f92fe7e18c", password: "GiDY7J5THqx3")
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
@@ -285,6 +286,14 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.responseFromUser(responseTextField.text)
         responseTextField.text = ""
         return true
+    }
+    
+    @IBAction func textFieldIsEditing(sender: UITextField) {
+        if sender.text == nil || sender.text == "" {
+            self.onSendButtonPressed.enabled = false
+        } else {
+            self.onSendButtonPressed.enabled = true
+        }
     }
     
     @IBAction func onSendButtonPressed(sender: AnyObject) {
