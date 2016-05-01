@@ -78,6 +78,7 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         // Note that you cannot call tableView.cellForRowAtIndexPath(indexPath) here
+        // TODO: These heights shouldn't be hardcoded
         return 60
     }
     

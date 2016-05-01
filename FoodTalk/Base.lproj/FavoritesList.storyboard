@@ -54,7 +54,7 @@
                                                         <rect key="frame" x="183" y="-4" width="197" height="65"/>
                                                     </variation>
                                                 </textView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9 Stars" translatesAutoresizingMaskIntoConstraints="NO" id="rJy-Lh-X6t">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0 Stars" translatesAutoresizingMaskIntoConstraints="NO" id="rJy-Lh-X6t">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
                                                         <rect key="frame" x="8" y="41" width="67" height="15.5"/>
@@ -193,6 +193,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="9 Stars" width="300" height="69"/>
+        <image name="0 Stars" width="300" height="69"/>
     </resources>
 </document>

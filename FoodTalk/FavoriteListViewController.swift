@@ -180,12 +180,25 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell", forIndexPath: indexPath) as! FavoriteListCell
-        self.r = self.restaurant[indexPath.row]
-        cell.restaurant = self.r
+        let restaurant = self.restaurant[indexPath.row]
+        self.r = restaurant
+        cell.restaurant = restaurant
         cell.nameOfRestaurant.text = r.name
         cell.typeLabel.text = r.type
         cell.addressTextView.text = r.address! + "\n" + r.city! + ", " + r.state! + "\n" + r.country!
 
+        let numVisits = (restaurant.visits?.count)!
+        if(numVisits > 0) {
+            var Rating = 0.0
+            
+            for i in 0...numVisits-1 {
+                Rating += Double((restaurant.visits?.allObjects[i] as! Visit).rating!)
+            }
+            Rating = round(2 * Rating/Double(numVisits))
+            let stars = ["0 Stars", "1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars", "6 Stars", "7 Stars", "8 Stars", "9 Stars", "10 Stars"]
+            cell.myRatingImage.image = UIImage(named: stars[Int(Rating)])
+        }
+        
         return cell
     }
     
