@@ -166,7 +166,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
+
+
+#pragma mark - Delegate method from ResultsTableViewCell
 
 -(void)resultsTableViewCell:(id)cell didFavoriteButton:(UIButton *)favoriteButton {
     
