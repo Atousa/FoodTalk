@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *yelpRestaurantTitleAddress;
 @property (weak, nonatomic) IBOutlet UITextView *yelpNumOfReviews;
 @property (weak, nonatomic) IBOutlet MKMapView *restaurantMapView;
-
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
 
 @end

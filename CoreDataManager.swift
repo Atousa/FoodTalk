@@ -24,6 +24,7 @@ static func makeRequest(entity:String)->NSFetchRequest {
 
 
 static func deleteObject(object:NSManagedObject){
+    
     moc.deleteObject(object)
     do {
         try moc.save()
@@ -87,7 +88,7 @@ static func addRestaurant(descr: restaurantDescriptor, presentViewController: UI
         alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
         presentViewController.presentViewController(alert, animated: true, completion: nil)
     } else {
-        var r = createRestaurantFromDescriptor(descr)
+        createRestaurantFromDescriptor(descr)
         do {
             try moc.save()
         } catch let error as NSError {

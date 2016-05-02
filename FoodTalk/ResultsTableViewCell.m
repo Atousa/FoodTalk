@@ -26,7 +26,8 @@
 }
 
 - (IBAction)onFavoriteButtonPressed:(UIButton *)sender {
-        [self.delegateCheckmark resultsTableViewCell:self didFavoriteButton:sender];
+    
+    [self.delegateCheckmark resultsTableViewCell:self didFavoriteButton:sender];
     
     UIImage *checkedBox = [UIImage imageNamed:@"Checkedbox-100"];
     UIImage *uncheckedBox = [UIImage imageNamed:@"Uncheckedbox-100"];

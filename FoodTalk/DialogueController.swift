@@ -87,7 +87,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000 {
-            print("Location not found. Reverse geo-coding")
             reverseGeoCode(location!)
         }
     }
@@ -98,8 +97,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         geoCoder.reverseGeocodeLocation(location) { (placemark, error) in
             let placemark = placemark?.first
             self.currentLocation = "\(placemark!.subThoroughfare!) \(placemark!.thoroughfare!) \(placemark!.locality!), \(placemark!.administrativeArea!)"
-            print(self.currentLocation!)
-            
+            print("Location detected: \(self.currentLocation!)")
         }
     }
 
@@ -110,7 +108,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             self.DialogueTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: animated)
         })
     }
-    
     
     func tableViewScrollToBottom(animated: Bool) {
         let delay = 0 //0.1 * Double(NSEC_PER_SEC)
@@ -167,11 +164,12 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     
     
     func parse(text: String)-> Void {
-        let keywords = [ "dim sum", "chinese", "vietnamese", "american", "italian", "french", "korean", "japanese", "thai", "mexican", "peruvian", "british","mongolian", "taiwanese", "food", "restaurant", "taco", "tacos", "sushi", "burgers", "pasta", "kbbq", "breakfast", "brunch"]
+        let keywords = [ "dim sum", "chinese", "vietnamese", "american", "italian", "french", "korean", "japanese", "thai", "mexican", "peruvian", "british", "mongolian", "taiwanese", "bbq", "greek", "taco", "tacos", "sushi", "burgers", "pasta", "kbbq", "breakfast", "brunch", "souvlaki"]
         let distances = [ "2 block", "6 blocks", "1 mile", "5 miles", "20 miles"]
         for word in keywords {
             if text.lowercaseString.rangeOfString(word) != nil {
                 foodType = word
+/*
                 switch(word) {
                 case "dim sum":
                     foodType = "chinese"
@@ -182,6 +180,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                 default:
                     break
                 }
+ */
             }
         }
         for word in distances {
@@ -200,8 +199,13 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.userLog.append(text!)
         
         if((text == "Done") || (text == "done") || (text == "Done!") || (text == "done!")) {
-            performSegueWithIdentifier("SearchSegue", sender: self)
-            
+            if (self.currentLocation == nil) {
+                let alert = UIAlertController(title: "Alert", message: "You must enable location services to get search results", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            } else {
+                performSegueWithIdentifier("SearchSegue", sender: self)
+            }
         }
         parse(text!)
         
@@ -321,6 +325,5 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         srvc.distance = dist
         srvc.searchTerm = foodType
         srvc.locationFromWatson = self.currentLocation!
-
     }
 }

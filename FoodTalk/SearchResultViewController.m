@@ -108,12 +108,10 @@
 - (void)reverseGeocode:(CLLocation *)location {
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-        NSLog(@"Finding address");
         if (error) {
             NSLog(@"Error %@", error.description);
         } else {
             CLPlacemark *placemark = [placemarks lastObject];
-            NSLog(@"%@", placemark.addressDictionary);
 //            self.myAddress = [NSString stringWithFormat:@"%@", ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO)];
         }
     }];
@@ -128,6 +126,7 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
     ResultsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
 
     cell.delegateCheckmark = self;
@@ -135,34 +134,42 @@
     
     YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
     
-//    Get the categories from an array and append them into a string
-    NSMutableString *restaurantCategory = [NSMutableString stringWithFormat:@""];
+    //    Get the categories from an array and append them into a string
+    NSMutableString *restaurantCategory = [[NSMutableString alloc] init];
+    int i = 0;
     for (YLPCategory *category in businessOfMany.categories) {
-        [restaurantCategory appendFormat:@"%@,",category.name];
-        NSLog(@"%@",restaurantCategory);
+        if (i>0) {
+            [restaurantCategory appendFormat:@", "];
+        }
+        [restaurantCategory appendFormat:@"%@",category.name];
+        i++;
     }
     
-//    Set the food imageView and rating imageView
+    //    Set the food imageView and rating imageView
     NSData *data = [NSData dataWithContentsOfURL:businessOfMany.imageURL];
     NSData *ratingImageData = [NSData dataWithContentsOfURL:businessOfMany.ratingImgURLLarge];
     cell.yelpImageView.image = [UIImage imageWithData:data];
     cell.yelpRatingImageView.image = [UIImage imageWithData:ratingImageData];
     
-//    Display the restaurant name + address, also set the number of reviews
+    //    Display the restaurant name + address, also set the number of reviews
     NSString *streetAddress = [businessOfMany.location.displayAddress objectAtIndex:0];
     
     cell.yelpRestaurantTitleAddress.text = [NSString stringWithFormat:@"%@ \n\n%@ \n%@, %@ \n%@", businessOfMany.name, streetAddress, businessOfMany.location.city, businessOfMany.location.stateCode, restaurantCategory];
     cell.yelpNumOfReviews.text = [NSString stringWithFormat:@"(%0.1lu Reviews)", (unsigned long)businessOfMany.reviewCount];
     cell.yelpRestaurantTitleAddress.textContainer.lineBreakMode = NSLineBreakByWordWrapping;
     
-//    Set up the annotation of the restaurant mapView
+    //    Set up the annotation of the restaurant mapView
     double restaurantLatitude = businessOfMany.location.coordinate.latitude;
     double restaurantLongitude = businessOfMany.location.coordinate.longitude;
     self.restaurantAnnotation.coordinate = CLLocationCoordinate2DMake(restaurantLatitude, restaurantLongitude);
     [cell.restaurantMapView addAnnotation:self.restaurantAnnotation];
     MKCoordinateRegion region = MKCoordinateRegionMake(self.restaurantAnnotation.coordinate, MKCoordinateSpanMake(0.03, 0.03));
     [cell.restaurantMapView setRegion:region animated:YES];
-    
+
+    // Set favorite button state to unchecked
+    UIImage *uncheckedBox = [UIImage imageNamed:@"Uncheckedbox-100"];
+    [cell.favoriteButton setImage:uncheckedBox forState:UIControlStateNormal];
+
     return cell;
 }
 
@@ -175,7 +182,6 @@
 
 -(void)resultsTableViewCell:(id)cell didFavoriteButton:(UIButton *)favoriteButton {
     
-
     UIImage *checkedBox = [UIImage imageNamed:@"Checkedbox-100"];
     UIImage *uncheckedBox = [UIImage imageNamed:@"Uncheckedbox-100"];
     restaurantDescriptor *rd = [[restaurantDescriptor alloc] init];
@@ -183,28 +189,30 @@
     YLPBusiness *business = self.arrayOfBusinesses[index];
     rd.name = business.name;
     rd.state = business.location.stateCode;
-    rd.city = business.location.countryCode;
+    rd.city = business.location.city;
     rd.address = business.location.address[0];
-    rd.country = business.location.countryCode;
+    NSString *identifier = [NSLocale localeIdentifierFromComponents: [NSDictionary dictionaryWithObject: business.location.countryCode forKey: NSLocaleCountryCode]];
+    
+    NSString *countryName = [[NSLocale currentLocale] displayNameForKey: NSLocaleIdentifier value: identifier];
+    rd.country = countryName;
+    NSLog(@"Country Name: %@ (%@)", countryName, business.location.countryCode);
     rd.latitude = business.location.coordinate.latitude;
     rd.longitude = business.location.coordinate.longitude;
     NSString *longCategory = @"";
     for (YLPCategory *category in business.categories) {
         longCategory=[longCategory stringByAppendingString:category.name];
-        NSLog(@"\tcat: %@", category.name);
         longCategory=[longCategory stringByAppendingString:@" "];
     }
-    NSLog(@"\tLong Cat: ***%@***", longCategory);
-
     rd.type = longCategory;
-    //NSLog(@"%@,%@,%@,%@,%@,%f,%f", rd.name, rd.address, rd.city, rd.state, rd.country, rd.latitude, rd.longitude);
 
     if ([favoriteButton.imageView.image isEqual: uncheckedBox]) {
         [CDM addRestaurant: rd presentViewController: self];
         [favoriteButton setImage:checkedBox forState:UIControlStateNormal];
     } else {
         Restaurant *r = [CDM findRestaurant:rd];
-        [CDM deleteObject:r];
+        if (r != nil) {
+            [CDM deleteObject:r];
+        }
         [favoriteButton setImage:uncheckedBox forState:UIControlStateNormal];
     }
 }

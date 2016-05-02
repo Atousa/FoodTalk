@@ -62,18 +62,18 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
 
         visit1.date = dateFormatter.dateFromString("2016-01-14")
         visit1.favoriteDishes = ""
-        visit1.notes = "It is always fun to be here and watch Lætitia drinking coco water"
+        visit1.notes = "It is always fun to be here and watch Lætitia drinking coco water."
         visit1.rating = 4.5
         
         visit2.date = dateFormatter.dateFromString("2016-02-05")
         visit2.favoriteDishes = ""
-        visit2.notes = "We wanted to show my mom Lætitia's favorite restaurant, she usually eats very well here"
+        visit2.notes = "We wanted to show my mom Lætitia's favorite restaurant, she usually eats very well here."
         visit2.rating = 4.5
         
         visit3.date = dateFormatter.dateFromString("2016-04-13")
         visit3.favoriteDishes = ""
         visit3.rating = 4
-        visit3.notes = "I loved the vibe of the restaurant with Thai new year decoration with my family, all the dishes looked fantastic"
+        visit3.notes = "I loved the vibe of the restaurant with Thai new year decorations. All the dishes looked fantastic!  We had great fun..."
         
         /*photo.visit = visitDemo
         photo.comment = "pictures with my family"
@@ -95,15 +95,14 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("Location detection needs to be enabled in the simulator")
+        let alert = UIAlertController(title: "Alert", message: "You must enable location services to get search results", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = locations.last!
         locationManager.stopUpdatingLocation()
-        //print(location.coordinate.latitude)
-        //print(location.coordinate.longitude)
-        
     }
     
     func closeEnough(candidate: Restaurant) -> Bool {
@@ -156,8 +155,8 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     
     func calculateDistanceBetweenTwoLocations(source:CLLocation,destination:CLLocation) -> Double{
         
-        var distanceMeters = source.distanceFromLocation(destination)
-        var distanceKM = distanceMeters / 1000
+        let distanceMeters = source.distanceFromLocation(destination)
+        let distanceKM = distanceMeters / 1000
         let roundedTwoDigit = distanceKM
         return roundedTwoDigit
     }
@@ -197,6 +196,8 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
             Rating = round(2 * Rating/Double(numVisits))
             let stars = ["0 Stars", "1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars", "6 Stars", "7 Stars", "8 Stars", "9 Stars", "10 Stars"]
             cell.myRatingImage.image = UIImage(named: stars[Int(Rating)])
+        } else {
+            cell.myRatingImage.image = UIImage(named: "0 Stars")
         }
         
         return cell
@@ -211,8 +212,6 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         }
         return 200
     }
-    
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
