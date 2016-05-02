@@ -40,8 +40,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.restaurantAnnotation = [[MKPointAnnotation alloc]init];
+//    Capitalize the first letter of the search term
+    NSString *foo = [NSString stringWithFormat:@"%@", self.searchTerm];
+    NSString *upperCase = [[foo substringToIndex:1]uppercaseString];
+    NSString *lowerCase = [[foo substringFromIndex:1] lowercaseString];
+    self.navigationItem.title = [upperCase stringByAppendingString:lowerCase];
     
+    self.restaurantAnnotation = [[MKPointAnnotation alloc]init];
+
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager requestWhenInUseAuthorization];

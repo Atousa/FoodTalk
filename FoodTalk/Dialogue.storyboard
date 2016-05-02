@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="92" width="328" height="165"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KJM-AI-Yao" id="q7g-MF-ePi">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="164.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="164"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuO-kt-tI5">
@@ -94,7 +94,7 @@
                                     <constraint firstAttribute="height" constant="30" id="1BD-2Z-nRz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <action selector="textFieldIsEditing:" destination="zsU-2L-Dml" eventType="editingChanged" id="dQ8-n9-RdZ"/>
                                     <outlet property="delegate" destination="zsU-2L-Dml" id="EHC-hu-X93"/>
