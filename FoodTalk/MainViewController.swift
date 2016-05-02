@@ -19,6 +19,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "FoodTalk"
+        
+        
 //        Makes a gradient of (top)light blue to (bot)dark blue
 //        let lightRed = UIColor(red: 243/255, green: 167/255, blue: 18/255, alpha: 1.0)
 //        let darkRed = UIColor(red: 255/255, green: 42/255, blue: 104/255, alpha: 1.0)
@@ -26,18 +29,20 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
 //        gradient.frame = view.bounds
 //        gradient.colors = [UIColor.whiteColor().CGColor, UIColor.whiteColor().CGColor]
 //        view.layer.insertSublayer(gradient, atIndex: 0)
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.yellowColor()
         
-        self.newPlaceButton.backgroundColor = UIColor.whiteColor()
+        self.newPlaceButton.backgroundColor = UIColor.yellowColor()
         self.newPlaceButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        self.newPlaceButton.layer.cornerRadius = 10
-        self.newPlaceButton.layer.borderWidth = 0.5
+//        self.newPlaceButton.layer.cornerRadius = 10
+//        self.newPlaceButton.layer.borderWidth = 2
+//        self.newPlaceButton.layer.borderColor = UIColor.redColor().CGColor
         
         
-        self.favoritePlaceButton.backgroundColor = UIColor.whiteColor()
+        self.favoritePlaceButton.backgroundColor = UIColor.yellowColor()
         self.favoritePlaceButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        self.favoritePlaceButton.layer.cornerRadius = 10
-        self.favoritePlaceButton.layer.borderWidth = 0.5
+//        self.favoritePlaceButton.layer.cornerRadius = 10
+//        self.favoritePlaceButton.layer.borderWidth = 2
+//        self.favoritePlaceButton.layer.borderColor = UIColor.redColor().CGColor
         
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
