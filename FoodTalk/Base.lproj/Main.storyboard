@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Main View Controller-->
@@ -17,24 +18,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wXa-0x-Zfv">
-                                <rect key="frame" x="179" y="200" width="250" height="200"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssE-Qz-49p">
+                                <rect key="frame" x="65" y="188" width="250" height="284"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGO-vM-b4E">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGO-vM-b4E">
+                                        <rect key="frame" x="0.0" y="20" width="251" height="100"/>
                                         <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="25"/>
-                                        <state key="normal" title="    Watson   " image="Satellites-100">
+                                        <state key="normal" title="   Discover  " image="Meal Filled-100">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="KZb-md-CTb" kind="show" id="aZB-bE-ddZ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imm-4e-CyZ">
-                                        <rect key="frame" x="0.0" y="100" width="250" height="100"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imm-4e-CyZ">
+                                        <rect key="frame" x="0.0" y="164" width="251" height="100"/>
                                         <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="25"/>
                                         <inset key="contentEdgeInsets" minX="-18" minY="0.0" maxX="-15" maxY="0.0"/>
-                                        <state key="normal" title="   favorite  " image="Like-100">
+                                        <state key="normal" title="     Visited   " image="Map Editing Filled-100">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -42,11 +43,18 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstItem="BGO-vM-b4E" firstAttribute="leading" secondItem="Imm-4e-CyZ" secondAttribute="leading" id="8sO-m1-aXe"/>
+                                    <constraint firstAttribute="height" constant="284" id="BwD-91-Y19"/>
+                                    <constraint firstAttribute="width" constant="250" id="cjy-6x-mS0"/>
+                                    <constraint firstItem="BGO-vM-b4E" firstAttribute="trailing" secondItem="Imm-4e-CyZ" secondAttribute="trailing" id="iPe-wy-QSA"/>
+                                    <constraint firstItem="Imm-4e-CyZ" firstAttribute="top" secondItem="BGO-vM-b4E" secondAttribute="bottom" constant="44" id="irp-5Y-Gx3"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="wXa-0x-Zfv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="4Ng-Za-h2S"/>
-                            <constraint firstItem="wXa-0x-Zfv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="u5d-5L-iac"/>
+                            <constraint firstItem="ssE-Qz-49p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="124" id="Eye-GD-7iR"/>
+                            <constraint firstItem="ssE-Qz-49p" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="45" id="nBO-EX-Kha"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ueo-jH-RWx"/>
@@ -99,7 +107,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Like-100" width="100" height="100"/>
-        <image name="Satellites-100" width="100" height="100"/>
+        <image name="Map Editing Filled-100" width="100" height="100"/>
+        <image name="Meal Filled-100" width="100" height="100"/>
     </resources>
 </document>

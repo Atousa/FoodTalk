@@ -29,20 +29,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
 //        gradient.frame = view.bounds
 //        gradient.colors = [UIColor.whiteColor().CGColor, UIColor.whiteColor().CGColor]
 //        view.layer.insertSublayer(gradient, atIndex: 0)
-        self.view.backgroundColor = UIColor.yellowColor()
+        self.view.backgroundColor = UIColor.whiteColor()
         
-        self.newPlaceButton.backgroundColor = UIColor.yellowColor()
+        self.newPlaceButton.backgroundColor = UIColor.whiteColor()
         self.newPlaceButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-//        self.newPlaceButton.layer.cornerRadius = 10
-//        self.newPlaceButton.layer.borderWidth = 2
-//        self.newPlaceButton.layer.borderColor = UIColor.redColor().CGColor
         
         
-        self.favoritePlaceButton.backgroundColor = UIColor.yellowColor()
+        self.favoritePlaceButton.backgroundColor = UIColor.whiteColor()
         self.favoritePlaceButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-//        self.favoritePlaceButton.layer.cornerRadius = 10
-//        self.favoritePlaceButton.layer.borderWidth = 2
-//        self.favoritePlaceButton.layer.borderColor = UIColor.redColor().CGColor
         
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
