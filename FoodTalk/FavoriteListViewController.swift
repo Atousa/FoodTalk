@@ -113,6 +113,17 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         return distance <= 0.2
     }
     
+    func findVisitedRestaurants()->[Restaurant]{
+        let request = CDM.makeRequest("Restaurant")
+        
+        
+        return self.restaurant
+        
+        
+    }
+    
+
+    
     func findNearbyRestaurants(location:CLLocation)-> [Restaurant] {
         let request = CDM.makeRequest("Restaurant")
 
