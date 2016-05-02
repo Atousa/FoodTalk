@@ -14,6 +14,8 @@ import CoreData
 
 
 
+
+
 extension Restaurant {
 
     @NSManaged var address: String?
