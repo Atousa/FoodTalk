@@ -32,6 +32,8 @@
 @property CLLocation *location;
 @property NSString *myAddress;
 @property MKPointAnnotation *restaurantAnnotation;
+@property MKPointAnnotation *currentLocationAnnotation;
+@property CLPlacemark *placemark;
 
 
 @end
@@ -40,6 +42,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
 //    Capitalize the first letter of the search term
     NSString *foo = [NSString stringWithFormat:@"%@", self.searchTerm];
     NSString *upperCase = [[foo substringToIndex:1]uppercaseString];
@@ -59,7 +62,7 @@
     
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
-//    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager startUpdatingLocation];
     
     self.arrayOfBusinesses = [NSMutableArray new];
@@ -117,7 +120,7 @@
         if (error) {
             NSLog(@"Error %@", error.description);
         } else {
-            CLPlacemark *placemark = [placemarks lastObject];
+            self.placemark = [placemarks lastObject];
 //            self.myAddress = [NSString stringWithFormat:@"%@", ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO)];
         }
     }];
@@ -136,6 +139,7 @@
     ResultsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
 
     cell.delegateCheckmark = self;
+    cell.restaurantMapView.hidden = YES;
     
     
     YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
@@ -164,11 +168,19 @@
     cell.yelpNumOfReviews.text = [NSString stringWithFormat:@"(%0.1lu Reviews)", (unsigned long)businessOfMany.reviewCount];
     cell.yelpRestaurantTitleAddress.textContainer.lineBreakMode = NSLineBreakByWordWrapping;
     
-    //    Set up the annotation of the restaurant mapView
+//    Set up the annotation of the restaurant mapView
     double restaurantLatitude = businessOfMany.location.coordinate.latitude;
     double restaurantLongitude = businessOfMany.location.coordinate.longitude;
     self.restaurantAnnotation.coordinate = CLLocationCoordinate2DMake(restaurantLatitude, restaurantLongitude);
     [cell.restaurantMapView addAnnotation:self.restaurantAnnotation];
+    
+//    Set up the annotation of the user's current location
+//    double currentLatitude = self.placemark.location.coordinate.latitude;
+//    double currentLongitude = self.placemark.location.coordinate.longitude;
+//    self.currentLocationAnnotation.coordinate = CLLocationCoordinate2DMake(currentLatitude, currentLongitude);
+//    [cell.restaurantMapView addAnnotation:self.currentLocationAnnotation];
+    
+//    Zooms in on the region
     MKCoordinateRegion region = MKCoordinateRegionMake(self.restaurantAnnotation.coordinate, MKCoordinateSpanMake(0.03, 0.03));
     [cell.restaurantMapView setRegion:region animated:YES];
 
@@ -180,7 +192,17 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ResultsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
+    
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat foo = 170.0;
+    
+    
+    return foo;
 }
 
 
