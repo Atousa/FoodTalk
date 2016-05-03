@@ -7,33 +7,9 @@
 //
 
 import UIKit
-import CoreLocation
 import CoreData
+import CoreLocation
 
-func calculateDistanceBetweenTwoLocations(source:CLLocation, destination:CLLocation) -> Double {
-    let distanceMeters = source.distanceFromLocation(destination)
-    let distanceKM = distanceMeters / 1000.0
-    return distanceKM
-}
-
-extension Restaurant {
-    func distance(from: CLLocation)->Double {
-        return calculateDistanceBetweenTwoLocations(from, destination: CLLocation(latitude: Double(latitude!), longitude: Double(longitude!)))
-    }
-    
-    func rating()->Int {
-        let numVisits = (visits?.count)!
-        if(numVisits == 0) {
-            return 0
-        }
-        var Rating = 0.0
-        for i in 0...numVisits-1 {
-            Rating += Double((visits?.allObjects[i] as! Visit).rating!)
-        }
-        Rating = round(2 * Rating/Double(numVisits))
-        return Int(Rating)
-    }
-}
 
 class FavoriteListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,CLLocationManagerDelegate {
     
@@ -228,7 +204,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         cell.restaurant = restaurant
         cell.nameOfRestaurant.text = r.name
         cell.typeLabel.text = r.type
-        cell.addressTextView.text = r.address! + "\n" + r.city! + ", " + r.state! + "\n" + String(format: "%.2f", r.distance(self.location)) + " km"
+        cell.addressTextView.text = r.address! + "\n" + r.city! + ", " + r.state! + "\n" + String(format: "%.2f", r.distance(self.location)) + " mi"
 
         let stars = ["0 Stars", "1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars", "6 Stars", "7 Stars", "8 Stars", "9 Stars", "10 Stars"]
         cell.myRatingImage.image = UIImage(named: stars[restaurant.rating()])
