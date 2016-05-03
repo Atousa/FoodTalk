@@ -61,6 +61,7 @@ static func createRestaurantFromDescriptor(d: restaurantDescriptor)->Restaurant 
     r.state = d.state
     r.country = d.country
     r.type = d.type
+    r.date = d.date
     
     let geocoder = CLGeocoder()
     let address = d.address + ", " + d.city + ", " + d.state + ", " + d.country

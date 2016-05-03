@@ -175,14 +175,30 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="hRU-Pi-xB8">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Nws-lo-nuZ">
+                            <rect key="frame" x="-60" y="-14" width="121" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Visited"/>
+                                <segment title="Rate"/>
+                                <segment title="Distance"/>
+                            </segments>
+                            <connections>
+                                <action selector="indexChanged:" destination="YWC-PN-V9s" eventType="valueChanged" id="ybv-cx-MIa"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="sortingSegmentedControl" destination="Nws-lo-nuZ" id="qM4-oB-cDX"/>
                         <outlet property="tableView" destination="Fq3-lW-Jwc" id="gId-1f-EKj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZMu-r7-ab9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1872" y="590"/>
+            <point key="canvasLocation" x="1932" y="543"/>
         </scene>
         <!--FavoritesListDetails-->
         <scene sceneID="IZK-bY-wIX">

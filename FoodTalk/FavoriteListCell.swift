@@ -57,14 +57,16 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
         return (restaurant.visits?.count)!
     }
     
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NotesCell") as! FavoriteListCellNotesSubCell
-        
-        let visit = restaurant.visits?.allObjects[indexPath.row] as! Visit
 
+        var visits = restaurant.visits?.allObjects as! [Visit]
+        visits = visits.sort({ $0.date! > $1.date! })
+        let visit = visits[indexPath.row]
         
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd" //  "yyyy-MM-dd HH:mm:ss ZZZ"
+        dateFormatter.dateFormat = "MM-dd-yyyy" //  "yyyy-MM-dd HH:mm:ss ZZZ"
 
         //cell.textLabel?.text = "Row " + String(indexPath.row)
         if (visit.date != nil) {
@@ -88,3 +90,12 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
     
 
 }
+
+func > (lhs: NSDate, rhs: NSDate) -> Bool {
+    return lhs.timeIntervalSinceReferenceDate > rhs.timeIntervalSinceReferenceDate
+}
+
+func < (lhs: NSDate, rhs: NSDate) -> Bool {
+    return lhs.timeIntervalSinceReferenceDate < rhs.timeIntervalSinceReferenceDate
+}
+
