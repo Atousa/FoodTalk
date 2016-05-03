@@ -12,7 +12,7 @@ import CoreData
 
 func calculateDistanceBetweenTwoLocations(source:CLLocation, destination:CLLocation) -> Double {
     let distanceMeters = source.distanceFromLocation(destination)
-    let distanceKM = distanceMeters / 1000
+    let distanceKM = distanceMeters / 1000.0
     return distanceKM
 }
 
@@ -62,29 +62,34 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         
         dateFormatter.dateFormat = "yyyy-MM-dd" //  "yyyy-MM-dd HH:mm:ss ZZZ"
         
-        resDemo1.name =    "Farmhouse Kitchen"
-        resDemo1.address = "710 Florida St"
-        resDemo1.city =    "San Francisco"
-        resDemo1.state =   "CA"
-        resDemo1.country = "United States"
-        resDemo1.type =    "Thai"
+        resDemo1.name =      "Farmhouse Kitchen"
+        resDemo1.address =   "710 Florida St"
+        resDemo1.city =      "San Francisco"
+        resDemo1.state =     "CA"
+        resDemo1.country =   "United States"
+        resDemo1.type =      "Thai"
+        resDemo1.latitude =   37.7602175
+        resDemo1.longitude = -122.4112856
         resDemo1.date = dateFormatter.dateFromString("2016-01-14")!
         
-        resDemo2.name =    "Chez Panisse"
-        resDemo2.address = "1517 Shattuck Ave"
-        resDemo2.city =    "Berkeley"
-        resDemo2.state =   "CA"
-        resDemo2.country = "United States"
-        resDemo2.type =    "Californian"
+        resDemo2.name =      "Chez Panisse"
+        resDemo2.address =   "1517 Shattuck Ave"
+        resDemo2.city =      "Berkeley"
+        resDemo2.state =     "CA"
+        resDemo2.country =   "United States"
+        resDemo2.type =      "Californian"
+        resDemo1.latitude =   37.8795896
+        resDemo1.longitude = -122.2711532
         resDemo2.date = dateFormatter.dateFromString("2015-01-20")!
-
         
-        resDemo3.name =     "Flour + Water"
-        resDemo3.address =  "2401 Harrison St"
-        resDemo3.city =     "San Francisco"
-        resDemo3.state =    "CA"
-        resDemo3.country =  "United States"
-        resDemo3.type =     "Italian"
+        resDemo3.name =      "Flour + Water"
+        resDemo3.address =   "2401 Harrison St"
+        resDemo3.city =      "San Francisco"
+        resDemo3.state =     "CA"
+        resDemo3.country =   "United States"
+        resDemo3.type =      "Italian"
+        resDemo1.latitude =   37.7589424
+        resDemo1.longitude = -122.414457
         resDemo3.date = dateFormatter.dateFromString("2016-05-02")!
         
         
@@ -110,7 +115,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         self.locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
+            locationManager.requestLocation()
         }
         
         self.restaurants = sortedVisitedRestaurants()
@@ -156,7 +161,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     
    func sortedVisitedRestaurants()->[Restaurant] {
         let request = CDM.makeRequest("Restaurant")
-        let sort = NSSortDescriptor(key:"date", ascending: true)
+        let sort = NSSortDescriptor(key:"date", ascending: false)
         request.sortDescriptors = [sort]
 
         do {
@@ -176,7 +181,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         
         do {
             let results = try moc.executeFetchRequest(request)
-            self.restaurants = (results as! [Restaurant]).sort({ r1, r2 in r1.rating() < r2.rating() })
+            self.restaurants = (results as! [Restaurant]).sort({ r1, r2 in r1.rating() > r2.rating() })
         } catch {
             let fetchError = error as NSError
             print(fetchError)
@@ -223,10 +228,11 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         cell.restaurant = restaurant
         cell.nameOfRestaurant.text = r.name
         cell.typeLabel.text = r.type
-        cell.addressTextView.text = r.address! + "\n" + r.city! + ", " + r.state! + "\n" + r.country!
+        cell.addressTextView.text = r.address! + "\n" + r.city! + ", " + r.state! + "\n" + String(format: "%.2f", r.distance(self.location)) + " km"
 
         let stars = ["0 Stars", "1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars", "6 Stars", "7 Stars", "8 Stars", "9 Stars", "10 Stars"]
         cell.myRatingImage.image = UIImage(named: stars[restaurant.rating()])
+        cell.numRatings.text = "(\(restaurant.visits!.count))"
         return cell
     }
     

@@ -122,6 +122,15 @@
                                                         <rect key="frame" x="351" y="36" width="22" height="22"/>
                                                     </variation>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(#)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOI-8C-A0y" userLabel="NumRatings">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="83" y="39" width="30" height="21"/>
+                                                    </variation>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <variation key="default">
@@ -132,6 +141,7 @@
                                                     <exclude reference="rJy-Lh-X6t"/>
                                                     <exclude reference="vHj-CB-81n"/>
                                                     <exclude reference="aGl-ki-5bs"/>
+                                                    <exclude reference="nOI-8C-A0y"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -142,6 +152,7 @@
                                                     <include reference="rJy-Lh-X6t"/>
                                                     <include reference="vHj-CB-81n"/>
                                                     <include reference="aGl-ki-5bs"/>
+                                                    <include reference="nOI-8C-A0y"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -150,6 +161,7 @@
                                             <outlet property="myRatingImage" destination="rJy-Lh-X6t" id="84w-y6-YBh"/>
                                             <outlet property="nameOfRestaurant" destination="P36-pn-9aW" id="oai-2D-x8r"/>
                                             <outlet property="notesTableView" destination="vHj-CB-81n" id="lem-ZS-gW2"/>
+                                            <outlet property="numRatings" destination="nOI-8C-A0y" id="woF-gL-r6y"/>
                                             <outlet property="typeLabel" destination="bmv-SM-bjd" id="BBq-xM-Nkt"/>
                                         </connections>
                                     </tableViewCell>

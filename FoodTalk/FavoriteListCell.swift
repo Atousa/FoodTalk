@@ -14,6 +14,8 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var myRatingImage: UIImageView!
     
+    @IBOutlet weak var numRatings: UILabel!
+    
     @IBOutlet weak var addressTextView: UITextView!
     
     @IBOutlet private weak var notesTableView: UITableView!
