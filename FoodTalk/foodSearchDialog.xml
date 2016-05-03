@@ -4,7 +4,8 @@
         <folder label="Main">
             <output>
                 <prompt selectionType="RANDOM">
-                    <item>Greeting: Hi, I'm Watson! I can help you find a place to eat, what type of food would you like?</item>
+                    <item>Hi! Watson here. What type of food would you like?</item>
+                    <item>Greetings, Master. What type of food would you like to eat?</item>
                 </prompt>
                 <goto ref="getUserInput_2442994"/>
             </output>
@@ -469,6 +470,26 @@
                             </prompt>
                         </output>
                     </input>
+                    <input>
+                        <grammar>
+                            <item>Eric Hong</item>
+                            <item>Eric D Hong</item>
+                            <item>Eric D. Hong</item>
+                            <item>Why is Eric Hong a great candidate?</item>
+                            <item>Why should I hire Eric Hong?</item>
+                            <item>Should I hire Eric Hong?</item>
+                            <item>Why should I hire Eric?</item>
+                            <item>Mr. Hong</item>
+                            <item>Tell me about Eric</item>
+                            <item>Tell me about Eric Hong</item>
+                        </grammar>
+                        <output>
+                            <prompt selectionType="RANDOM">
+                                <item>Eric is highly motivated and extremely hard-working. He is constantly looking to challenge and improve his skillset.</item>
+                            </prompt>
+                        </output>
+                    </input>
+                    
                     <folder label="Greetings">
                         <input>
                             <grammar>

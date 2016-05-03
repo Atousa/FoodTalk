@@ -7,7 +7,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     
 //Mark: Outlets
     @IBOutlet weak var onSendButtonPressed: UIButton!
-    @IBOutlet weak var DialogueTableView: UITableView!
+    @IBOutlet weak var dialogueTableView: UITableView!
     @IBOutlet weak var spacerBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var responseTextField: UITextField!
     
@@ -22,6 +22,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var foodType = "food"
     var dist = String()
     var currentLocation: String?
+    var maxHeight:CGFloat?
     
     let newLocationManger = CLLocationManager()
     
@@ -30,10 +31,12 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         super.viewDidLoad()
         self.navigationItem.title = "Watson"
         
+
+        
         newLocationManger.delegate = self
         newLocationManger.requestLocation()
         
-        self.DialogueTableView.separatorStyle = .None
+        self.dialogueTableView.separatorStyle = .None
         self.responseTextField.delegate = self
         self.onSendButtonPressed.enabled = false
         
@@ -41,7 +44,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         
         
-        let dialogName = "xmlchanged33"
+        let dialogName = "xmlchanged34"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -107,7 +110,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     func tableViewScrollToTop(animated: Bool) {
         dispatch_after(0, dispatch_get_main_queue(), {
             let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-            self.DialogueTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: animated)
+            self.dialogueTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: animated)
         })
     }
     
@@ -117,12 +120,12 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         
         dispatch_after(time, dispatch_get_main_queue(), {
             
-            let numberOfSections = self.DialogueTableView.numberOfSections
-            let numberOfRows = self.DialogueTableView.numberOfRowsInSection(numberOfSections-1)
+            let numberOfSections = self.dialogueTableView.numberOfSections
+            let numberOfRows = self.dialogueTableView.numberOfRowsInSection(numberOfSections-1)
             
             if numberOfRows > 0 {
                 let indexPath = NSIndexPath(forRow: numberOfRows-1, inSection: (numberOfSections-1))
-                self.DialogueTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: animated)
+                self.dialogueTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: animated)
             }
         })
     }
@@ -141,7 +144,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             
             //reload tableview from main thread
             dispatch_async(dispatch_get_main_queue()) {
-                self.DialogueTableView.reloadData()
+                self.dialogueTableView.reloadData()
             }
         }
     }
@@ -228,7 +231,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                                 
                                 //reload tableview from main thread
                                 dispatch_async(dispatch_get_main_queue()) {
-                                    self.DialogueTableView.reloadData()
+                                    self.dialogueTableView.reloadData()
                                     self.tableViewScrollToBottom(true)
                                 }
         }
@@ -241,6 +244,10 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         return self.watsonLog.count
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 150
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         
@@ -251,6 +258,10 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         } else {
             cell.myDialogueTextField.text = ""
         }
+        
+        
+        cell.WatsonDialogueTextField.sizeToFit()
+        
         
         cell.WatsonDialogueTextField.font = UIFont(name: "Palatino", size: 16)
         cell.WatsonDialogueImage.image = UIImage(named: "Satellites-100.png")
