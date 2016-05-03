@@ -121,6 +121,10 @@
                                                     <variation key="widthClass=compact" fixedFrame="YES">
                                                         <rect key="frame" x="351" y="36" width="22" height="22"/>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="addNoteButton:" destination="5pS-zq-eZd" eventType="touchUpInside" id="Wat-bK-bhT"/>
+                                                        <segue destination="Lig-Wq-Ixe" kind="show" identifier="addNoteSeque" id="Qo8-Rp-TPj"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(#)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOI-8C-A0y" userLabel="NumRatings">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -218,7 +222,7 @@
                 <viewControllerPlaceholder storyboardName="FavoritesListDetails" id="Lig-Wq-Ixe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16u-6y-sDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2655" y="629"/>
+            <point key="canvasLocation" x="2538" y="388"/>
         </scene>
     </scenes>
     <resources>

@@ -126,25 +126,4 @@ static func updateVisit(visit:Visit){}
 
 
 
-/* 
-static func findPhoto(restaurant: Restaurant, photo:Photo)->Photo {return Photo()
-}
-
-static func addPhoto(restaurant: Restaurant, visit:Visit, photo:Photo) {
-    let v = NSEntityDescription.insertNewObjectForEntityForName("Photo", inManagedObjectContext:  moc) as! Photo
-    
-    photo.visit = visit
-    photo.visit = visit
-    do {
-        try moc.save()
-    } catch let error as NSError {
-        print(error)
-    }
-}
-
-
-static func updatePhoto(visit:Visit){}
-     
-*/
-
 }

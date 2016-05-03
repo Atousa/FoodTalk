@@ -45,6 +45,17 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
         notesTableView.frame = CGRectMake(0.2, 0.3, self.bounds.size.width-5, self.bounds.size.height-5)
     }
     
+    
+    
+    
+    
+    @IBAction func addNoteButton(sender:AnyObject) {
+        let vc = FavoriteListDetails()
+        vc.r = self.restaurant
+
+        
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

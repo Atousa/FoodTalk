@@ -8,35 +8,44 @@
 
 import UIKit
 
-class FavoriteListDetails: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class FavoriteListDetails: UIViewController,UITextViewDelegate {
 
     var r : Restaurant!
-    var enumerator =  NSEnumerator()
+    var v = visitDescriptor()
 
     
-    @IBOutlet weak var imagesCollectionView: UICollectionView!
-    @IBOutlet weak var notesTableView: UITableView!
-   
+    @IBOutlet weak var addNotetextview: UITextView!
+    
     
     override func viewDidLoad() {
-        enumerator = (r.visits?.objectEnumerator())!
-        self.notesTableView.delegate = self
-        self.notesTableView.reloadData()
-    
+        self.addNotetextview.text = ""
+        self.addNotetextview.backgroundColor = UIColor.lightGrayColor()
+        addNotetextview.delegate = self
+        
+        
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (r.visits?.count)!
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            self.addNotes(text)
+            return false
+        }
+            return true
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("notesCell")
-        let myVisit = enumerator.nextObject() as! Visit?
-        cell?.textLabel!.text = myVisit?.notes
-        return cell!
+    
+    func addNotes(text:String) {
+        v.notes = text
+        v.date = NSDate()
+        CDM.addVisit(r, descr: v)
+        addNotetextview.text = ""
+        
     }
+    
 }
-    
+
+            
 
 
 

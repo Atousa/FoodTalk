@@ -222,19 +222,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         return 200
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
-        r = self.restaurants[indexPath!.row]
-        
-        let enumerator = self.r.visits?.objectEnumerator()
-               while let myVisit = enumerator!.nextObject() as! Visit? {
-                    print(myVisit.notes)
-        }
-        
-        let vc = segue.destinationViewController as! FavoriteListDetails
-        vc.r = r
-    }
-
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
