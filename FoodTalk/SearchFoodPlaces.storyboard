@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="379"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cjn-3G-LJm" id="4Zv-lT-0to">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="378.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="378"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6J-Gt-SIh">
@@ -125,9 +125,9 @@ Cg
                                                     <rect key="frame" x="0.0" y="132" width="378" height="60"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Jl-k0-LZ6">
-                                                            <rect key="frame" x="70" y="2" width="50" height="50"/>
+                                                            <rect key="frame" x="70" y="2" width="40" height="40"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="50" id="IXv-l4-RXe"/>
+                                                                <constraint firstAttribute="width" constant="40" id="IXv-l4-RXe"/>
                                                             </constraints>
                                                             <state key="normal" image="Uncheckedbox-100"/>
                                                             <connections>
@@ -150,8 +150,8 @@ Cg
                                                     <constraints>
                                                         <constraint firstItem="3Jl-k0-LZ6" firstAttribute="top" secondItem="1w9-7E-8dv" secondAttribute="top" id="3FY-Co-oF5"/>
                                                         <constraint firstAttribute="trailing" secondItem="1w9-7E-8dv" secondAttribute="trailing" constant="27" id="4Yl-d1-QZe"/>
-                                                        <constraint firstItem="1w9-7E-8dv" firstAttribute="leading" secondItem="3Jl-k0-LZ6" secondAttribute="trailing" constant="84" id="7US-DI-SG9"/>
-                                                        <constraint firstItem="3Jl-k0-LZ6" firstAttribute="bottom" secondItem="3Il-cv-56e" secondAttribute="bottomMargin" id="A7v-no-QI1"/>
+                                                        <constraint firstItem="1w9-7E-8dv" firstAttribute="leading" secondItem="3Jl-k0-LZ6" secondAttribute="trailing" constant="94" id="7US-DI-SG9"/>
+                                                        <constraint firstItem="3Jl-k0-LZ6" firstAttribute="bottom" secondItem="3Il-cv-56e" secondAttribute="bottomMargin" constant="-10" id="A7v-no-QI1"/>
                                                         <constraint firstItem="tZF-JS-0mv" firstAttribute="centerX" secondItem="1w9-7E-8dv" secondAttribute="centerX" constant="-3.5" id="GdO-Hx-PTr"/>
                                                         <constraint firstAttribute="bottom" secondItem="tZF-JS-0mv" secondAttribute="bottom" constant="16" id="Ii7-xx-BG9"/>
                                                         <constraint firstAttribute="trailing" secondItem="tZF-JS-0mv" secondAttribute="trailing" constant="51" id="hbA-jw-Qap"/>

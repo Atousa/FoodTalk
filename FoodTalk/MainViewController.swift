@@ -19,6 +19,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "FoodTalk"
+        
+        
 //        Makes a gradient of (top)light blue to (bot)dark blue
 //        let lightRed = UIColor(red: 243/255, green: 167/255, blue: 18/255, alpha: 1.0)
 //        let darkRed = UIColor(red: 255/255, green: 42/255, blue: 104/255, alpha: 1.0)
@@ -30,14 +33,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         self.newPlaceButton.backgroundColor = UIColor.whiteColor()
         self.newPlaceButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        self.newPlaceButton.layer.cornerRadius = 10
-        self.newPlaceButton.layer.borderWidth = 0.5
         
         
         self.favoritePlaceButton.backgroundColor = UIColor.whiteColor()
         self.favoritePlaceButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        self.favoritePlaceButton.layer.cornerRadius = 10
-        self.favoritePlaceButton.layer.borderWidth = 0.5
         
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self

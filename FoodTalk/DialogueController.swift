@@ -28,6 +28,8 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
 //MARK: View Load/Appear Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Watson"
+        
         newLocationManger.delegate = self
         newLocationManger.requestLocation()
         
@@ -39,7 +41,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         
         
-        let dialogName = "xmlchanged20"
+        let dialogName = "xmlchanged33"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -55,7 +57,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             }
         }
         
-        let path = NSBundle.mainBundle().pathForResource("foodSearchDialog-8", ofType: "xml")
+        let path = NSBundle.mainBundle().pathForResource("foodSearchDialog", ofType: "xml")
         let url = NSURL.fileURLWithPath(path!)
         self.service!.createDialog(dialogName, fileURL: url) { dialogID, error in
             if error != nil {
@@ -282,6 +284,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         })
     }
     
+//MARK: TextField Methods
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if(textField.text == nil || textField.text! == "") {
             return false
@@ -291,15 +294,30 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         return true
     }
     
-//MARK: IBAction outlets
+//    Limits the characters a user can type in the response field
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        let currentCharacterCount = self.responseTextField.text?.characters.count ?? 0
+        if range.length + range.location > currentCharacterCount {
+            return false
+        }
+        let newLength = currentCharacterCount + string.characters.count - range.length
+        return newLength <= 40
+    }
+    
+    
+
     @IBAction func textFieldIsEditing(sender: UITextField) {
         if sender.text == nil || sender.text == "" {
             self.onSendButtonPressed.enabled = false
         } else {
             self.onSendButtonPressed.enabled = true
         }
+        
+        
     }
     
+//MARK: Button methods
     @IBAction func onSendButtonPressed(sender: AnyObject) {
         self.responseFromUser(responseTextField.text)
         responseTextField.text = ""

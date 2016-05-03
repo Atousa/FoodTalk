@@ -17,24 +17,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xqI-tn-r4J">
-                                <rect key="frame" x="176" y="266" width="257" height="67"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqI-tn-r4J">
+                                <rect key="frame" x="172" y="266" width="257" height="67"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S21-IV-CZL">
                                         <rect key="frame" x="0.0" y="0.0" width="137" height="67"/>
                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="60"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Talk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ert-w4-yQt">
                                         <rect key="frame" x="137" y="0.0" width="120" height="67"/>
                                         <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="60"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.99215686274509807" green="0.0039215686274509803" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xqI-tn-r4J" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="koS-fO-84b"/>
                             <constraint firstItem="xqI-tn-r4J" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="psC-Qq-btw"/>
