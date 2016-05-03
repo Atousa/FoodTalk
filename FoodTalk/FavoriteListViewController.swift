@@ -117,6 +117,17 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         return distance <= 0.2
     }
     
+    @IBAction func addNoteButton(sender:UIButton) {
+        let position: CGPoint = sender.convertPoint(CGPointZero, toView: self.tableView)
+        let indexPath = self.tableView.indexPathForRowAtPoint(position)
+
+        performSegueWithIdentifier("addNoteSegue", sender:restaurants[(indexPath?.row)!])
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let visitVC = segue.destinationViewController as! FavoriteListDetails
+        visitVC.restaurant = sender as! Restaurant
+    }
     
     @IBAction func indexChanged(sender: UISegmentedControl){
         
@@ -134,6 +145,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         }
         self.tableView.reloadData()
     }
+    
     
    func sortedVisitedRestaurants()->[Restaurant] {
         let request = CDM.makeRequest("Restaurant")
@@ -196,7 +208,8 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         
         return self.restaurants.count
     }
-
+   
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell", forIndexPath: indexPath) as! FavoriteListCell
         let restaurant = self.restaurants[indexPath.row]
@@ -209,8 +222,10 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         let stars = ["0 Stars", "1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars", "6 Stars", "7 Stars", "8 Stars", "9 Stars", "10 Stars"]
         cell.myRatingImage.image = UIImage(named: stars[restaurant.rating()])
         cell.numRatings.text = "(\(restaurant.visits!.count))"
+        
         return cell
     }
+    
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let restaurant = self.restaurants[indexPath.row]
@@ -223,9 +238,4 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     }
     
    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 }

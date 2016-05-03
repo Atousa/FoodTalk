@@ -63,7 +63,7 @@
                                                 </imageView>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vHj-CB-81n">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                    <color key="backgroundColor" red="0.5956270414" green="1" blue="0.93333032559999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.87676282049999998" green="0.87676282049999998" blue="0.87676282049999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotesCell" rowHeight="98" id="rOO-Gv-PmN" customClass="FavoriteListCellNotesSubCell" customModule="FoodTalk" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -122,8 +122,7 @@
                                                         <rect key="frame" x="351" y="36" width="22" height="22"/>
                                                     </variation>
                                                     <connections>
-                                                        <action selector="addNoteButton:" destination="5pS-zq-eZd" eventType="touchUpInside" id="Wat-bK-bhT"/>
-                                                        <segue destination="Lig-Wq-Ixe" kind="show" identifier="addNoteSeque" id="Qo8-Rp-TPj"/>
+                                                        <action selector="addNoteButton:" destination="YWC-PN-V9s" eventType="touchUpInside" id="ShA-6b-IV9"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(#)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOI-8C-A0y" userLabel="NumRatings">
@@ -167,6 +166,7 @@
                                             <outlet property="notesTableView" destination="vHj-CB-81n" id="lem-ZS-gW2"/>
                                             <outlet property="numRatings" destination="nOI-8C-A0y" id="woF-gL-r6y"/>
                                             <outlet property="typeLabel" destination="bmv-SM-bjd" id="BBq-xM-Nkt"/>
+                                            <segue destination="Lig-Wq-Ixe" kind="show" identifier="addNoteSegue" id="raw-dd-KcS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

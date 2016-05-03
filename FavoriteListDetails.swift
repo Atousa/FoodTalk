@@ -8,39 +8,64 @@
 
 import UIKit
 
-class FavoriteListDetails: UIViewController,UITextViewDelegate {
+class FavoriteListDetails: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
-    var r : Restaurant!
-    var v = visitDescriptor()
+    var restaurant : Restaurant!
 
     
-    @IBOutlet weak var addNotetextview: UITextView!
-    
+    @IBOutlet var Name: UILabel!
+    @IBOutlet var Previous: UILabel!
+    @IBOutlet var Date: UILabel!
+    @IBOutlet var Note: UITextView!
+    @IBOutlet var Rating: UITextField!
     
     override func viewDidLoad() {
-        self.addNotetextview.text = ""
-        self.addNotetextview.backgroundColor = UIColor.lightGrayColor()
-        addNotetextview.delegate = self
-        
-        
+        // TODO: if visit today, retrieve data
+        self.Note.text = ""
+        self.Rating.text = ""
+        Name.text = restaurant.name
+        Previous.text = String(format:"%d Previous Visits", restaurant.visits!.count)
+        let now = NSDate()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy" //  "yyyy-MM-dd HH:mm:ss ZZZ"
+        self.Date?.text = dateFormatter.stringFromDate(now)
+        self.Note.delegate = self
+        self.Rating.delegate = self
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
             textView.resignFirstResponder()
-            self.addNotes(text)
             return false
         }
-            return true
+        return true
+    }
+
+    @IBAction func onDonePressed(sender: AnyObject) {
+        print("Note: \(Note.text)")
+        print("Rating: \(Rating.text)")
+        if(Note.text != "") {
+            let r = Int(Rating.text!)
+            if(r != nil && r!>=0 && r!<=5) {
+                self.addNotes()
+                // segue back to previous VC
+            } else {
+                let alert = UIAlertController(title: "Alert", message: "Rating must be an integer [0-5]", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        }
     }
     
-    
-    func addNotes(text:String) {
-        v.notes = text
+    func addNotes() {
+        let v = visitDescriptor()
         v.date = NSDate()
-        CDM.addVisit(r, descr: v)
-        addNotetextview.text = ""
-        
+        v.rating = Int(Rating.text!)!
+        //v.favoriteDishes
+        v.notes = Note.text
+        //v.photos
+
+        CDM.addVisit(restaurant, descr: v)
     }
     
 }

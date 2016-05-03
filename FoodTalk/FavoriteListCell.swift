@@ -12,9 +12,11 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var nameOfRestaurant: UILabel!
     
+    @IBOutlet weak var noteButton: UIButton!
     @IBOutlet weak var myRatingImage: UIImageView!
     
     @IBOutlet weak var numRatings: UILabel!
+    
     
     @IBOutlet weak var addressTextView: UITextView!
     
@@ -46,15 +48,6 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
     }
     
     
-    
-    
-    
-    @IBAction func addNoteButton(sender:AnyObject) {
-        let vc = FavoriteListDetails()
-        vc.r = self.restaurant
-
-        
-    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
