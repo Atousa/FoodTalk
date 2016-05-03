@@ -35,6 +35,9 @@
 @property MKPointAnnotation *currentLocationAnnotation;
 @property CLPlacemark *placemark;
 
+@property CGFloat heightOfCell;
+@property NSMutableArray *expansionCheck;
+
 
 @end
 
@@ -42,6 +45,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.heightOfCell = 185;
+    self.expansionCheck = [@[@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",]mutableCopy];
     
 //    Capitalize the first letter of the search term
     NSString *foo = [NSString stringWithFormat:@"%@", self.searchTerm];
@@ -139,7 +145,7 @@
     ResultsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
 
     cell.delegateCheckmark = self;
-    cell.restaurantMapView.hidden = YES;
+//    cell.restaurantMapView.hidden = YES;
     
     
     YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
@@ -192,17 +198,35 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ResultsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
+//    CGRect tblViewCellHeight = [tableView rectForRowAtIndexPath:indexPath];
+//    CGFloat collapsedHeight = 185;
+//    CGFloat expandedHeight = 375;
     
+//    if (tblViewCellHeight.size.height == collapsedHeight) {
+//        self.heightOfCell = expandedHeight;
+//        
+//    } else {
+//        self.heightOfCell = collapsedHeight;
+//    }
+    
+    if ([[self.expansionCheck objectAtIndex:indexPath.row] isEqualToString: @"false"]) {
+        [self.expansionCheck replaceObjectAtIndex:indexPath.row withObject:@"true"];
+    } else {
+        [self.expansionCheck replaceObjectAtIndex:indexPath.row withObject:@"false"];
+    }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSArray *rowToReload = [NSArray arrayWithObjects:indexPath, nil];
+    [tableView reloadRowsAtIndexPaths:rowToReload withRowAnimation:UITableViewRowAnimationNone];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat foo = 170.0;
-    
-    
-    return foo;
+        CGFloat collapsedHeight = 185;
+        CGFloat expandedHeight = 375;
+    if ([[self.expansionCheck objectAtIndex:indexPath.row]  isEqualToString: @"true"]) {
+        return expandedHeight;
+    }
+    return collapsedHeight;
 }
 
 
