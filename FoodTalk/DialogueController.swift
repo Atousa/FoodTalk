@@ -21,7 +21,8 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var userLog: [String] = []
     var foodType = "food"
     var dist = String()
-    var currentLocation: String?
+    var location: CLLocation?
+    var locationAddress: String?
     
     let newLocationManger = CLLocationManager()
     
@@ -89,6 +90,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000 {
+            self.location = location
             reverseGeoCode(location!)
         }
     }
@@ -98,8 +100,8 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         
         geoCoder.reverseGeocodeLocation(location) { (placemark, error) in
             let placemark = placemark?.first
-            self.currentLocation = "\(placemark!.subThoroughfare!) \(placemark!.thoroughfare!) \(placemark!.locality!), \(placemark!.administrativeArea!)"
-            print("Location detected: \(self.currentLocation!)")
+            self.locationAddress = "\(placemark!.subThoroughfare!) \(placemark!.thoroughfare!) \(placemark!.locality!), \(placemark!.administrativeArea!)"
+            print("Location detected: \(self.locationAddress!)")
         }
     }
 
@@ -201,7 +203,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.userLog.append(text!)
         
         if((text == "Done") || (text == "done") || (text == "Done!") || (text == "done!")) {
-            if (self.currentLocation == nil) {
+            if (self.locationAddress == nil) {
                 let alert = UIAlertController(title: "Alert", message: "You must enable location services to get search results", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
@@ -342,6 +344,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         let srvc = segue.destinationViewController as! SearchResultViewController
         srvc.distance = dist
         srvc.searchTerm = foodType
-        srvc.locationFromWatson = self.currentLocation!
+        srvc.location = self.location
+        srvc.locationAddress = self.locationAddress!
     }
 }
