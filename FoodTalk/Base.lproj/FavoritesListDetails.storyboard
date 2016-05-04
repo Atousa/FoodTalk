@@ -74,9 +74,11 @@
                         <outlet property="Note" destination="Y1L-tw-pG7" id="2bI-GC-9a1"/>
                         <outlet property="Previous" destination="OSg-0k-zob" id="W77-Cs-Jda"/>
                         <outlet property="Rating" destination="SpP-rr-Hlp" id="1E4-Zy-0AE"/>
+                        <segue destination="bum-ct-Hno" kind="unwind" identifier="unwindToFavoriteList" unwindAction="unwindToFavoriteList:" id="Sgk-bT-rom"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LCF-0g-gBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="bum-ct-Hno" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2655" y="629"/>
         </scene>

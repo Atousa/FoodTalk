@@ -129,6 +129,11 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         visitVC.restaurant = sender as! Restaurant
     }
     
+    
+    @IBAction func unwindToFavoriteList(segue: UIStoryboardSegue) {
+        self.tableView.reloadData()
+    }
+    
     @IBAction func indexChanged(sender: UISegmentedControl){
         
         switch  sender.selectedSegmentIndex {

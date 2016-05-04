@@ -93,8 +93,6 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60
     }
-    
-
 }
 
 func > (lhs: NSDate, rhs: NSDate) -> Bool {
