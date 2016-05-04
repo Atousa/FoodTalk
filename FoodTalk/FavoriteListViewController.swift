@@ -100,7 +100,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let visitVC = segue.destinationViewController as! FavoriteListDetails
-        visitVC.restaurant = sender as! Restaurant
+       
     }
         
     @IBAction func unwindToFavoriteList(segue: UIStoryboardSegue) {
@@ -206,16 +206,34 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         return cell
     }
     
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let restaurant = self.restaurants[indexPath.row]
-
-        // TODO: These heights shouldn't be hardcoded
-        if (restaurant.visits?.count == 0) {
-            return 60
-        }
-        return 200
-    }
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        let restaurant = self.restaurants[indexPath.row]
+//
+//        if (restaurant.isExpanded == 0) {
+//            restaurant.isExpanded = 1
+//        } else {
+//            restaurant.isExpanded = 0
+//        }
+//        
+//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//        let rowToReload:[NSIndexPath] = [indexPath]
+//        tableView.reloadRowsAtIndexPaths(rowToReload, withRowAnimation: UITableViewRowAnimation.None)
+//        
+//    }
+//    
+//    
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        let restaurant = self.restaurants[indexPath.row]
+//        
+//        if (restaurant.isExpanded == 0 ) {
+//            return 190
+//        }
+//
+////        if (restaurant.visits?.count == 0) {
+////            return 200
+////        }
+//        return 258
+//    }
     
    
 }

@@ -23,6 +23,7 @@ import CoreLocation
     var state: String = ""
     var type: String = ""
     var date: NSDate = NSDate()
+    var isExpanded: Bool = false
 }
 
 func calculateDistanceBetweenTwoLocations(source:CLLocation, destination:CLLocation) -> Double {
@@ -60,4 +61,4 @@ extension Restaurant {
     @NSManaged var state: String?
     @NSManaged var type: String?
     @NSManaged var visits: NSSet?
-}
+    @NSManaged var isExpanded: NSNumber?}
