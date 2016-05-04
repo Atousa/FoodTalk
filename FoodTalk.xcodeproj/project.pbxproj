@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A397B9E1CD96F750000D03A /* Business.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A397B9D1CD96F750000D03A /* Business.m */; };
 		1A4F6E981CCE78AE009E6702 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F6E971CCE78AE009E6702 /* SearchResultViewController.m */; };
 		1A4F6E9D1CCEA4EB009E6702 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F6E9C1CCEA4EB009E6702 /* MainNavigationViewController.swift */; };
 		1A4F6EA21CCEEBE3009E6702 /* ResultsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F6EA11CCEEBE3009E6702 /* ResultsTableViewCell.m */; };
@@ -74,6 +75,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A397B9C1CD96F750000D03A /* Business.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Business.h; sourceTree = "<group>"; };
+		1A397B9D1CD96F750000D03A /* Business.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Business.m; sourceTree = "<group>"; };
 		1A4F6E961CCE78AE009E6702 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		1A4F6E971CCE78AE009E6702 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
 		1A4F6E9C1CCEA4EB009E6702 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +241,8 @@
 				713311641CCC0902006CE651 /* Photo+CoreDataProperties.swift */,
 				713311651CCC0902006CE651 /* Photo.swift */,
 				1A4FE0921CC6FDA000EE8787 /* FoodTalk.xcdatamodeld */,
+				1A397B9C1CD96F750000D03A /* Business.h */,
+				1A397B9D1CD96F750000D03A /* Business.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 				7133116A1CCC0902006CE651 /* Photo+CoreDataProperties.swift in Sources */,
 				713311691CCC0902006CE651 /* Restaurant.swift in Sources */,
 				1A4FE0AD1CC702A400EE8787 /* FavoriteListViewController.swift in Sources */,
+				1A397B9E1CD96F750000D03A /* Business.m in Sources */,
 				1A4F6E9D1CCEA4EB009E6702 /* MainNavigationViewController.swift in Sources */,
 				7174775D1CD65B8900CD0126 /* FavoriteListCellNotesSubCell.swift in Sources */,
 				1A4FE0941CC6FDA000EE8787 /* FoodTalk.xcdatamodeld in Sources */,
