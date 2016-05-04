@@ -125,10 +125,10 @@
                 CLLocation *destination = [[CLLocation alloc] initWithLatitude:business.location.coordinate.latitude longitude:business.location.coordinate.longitude];
                 double distanceToDest = [self calculateDistance:destination];
                 if(distanceToDest <= [self computeUserRange:self.distance]) {
-                    //NSLog(@"%@ = %f mi (accepted)", r.name, distanceToDest);
+                    NSLog(@"%@ = %f mi (accepted)", r.name, distanceToDest);
                     [self.arrayOfBusinesses addObject:business];
                 } else {
-                    //NSLog(@"%@ = %f mi (rejected)", r.name, distanceToDest);
+                    NSLog(@"%@ = %f mi (rejected)", r.name, distanceToDest);
                 }
             }
         }

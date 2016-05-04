@@ -30,6 +30,8 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Watson"
+        let flag = NSNumber()
+        
         
         newLocationManger.delegate = self
         newLocationManger.requestLocation()
@@ -129,7 +131,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         })
     }
     
-//MARK: Watson Dialog and Text-to-Speech
+
     func startDialogue() {
         self.service!.converse(self.dialogID!) { response, error in
             if error != nil {
@@ -140,13 +142,12 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             self.clientID = response?.clientID
             self.watsonLog.append((response?.response![0])!)
             self.speak((response?.response![0])!)
-            
-            //reload tableview from main thread
             dispatch_async(dispatch_get_main_queue()) {
                 self.DialogueTableView.reloadData()
             }
         }
     }
+    
     
     func speak(text: String) {
         self.tts!.synthesize(text) {
@@ -173,18 +174,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         for word in keywords {
             if text.lowercaseString.rangeOfString(word) != nil {
                 foodType = word
-/*
-                switch(word) {
-                case "dim sum":
-                    foodType = "chinese"
-                    break
-                case "sushi":
-                    foodType = "japanese"
-                    break
-                default:
-                    break
-                }
- */
             }
         }
         for word in distances {
@@ -331,10 +320,13 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         
         if (sender.imageView?.image == unmuteIcon) {
             sender.setImage(muteIcon, forState: UIControlState.Normal)
-            print("Mute")
+            self.service = Dialog(username: "b9b42757-5fa9-4633-8cb6-39f92fe7e18c", password: "GiDY7J5THqx3")
+            self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
+            
         } else {
             sender.setImage(unmuteIcon, forState: UIControlState.Normal)
-            print("Unmute")
+            self.service = Dialog(username: "b9b42757-5fa9-4633-8cb6-39f92fe7e18c", password: "GiDY7J5THqx3")
+            self.tts = TextToSpeech(username: "68d797f2", password: "KTGQ")
         }
     }
     
