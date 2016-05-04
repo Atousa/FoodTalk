@@ -11,15 +11,16 @@ import CoreData
 import CoreLocation
 
 
-class FavoriteListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,CLLocationManagerDelegate {
+class FavoriteListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var sortingSegmentedControl: UISegmentedControl!
     
-    let locationManager = CLLocationManager()
     var location = CLLocation()
+    var locationAddress = String()
+
     var restaurants = [Restaurant]()
     var r : Restaurant!
     let predicate = NSPredicate()
@@ -85,36 +86,9 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         visit3.notes = "I loved the vibe of the restaurant with Thai new year decorations. All the dishes looked fantastic!  We had great fun..."
 
         title = "Favorites"
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestLocation()
-        }
         
         self.restaurants = sortedVisitedRestaurants()
         self.tableView.reloadData()
-    }
-    
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        let alert = UIAlertController(title: "Alert", message: "You must enable location services to get search results", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = locations.last!
-        locationManager.stopUpdatingLocation()
-    }
-    
-    func closeEnough(candidate: Restaurant) -> Bool {
-        let dest =  CLLocation(latitude: Double(candidate.latitude!),longitude: Double(candidate.longitude!))
-
-        let distance = calculateDistanceBetweenTwoLocations(self.location, destination: dest)
-        
-        return distance <= 0.2
     }
     
     @IBAction func addNoteButton(sender:UIButton) {

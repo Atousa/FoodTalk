@@ -13,7 +13,7 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
 
-@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, ResultsTableViewCellDelegate, MKMapViewDelegate>
+@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource,  ResultsTableViewCellDelegate, MKMapViewDelegate>
 
 #pragma mark - Outlets
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
@@ -28,7 +28,6 @@
 @property YLPSearch *searchResult;
 @property NSMutableArray *arrayOfBusinesses;
 
-@property CLLocationManager *locationManager;
 @property MKPointAnnotation *restaurantAnnotation;
 @property MKPointAnnotation *currentLocationAnnotation;
 @property CLPlacemark *placemark;
@@ -55,25 +54,9 @@
     
     self.restaurantAnnotation = [[MKPointAnnotation alloc]init];
 
-    self.locationManager.delegate = self;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.locationManager requestWhenInUseAuthorization];
-
-    
-    if ([CLLocationManager locationServicesEnabled]) {
-        [self.locationManager startUpdatingLocation];
-    }
-    
-    self.locationManager = [[CLLocationManager alloc]init];
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.locationManager startUpdatingLocation];
-    
     self.arrayOfBusinesses = [NSMutableArray new];
     
-    
     [self searchForFoodPlaces:self.locationAddress searchString:self.searchTerm];
-    
 }
 
 -(void)instantiateYelpAuthTokens {
@@ -150,27 +133,6 @@
     
     
 }
-
-#pragma mark - Location methods
-
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    [self.locationManager stopUpdatingLocation];
-    self.location = [locations lastObject];
-    NSLog(@"%f", self.location.coordinate.latitude);
-}
-
-- (void)reverseGeocode:(CLLocation *)location {
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-        if (error) {
-            NSLog(@"Error %@", error.description);
-        } else {
-            self.placemark = [placemarks lastObject];
-        }
-    }];
-}
-
-
 
 #pragma mark - TableView Methods
 
