@@ -74,12 +74,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func onDiscoverPressed(sender: AnyObject) {
         if(locationAddress == nil) {
             alertEnableLocationServicesRequired()
+            return
         }
         performSegueWithIdentifier("goToDialogVC", sender: self)
     }
     @IBAction func onFavoritePressed(sender: AnyObject) {
         if(locationAddress == nil) {
             alertEnableLocationServicesRequired()
+            return
         }
         performSegueWithIdentifier("goToFavoriteVC", sender: self)
     }
