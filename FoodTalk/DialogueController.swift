@@ -24,6 +24,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var location: CLLocation?
     var locationAddress: String?
     var maxHeight:CGFloat?
+    var flag = Bool()
     
 //MARK: View Load/Appear Methods
     override func viewDidLoad() {
@@ -36,7 +37,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         
         self.service = Dialog(username: "b9b42757-5fa9-4633-8cb6-39f92fe7e18c", password: "GiDY7J5THqx3")
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
-        
         let dialogName = "xmlchanged34"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
@@ -174,6 +174,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                                     if((response?.response![i])! != "") {
                                         //print("\(ans)> "+(response?.response![ans])!)
                                         self.speak((response?.response![i])!)
+                                        
                                         self.watsonLog.append((response?.response![i])!)
                                         break;
                                     }
@@ -286,18 +287,17 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     }
     
     @IBAction func onMuteButtonPressed(sender: UIButton) {
+        self.tts = TextToSpeech(username: "68d797f2", password: "KTGQ")
         let unmuteIcon = UIImage(named: "High Volume-30")
         let muteIcon = UIImage(named: "Mute-30")
         
         if (sender.imageView?.image == unmuteIcon) {
             sender.setImage(muteIcon, forState: UIControlState.Normal)
-            self.service = Dialog(username: "b9b42757-5fa9-4633-8cb6-39f92fe7e18c", password: "GiDY7J5THqx3")
-            self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
             
         } else {
+            
             sender.setImage(unmuteIcon, forState: UIControlState.Normal)
-            self.service = Dialog(username: "b9b42757-5fa9-4633-8cb6-39f92fe7e18c", password: "GiDY7J5THqx3")
-            self.tts = TextToSpeech(username: "68d797f2", password: "KTGQ")
+             self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         }
     }
 
