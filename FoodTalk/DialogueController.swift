@@ -32,10 +32,10 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Watson"
-        let flag = NSNumber()
-        
-        
 
+//        let giphyButton = UIBarButtonItem.init(title: "Giphy", style: UIBarButtonItemStyle.Plain, target: self, action:Selector("Say This"))
+//        self.navigationItem.rightBarButtonItem = giphyButton
+        
         
         newLocationManger.delegate = self
         newLocationManger.requestLocation()
@@ -48,7 +48,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         
         
-        let dialogName = "xmlchanged34"
+        let dialogName = "xmlchanged35"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -173,7 +173,33 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     
     
     func parse(text: String)-> Void {
-        let keywords = [ "dim sum", "chinese", "vietnamese", "american", "italian", "french", "korean", "japanese", "thai", "mexican", "peruvian", "british", "mongolian", "taiwanese", "bbq", "greek", "taco", "tacos", "sushi", "burgers", "pasta", "kbbq", "breakfast", "brunch", "souvlaki"]
+        let keywords = [ "american",
+                         "bbq",
+                         "breakfast",
+                         "brunch",
+                         "british",
+                         "burgers",
+                         "chinese",
+                         "dim sum",
+                         "french",
+                         "greek",
+                         "indian",
+                         "italian",
+                         "japanese",
+                         "korean",
+                         "mediterranean",
+                         "mexican",
+                         "mongolian",
+                         "pasta",
+                         "peruvian",
+                         "souvlaki",
+                         "sushi",
+                         "taco",
+                         "taiwanese",
+                         "thai",
+                         "vegan",
+                         "vegetarian",
+                         "vietnamese" ]
         let distances = [ "2 block", "6 blocks", "1 mile", "5 miles", "20 miles"]
         for word in keywords {
             if text.lowercaseString.rangeOfString(word) != nil {
