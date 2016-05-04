@@ -133,12 +133,13 @@
                 double distanceToDest = [self calculateDistance:destination];
                 if(distanceToDest <= [self computeUserRange:self.distance]) {
                     NSLog(@"%@ = %f mi (accepted)", r.name, distanceToDest);
-                    [self.arrayOfBusinesses addObject:business];
+//                    [self.arrayOfBusinesses addObject:business];
+                    Business * yelpBusiness = [Business initWithYelpBusiness:business];
+                    [self.arrayOfBusinesses addObject:yelpBusiness];
                 } else {
                     NSLog(@"%@ = %f mi (rejected)", r.name, distanceToDest);
                 }
-                Business * yelpBusiness = [Business initWithYelpBusiness:business];
-                [self.arrayOfBusinesses addObject:yelpBusiness];
+                
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -260,6 +261,7 @@
     
     CGFloat collapsedHeight = 185;
     CGFloat expandedHeight = 375;
+    
     Business *business = self.arrayOfBusinesses[indexPath.row];
 
     if (business.expanded) {
