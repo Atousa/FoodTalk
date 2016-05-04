@@ -21,7 +21,7 @@ PODS:
     - TDOAuth (~> 1.1)
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.0)
+  - AFNetworking
   - YelpAPI (~> 1.0)
 
 SPEC CHECKSUMS:
