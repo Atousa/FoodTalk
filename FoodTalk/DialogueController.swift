@@ -3,7 +3,7 @@ import WatsonDeveloperCloud
 import AVFoundation
 import CoreLocation
 
-class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioRecorderDelegate, UITableViewDataSource, UITextFieldDelegate {
+class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioRecorderDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate {
     
 //Mark: Outlets
     @IBOutlet weak var onSendButtonPressed: UIButton!
@@ -41,7 +41,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.activityIndicator.startAnimating()
         
         newLocationManger.delegate = self
-        newLocationManger.requestLocation()
+//        newLocationManger.requestLocation()
         
         self.dialogueTableView.separatorStyle = .None
         self.responseTextField.delegate = self
