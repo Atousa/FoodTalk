@@ -1,1 +1,0 @@
-../../../YelpAPI/Pod/Classes/Response/YLPReview.h

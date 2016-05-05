@@ -28,5 +28,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *restaurantMapView;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
+@property BOOL didUserSelectCell;
+
 
 @end

@@ -3,11 +3,11 @@ import WatsonDeveloperCloud
 import AVFoundation
 import CoreLocation
 
-class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioRecorderDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate {
+class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioRecorderDelegate, UITableViewDataSource, UITextFieldDelegate {
     
 //Mark: Outlets
     @IBOutlet weak var onSendButtonPressed: UIButton!
-    @IBOutlet weak var DialogueTableView: UITableView!
+    @IBOutlet weak var dialogueTableView: UITableView!
     @IBOutlet weak var spacerBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var responseTextField: UITextField!
     
@@ -21,25 +21,23 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var userLog: [String] = []
     var foodType = "food"
     var dist = String()
-    var currentLocation: String?
-    
-    let newLocationManger = CLLocationManager()
+    var location: CLLocation?
+    var locationAddress: String?
+    var maxHeight:CGFloat?
+    var flag = Bool()
     
 //MARK: View Load/Appear Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        newLocationManger.delegate = self
-        newLocationManger.requestLocation()
+        self.navigationItem.title = "Watson"
         
-        self.DialogueTableView.separatorStyle = .None
+        self.dialogueTableView.separatorStyle = .None
         self.responseTextField.delegate = self
         self.onSendButtonPressed.enabled = false
         
         self.service = Dialog(username: "b9b42757-5fa9-4633-8cb6-39f92fe7e18c", password: "GiDY7J5THqx3")
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
-        
-        
-        let dialogName = "xmlchanged20"
+        let dialogName = "xmlchanged34"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -55,7 +53,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             }
         }
         
-        let path = NSBundle.mainBundle().pathForResource("foodSearchDialog-8", ofType: "xml")
+        let path = NSBundle.mainBundle().pathForResource("foodSearchDialog", ofType: "xml")
         let url = NSURL.fileURLWithPath(path!)
         self.service!.createDialog(dialogName, fileURL: url) { dialogID, error in
             if error != nil {
@@ -79,33 +77,12 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
     }
 
-//Mark: Location Manager
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print(error)
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last
-        if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000 {
-            reverseGeoCode(location!)
-        }
-    }
-    
-    func reverseGeoCode(location: CLLocation) {
-        let geoCoder = CLGeocoder()
-        
-        geoCoder.reverseGeocodeLocation(location) { (placemark, error) in
-            let placemark = placemark?.first
-            self.currentLocation = "\(placemark!.subThoroughfare!) \(placemark!.thoroughfare!) \(placemark!.locality!), \(placemark!.administrativeArea!)"
-            print("Location detected: \(self.currentLocation!)")
-        }
-    }
 
 //MARK: Tableview Scroll
     func tableViewScrollToTop(animated: Bool) {
         dispatch_after(0, dispatch_get_main_queue(), {
             let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-            self.DialogueTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: animated)
+            self.dialogueTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: animated)
         })
     }
     
@@ -115,17 +92,17 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         
         dispatch_after(time, dispatch_get_main_queue(), {
             
-            let numberOfSections = self.DialogueTableView.numberOfSections
-            let numberOfRows = self.DialogueTableView.numberOfRowsInSection(numberOfSections-1)
+            let numberOfSections = self.dialogueTableView.numberOfSections
+            let numberOfRows = self.dialogueTableView.numberOfRowsInSection(numberOfSections-1)
             
             if numberOfRows > 0 {
                 let indexPath = NSIndexPath(forRow: numberOfRows-1, inSection: (numberOfSections-1))
-                self.DialogueTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: animated)
+                self.dialogueTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: animated)
             }
         })
     }
     
-//MARK: Watson Dialog and Text-to-Speech
+
     func startDialogue() {
         self.service!.converse(self.dialogID!) { response, error in
             if error != nil {
@@ -136,13 +113,12 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             self.clientID = response?.clientID
             self.watsonLog.append((response?.response![0])!)
             self.speak((response?.response![0])!)
-            
-            //reload tableview from main thread
             dispatch_async(dispatch_get_main_queue()) {
-                self.DialogueTableView.reloadData()
+                self.dialogueTableView.reloadData()
             }
         }
     }
+    
     
     func speak(text: String) {
         self.tts!.synthesize(text) {
@@ -169,18 +145,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         for word in keywords {
             if text.lowercaseString.rangeOfString(word) != nil {
                 foodType = word
-/*
-                switch(word) {
-                case "dim sum":
-                    foodType = "chinese"
-                    break
-                case "sushi":
-                    foodType = "japanese"
-                    break
-                default:
-                    break
-                }
- */
             }
         }
         for word in distances {
@@ -188,8 +152,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                 dist = word
             }
         }
-        
-        
     }
     
     func responseFromUser(text: String?) -> Bool {
@@ -199,13 +161,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.userLog.append(text!)
         
         if((text == "Done") || (text == "done") || (text == "Done!") || (text == "done!")) {
-            if (self.currentLocation == nil) {
-                let alert = UIAlertController(title: "Alert", message: "You must enable location services to get search results", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-            } else {
-                performSegueWithIdentifier("SearchSegue", sender: self)
-            }
+            performSegueWithIdentifier("SearchSegue", sender: self)
         }
         parse(text!)
         
@@ -218,6 +174,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                                     if((response?.response![i])! != "") {
                                         //print("\(ans)> "+(response?.response![ans])!)
                                         self.speak((response?.response![i])!)
+                                        
                                         self.watsonLog.append((response?.response![i])!)
                                         break;
                                     }
@@ -226,7 +183,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                                 
                                 //reload tableview from main thread
                                 dispatch_async(dispatch_get_main_queue()) {
-                                    self.DialogueTableView.reloadData()
+                                    self.dialogueTableView.reloadData()
                                     self.tableViewScrollToBottom(true)
                                 }
         }
@@ -239,6 +196,10 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         return self.watsonLog.count
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 150
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         
@@ -249,6 +210,10 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         } else {
             cell.myDialogueTextField.text = ""
         }
+        
+        
+        cell.WatsonDialogueTextField.sizeToFit()
+        
         
         cell.WatsonDialogueTextField.font = UIFont(name: "Palatino", size: 16)
         cell.WatsonDialogueImage.image = UIImage(named: "Satellites-100.png")
@@ -282,6 +247,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         })
     }
     
+//MARK: TextField Methods
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if(textField.text == nil || textField.text! == "") {
             return false
@@ -291,39 +257,56 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         return true
     }
     
-//MARK: IBAction outlets
+//    Limits the characters a user can type in the response field
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        let currentCharacterCount = self.responseTextField.text?.characters.count ?? 0
+        if range.length + range.location > currentCharacterCount {
+            return false
+        }
+        let newLength = currentCharacterCount + string.characters.count - range.length
+        return newLength <= 40
+    }
+    
+    
+
     @IBAction func textFieldIsEditing(sender: UITextField) {
         if sender.text == nil || sender.text == "" {
             self.onSendButtonPressed.enabled = false
         } else {
             self.onSendButtonPressed.enabled = true
         }
+        
+        
     }
     
+//MARK: Button methods
     @IBAction func onSendButtonPressed(sender: AnyObject) {
         self.responseFromUser(responseTextField.text)
         responseTextField.text = ""
     }
     
     @IBAction func onMuteButtonPressed(sender: UIButton) {
+        self.tts = TextToSpeech(username: "68d797f2", password: "KTGQ")
         let unmuteIcon = UIImage(named: "High Volume-30")
         let muteIcon = UIImage(named: "Mute-30")
         
         if (sender.imageView?.image == unmuteIcon) {
             sender.setImage(muteIcon, forState: UIControlState.Normal)
-            print("Mute")
+            
         } else {
+            
             sender.setImage(unmuteIcon, forState: UIControlState.Normal)
-            print("Unmute")
+             self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         }
     }
-    
-    
+
 //MARK: PrepareForSegue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let srvc = segue.destinationViewController as! SearchResultViewController
         srvc.distance = dist
         srvc.searchTerm = foodType
-        srvc.locationFromWatson = self.currentLocation!
+        srvc.location = self.location
+        srvc.locationAddress = self.locationAddress
     }
 }

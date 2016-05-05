@@ -25,13 +25,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5pS-zq-eZd" id="nYO-9n-jxA">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="204"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="204.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P36-pn-9aW" userLabel="Name Of Restaurant">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
                                                         <rect key="frame" x="8" y="0.0" width="167" height="33"/>
@@ -40,7 +40,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmv-SM-bjd">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
                                                         <rect key="frame" x="8" y="19" width="123" height="30"/>
@@ -58,18 +58,18 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0 Stars" translatesAutoresizingMaskIntoConstraints="NO" id="rJy-Lh-X6t">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="8" y="41" width="67" height="15.5"/>
+                                                        <rect key="frame" x="8" y="41" width="67" height="16"/>
                                                     </variation>
                                                 </imageView>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vHj-CB-81n">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                    <color key="backgroundColor" red="0.5956270414" green="1" blue="0.93333032559999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.87676282049999998" green="0.87676282049999998" blue="0.87676282049999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotesCell" rowHeight="98" id="rOO-Gv-PmN" customClass="FavoriteListCellNotesSubCell" customModule="FoodTalk" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rOO-Gv-PmN" id="ugi-wL-OOY">
-                                                                <rect key="frame" x="0.0" y="0.0" width="240" height="97"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="240" height="97.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Visit Notes" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y10-uO-mtr" userLabel="Note">
@@ -78,17 +78,17 @@
                                                                         <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                                                            <rect key="frame" x="118" y="4" width="274" height="85.5"/>
+                                                                            <rect key="frame" x="118" y="4" width="274" height="86"/>
                                                                         </variation>
                                                                     </textView>
-                                                                    <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Q1-tG-khn">
+                                                                    <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Q1-tG-khn">
                                                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                                         <color key="backgroundColor" red="0.87676282049999998" green="0.87676282049999998" blue="0.87676282049999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="16"/>
-                                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                                                            <rect key="frame" x="8" y="8" width="102" height="21"/>
+                                                                            <rect key="frame" x="8" y="8" width="102" height="50"/>
                                                                         </variation>
                                                                     </label>
                                                                 </subviews>
@@ -121,7 +121,19 @@
                                                     <variation key="widthClass=compact" fixedFrame="YES">
                                                         <rect key="frame" x="351" y="36" width="22" height="22"/>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="addNoteButton:" destination="YWC-PN-V9s" eventType="touchUpInside" id="ShA-6b-IV9"/>
+                                                    </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(#)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOI-8C-A0y" userLabel="NumRatings">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="12"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="83" y="39" width="30" height="21"/>
+                                                    </variation>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <variation key="default">
@@ -132,6 +144,7 @@
                                                     <exclude reference="rJy-Lh-X6t"/>
                                                     <exclude reference="vHj-CB-81n"/>
                                                     <exclude reference="aGl-ki-5bs"/>
+                                                    <exclude reference="nOI-8C-A0y"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -142,6 +155,7 @@
                                                     <include reference="rJy-Lh-X6t"/>
                                                     <include reference="vHj-CB-81n"/>
                                                     <include reference="aGl-ki-5bs"/>
+                                                    <include reference="nOI-8C-A0y"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -150,7 +164,9 @@
                                             <outlet property="myRatingImage" destination="rJy-Lh-X6t" id="84w-y6-YBh"/>
                                             <outlet property="nameOfRestaurant" destination="P36-pn-9aW" id="oai-2D-x8r"/>
                                             <outlet property="notesTableView" destination="vHj-CB-81n" id="lem-ZS-gW2"/>
+                                            <outlet property="numRatings" destination="nOI-8C-A0y" id="woF-gL-r6y"/>
                                             <outlet property="typeLabel" destination="bmv-SM-bjd" id="BBq-xM-Nkt"/>
+                                            <segue destination="Lig-Wq-Ixe" kind="show" identifier="addNoteSegue" id="raw-dd-KcS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -175,14 +191,30 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="hRU-Pi-xB8">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Nws-lo-nuZ">
+                            <rect key="frame" x="198.5" y="7.5" width="203" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Visited"/>
+                                <segment title="Rate"/>
+                                <segment title="Distance"/>
+                            </segments>
+                            <connections>
+                                <action selector="indexChanged:" destination="YWC-PN-V9s" eventType="valueChanged" id="ybv-cx-MIa"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="sortingSegmentedControl" destination="Nws-lo-nuZ" id="qM4-oB-cDX"/>
                         <outlet property="tableView" destination="Fq3-lW-Jwc" id="gId-1f-EKj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZMu-r7-ab9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1872" y="590"/>
+            <point key="canvasLocation" x="1932" y="543"/>
         </scene>
         <!--FavoritesListDetails-->
         <scene sceneID="IZK-bY-wIX">
@@ -190,7 +222,7 @@
                 <viewControllerPlaceholder storyboardName="FavoritesListDetails" id="Lig-Wq-Ixe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16u-6y-sDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2655" y="629"/>
+            <point key="canvasLocation" x="2538" y="388"/>
         </scene>
     </scenes>
     <resources>

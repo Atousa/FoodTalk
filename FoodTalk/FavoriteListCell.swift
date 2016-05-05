@@ -12,7 +12,11 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var nameOfRestaurant: UILabel!
     
+    @IBOutlet weak var noteButton: UIButton!
     @IBOutlet weak var myRatingImage: UIImageView!
+    
+    @IBOutlet weak var numRatings: UILabel!
+    
     
     @IBOutlet weak var addressTextView: UITextView!
     
@@ -21,6 +25,7 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var typeLabel: UILabel!
     
     var restaurant : Restaurant!
+    var  visits : [Visit] = []
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -43,6 +48,8 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
         notesTableView.frame = CGRectMake(0.2, 0.3, self.bounds.size.width-5, self.bounds.size.height-5)
     }
     
+    
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -54,19 +61,23 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
         }
         
         notesTableView.hidden = false
+        self.visits = restaurant.visits?.allObjects as! [Visit]
+        visits = visits.sort({ $0.date! > $1.date! })
+        
         return (restaurant.visits?.count)!
     }
     
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NotesCell") as! FavoriteListCellNotesSubCell
-        
-        let visit = restaurant.visits?.allObjects[indexPath.row] as! Visit
 
-        
+        let visit = visits[indexPath.row]
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd" //  "yyyy-MM-dd HH:mm:ss ZZZ"
+        //dateFormatter.dateFormat = "MM-dd-yyyy" //  "yyyy-MM-dd HH:mm:ss ZZZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
         //cell.textLabel?.text = "Row " + String(indexPath.row)
+        print("Updating Cell \(indexPath.row)")
         if (visit.date != nil) {
             cell.dateLabel?.text = dateFormatter.stringFromDate(visit.date!)
         } else {
@@ -85,6 +96,13 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60
     }
-    
-
 }
+
+func > (lhs: NSDate, rhs: NSDate) -> Bool {
+    return lhs.timeIntervalSinceReferenceDate > rhs.timeIntervalSinceReferenceDate
+}
+
+func < (lhs: NSDate, rhs: NSDate) -> Bool {
+    return lhs.timeIntervalSinceReferenceDate < rhs.timeIntervalSinceReferenceDate
+}
+

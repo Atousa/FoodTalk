@@ -7,17 +7,21 @@
 //
 
 import UIKit
-import CoreLocation
 import CoreData
+import CoreLocation
 
-class FavoriteListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,CLLocationManagerDelegate {
+
+class FavoriteListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
    
     @IBOutlet weak var tableView: UITableView!
     
-    let locationManager = CLLocationManager()
-    var location = CLLocation()
-    var restaurant = [Restaurant]()
+    @IBOutlet weak var sortingSegmentedControl: UISegmentedControl!
+    
+    var location : CLLocation?
+    var locationAddress : String?
+
+    var restaurants = [Restaurant]()
     var r : Restaurant!
     let predicate = NSPredicate()
     let resDemo1 = restaurantDescriptor()
@@ -31,35 +35,45 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
-        
-        //var photo = Photo()
-        
-        resDemo1.name =    "Farmhouse Kitchen"
-        resDemo1.address = "710 Florida St"
-        resDemo1.city =    "San Francisco"
-        resDemo1.state =   "CA"
-        resDemo1.country = "United States"
-        resDemo1.type =    "Thai"
-        
-        resDemo2.name =    "Chez Panisse"
-        resDemo2.address = "1517 Shattuck Ave"
-        resDemo2.city =    "Berkeley"
-        resDemo2.state =   "CA"
-        resDemo2.country = "United States"
-        resDemo2.type =    "Californian"
-        
-        resDemo3.name =     "Flour + Water"
-        resDemo3.address =  "2401 Harrison St"
-        resDemo3.city =     "San Francisco"
-        resDemo3.state =    "CA"
-        resDemo3.country =  "United States"
-        resDemo3.type =     "Italian"
-
-        
         let dateFormatter = NSDateFormatter()
-        //dateFormatter.timeZone = NSTimeZone(name:"UTC")
+        
+        if (location == nil) {
+            sortingSegmentedControl.setEnabled(false, forSegmentAtIndex:2)
+        }
+        
         dateFormatter.dateFormat = "yyyy-MM-dd" //  "yyyy-MM-dd HH:mm:ss ZZZ"
-
+        
+        resDemo1.name =      "Farmhouse Kitchen"
+        resDemo1.address =   "710 Florida St"
+        resDemo1.city =      "San Francisco"
+        resDemo1.state =     "CA"
+        resDemo1.country =   "United States"
+        resDemo1.type =      "Thai"
+        resDemo1.latitude =   37.7602175
+        resDemo1.longitude = -122.4112856
+        resDemo1.date = dateFormatter.dateFromString("2016-01-14")!
+        
+        resDemo2.name =      "Chez Panisse"
+        resDemo2.address =   "1517 Shattuck Ave"
+        resDemo2.city =      "Berkeley"
+        resDemo2.state =     "CA"
+        resDemo2.country =   "United States"
+        resDemo2.type =      "Californian"
+        resDemo1.latitude =   37.8795896
+        resDemo1.longitude = -122.2711532
+        resDemo2.date = dateFormatter.dateFromString("2015-01-20")!
+        
+        resDemo3.name =      "Flour + Water"
+        resDemo3.address =   "2401 Harrison St"
+        resDemo3.city =      "San Francisco"
+        resDemo3.state =     "CA"
+        resDemo3.country =   "United States"
+        resDemo3.type =      "Italian"
+        resDemo1.latitude =   37.7589424
+        resDemo1.longitude = -122.414457
+        resDemo3.date = dateFormatter.dateFromString("2016-05-02")!
+        
+        
         visit1.date = dateFormatter.dateFromString("2016-01-14")
         visit1.favoriteDishes = ""
         visit1.notes = "It is always fun to be here and watch Lætitia drinking coco water."
@@ -74,95 +88,98 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         visit3.favoriteDishes = ""
         visit3.rating = 4
         visit3.notes = "I loved the vibe of the restaurant with Thai new year decorations. All the dishes looked fantastic!  We had great fun..."
-        
-        /*photo.visit = visitDemo
-        photo.comment = "pictures with my family"
-        let image = UIImage(contentsOfFile: "IMG_2152")
-        photo.image = UIImagePNGRepresentation(image!)! as NSData
-        */
 
         title = "Favorites"
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.requestWhenInUseAuthorization()
         
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-        }
-        self.restaurant = self.findNearbyRestaurants(location)
+        self.restaurants = sortedVisitedRestaurants()
         self.tableView.reloadData()
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        let alert = UIAlertController(title: "Alert", message: "You must enable location services to get search results", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = locations.last!
-        locationManager.stopUpdatingLocation()
-    }
-    
-    func closeEnough(candidate: Restaurant) -> Bool {
-        let dest =  CLLocation(latitude: Double(candidate.latitude!),longitude: Double(candidate.longitude!))
+    @IBAction func addNoteButton(sender:UIButton) {
+        let position: CGPoint = sender.convertPoint(CGPointZero, toView: self.tableView)
+        let indexPath = self.tableView.indexPathForRowAtPoint(position)
 
-        let distance = calculateDistanceBetweenTwoLocations(self.location, destination: dest)
-        
-        return distance <= 0.2
+        performSegueWithIdentifier("addNoteSegue", sender:restaurants[(indexPath?.row)!])
     }
     
-    func findNearbyRestaurants(location:CLLocation)-> [Restaurant] {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let visitVC = segue.destinationViewController as! FavoriteListDetails
+        visitVC.restaurant = sender as! Restaurant
+    }
+        
+    @IBAction func unwindToFavoriteList(segue: UIStoryboardSegue) {
+        // force sort and reload
+        indexChanged(self.sortingSegmentedControl)
+        self.tableView.reloadData()
+    }
+    
+    @IBAction func indexChanged(sender: UISegmentedControl){
+        
+        switch  sender.selectedSegmentIndex {
+        case 0:
+            self.restaurants = sortedVisitedRestaurants()
+        case 1:
+            self.restaurants = sortedRatedRestaurant()
+        case 2:
+            self.restaurants = sortedDistanceRestaurants(self.location!)
+        default:
+            self.restaurants = sortedVisitedRestaurants()
+            break
+            
+        }
+        self.tableView.reloadData()
+    }
+    
+    
+   func sortedVisitedRestaurants()->[Restaurant] {
         let request = CDM.makeRequest("Restaurant")
-
-        /*let closeEnoughPredicate = NSPredicate { (candidate, _) in
-            let dest =  CLLocation(latitude: Double(candidate.latitude!),longitude: Double(candidate.longitude!))
-            
-            let distance = self.calculateDistanceBetweenTwoLocations(self.location, destination: dest)
-            
-            return distance <= 10
-        }*/
-        
-        //request.predicate = closeEnoughPredicate
-        //print(request.predicate)
- 
-        let sort = NSSortDescriptor(key:"name", ascending:true)
+        let sort = NSSortDescriptor(key:"date", ascending: false)
         request.sortDescriptors = [sort]
+
+        do {
+            let results = try moc.executeFetchRequest(request)
+            self.restaurants = results  as! [Restaurant]
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+    
+        return self.restaurants
+    }
+    
+    
+    func sortedRatedRestaurant()->[Restaurant]{
+        let request = CDM.makeRequest("Restaurant")
         
         do {
             let results = try moc.executeFetchRequest(request)
-            self.restaurant = results  as! [Restaurant]
-            
-            //let closeEnoughPredicate = NSPredicate { (results, _) in
-                //let dest =  CLLocation(latitude: Double(results.latitude!),longitude: Double(results.longitude!))
-                
-                //let distance = self.calculateDistanceBetweenTwoLocations(self.location, destination: dest)
-                
-                //return distance <= 10
-            
-
-            
-            //return results as! [Restaurant]
-        
+            self.restaurants = (results as! [Restaurant]).sort({ r1, r2 in r1.rating() > r2.rating() })
         } catch {
             let fetchError = error as NSError
             print(fetchError)
         }
         
-       return self.restaurant
+        return self.restaurants
+    }
+
+    
+    func sortedDistanceRestaurants(location:CLLocation)-> [Restaurant] {
+       let request = CDM.makeRequest("Restaurant")
+
+        do {
+            let results = try moc.executeFetchRequest(request)
+            self.restaurants = (results as! [Restaurant]).sort({ r1, r2 in r1.distance(location) < r2.distance(location) })
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+
+        return self.restaurants
     }
     
-    func calculateDistanceBetweenTwoLocations(source:CLLocation,destination:CLLocation) -> Double{
-        
-        let distanceMeters = source.distanceFromLocation(destination)
-        let distanceKM = distanceMeters / 1000
-        let roundedTwoDigit = distanceKM
-        return roundedTwoDigit
-    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.restaurant.count == 0  {
+        if self.restaurants.count == 0  {
              CDM.addRestaurant(resDemo1, presentViewController: self)
              CDM.addRestaurant(resDemo2, presentViewController: self)
              CDM.addRestaurant(resDemo3, presentViewController: self)
@@ -170,41 +187,36 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
              CDM.addVisit(r, descr: visit1)
              CDM.addVisit(r, descr: visit2)
              CDM.addVisit(r, descr: visit3)
-             self.restaurant = findNearbyRestaurants(location)
-            
+             self.restaurants = sortedVisitedRestaurants()
         }
         
-        return self.restaurant.count
+        return self.restaurants.count
     }
-
+   
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell", forIndexPath: indexPath) as! FavoriteListCell
-        let restaurant = self.restaurant[indexPath.row]
+        let restaurant = self.restaurants[indexPath.row]
         self.r = restaurant
         cell.restaurant = restaurant
         cell.nameOfRestaurant.text = r.name
         cell.typeLabel.text = r.type
-        cell.addressTextView.text = r.address! + "\n" + r.city! + ", " + r.state! + "\n" + r.country!
-
-        let numVisits = (restaurant.visits?.count)!
-        if(numVisits > 0) {
-            var Rating = 0.0
-            
-            for i in 0...numVisits-1 {
-                Rating += Double((restaurant.visits?.allObjects[i] as! Visit).rating!)
-            }
-            Rating = round(2 * Rating/Double(numVisits))
-            let stars = ["0 Stars", "1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars", "6 Stars", "7 Stars", "8 Stars", "9 Stars", "10 Stars"]
-            cell.myRatingImage.image = UIImage(named: stars[Int(Rating)])
-        } else {
-            cell.myRatingImage.image = UIImage(named: "0 Stars")
+        var distance = ""
+        if (location != nil && r.latitude != 0 && r.longitude != 0) {
+            distance = String(format: "%.2f", r.distance(self.location!)) + " mi"
         }
+        cell.addressTextView.text = r.address! + "\n" + r.city! + ", " + r.state! + "\n" + distance
+        
+        let stars = ["0 Stars", "1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars", "6 Stars", "7 Stars", "8 Stars", "9 Stars", "10 Stars"]
+        cell.myRatingImage.image = UIImage(named: stars[restaurant.rating()])
+        cell.numRatings.text = "(\(restaurant.visits!.count))"
         
         return cell
     }
     
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let restaurant = self.restaurant[indexPath.row]
+        let restaurant = self.restaurants[indexPath.row]
 
         // TODO: These heights shouldn't be hardcoded
         if (restaurant.visits?.count == 0) {
@@ -213,22 +225,5 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         return 200
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
-        r = restaurant[indexPath!.row]
-        
-        let enumerator = self.r.visits?.objectEnumerator()
-               while let myVisit = enumerator!.nextObject() as! Visit? {
-                    print(myVisit.notes)
-        }
-        
-        let vc = segue.destinationViewController as! FavoriteListDetails
-        vc.r = r
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+   
 }

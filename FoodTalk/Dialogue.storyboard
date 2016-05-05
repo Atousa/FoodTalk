@@ -33,7 +33,10 @@
                                                     <rect key="frame" x="15" y="8" width="300" height="100"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RE-ns-J3G">
-                                                            <rect key="frame" x="61" y="25" width="246" height="75"/>
+                                                            <rect key="frame" x="61" y="0.0" width="246" height="100"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="246" id="MFc-j0-GbV"/>
+                                                            </constraints>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="16"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -47,21 +50,20 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="4RE-ns-J3G" secondAttribute="trailing" constant="-7" id="26O-YH-gJW"/>
                                                         <constraint firstAttribute="height" constant="100" id="2JA-je-jcR"/>
-                                                        <constraint firstItem="4RE-ns-J3G" firstAttribute="centerY" secondItem="TuO-kt-tI5" secondAttribute="centerY" constant="12.5" id="3yJ-k9-FDM"/>
                                                         <constraint firstItem="7ez-Rq-u2B" firstAttribute="top" secondItem="TuO-kt-tI5" secondAttribute="top" constant="13" id="Kjx-xe-cU0"/>
                                                         <constraint firstAttribute="bottom" secondItem="7ez-Rq-u2B" secondAttribute="bottom" constant="32" id="NhF-Rs-TJV"/>
+                                                        <constraint firstAttribute="bottom" secondItem="4RE-ns-J3G" secondAttribute="bottom" id="X65-hZ-TYM"/>
+                                                        <constraint firstItem="4RE-ns-J3G" firstAttribute="leading" secondItem="7ez-Rq-u2B" secondAttribute="trailing" constant="1" id="c3M-ct-Lhy"/>
                                                         <constraint firstItem="7ez-Rq-u2B" firstAttribute="leading" secondItem="TuO-kt-tI5" secondAttribute="leading" id="emg-4K-iYt"/>
-                                                        <constraint firstItem="4RE-ns-J3G" firstAttribute="leading" secondItem="7ez-Rq-u2B" secondAttribute="trailing" constant="1" id="emo-6g-ZHU"/>
-                                                        <constraint firstItem="4RE-ns-J3G" firstAttribute="top" secondItem="TuO-kt-tI5" secondAttribute="top" constant="25" id="s5T-DP-Qud"/>
+                                                        <constraint firstItem="4RE-ns-J3G" firstAttribute="top" secondItem="TuO-kt-tI5" secondAttribute="top" id="wYC-uL-906"/>
                                                         <constraint firstAttribute="width" constant="300" id="zmm-h2-rze"/>
                                                     </constraints>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="sKE-kv-SPs" userLabel="Reply Text View">
-                                                    <rect key="frame" x="15" y="116" width="299" height="43"/>
+                                                    <rect key="frame" x="15" y="119" width="299" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="43" id="iw1-3B-Zut"/>
+                                                        <constraint firstAttribute="height" constant="40" id="raa-B0-HKc"/>
                                                     </constraints>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mi</string>
                                                     <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="16"/>
@@ -70,10 +72,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="TuO-kt-tI5" firstAttribute="leading" secondItem="q7g-MF-ePi" secondAttribute="leadingMargin" constant="7" id="5de-6z-eX4"/>
-                                                <constraint firstItem="sKE-kv-SPs" firstAttribute="centerX" secondItem="TuO-kt-tI5" secondAttribute="centerX" id="WRW-5D-jpJ"/>
-                                                <constraint firstItem="sKE-kv-SPs" firstAttribute="leading" secondItem="TuO-kt-tI5" secondAttribute="leading" id="YEZ-OL-FKi"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="sKE-kv-SPs" secondAttribute="trailing" constant="6" id="FUK-lt-XHL"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="sKE-kv-SPs" secondAttribute="bottom" constant="-3" id="Kuw-d8-V7D"/>
                                                 <constraint firstItem="TuO-kt-tI5" firstAttribute="top" secondItem="q7g-MF-ePi" secondAttribute="topMargin" id="i5N-0D-2Fj"/>
-                                                <constraint firstItem="sKE-kv-SPs" firstAttribute="top" secondItem="TuO-kt-tI5" secondAttribute="bottom" constant="8" symbolic="YES" id="zlo-9e-VfK"/>
+                                                <constraint firstItem="sKE-kv-SPs" firstAttribute="leading" secondItem="q7g-MF-ePi" secondAttribute="leadingMargin" constant="7" id="voS-Vc-zFU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -94,7 +96,7 @@
                                     <constraint firstAttribute="height" constant="30" id="1BD-2Z-nRz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <action selector="textFieldIsEditing:" destination="zsU-2L-Dml" eventType="editingChanged" id="dQ8-n9-RdZ"/>
                                     <outlet property="delegate" destination="zsU-2L-Dml" id="EHC-hu-X93"/>
@@ -148,8 +150,8 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="DialogueTableView" destination="ijA-XV-qfb" id="XUw-mR-5nx"/>
                         <outlet property="SpacerBottomConstraint" destination="1Af-vw-Ehg" id="EkA-2c-UT9"/>
+                        <outlet property="dialogueTableView" destination="ijA-XV-qfb" id="Fi4-TG-2Bk"/>
                         <outlet property="onSendButtonPressed" destination="J5G-qL-H3C" id="MKU-KF-ixk"/>
                         <outlet property="responseTextField" destination="ttI-Rz-EUT" id="G9I-du-gnJ"/>
                         <outlet property="spacerBottomConstraint" destination="1Af-vw-Ehg" id="r0q-G1-dLx"/>
