@@ -40,23 +40,21 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
     {
         notesTableView.delegate = self
         notesTableView.dataSource = self
-        self.addSubview(notesTableView)
+       // self.addSubview(notesTableView)
     }
-
+/*
     override func layoutSubviews() {
         super.layoutSubviews()
         notesTableView.frame = CGRectMake(0.2, 0.3, self.bounds.size.width-5, self.bounds.size.height-5)
     }
-    
-    
-    
+  */
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (restaurant == nil) {
-            notesTableView.hidden = true
+//            notesTableView.hidden = true
             return 0
         }
         
@@ -64,6 +62,7 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
         self.visits = restaurant.visits?.allObjects as! [Visit]
         visits = visits.sort({ $0.date! > $1.date! })
         
+        //print("Num Visits \(restaurant!.name!) = \((restaurant!.visits?.count)!)")
         return (restaurant.visits?.count)!
     }
     
@@ -77,7 +76,7 @@ class FavoriteListCell: UITableViewCell, UITableViewDelegate, UITableViewDataSou
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
         //cell.textLabel?.text = "Row " + String(indexPath.row)
-        print("Updating Cell \(indexPath.row)")
+        //print("Updating \(restaurant!.name!) Visit Cell \(indexPath.row)")
         if (visit.date != nil) {
             cell.dateLabel?.text = dateFormatter.stringFromDate(visit.date!)
         } else {
