@@ -70,7 +70,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="97.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Visit Notes" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y10-uO-mtr" userLabel="Note">
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Visit Notes" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y10-uO-mtr" userLabel="Note">
                                                                         <rect key="frame" x="118" y="4" width="434" height="86"/>
                                                                         <color key="backgroundColor" red="0.8767628205128204" green="0.8767628205128204" blue="0.8767628205128204" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="14"/>

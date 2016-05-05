@@ -11,9 +11,10 @@
 #import "Business.h"
 #import <MapKit/MapKit.h>
 #import <AFNetworking/UIImageView+AFNetworking.h>
+#import "LocationObjC.h"
 
 
-@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource,  ResultsTableViewCellDelegate, MKMapViewDelegate>
+@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource,  ResultsTableViewCellDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
 
 #pragma mark - Outlets
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
@@ -35,6 +36,8 @@
 @property CGFloat heightOfCell;
 @property NSMutableArray *expansionCheck;
 
+@property CLLocationManager *locationManager;
+@property LocationObjC *locationClass;
 
 @end
 
@@ -56,7 +59,13 @@
 
     self.arrayOfBusinesses = [NSMutableArray new];
     
-    [self searchForFoodPlaces:self.locationAddress searchString:self.searchTerm];
+    
+    self.locationClass = [[LocationObjC alloc] init];
+    [self.locationClass initStuff:self];
+    
+    
+    
+//    [self searchForFoodPlaces:self.locationAddressYelpVC searchString:self.searchTerm];
 }
 
 -(void)instantiateYelpAuthTokens {
@@ -67,7 +76,7 @@
 }
 
 -(double)calculateDistance:(CLLocation*)destination {
-    double distanceMeters = [self.location distanceFromLocation:destination];
+    double distanceMeters = [self.locationYelpVC distanceFromLocation:destination];
     double distanceKM = distanceMeters / 1000.0;
     double distanceMI = distanceKM * 0.621371;
     return distanceMI;
@@ -110,7 +119,7 @@
             r.longitude = business.location.coordinate.longitude;
 
             if (![CDM findRestaurant:r]) {
-                if (self.location != nil) {
+                if (self.locationYelpVC != nil) {
                     CLLocation *destination = [[CLLocation alloc] initWithLatitude:business.location.coordinate.latitude longitude:business.location.coordinate.longitude];
                     double distanceToDest = [self calculateDistance:destination];
                     if(distanceToDest <= [self computeUserRange:self.distance]) {
@@ -271,6 +280,45 @@
         [favoriteButton setImage:uncheckedBox forState:UIControlStateNormal];
     }
 }
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    CLLocation *location = locations.lastObject;
+    self.locationClass.locationObtained = YES;
+    if (location.verticalAccuracy < 1000 && location.horizontalAccuracy < 1000) {
+        self.locationClass.location = location;
+        [self reverseGeoCode:location];
+    }
+}
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+        [self.locationClass alertEnableLocationServicesRequired:self];
+
+}
+
+-(void)reverseGeoCode: (CLLocation *)location {
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        CLPlacemark *placemark = [placemarks firstObject];
+        self.locationClass.locationAddress = [NSMutableString stringWithFormat:@""];
+        if ([placemark subThoroughfare] != nil) {
+            [self.locationClass.locationAddress appendFormat:@"%@", placemark.subThoroughfare];
+        }
+        if ([placemark thoroughfare] != nil) {
+            [self.locationClass.locationAddress appendFormat:@" %@", placemark.thoroughfare];
+        }
+        if ([placemark locality] != nil) {
+            [self.locationClass.locationAddress appendFormat:@" %@", placemark.locality];
+        }
+        if ([placemark administrativeArea] != nil) {
+            [self.locationClass.locationAddress appendFormat:@", %@", placemark.administrativeArea];
+        }
+        
+        NSLog(@"%@", self.locationClass.locationAddress);
+        
+        [self searchForFoodPlaces:self.locationClass.locationAddress searchString:self.searchTerm];
+    }];
+}
+
 
 
 - (void)didReceiveMemoryWarning {
