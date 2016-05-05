@@ -24,7 +24,7 @@ class FavoriteListDetails: UIViewController, UITextViewDelegate, UITextFieldDele
         self.Note.text = ""
         self.Rating.text = ""
         Name.text = restaurant.name
-        Previous.text = String(format:"%d Previous Visits", restaurant.visits!.count)
+        Previous.text = "" // String(format:"%d Previous Visits", restaurant.visits!.count)
         let now = NSDate()
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy" //  "yyyy-MM-dd HH:mm:ss ZZZ"
