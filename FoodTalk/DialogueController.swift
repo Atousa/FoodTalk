@@ -293,9 +293,10 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         cell.WatsonDialogueTextField.sizeToFit()
         cell.myDialogueTextField.sizeToFit()
         
-        cell.WatsonDialogueTextField.font = UIFont(name: "Palatino", size: 18)
-        cell.myDialogueTextField.font = UIFont(name: "Palatino", size: 18)
+        cell.WatsonDialogueTextField.font = UIFont(name: "Palatino", size: 16)
+        cell.myDialogueTextField.font = UIFont(name: "Palatino", size: 16)
         cell.WatsonDialogueImage.image = UIImage(named: "Satellites-100.png")
+        cell.userDialogueImage.image = UIImage(named: "Cool-100")
         return cell
     }
     
