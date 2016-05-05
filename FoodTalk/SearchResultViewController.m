@@ -146,6 +146,7 @@
 
     cell.delegateCheckmark = self;
 //    cell.restaurantMapView.hidden = YES;
+    [cell.yelpRestaurantTitleAddress sizeToFit];
     
     Business * businessOfMany = self.arrayOfBusinesses[indexPath.row];
 //    YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];

@@ -3,7 +3,7 @@ import WatsonDeveloperCloud
 import AVFoundation
 import CoreLocation
 
-class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioRecorderDelegate, UITableViewDataSource, UITextFieldDelegate {
+class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioRecorderDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate {
     
 //Mark: Outlets
     @IBOutlet weak var onSendButtonPressed: UIButton!
@@ -24,12 +24,24 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var location: CLLocation?
     var locationAddress: String?
     var maxHeight:CGFloat?
+    var activityIndicator = UIActivityIndicatorView()
+    
+    
+    let newLocationManger = CLLocationManager()
     var flag = Bool()
     
 //MARK: View Load/Appear Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Watson"
+
+        self.addActivityIndicator()
+//        let giphyButton = UIBarButtonItem.init(title: "Giphy", style: UIBarButtonItemStyle.Plain, target: self, action:Selector("Say This"))
+//        self.navigationItem.rightBarButtonItem = giphyButton
+        self.activityIndicator.startAnimating()
+        
+        newLocationManger.delegate = self
+//        newLocationManger.requestLocation()
         
         self.dialogueTableView.separatorStyle = .None
         self.responseTextField.delegate = self
@@ -37,7 +49,10 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         
         self.service = Dialog(username: "b9b42757-5fa9-4633-8cb6-39f92fe7e18c", password: "GiDY7J5THqx3")
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
-        let dialogName = "xmlchanged34"
+        
+        
+        let dialogName = "xmlchanged38"
+
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -115,6 +130,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             self.speak((response?.response![0])!)
             dispatch_async(dispatch_get_main_queue()) {
                 self.dialogueTableView.reloadData()
+                self.activityIndicator.stopAnimating()
             }
         }
     }
@@ -140,7 +156,35 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     
     
     func parse(text: String)-> Void {
-        let keywords = [ "dim sum", "chinese", "vietnamese", "american", "italian", "french", "korean", "japanese", "thai", "mexican", "peruvian", "british", "mongolian", "taiwanese", "bbq", "greek", "taco", "tacos", "sushi", "burgers", "pasta", "kbbq", "breakfast", "brunch", "souvlaki"]
+        let keywords = [ "american",
+                         "bbq",
+                         "breakfast",
+                         "brunch",
+                         "british",
+                         "burgers",
+                         "chinese",
+                         "dim sum",
+                         "food truck",
+                         "french",
+                         "greek",
+                         "indian",
+                         "italian",
+                         "japanese",
+                         "korean",
+                         "mediterranean",
+                         "mexican",
+                         "mongolian",
+                         "pasta",
+                         "peruvian",
+                         "pizza",
+                         "souvlaki",
+                         "sushi",
+                         "taco",
+                         "taiwanese",
+                         "thai",
+                         "vegan",
+                         "vegetarian",
+                         "vietnamese" ]
         let distances = [ "2 block", "6 blocks", "1 mile", "5 miles", "20 miles"]
         for word in keywords {
             if text.lowercaseString.rangeOfString(word) != nil {
@@ -155,6 +199,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     }
     
     func responseFromUser(text: String?) -> Bool {
+        self.activityIndicator.startAnimating()
         if(text == nil || text! == "") {
             return false
         }
@@ -185,10 +230,18 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                                 dispatch_async(dispatch_get_main_queue()) {
                                     self.dialogueTableView.reloadData()
                                     self.tableViewScrollToBottom(true)
+                                    self.activityIndicator.stopAnimating()
                                 }
         }
         
         return true
+    }
+    
+    func addActivityIndicator(){
+        self.activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0,0,40,40))
+        self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        self.activityIndicator.center = self.view.center
+        self.view.addSubview(self.activityIndicator)
     }
     
 //MARK: TableView Methods
@@ -196,14 +249,13 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         return self.watsonLog.count
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 150
-    }
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 150
+//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("DialogueCell1") as! DialogueCell
+        
         cell.WatsonDialogueTextField.text = self.watsonLog[indexPath.row]
         if (indexPath.row < self.userLog.count) {
             cell.myDialogueTextField.text = self.userLog[indexPath.row]
@@ -211,15 +263,18 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             cell.myDialogueTextField.text = ""
         }
         
-        
         cell.WatsonDialogueTextField.sizeToFit()
-        
+        cell.myDialogueTextField.sizeToFit()
         
         cell.WatsonDialogueTextField.font = UIFont(name: "Palatino", size: 16)
+        cell.myDialogueTextField.font = UIFont(name: "Palatino", size: 16)
         cell.WatsonDialogueImage.image = UIImage(named: "Satellites-100.png")
+        cell.userDialogueImage.image = UIImage(named: "Cool-100")
         return cell
     }
     
+    
+//MARK: Keyboard and layout methods
     func keyboardWillShowNotification(notification: NSNotification) {
         updateBottomLayoutConstraintWithNotificationUpdateKeyboard(notification)
     }
@@ -246,6 +301,8 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                 self.tableViewScrollToBottom(true)
         })
     }
+    
+    
     
 //MARK: TextField Methods
     func textFieldShouldReturn(textField: UITextField) -> Bool {
