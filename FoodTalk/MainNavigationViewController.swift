@@ -12,8 +12,9 @@ class MainNavigationViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let customRedColor = UIColor(red: 253/255, green: 1/255, blue: 7/255, alpha: 1.0)
+        let customRedColor = UIColor(red: 255/255, green: 13/255, blue: 13/255, alpha: 1.0)
         self.navigationBar.barTintColor = customRedColor
+        self.navigationBar.shadowImage = UIImage(named: "tomato")
         
         self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "Optima-Bold", size: 25)!]
         

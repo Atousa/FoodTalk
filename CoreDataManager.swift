@@ -61,6 +61,7 @@ static func createRestaurantFromDescriptor(d: restaurantDescriptor)->Restaurant 
     r.state = d.state
     r.country = d.country
     r.type = d.type
+    r.date = d.date
     
     let geocoder = CLGeocoder()
     let address = d.address + ", " + d.city + ", " + d.state + ", " + d.country
@@ -124,26 +125,5 @@ static func updateVisit(visit:Visit){}
 
 
 
-
-/* 
-static func findPhoto(restaurant: Restaurant, photo:Photo)->Photo {return Photo()
-}
-
-static func addPhoto(restaurant: Restaurant, visit:Visit, photo:Photo) {
-    let v = NSEntityDescription.insertNewObjectForEntityForName("Photo", inManagedObjectContext:  moc) as! Photo
-    
-    photo.visit = visit
-    photo.visit = visit
-    do {
-        try moc.save()
-    } catch let error as NSError {
-        print(error)
-    }
-}
-
-
-static func updatePhoto(visit:Visit){}
-     
-*/
 
 }

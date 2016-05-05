@@ -9,6 +9,7 @@
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -26,7 +27,7 @@
     </entity>
     <elements>
         <element name="Photo" positionX="-288" positionY="72" width="128" height="90"/>
-        <element name="Restaurant" positionX="-315" positionY="-18" width="128" height="180"/>
+        <element name="Restaurant" positionX="-315" positionY="-18" width="128" height="195"/>
         <element name="Visit" positionX="-306" positionY="54" width="128" height="135"/>
     </elements>
 </model>

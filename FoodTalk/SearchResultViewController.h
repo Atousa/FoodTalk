@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+
 #import "YLPBusiness.h"
 #import "YLPCategory.h"
 #import "YLPClient.h"
@@ -35,7 +37,8 @@
 
 @interface SearchResultViewController : UIViewController
 
-@property NSString *locationFromWatson;
+@property CLLocation *location;
+@property NSString *locationAddress;
 @property NSString *searchTerm;
 @property NSUInteger searchLimit;
 @property NSUInteger searchSort;

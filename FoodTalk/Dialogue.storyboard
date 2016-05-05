@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="zsU-2L-Dml">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="zsU-2L-Dml">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -18,68 +18,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="165" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ijA-XV-qfb">
-                                <rect key="frame" x="-4" y="0.0" width="328" height="518"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="217" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ijA-XV-qfb">
+                                <rect key="frame" x="-8" y="0.0" width="336" height="518"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DialogueCell1" rowHeight="165" id="KJM-AI-Yao" customClass="DialogueCell" customModule="FoodTalk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="328" height="165"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DialogueCell1" rowHeight="217" id="KJM-AI-Yao" customClass="DialogueCell" customModule="FoodTalk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="336" height="217"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KJM-AI-Yao" id="q7g-MF-ePi">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="164.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="336" height="216.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuO-kt-tI5">
-                                                    <rect key="frame" x="15" y="8" width="300" height="100"/>
-                                                    <subviews>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RE-ns-J3G">
-                                                            <rect key="frame" x="61" y="25" width="246" height="75"/>
-                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="16"/>
-                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        </textView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Satellites-100" translatesAutoresizingMaskIntoConstraints="NO" id="7ez-Rq-u2B">
-                                                            <rect key="frame" x="0.0" y="13" width="60" height="55"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="60" id="Fta-9T-Qfx"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="4RE-ns-J3G" secondAttribute="trailing" constant="-7" id="26O-YH-gJW"/>
-                                                        <constraint firstAttribute="height" constant="100" id="2JA-je-jcR"/>
-                                                        <constraint firstItem="4RE-ns-J3G" firstAttribute="centerY" secondItem="TuO-kt-tI5" secondAttribute="centerY" constant="12.5" id="3yJ-k9-FDM"/>
-                                                        <constraint firstItem="7ez-Rq-u2B" firstAttribute="top" secondItem="TuO-kt-tI5" secondAttribute="top" constant="13" id="Kjx-xe-cU0"/>
-                                                        <constraint firstAttribute="bottom" secondItem="7ez-Rq-u2B" secondAttribute="bottom" constant="32" id="NhF-Rs-TJV"/>
-                                                        <constraint firstItem="7ez-Rq-u2B" firstAttribute="leading" secondItem="TuO-kt-tI5" secondAttribute="leading" id="emg-4K-iYt"/>
-                                                        <constraint firstItem="4RE-ns-J3G" firstAttribute="leading" secondItem="7ez-Rq-u2B" secondAttribute="trailing" constant="1" id="emo-6g-ZHU"/>
-                                                        <constraint firstItem="4RE-ns-J3G" firstAttribute="top" secondItem="TuO-kt-tI5" secondAttribute="top" constant="25" id="s5T-DP-Qud"/>
-                                                        <constraint firstAttribute="width" constant="300" id="zmm-h2-rze"/>
-                                                    </constraints>
-                                                </view>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="sKE-kv-SPs" userLabel="Reply Text View">
-                                                    <rect key="frame" x="15" y="116" width="299" height="43"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="43" id="iw1-3B-Zut"/>
-                                                    </constraints>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mi</string>
-                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="16"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sKE-kv-SPs" userLabel="Reply Text View">
+                                                    <rect key="frame" x="8" y="117" width="252" height="101"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment>
+                                                            <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mi</string>
+                                                            <attributes>
+                                                                <font key="NSFont" size="18" name="Palatino-Roman"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RE-ns-J3G">
+                                                    <rect key="frame" x="76" y="8" width="252" height="101"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Satellites-100" translatesAutoresizingMaskIntoConstraints="NO" id="7ez-Rq-u2B">
+                                                    <rect key="frame" x="8" y="8" width="60" height="55"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="55" id="gOR-Mh-CR6"/>
+                                                        <constraint firstAttribute="width" constant="60" id="j72-MH-hYy"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cool-100" translatesAutoresizingMaskIntoConstraints="NO" id="ZX4-ES-aMQ">
+                                                    <rect key="frame" x="268" y="117" width="60" height="55"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="uUf-6V-Q8x"/>
+                                                        <constraint firstAttribute="height" constant="55" id="xCh-MG-R6i"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="TuO-kt-tI5" firstAttribute="leading" secondItem="q7g-MF-ePi" secondAttribute="leadingMargin" constant="7" id="5de-6z-eX4"/>
-                                                <constraint firstItem="sKE-kv-SPs" firstAttribute="centerX" secondItem="TuO-kt-tI5" secondAttribute="centerX" id="WRW-5D-jpJ"/>
-                                                <constraint firstItem="sKE-kv-SPs" firstAttribute="leading" secondItem="TuO-kt-tI5" secondAttribute="leading" id="YEZ-OL-FKi"/>
-                                                <constraint firstItem="TuO-kt-tI5" firstAttribute="top" secondItem="q7g-MF-ePi" secondAttribute="topMargin" id="i5N-0D-2Fj"/>
-                                                <constraint firstItem="sKE-kv-SPs" firstAttribute="top" secondItem="TuO-kt-tI5" secondAttribute="bottom" constant="8" symbolic="YES" id="zlo-9e-VfK"/>
+                                                <constraint firstItem="7ez-Rq-u2B" firstAttribute="leading" secondItem="q7g-MF-ePi" secondAttribute="leadingMargin" id="2sT-ud-vfI"/>
+                                                <constraint firstItem="sKE-kv-SPs" firstAttribute="top" secondItem="4RE-ns-J3G" secondAttribute="bottom" constant="8" id="M0s-Ck-cRE"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="sKE-kv-SPs" secondAttribute="bottom" constant="-10" id="R8J-hh-DHB"/>
+                                                <constraint firstItem="sKE-kv-SPs" firstAttribute="leading" secondItem="q7g-MF-ePi" secondAttribute="leadingMargin" id="TpQ-Sk-PkN"/>
+                                                <constraint firstItem="ZX4-ES-aMQ" firstAttribute="trailing" secondItem="q7g-MF-ePi" secondAttribute="trailingMargin" id="aFG-lJ-9b8"/>
+                                                <constraint firstItem="4RE-ns-J3G" firstAttribute="trailing" secondItem="q7g-MF-ePi" secondAttribute="trailingMargin" id="aVg-9T-X65"/>
+                                                <constraint firstItem="4RE-ns-J3G" firstAttribute="leading" secondItem="7ez-Rq-u2B" secondAttribute="trailing" constant="8" id="daM-ar-rFX"/>
+                                                <constraint firstItem="4RE-ns-J3G" firstAttribute="top" secondItem="q7g-MF-ePi" secondAttribute="topMargin" id="hdO-6H-cBT"/>
+                                                <constraint firstItem="7ez-Rq-u2B" firstAttribute="top" secondItem="q7g-MF-ePi" secondAttribute="topMargin" id="srd-tP-ozc"/>
+                                                <constraint firstItem="ZX4-ES-aMQ" firstAttribute="top" secondItem="4RE-ns-J3G" secondAttribute="bottom" constant="8" id="uPs-G5-CKe"/>
+                                                <constraint firstItem="ZX4-ES-aMQ" firstAttribute="leading" secondItem="sKE-kv-SPs" secondAttribute="trailing" constant="8" id="z3R-8b-ypZ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4RE-ns-J3G" secondAttribute="bottom" constant="99" id="zcT-f5-rPc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="WatsonDialogueImage" destination="7ez-Rq-u2B" id="CeB-aY-cBu"/>
                                             <outlet property="WatsonDialogueTextField" destination="4RE-ns-J3G" id="keY-so-Vko"/>
                                             <outlet property="myDialogueTextField" destination="sKE-kv-SPs" id="JXP-uD-KGe"/>
+                                            <outlet property="userDialogueImage" destination="ZX4-ES-aMQ" id="3Qp-Qh-jmA"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -94,7 +97,7 @@
                                     <constraint firstAttribute="height" constant="30" id="1BD-2Z-nRz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <action selector="textFieldIsEditing:" destination="zsU-2L-Dml" eventType="editingChanged" id="dQ8-n9-RdZ"/>
                                     <outlet property="delegate" destination="zsU-2L-Dml" id="EHC-hu-X93"/>
@@ -132,24 +135,24 @@
                         <constraints>
                             <constraint firstItem="y2c-Gh-xLO" firstAttribute="bottom" secondItem="RqG-d5-uMx" secondAttribute="top" id="1Af-vw-Ehg"/>
                             <constraint firstItem="ttI-Rz-EUT" firstAttribute="bottom" secondItem="y2c-Gh-xLO" secondAttribute="top" id="2Qf-ne-fYX"/>
+                            <constraint firstItem="ijA-XV-qfb" firstAttribute="top" secondItem="bKo-MD-QSU" secondAttribute="topMargin" id="3e7-fB-L8Q"/>
                             <constraint firstItem="pQM-Ib-f3r" firstAttribute="top" secondItem="J5G-qL-H3C" secondAttribute="top" id="8C9-rU-u4O"/>
                             <constraint firstItem="J5G-qL-H3C" firstAttribute="bottom" secondItem="y2c-Gh-xLO" secondAttribute="top" constant="-1" id="ABl-fb-HCu"/>
+                            <constraint firstItem="ijA-XV-qfb" firstAttribute="leading" secondItem="bKo-MD-QSU" secondAttribute="leadingMargin" constant="-24" id="FWG-Bv-2aR"/>
+                            <constraint firstItem="pQM-Ib-f3r" firstAttribute="top" secondItem="ijA-XV-qfb" secondAttribute="bottom" constant="9" id="Nkf-tJ-nzS"/>
                             <constraint firstItem="pQM-Ib-f3r" firstAttribute="leading" secondItem="bKo-MD-QSU" secondAttribute="leadingMargin" constant="-10" id="ReN-JM-dxx"/>
                             <constraint firstItem="ttI-Rz-EUT" firstAttribute="leading" secondItem="bKo-MD-QSU" secondAttribute="leadingMargin" constant="37" id="WDG-qa-AIV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ijA-XV-qfb" secondAttribute="trailing" constant="-20" id="Y2j-72-Qa8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ijA-XV-qfb" secondAttribute="trailing" constant="-24" id="YSA-Xi-4sG"/>
                             <constraint firstItem="y2c-Gh-xLO" firstAttribute="trailing" secondItem="bKo-MD-QSU" secondAttribute="trailingMargin" id="bnt-QE-6pw"/>
                             <constraint firstItem="J5G-qL-H3C" firstAttribute="leading" secondItem="ttI-Rz-EUT" secondAttribute="trailing" constant="-2" id="lKF-aa-B0k"/>
                             <constraint firstItem="y2c-Gh-xLO" firstAttribute="leading" secondItem="bKo-MD-QSU" secondAttribute="leadingMargin" id="n1N-pG-eAG"/>
-                            <constraint firstItem="ijA-XV-qfb" firstAttribute="top" secondItem="bKo-MD-QSU" secondAttribute="topMargin" id="p4c-YF-gfu"/>
-                            <constraint firstItem="ijA-XV-qfb" firstAttribute="leading" secondItem="bKo-MD-QSU" secondAttribute="leadingMargin" constant="-20" id="tEv-ri-948"/>
-                            <constraint firstItem="ttI-Rz-EUT" firstAttribute="top" secondItem="ijA-XV-qfb" secondAttribute="bottom" constant="10" id="y8P-kZ-fNp"/>
                             <constraint firstItem="J5G-qL-H3C" firstAttribute="trailing" secondItem="bKo-MD-QSU" secondAttribute="trailingMargin" constant="16" id="ycl-uH-mM6"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="DialogueTableView" destination="ijA-XV-qfb" id="XUw-mR-5nx"/>
                         <outlet property="SpacerBottomConstraint" destination="1Af-vw-Ehg" id="EkA-2c-UT9"/>
+                        <outlet property="dialogueTableView" destination="ijA-XV-qfb" id="Fi4-TG-2Bk"/>
                         <outlet property="onSendButtonPressed" destination="J5G-qL-H3C" id="MKU-KF-ixk"/>
                         <outlet property="responseTextField" destination="ttI-Rz-EUT" id="G9I-du-gnJ"/>
                         <outlet property="spacerBottomConstraint" destination="1Af-vw-Ehg" id="r0q-G1-dLx"/>
@@ -172,6 +175,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Cool-100" width="100" height="100"/>
         <image name="High Volume-30" width="30" height="30"/>
         <image name="Satellites-100" width="100" height="100"/>
     </resources>
