@@ -18,52 +18,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="165" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ijA-XV-qfb">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="238" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ijA-XV-qfb">
                                 <rect key="frame" x="-4" y="0.0" width="328" height="518"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DialogueCell1" rowHeight="165" id="KJM-AI-Yao" customClass="DialogueCell" customModule="FoodTalk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="328" height="165"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DialogueCell1" rowHeight="238" id="KJM-AI-Yao" customClass="DialogueCell" customModule="FoodTalk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="328" height="238"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KJM-AI-Yao" id="q7g-MF-ePi">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="164.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="237"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuO-kt-tI5">
-                                                    <rect key="frame" x="15" y="8" width="300" height="100"/>
+                                                    <rect key="frame" x="15" y="8" width="300" height="136"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RE-ns-J3G">
-                                                            <rect key="frame" x="61" y="0.0" width="246" height="100"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="246" id="MFc-j0-GbV"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="61" y="0.0" width="239" height="136"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="16"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Satellites-100" translatesAutoresizingMaskIntoConstraints="NO" id="7ez-Rq-u2B">
-                                                            <rect key="frame" x="0.0" y="13" width="60" height="55"/>
+                                                            <rect key="frame" x="0.0" y="8" width="60" height="55"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="60" id="Fta-9T-Qfx"/>
+                                                                <constraint firstAttribute="width" constant="60" id="v1c-MY-l5P"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="2JA-je-jcR"/>
-                                                        <constraint firstItem="7ez-Rq-u2B" firstAttribute="top" secondItem="TuO-kt-tI5" secondAttribute="top" constant="13" id="Kjx-xe-cU0"/>
-                                                        <constraint firstAttribute="bottom" secondItem="7ez-Rq-u2B" secondAttribute="bottom" constant="32" id="NhF-Rs-TJV"/>
-                                                        <constraint firstAttribute="bottom" secondItem="4RE-ns-J3G" secondAttribute="bottom" id="X65-hZ-TYM"/>
-                                                        <constraint firstItem="4RE-ns-J3G" firstAttribute="leading" secondItem="7ez-Rq-u2B" secondAttribute="trailing" constant="1" id="c3M-ct-Lhy"/>
-                                                        <constraint firstItem="7ez-Rq-u2B" firstAttribute="leading" secondItem="TuO-kt-tI5" secondAttribute="leading" id="emg-4K-iYt"/>
-                                                        <constraint firstItem="4RE-ns-J3G" firstAttribute="top" secondItem="TuO-kt-tI5" secondAttribute="top" id="wYC-uL-906"/>
-                                                        <constraint firstAttribute="width" constant="300" id="zmm-h2-rze"/>
+                                                        <constraint firstItem="4RE-ns-J3G" firstAttribute="leading" secondItem="7ez-Rq-u2B" secondAttribute="trailing" constant="1" id="B3Z-J1-uQi"/>
+                                                        <constraint firstAttribute="width" constant="300" id="HiM-hC-pqU"/>
+                                                        <constraint firstAttribute="bottom" secondItem="7ez-Rq-u2B" secondAttribute="bottom" constant="73" id="KEj-I2-YfP"/>
+                                                        <constraint firstAttribute="height" constant="136" id="LYe-qm-k9d"/>
+                                                        <constraint firstItem="7ez-Rq-u2B" firstAttribute="top" secondItem="TuO-kt-tI5" secondAttribute="topMargin" id="Myj-GC-Tk6"/>
+                                                        <constraint firstItem="4RE-ns-J3G" firstAttribute="top" secondItem="TuO-kt-tI5" secondAttribute="top" id="N1b-q5-hUP"/>
+                                                        <constraint firstItem="7ez-Rq-u2B" firstAttribute="leading" secondItem="TuO-kt-tI5" secondAttribute="leading" id="RZP-Eo-Lka"/>
+                                                        <constraint firstAttribute="bottom" secondItem="4RE-ns-J3G" secondAttribute="bottom" id="jmh-Ea-EYl"/>
+                                                        <constraint firstAttribute="trailing" secondItem="4RE-ns-J3G" secondAttribute="trailing" id="qQn-7C-KVi"/>
                                                     </constraints>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="sKE-kv-SPs" userLabel="Reply Text View">
-                                                    <rect key="frame" x="15" y="119" width="299" height="40"/>
+                                                    <rect key="frame" x="8" y="152" width="312" height="77"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="raa-B0-HKc"/>
+                                                        <constraint firstAttribute="width" constant="312" id="CNt-h1-Ogj"/>
+                                                        <constraint firstAttribute="height" constant="77" id="r0x-bQ-A72"/>
                                                     </constraints>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mi</string>
                                                     <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="16"/>
@@ -71,11 +70,10 @@
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="TuO-kt-tI5" firstAttribute="leading" secondItem="q7g-MF-ePi" secondAttribute="leadingMargin" constant="7" id="5de-6z-eX4"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="sKE-kv-SPs" secondAttribute="trailing" constant="6" id="FUK-lt-XHL"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="sKE-kv-SPs" secondAttribute="bottom" constant="-3" id="Kuw-d8-V7D"/>
-                                                <constraint firstItem="TuO-kt-tI5" firstAttribute="top" secondItem="q7g-MF-ePi" secondAttribute="topMargin" id="i5N-0D-2Fj"/>
-                                                <constraint firstItem="sKE-kv-SPs" firstAttribute="leading" secondItem="q7g-MF-ePi" secondAttribute="leadingMargin" constant="7" id="voS-Vc-zFU"/>
+                                                <constraint firstItem="sKE-kv-SPs" firstAttribute="leading" secondItem="q7g-MF-ePi" secondAttribute="leadingMargin" id="EDJ-z6-IEg"/>
+                                                <constraint firstItem="TuO-kt-tI5" firstAttribute="top" secondItem="q7g-MF-ePi" secondAttribute="topMargin" id="PyU-aq-Xz0"/>
+                                                <constraint firstItem="sKE-kv-SPs" firstAttribute="bottom" secondItem="q7g-MF-ePi" secondAttribute="bottomMargin" id="ULH-cn-Yc8"/>
+                                                <constraint firstItem="TuO-kt-tI5" firstAttribute="leading" secondItem="q7g-MF-ePi" secondAttribute="leadingMargin" constant="7" id="WY1-Ww-1y4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

@@ -25,6 +25,8 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var locationAddress: String?
     var currentLocation: String?
     var maxHeight:CGFloat?
+    var activityIndicator = UIActivityIndicatorView()
+    
     
     let newLocationManger = CLLocationManager()
     
@@ -32,10 +34,10 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Watson"
-
+        self.addActivityIndicator()
 //        let giphyButton = UIBarButtonItem.init(title: "Giphy", style: UIBarButtonItemStyle.Plain, target: self, action:Selector("Say This"))
 //        self.navigationItem.rightBarButtonItem = giphyButton
-        
+        self.activityIndicator.startAnimating()
         
         newLocationManger.delegate = self
         newLocationManger.requestLocation()
@@ -48,7 +50,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         
         
-        let dialogName = "xmlchanged35"
+        let dialogName = "xmlchanged37"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -148,6 +150,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             self.speak((response?.response![0])!)
             dispatch_async(dispatch_get_main_queue()) {
                 self.dialogueTableView.reloadData()
+                self.activityIndicator.stopAnimating()
             }
         }
     }
@@ -181,6 +184,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                          "burgers",
                          "chinese",
                          "dim sum",
+                         "food truck",
                          "french",
                          "greek",
                          "indian",
@@ -192,6 +196,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                          "mongolian",
                          "pasta",
                          "peruvian",
+                         "pizza",
                          "souvlaki",
                          "sushi",
                          "taco",
@@ -216,6 +221,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     }
     
     func responseFromUser(text: String?) -> Bool {
+        self.activityIndicator.startAnimating()
         if(text == nil || text! == "") {
             return false
         }
@@ -251,10 +257,18 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                                 dispatch_async(dispatch_get_main_queue()) {
                                     self.dialogueTableView.reloadData()
                                     self.tableViewScrollToBottom(true)
+                                    self.activityIndicator.stopAnimating()
                                 }
         }
         
         return true
+    }
+    
+    func addActivityIndicator(){
+        self.activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0,0,40,40))
+        self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        self.activityIndicator.center = self.view.center
+        self.view.addSubview(self.activityIndicator)
     }
     
 //MARK: TableView Methods
