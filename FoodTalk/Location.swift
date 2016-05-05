@@ -17,8 +17,11 @@ class Location: CLLocation, CLLocationManagerDelegate {
     var location: CLLocation?
     var locationAddress: String?
     
-    func initStuff() {
-        locationManager.delegate = self
+    func initStuff(VC: CLLocationManagerDelegate) {
+        
+        locationObtained = false
+        locationQuery = true
+        locationManager.delegate = VC
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         
@@ -26,43 +29,6 @@ class Location: CLLocation, CLLocationManagerDelegate {
             self.locationManager.requestLocation()
         }
         
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last
-        locationObtained = true;
-        if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000 {
-            self.location = location
-            reverseGeoCode(location!)
-        }
-    }
-    
-    func reverseGeoCode(location: CLLocation) {
-        let geoCoder = CLGeocoder()
-        
-        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            let placemark = placemarks?.first
-//            self.locationAddress = String("\(placemark!.subThoroughfare!) \(placemark!.thoroughfare!) \(placemark!.locality!), \(placemark!.administrativeArea!)")
-            self.locationAddress = String()
-            if (placemark!.subThoroughfare != nil) {
-                self.locationAddress! += placemark!.subThoroughfare!
-            }
-            if (placemark!.thoroughfare != nil) {
-                self.locationAddress! += " " + placemark!.thoroughfare!
-            }
-            if (placemark!.locality != nil) {
-                self.locationAddress! += " " + placemark!.locality!
-            }
-            if (placemark!.administrativeArea != nil) {
-                self.locationAddress! += ", " + placemark!.administrativeArea!
-            }
-            
-            print("Location detected: \(self.locationAddress!)")
-        }
-    }
-    
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError, vc:UIViewController) {
-        alertEnableLocationServicesRequired(vc)
     }
     
     func alertEnableLocationServicesRequired(viewController: UIViewController) {
