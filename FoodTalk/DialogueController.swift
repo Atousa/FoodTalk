@@ -26,10 +26,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var maxHeight:CGFloat?
     var activityIndicator = UIActivityIndicatorView()
     
-    
-    let newLocationManger = CLLocationManager()
-    var flag = Bool()
-    
+
 //MARK: View Load/Appear Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +36,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
 //        let giphyButton = UIBarButtonItem.init(title: "Giphy", style: UIBarButtonItemStyle.Plain, target: self, action:Selector("Say This"))
 //        self.navigationItem.rightBarButtonItem = giphyButton
         self.activityIndicator.startAnimating()
-        
-        newLocationManger.delegate = self
-//        newLocationManger.requestLocation()
         
         self.dialogueTableView.separatorStyle = .None
         self.responseTextField.delegate = self
