@@ -192,13 +192,14 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         }
     }
     
-    func responseFromUser(text: String?) -> Bool {
+    func responseFromUser(var text: String?) -> Bool {
         self.activityIndicator.startAnimating()
         if(text == nil || text! == "") {
             return false
         }
+        text = text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         self.userLog.append(text!)
-        
+
         if((text == "Done") || (text == "done") || (text == "Done!") || (text == "done!")) {
             performSegueWithIdentifier("SearchSegue", sender: self)
         }
