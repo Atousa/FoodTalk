@@ -15,6 +15,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var favoritePlaceButton: UIButton!
     
     let locationManager = CLLocationManager()
+    var locationObtained = false
     var location: CLLocation?
     var locationAddress: String?
 
@@ -27,17 +28,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
 
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestLocation()
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            while(!self.locationObtained) {
+                if CLLocationManager.locationServicesEnabled() {
+                    self.locationManager.requestLocation()
+                }
+                sleep(1);
+            }
         }
-        
-//        Makes a gradient of (top)light blue to (bot)dark blue
-//        let lightRed = UIColor(red: 243/255, green: 167/255, blue: 18/255, alpha: 1.0)
-//        let darkRed = UIColor(red: 255/255, green: 42/255, blue: 104/255, alpha: 1.0)
-//        let gradient:CAGradientLayer = CAGradientLayer()
-//        gradient.frame = view.bounds
-//        gradient.colors = [UIColor.whiteColor().CGColor, UIColor.whiteColor().CGColor]
-//        view.layer.insertSublayer(gradient, atIndex: 0)
+
         self.view.backgroundColor = UIColor.whiteColor()
         
         self.newPlaceButton.backgroundColor = UIColor.whiteColor()
@@ -49,25 +48,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
-        
-//        var foodString = "Food"
-//        var completedFoodString = NSMutableAttributedString()
-//        completedFoodString = NSMutableAttributedString(string: foodString as String, attributes: [NSFontAttributeName:UIFont(name:"Courier", size: 18.0)!, NSForegroundColorAttributeName:(UIColor.whiteColor())])
-//        
-//        
-//        var talkString = "Talk"
-//        var completedTalkString = NSMutableAttributedString()
-//        completedTalkString = NSMutableAttributedString(string: talkString as String, attributes: [NSFontAttributeName:UIFont(name:"Courier", size: 18.0)!])
-//
-//        var navLabel = UILabel()
-//        navLabel.attributedText = completedFoodString.appendAttributedString(completedTalkString)
-//        navLabel.sizeToFit()
-        
-        
-//        self.navigationItem.titleView = navLabel
-        
-        
-        
     }
     
     
@@ -104,6 +84,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         locationManager.stopUpdatingLocation()
+        locationObtained = true;
         if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000 {
             self.location = location
             reverseGeoCode(location!)
