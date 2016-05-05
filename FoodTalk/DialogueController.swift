@@ -1,3 +1,4 @@
+
 import UIKit
 import WatsonDeveloperCloud
 import AVFoundation
@@ -21,10 +22,12 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var userLog: [String] = []
     var foodType = "food"
     var dist = String()
-    var location: CLLocation?
-    var locationAddress: String?
+//    var location: CLLocation?
+//    var locationAddress: String?
     var maxHeight:CGFloat?
     var activityIndicator = UIActivityIndicatorView()
+//    let locationManager = CLLocationManager()
+
     
 
 //MARK: View Load/Appear Methods
@@ -33,9 +36,14 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.navigationItem.title = "Watson"
 
         self.addActivityIndicator()
-//        let giphyButton = UIBarButtonItem.init(title: "Giphy", style: UIBarButtonItemStyle.Plain, target: self, action:Selector("Say This"))
-//        self.navigationItem.rightBarButtonItem = giphyButton
+    
         self.activityIndicator.startAnimating()
+        
+//        self.locationManager.delegate = self
+//        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        self.locationManager.requestWhenInUseAuthorization()
+//        self.locationManager.requestLocation()
+        
         
         self.dialogueTableView.separatorStyle = .None
         self.responseTextField.delegate = self
@@ -46,7 +54,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         
         
         let dialogName = "xmlchanged38"
-
+       
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -85,6 +93,39 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
     }
+    
+//MARK: Location methods
+//    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        let location = locations.last
+//        if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000 {
+//            self.location = location
+//            reverseGeoCode(location!)
+//        }
+//        
+//    }
+//    
+//    func reverseGeoCode(location:CLLocation) {
+//        let geoCoder = CLGeocoder()
+//        
+//        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+//            let placemark = placemarks?.first
+//            self.locationAddress = String()
+//            if (placemark!.subThoroughfare != nil) {
+//                self.locationAddress! += placemark!.subThoroughfare!
+//            }
+//            if (placemark!.thoroughfare != nil) {
+//                self.locationAddress! += " " + placemark!.thoroughfare!
+//            }
+//            if (placemark!.locality != nil) {
+//                self.locationAddress! += " " + placemark!.locality!
+//            }
+//            if (placemark!.administrativeArea != nil) {
+//                self.locationAddress! += ", " + placemark!.administrativeArea!
+//            }
+//            
+//            print("Location detected: \(self.locationAddress!)")
+//        }
+//    }
 
 
 //MARK: Tableview Scroll
@@ -210,11 +251,9 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                                 let size = response?.response!.count
                                 var i = 0
                                 while (i<size) {
-                                    //let ans = Int(arc4random_uniform(UInt32(size!)))
+                                  
                                     if((response?.response![i])! != "") {
-                                        //print("\(ans)> "+(response?.response![ans])!)
                                         self.speak((response?.response![i])!)
-                                        
                                         self.watsonLog.append((response?.response![i])!)
                                         break;
                                     }
@@ -244,9 +283,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         return self.watsonLog.count
     }
     
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 150
-//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("DialogueCell1") as! DialogueCell
@@ -358,7 +394,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         let srvc = segue.destinationViewController as! SearchResultViewController
         srvc.distance = dist
         srvc.searchTerm = foodType
-        srvc.location = self.location
-        srvc.locationAddress = self.locationAddress
+//        srvc.location = self.location
+//        srvc.locationAddress = self.locationAddress
     }
 }

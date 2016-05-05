@@ -11,15 +11,15 @@ import CoreData
 import CoreLocation
 
 
-class FavoriteListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FavoriteListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var sortingSegmentedControl: UISegmentedControl!
     
-    var location : CLLocation?
-    var locationAddress : String?
+    //var location : CLLocation?
+    //var locationAddress : String?
 
     var restaurants = [Restaurant]()
     var expanded = [Bool]()
@@ -34,12 +34,16 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     let visit2 = visitDescriptor()
     let visit3 = visitDescriptor()
     
+    let locationClass = Location()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         let dateFormatter = NSDateFormatter()
         
-        if (location == nil) {
+        locationClass.initStuff(self)
+        
+        if (locationClass.location == nil) {
             sortingSegmentedControl.setEnabled(false, forSegmentAtIndex:2)
         }
         
@@ -123,7 +127,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         case 1:
             self.restaurants = sortedRatedRestaurant()
         case 2:
-            self.restaurants = sortedDistanceRestaurants(self.location!)
+            self.restaurants = sortedDistanceRestaurants(self.locationClass.location!)
         default:
             self.restaurants = sortedVisitedRestaurants()
             break
@@ -204,8 +208,8 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         cell.nameOfRestaurant.text = r.name
         cell.typeLabel.text = r.type
         var distance = ""
-        if (location != nil && r.latitude != 0 && r.longitude != 0) {
-            distance = String(format: "%.2f", r.distance(self.location!)) + " mi"
+        if (locationClass.location != nil && r.latitude != 0 && r.longitude != 0) {
+            distance = String(format: "%.2f", r.distance(self.locationClass.location!)) + " mi"
         }
         cell.addressTextView.text = r.address! + "\n" + r.city! + ", " + r.state! + "\n" + distance
         
@@ -243,6 +247,45 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         }
         return 60
     }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location: CLLocation = locations.last!
+        locationClass.locationObtained = true;
+        if location.verticalAccuracy < 1000 && location.horizontalAccuracy < 1000 {
+            locationClass.location = location
+            reverseGeoCode(location)
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        locationClass.alertEnableLocationServicesRequired(self)
+    }
+    
+    func reverseGeoCode(location: CLLocation) {
+        let geoCoder = CLGeocoder()
+        
+        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            let placemark = placemarks?.first
+            //            self.locationAddress = String("\(placemark!.subThoroughfare!) \(placemark!.thoroughfare!) \(placemark!.locality!), \(placemark!.administrativeArea!)")
+            self.locationClass.locationAddress = String()
+            if (placemark!.subThoroughfare != nil) {
+                self.locationClass.locationAddress! += placemark!.subThoroughfare!
+            }
+            if (placemark!.thoroughfare != nil) {
+                self.locationClass.locationAddress! += " " + placemark!.thoroughfare!
+            }
+            if (placemark!.locality != nil) {
+                self.locationClass.locationAddress! += " " + placemark!.locality!
+            }
+            if (placemark!.administrativeArea != nil) {
+                self.locationClass.locationAddress! += ", " + placemark!.administrativeArea!
+            }
+            
+            print("Location detected: \(self.locationClass.locationAddress!)")
+        }
+        
+    }
+    
     
    
 }

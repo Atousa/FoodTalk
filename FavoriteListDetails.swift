@@ -70,6 +70,12 @@ class FavoriteListDetails: UIViewController, UITextViewDelegate, UITextFieldDele
         CDM.addVisit(restaurant, descr: v)
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        Rating.resignFirstResponder()
+        return true
+    
+    }
+    
 }
 
             

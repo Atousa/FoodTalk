@@ -37,12 +37,14 @@
 
 @interface SearchResultViewController : UIViewController
 
-@property CLLocation *location;
-@property NSString *locationAddress;
+@property CLLocation *locationYelpVC;
+@property NSString *locationAddressYelpVC;
 @property NSString *searchTerm;
 @property NSUInteger searchLimit;
 @property NSUInteger searchSort;
 @property NSUInteger searchOffset;
 @property NSString *distance;
+
+-(void)searchForFoodPlaces:(NSString *)place searchString:(NSString *)searchString;
 
 @end
