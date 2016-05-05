@@ -11,15 +11,16 @@ import CoreData
 import CoreLocation
 
 
-class FavoriteListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,CLLocationManagerDelegate {
+class FavoriteListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var sortingSegmentedControl: UISegmentedControl!
     
-    let locationManager = CLLocationManager()
-    var location = CLLocation()
+    var location : CLLocation?
+    var locationAddress : String?
+
     var restaurants = [Restaurant]()
     var r : Restaurant!
     let predicate = NSPredicate()
@@ -35,6 +36,10 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         super.viewDidLoad()
         self.tableView.delegate = self
         let dateFormatter = NSDateFormatter()
+        
+        if (location == nil) {
+            sortingSegmentedControl.setEnabled(false, forSegmentAtIndex:2)
+        }
         
         dateFormatter.dateFormat = "yyyy-MM-dd" //  "yyyy-MM-dd HH:mm:ss ZZZ"
         
@@ -85,36 +90,9 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         visit3.notes = "I loved the vibe of the restaurant with Thai new year decorations. All the dishes looked fantastic!  We had great fun..."
 
         title = "Favorites"
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.requestLocation()
-        }
         
         self.restaurants = sortedVisitedRestaurants()
         self.tableView.reloadData()
-    }
-    
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        let alert = UIAlertController(title: "Alert", message: "You must enable location services to get search results", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = locations.last!
-        locationManager.stopUpdatingLocation()
-    }
-    
-    func closeEnough(candidate: Restaurant) -> Bool {
-        let dest =  CLLocation(latitude: Double(candidate.latitude!),longitude: Double(candidate.longitude!))
-
-        let distance = calculateDistanceBetweenTwoLocations(self.location, destination: dest)
-        
-        return distance <= 0.2
     }
     
     @IBAction func addNoteButton(sender:UIButton) {
@@ -128,6 +106,12 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         let visitVC = segue.destinationViewController as! FavoriteListDetails
         visitVC.restaurant = sender as! Restaurant
     }
+        
+    @IBAction func unwindToFavoriteList(segue: UIStoryboardSegue) {
+        // force sort and reload
+        indexChanged(self.sortingSegmentedControl)
+        self.tableView.reloadData()
+    }
     
     @IBAction func indexChanged(sender: UISegmentedControl){
         
@@ -137,7 +121,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         case 1:
             self.restaurants = sortedRatedRestaurant()
         case 2:
-            self.restaurants = sortedDistanceRestaurants(location)
+            self.restaurants = sortedDistanceRestaurants(self.location!)
         default:
             self.restaurants = sortedVisitedRestaurants()
             break
@@ -184,7 +168,7 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
 
         do {
             let results = try moc.executeFetchRequest(request)
-            self.restaurants = (results as! [Restaurant]).sort({ r1, r2 in r1.distance(self.location) < r2.distance(self.location) })
+            self.restaurants = (results as! [Restaurant]).sort({ r1, r2 in r1.distance(location) < r2.distance(location) })
         } catch {
             let fetchError = error as NSError
             print(fetchError)
@@ -217,8 +201,12 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         cell.restaurant = restaurant
         cell.nameOfRestaurant.text = r.name
         cell.typeLabel.text = r.type
-        cell.addressTextView.text = r.address! + "\n" + r.city! + ", " + r.state! + "\n" + String(format: "%.2f", r.distance(self.location)) + " mi"
-
+        var distance = ""
+        if (location != nil && r.latitude != 0 && r.longitude != 0) {
+            distance = String(format: "%.2f", r.distance(self.location!)) + " mi"
+        }
+        cell.addressTextView.text = r.address! + "\n" + r.city! + ", " + r.state! + "\n" + distance
+        
         let stars = ["0 Stars", "1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars", "6 Stars", "7 Stars", "8 Stars", "9 Stars", "10 Stars"]
         cell.myRatingImage.image = UIImage(named: stars[restaurant.rating()])
         cell.numRatings.text = "(\(restaurant.visits!.count))"

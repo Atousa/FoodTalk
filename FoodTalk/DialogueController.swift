@@ -3,7 +3,7 @@ import WatsonDeveloperCloud
 import AVFoundation
 import CoreLocation
 
-class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioRecorderDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate {
+class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioRecorderDelegate, UITableViewDataSource, UITextFieldDelegate {
     
 //Mark: Outlets
     @IBOutlet weak var onSendButtonPressed: UIButton!
@@ -23,17 +23,18 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var dist = String()
     var location: CLLocation?
     var locationAddress: String?
-    var currentLocation: String?
     var maxHeight:CGFloat?
     var activityIndicator = UIActivityIndicatorView()
     
     
     let newLocationManger = CLLocationManager()
+    var flag = Bool()
     
 //MARK: View Load/Appear Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Watson"
+
         self.addActivityIndicator()
 //        let giphyButton = UIBarButtonItem.init(title: "Giphy", style: UIBarButtonItemStyle.Plain, target: self, action:Selector("Say This"))
 //        self.navigationItem.rightBarButtonItem = giphyButton
@@ -51,6 +52,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         
         
         let dialogName = "xmlchanged38"
+
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -90,28 +92,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
     }
 
-//Mark: Location Manager
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print(error)
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last
-        if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000 {
-            self.location = location
-            reverseGeoCode(location!)
-        }
-    }
-    
-    func reverseGeoCode(location: CLLocation) {
-        let geoCoder = CLGeocoder()
-        
-        geoCoder.reverseGeocodeLocation(location) { (placemark, error) in
-            let placemark = placemark?.first
-            self.locationAddress = "\(placemark!.subThoroughfare!) \(placemark!.thoroughfare!) \(placemark!.locality!), \(placemark!.administrativeArea!)"
-            print("Location detected: \(self.locationAddress!)")
-        }
-    }
 
 //MARK: Tableview Scroll
     func tableViewScrollToTop(animated: Bool) {
@@ -216,8 +196,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                 dist = word
             }
         }
-        
-        
     }
     
     func responseFromUser(text: String?) -> Bool {
@@ -228,13 +206,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.userLog.append(text!)
         
         if((text == "Done") || (text == "done") || (text == "Done!") || (text == "done!")) {
-            if (self.locationAddress == nil) {
-                let alert = UIAlertController(title: "Alert", message: "You must enable location services to get search results", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-            } else {
-                performSegueWithIdentifier("SearchSegue", sender: self)
-            }
+            performSegueWithIdentifier("SearchSegue", sender: self)
         }
         parse(text!)
         
@@ -247,6 +219,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                                     if((response?.response![i])! != "") {
                                         //print("\(ans)> "+(response?.response![ans])!)
                                         self.speak((response?.response![i])!)
+                                        
                                         self.watsonLog.append((response?.response![i])!)
                                         break;
                                     }
@@ -371,28 +344,26 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     }
     
     @IBAction func onMuteButtonPressed(sender: UIButton) {
+        self.tts = TextToSpeech(username: "68d797f2", password: "KTGQ")
         let unmuteIcon = UIImage(named: "High Volume-30")
         let muteIcon = UIImage(named: "Mute-30")
         
         if (sender.imageView?.image == unmuteIcon) {
             sender.setImage(muteIcon, forState: UIControlState.Normal)
-            self.service = Dialog(username: "b9b42757-5fa9-4633-8cb6-39f92fe7e18c", password: "GiDY7J5THqx3")
-            self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
             
         } else {
+            
             sender.setImage(unmuteIcon, forState: UIControlState.Normal)
-            self.service = Dialog(username: "b9b42757-5fa9-4633-8cb6-39f92fe7e18c", password: "GiDY7J5THqx3")
-            self.tts = TextToSpeech(username: "68d797f2", password: "KTGQ")
+             self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         }
     }
-    
-    
+
 //MARK: PrepareForSegue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let srvc = segue.destinationViewController as! SearchResultViewController
         srvc.distance = dist
         srvc.searchTerm = foodType
         srvc.location = self.location
-        srvc.locationAddress = self.locationAddress!
+        srvc.locationAddress = self.locationAddress
     }
 }

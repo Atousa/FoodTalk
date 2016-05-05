@@ -577,7 +577,7 @@
 				);
 				INFOPLIST_FILE = FoodTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.judo.FoodTalk;
+				PRODUCT_BUNDLE_IDENTIFIER = net.judoatlas.FoodTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FoodTalk/FoodTalk-Bridging-Header.h";
@@ -599,7 +599,7 @@
 				);
 				INFOPLIST_FILE = FoodTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.judo.FoodTalk;
+				PRODUCT_BUNDLE_IDENTIFIER = net.judoatlas.FoodTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FoodTalk/FoodTalk-Bridging-Header.h";

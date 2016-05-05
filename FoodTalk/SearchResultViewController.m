@@ -13,7 +13,7 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
 
-@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, ResultsTableViewCellDelegate, MKMapViewDelegate>
+@interface SearchResultViewController () <UITableViewDelegate, UITableViewDataSource,  ResultsTableViewCellDelegate, MKMapViewDelegate>
 
 #pragma mark - Outlets
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
@@ -28,7 +28,6 @@
 @property YLPSearch *searchResult;
 @property NSMutableArray *arrayOfBusinesses;
 
-@property CLLocationManager *locationManager;
 @property MKPointAnnotation *restaurantAnnotation;
 @property MKPointAnnotation *currentLocationAnnotation;
 @property CLPlacemark *placemark;
@@ -55,25 +54,9 @@
     
     self.restaurantAnnotation = [[MKPointAnnotation alloc]init];
 
-    self.locationManager.delegate = self;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.locationManager requestWhenInUseAuthorization];
-
-    
-    if ([CLLocationManager locationServicesEnabled]) {
-        [self.locationManager startUpdatingLocation];
-    }
-    
-    self.locationManager = [[CLLocationManager alloc]init];
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.locationManager startUpdatingLocation];
-    
     self.arrayOfBusinesses = [NSMutableArray new];
     
-    
     [self searchForFoodPlaces:self.locationAddress searchString:self.searchTerm];
-    
 }
 
 -(void)instantiateYelpAuthTokens {
@@ -94,9 +77,9 @@
 -(double)computeUserRange:(NSString *)distance {
     
     if([distance isEqual:@"2 blocks"] || [distance isEqual:@"2 Blocks"]) {
-        return 2*100.0/1000.00*0.621371; // 200m in mi
+        return 0.2*0.621371; // 200m in mi
     } else if([distance isEqual:@"6 blocks"] || [distance isEqual:@"6 Blocks"]) {
-        return 6*100.0/1000.00*0.621371; // 600m in mi
+        return 0.6*0.621371; // 600m in mi
     } else if([distance isEqual:@"1 mile"] || [distance isEqual:@"1 Mile"]) {
         return 1.; // 1 mi
     } else if([distance isEqual:@"5 miles"] || [distance isEqual:@"6 Blocks"]) {
@@ -109,15 +92,13 @@
 }
 
 
-
-
-
-
 -(void)searchForFoodPlaces:(NSString *)place searchString:(NSString *)searchString {
     [self instantiateYelpAuthTokens];
     
     YLPClient *client = [[YLPClient alloc]initWithConsumerKey:self.consumerKey consumerSecret:self.consumerSecret token:self.token tokenSecret:self.tokenSecret];
-    
+    if (place == nil) {
+        place = [[NSString alloc] init];
+    }
     [client searchWithLocation:place currentLatLong:nil term:searchString limit:10 offset:1 sort:2 completionHandler:^(YLPSearch *search, NSError *error) {
         [self.searchActivityIndicator startAnimating];
         restaurantDescriptor *r = [[restaurantDescriptor alloc] init];
@@ -129,17 +110,21 @@
             r.longitude = business.location.coordinate.longitude;
 
             if (![CDM findRestaurant:r]) {
-                CLLocation *destination = [[CLLocation alloc] initWithLatitude:business.location.coordinate.latitude longitude:business.location.coordinate.longitude];
-                double distanceToDest = [self calculateDistance:destination];
-                if(distanceToDest <= [self computeUserRange:self.distance]) {
-                    NSLog(@"%@ = %f mi (accepted)", r.name, distanceToDest);
-//                    [self.arrayOfBusinesses addObject:business];
+                if (self.location != nil) {
+                    CLLocation *destination = [[CLLocation alloc] initWithLatitude:business.location.coordinate.latitude longitude:business.location.coordinate.longitude];
+                    double distanceToDest = [self calculateDistance:destination];
+                    if(distanceToDest <= [self computeUserRange:self.distance]) {
+                        NSLog(@"%@ = %f mi (accepted)", r.name, distanceToDest);
+                        Business * yelpBusiness = [Business initWithYelpBusiness:business];
+                        [self.arrayOfBusinesses addObject:yelpBusiness];
+                    } else {
+                        NSLog(@"%@ = %f mi (rejected)", r.name, distanceToDest);
+                    }
+                } else {
+                    // if no location, no distance-based filtering
                     Business * yelpBusiness = [Business initWithYelpBusiness:business];
                     [self.arrayOfBusinesses addObject:yelpBusiness];
-                } else {
-                    NSLog(@"%@ = %f mi (rejected)", r.name, distanceToDest);
                 }
-                
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -147,30 +132,7 @@
             [self.searchActivityIndicator stopAnimating];
         });
     }];
-    
-    
 }
-
-#pragma mark - Location methods
-
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    [self.locationManager stopUpdatingLocation];
-    self.location = [locations lastObject];
-    NSLog(@"%f", self.location.coordinate.latitude);
-}
-
-- (void)reverseGeocode:(CLLocation *)location {
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-        if (error) {
-            NSLog(@"Error %@", error.description);
-        } else {
-            self.placemark = [placemarks lastObject];
-        }
-    }];
-}
-
-
 
 #pragma mark - TableView Methods
 
@@ -289,7 +251,6 @@
     
     NSString *countryName = [[NSLocale currentLocale] displayNameForKey: NSLocaleIdentifier value: identifier];
     rd.country = countryName;
-    NSLog(@"Country Name: %@ (%@)", countryName, business.yelpBusiness.location.countryCode);
     rd.latitude = business.yelpBusiness.location.coordinate.latitude;
     rd.longitude = business.yelpBusiness.location.coordinate.longitude;
     NSString *longCategory = @"";

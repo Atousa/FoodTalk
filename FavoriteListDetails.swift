@@ -42,19 +42,21 @@ class FavoriteListDetails: UIViewController, UITextViewDelegate, UITextFieldDele
     }
 
     @IBAction func onDonePressed(sender: AnyObject) {
-        print("Note: \(Note.text)")
-        print("Rating: \(Rating.text)")
-        if(Note.text != "") {
-            let r = Int(Rating.text!)
-            if(r != nil && r!>=0 && r!<=5) {
-                self.addNotes()
-                // segue back to previous VC
-            } else {
-                let alert = UIAlertController(title: "Alert", message: "Rating must be an integer [0-5]", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-            }
+        if(Note.text == "") {
+            let alert = UIAlertController(title: "Alert", message: "You must write notes before saving", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
         }
+        let r = Int(Rating.text!)
+        if(r == nil || r!<0 || r!>5) {
+            let alert = UIAlertController(title: "Alert", message: "Rating must be an integer [0-5]", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        }
+        self.addNotes()
+        self.performSegueWithIdentifier("unwindToFavoriteList", sender: self)
     }
     
     func addNotes() {
