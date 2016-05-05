@@ -307,6 +307,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         srvc.distance = dist
         srvc.searchTerm = foodType
         srvc.location = self.location
-        srvc.locationAddress = self.locationAddress!
+        srvc.locationAddress = self.locationAddress
     }
 }

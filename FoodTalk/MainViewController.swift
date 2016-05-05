@@ -16,6 +16,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
     var locationObtained = false
+    var locationQuery = true
     var location: CLLocation?
     var locationAddress: String?
 
@@ -29,7 +30,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
 
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            while(!self.locationObtained) {
+            while(!self.locationObtained && self.locationQuery) {
                 if CLLocationManager.locationServicesEnabled() {
                     self.locationManager.requestLocation()
                 }
@@ -52,17 +53,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func onDiscoverPressed(sender: AnyObject) {
-        if(locationAddress == nil) {
-            alertEnableLocationServicesRequired()
-            return
-        }
         performSegueWithIdentifier("goToDialogVC", sender: self)
     }
     @IBAction func onFavoritePressed(sender: AnyObject) {
-        if(locationAddress == nil) {
-            alertEnableLocationServicesRequired()
-            return
-        }
         performSegueWithIdentifier("goToFavoriteVC", sender: self)
     }
     
@@ -70,13 +63,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         let dialogueVC = segue.destinationViewController as? DialogueViewController
         if (dialogueVC != nil) {
             dialogueVC!.location = self.location
-            dialogueVC!.locationAddress = self.locationAddress!
+            dialogueVC!.locationAddress = self.locationAddress
             return
         }
         let FavoriteVC = segue.destinationViewController as? FavoriteListViewController
         if (FavoriteVC != nil) {
-            FavoriteVC!.location = self.location!
-            FavoriteVC!.locationAddress = self.locationAddress!
+            FavoriteVC!.location = self.location
+            FavoriteVC!.locationAddress = self.locationAddress
             return
         }
     }
@@ -94,9 +87,23 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     func reverseGeoCode(location: CLLocation) {
         let geoCoder = CLGeocoder()
         
-        geoCoder.reverseGeocodeLocation(location) { (placemark, error) in
-            let placemark = placemark?.first
-            self.locationAddress = "\(placemark!.subThoroughfare!) \(placemark!.thoroughfare!) \(placemark!.locality!), \(placemark!.administrativeArea!)"
+        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            let placemark = placemarks?.first
+            //self.locationAddress = String("\(placemark!.subThoroughfare!) \(placemark!.thoroughfare!) \(placemark!.locality!), \(placemark!.administrativeArea!)")
+            self.locationAddress = String()
+            if (placemark!.subThoroughfare != nil) {
+                self.locationAddress! += placemark!.subThoroughfare!
+            }
+            if (placemark!.thoroughfare != nil) {
+                self.locationAddress! += " " + placemark!.thoroughfare!
+            }
+            if (placemark!.locality != nil) {
+                self.locationAddress! += " " + placemark!.locality!
+            }
+            if (placemark!.administrativeArea != nil) {
+                self.locationAddress! += ", " + placemark!.administrativeArea!
+            }
+
             print("Location detected: \(self.locationAddress!)")
         }
     }
@@ -106,6 +113,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func alertEnableLocationServicesRequired() {
+        if(locationQuery == false) {
+            return
+        }
+        
+        locationQuery = false
         let alert = UIAlertController(title: "Alert", message: "You must enable location services to get search results", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
