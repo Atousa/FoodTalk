@@ -23,39 +23,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="85P-wK-qyq"/>
                                     <constraint firstAttribute="width" constant="281" id="rB6-OG-M4R"/>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssE-Qz-49p">
-                                <rect key="frame" x="65" y="188" width="250" height="284"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGO-vM-b4E">
-                                        <rect key="frame" x="0.0" y="20" width="251" height="100"/>
-                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="25"/>
-                                        <state key="normal" title="   Discover  " image="Meal Filled-100">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onDiscoverPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JXO-ws-joM"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imm-4e-CyZ">
-                                        <rect key="frame" x="0.0" y="164" width="251" height="100"/>
-                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="25"/>
-                                        <inset key="contentEdgeInsets" minX="-18" minY="0.0" maxX="-15" maxY="0.0"/>
-                                        <state key="normal" title="     Visited   " image="Map Editing Filled-100">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onFavoritePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pgq-S7-wAs"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="BGO-vM-b4E" firstAttribute="leading" secondItem="Imm-4e-CyZ" secondAttribute="leading" id="8sO-m1-aXe"/>
-                                    <constraint firstAttribute="height" constant="284" id="BwD-91-Y19"/>
-                                    <constraint firstItem="BGO-vM-b4E" firstAttribute="leading" secondItem="ssE-Qz-49p" secondAttribute="leading" id="a2f-R1-Eld"/>
-                                    <constraint firstAttribute="width" constant="250" id="cjy-6x-mS0"/>
-                                    <constraint firstItem="BGO-vM-b4E" firstAttribute="trailing" secondItem="Imm-4e-CyZ" secondAttribute="trailing" id="iPe-wy-QSA"/>
-                                    <constraint firstItem="Imm-4e-CyZ" firstAttribute="top" secondItem="BGO-vM-b4E" secondAttribute="bottom" constant="44" id="irp-5Y-Gx3"/>
-                                    <constraint firstItem="BGO-vM-b4E" firstAttribute="top" secondItem="ssE-Qz-49p" secondAttribute="top" constant="20" id="xmG-NN-rtW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="25"/>
                                 <state key="normal" title="   Discover  " image="search 5">
@@ -92,8 +59,6 @@
                     <connections>
                         <outlet property="favoritePlaceButton" destination="Imm-4e-CyZ" id="glo-sT-cVt"/>
                         <outlet property="newPlaceButton" destination="BGO-vM-b4E" id="xKK-Q5-Mgb"/>
-                        <segue destination="KZb-md-CTb" kind="show" identifier="goToDialogVC" id="ssG-cY-3VL"/>
-                        <segue destination="Bwa-So-jQZ" kind="show" identifier="goToFavoriteVC" id="IWg-bB-95E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
