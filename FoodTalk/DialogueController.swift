@@ -50,7 +50,7 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         self.tts = TextToSpeech(username: "68d797f2-38cb-4c4f-b743-f07e4a928280", password: "KTGQijyQ21M1")
         
         
-        let dialogName = "xmlchanged37"
+        let dialogName = "xmlchanged38"
         self.service!.getDialogs() { dialogs, error in
             if error != nil {
                 print(error?.userInfo)
@@ -276,14 +276,13 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         return self.watsonLog.count
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 150
-    }
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 150
+//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("DialogueCell1") as! DialogueCell
+        
         cell.WatsonDialogueTextField.text = self.watsonLog[indexPath.row]
         if (indexPath.row < self.userLog.count) {
             cell.myDialogueTextField.text = self.userLog[indexPath.row]
@@ -291,15 +290,17 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
             cell.myDialogueTextField.text = ""
         }
         
-        
         cell.WatsonDialogueTextField.sizeToFit()
+        cell.myDialogueTextField.sizeToFit()
         
-        
-        cell.WatsonDialogueTextField.font = UIFont(name: "Palatino", size: 16)
+        cell.WatsonDialogueTextField.font = UIFont(name: "Palatino", size: 18)
+        cell.myDialogueTextField.font = UIFont(name: "Palatino", size: 18)
         cell.WatsonDialogueImage.image = UIImage(named: "Satellites-100.png")
         return cell
     }
     
+    
+//MARK: Keyboard and layout methods
     func keyboardWillShowNotification(notification: NSNotification) {
         updateBottomLayoutConstraintWithNotificationUpdateKeyboard(notification)
     }
@@ -326,6 +327,8 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
                 self.tableViewScrollToBottom(true)
         })
     }
+    
+    
     
 //MARK: TextField Methods
     func textFieldShouldReturn(textField: UITextField) -> Bool {

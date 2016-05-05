@@ -4,8 +4,8 @@
         <folder label="Main">
             <output>
                 <prompt selectionType="RANDOM">
-                    <item>Beepboop: What type of food would you like?</item>
-                    <item>Beepboop: What type of food would you like to eat?</item>
+                    <item>What type of food would you like?</item>
+                    <item>What type of food would you like to eat?</item>
                 </prompt>
                 <goto ref="getUserInput_2442994"/>
             </output>
@@ -18,8 +18,7 @@
                     <default>
                         <output>
                             <prompt selectionType="RANDOM">
-                                <item>Boopbeep: I did not understand your response. Try again.</item>
-                                <item>Boopbeep: Try again? Perhaps a food type or distance</item>
+                                <item>Try again? Perhaps a food type or distance</item>
                             </prompt>
                         </output>
                     </default>
