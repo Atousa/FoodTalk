@@ -22,6 +22,8 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
     var locationAddress : String?
 
     var restaurants = [Restaurant]()
+    var expanded = [Bool]()
+    
     var r : Restaurant!
     let predicate = NSPredicate()
     let resDemo1 = restaurantDescriptor()
@@ -214,15 +216,32 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+        // NOTE: Cannot call tableView.cellForRowAtIndexPath(indexPath) here
+        if (indexPath.row >= expanded.count) {
+            while (expanded.count <= indexPath.row) {
+                expanded.append(false)
+            }
+        }
+        if (expanded[indexPath.row] == true) {
+            expanded[indexPath.row] = false
+        } else {
+            expanded[indexPath.row] = true
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation:.None)
+    }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let restaurant = self.restaurants[indexPath.row]
 
+        // NOTE: Cannot call tableView.cellForRowAtIndexPath(indexPath) here
         // TODO: These heights shouldn't be hardcoded
-        if (restaurant.visits?.count == 0) {
-            return 60
+        if (indexPath.row < expanded.count && expanded[indexPath.row] && restaurant.visits?.count > 0) {
+            return 200
         }
-        return 200
+        return 60
     }
     
    

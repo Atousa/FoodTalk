@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="205" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fq3-lW-Jwc">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="205" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fq3-lW-Jwc">
                                 <rect key="frame" x="20" y="64" width="560" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -58,7 +58,7 @@
                                                 </textView>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vHj-CB-81n">
                                                     <rect key="frame" x="0.0" y="61" width="560" height="125"/>
-                                                    <color key="backgroundColor" red="0.75294117650000003" green="0.90980392160000001" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="125" id="p4r-aS-3EP"/>
                                                     </constraints>
@@ -88,17 +88,16 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" red="0.59799629853763159" green="0.87676282049999998" blue="0.49590114046701467" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="backgroundColor" red="0.87676282049999998" green="0.87676282049999998" blue="0.87676282049999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstItem="Y10-uO-mtr" firstAttribute="leading" secondItem="5Q1-tG-khn" secondAttribute="trailing" constant="8" id="FnC-UT-phT"/>
                                                                     <constraint firstItem="5Q1-tG-khn" firstAttribute="top" secondItem="ugi-wL-OOY" secondAttribute="topMargin" id="IzB-lw-Hwn"/>
                                                                     <constraint firstItem="5Q1-tG-khn" firstAttribute="leading" secondItem="ugi-wL-OOY" secondAttribute="leadingMargin" id="Rx3-e0-uu4"/>
                                                                     <constraint firstAttribute="trailingMargin" secondItem="Y10-uO-mtr" secondAttribute="trailing" id="VRg-Bc-i3U"/>
                                                                     <constraint firstAttribute="bottomMargin" secondItem="Y10-uO-mtr" secondAttribute="bottom" constant="-0.5" id="Ybt-DH-n00"/>
-                                                                    <constraint firstItem="Y10-uO-mtr" firstAttribute="top" secondItem="ugi-wL-OOY" secondAttribute="topMargin" constant="-4" id="sv3-QJ-Xni"/>
+                                                                    <constraint firstItem="Y10-uO-mtr" firstAttribute="top" secondItem="ugi-wL-OOY" secondAttribute="topMargin" id="sv3-QJ-Xni"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
-                                                            <color key="backgroundColor" red="1" green="0.6028060761463675" blue="0.48419861109917983" alpha="1" colorSpace="calibratedRGB"/>
                                                             <connections>
                                                                 <outlet property="dateLabel" destination="5Q1-tG-khn" id="8ax-p8-6bd"/>
                                                                 <outlet property="noteLabel" destination="Y10-uO-mtr" id="VnB-hv-rdb"/>
@@ -112,7 +111,7 @@
                                                         <constraint firstAttribute="width" constant="22" id="Jao-nq-CS6"/>
                                                     </constraints>
                                                     <connections>
-                                                        <action selector="addNoteButton:" destination="YWC-PN-V9s" eventType="touchUpInside" id="ShA-6b-IV9"/>
+                                                        <action selector="addNoteButton:" destination="YWC-PN-V9s" eventType="touchUpInside" id="9MN-kk-h4g"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(####)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOI-8C-A0y" userLabel="NumRatings">
@@ -157,7 +156,6 @@
                                             <outlet property="notesTableView" destination="vHj-CB-81n" id="lem-ZS-gW2"/>
                                             <outlet property="numRatings" destination="nOI-8C-A0y" id="woF-gL-r6y"/>
                                             <outlet property="typeLabel" destination="bmv-SM-bjd" id="BBq-xM-Nkt"/>
-                                            <segue destination="Lig-Wq-Ixe" kind="presentation" identifier="addNoteSegue" id="raw-dd-KcS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -196,11 +194,12 @@
                     <connections>
                         <outlet property="sortingSegmentedControl" destination="Nws-lo-nuZ" id="qM4-oB-cDX"/>
                         <outlet property="tableView" destination="Fq3-lW-Jwc" id="gId-1f-EKj"/>
+                        <segue destination="Lig-Wq-Ixe" kind="show" identifier="addNoteSegue" id="6NY-9c-3Go"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZMu-r7-ab9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1971" y="540"/>
+            <point key="canvasLocation" x="1987.5" y="751.5"/>
         </scene>
         <!--FavoritesListDetails-->
         <scene sceneID="IZK-bY-wIX">
@@ -208,7 +207,7 @@
                 <viewControllerPlaceholder storyboardName="FavoritesListDetails" id="Lig-Wq-Ixe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16u-6y-sDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2538" y="388"/>
+            <point key="canvasLocation" x="2619" y="483"/>
         </scene>
     </scenes>
     <resources>
