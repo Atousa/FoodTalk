@@ -53,7 +53,6 @@
 		717E624B1CC7FAE80078B71A /* DialogueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717E624A1CC7FAE80078B71A /* DialogueCell.swift */; };
 		71A4D6051CD2A597002EBE83 /* foodSearchDialog-8.xml in Resources */ = {isa = PBXBuildFile; fileRef = 71A4D6041CD2A597002EBE83 /* foodSearchDialog-8.xml */; };
 		71A4D6081CD2AECF002EBE83 /* FavoritesListDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71A4D6061CD2AECF002EBE83 /* FavoritesListDetails.storyboard */; };
-		71BFBE021CDBCA7100B76DD4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BFBE011CDBCA7100B76DD4 /* Location.swift */; };
 		71BFBE051CDBD0A000B76DD4 /* LocationObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BFBE041CDBD0A000B76DD4 /* LocationObjC.m */; };
 		AAFBBE1BFA0FCD5976BC1EE4 /* libPods-FoodTalk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A28D315F5090215C804647 /* libPods-FoodTalk.a */; };
 /* End PBXBuildFile section */
@@ -123,7 +122,6 @@
 		717E624A1CC7FAE80078B71A /* DialogueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogueCell.swift; sourceTree = "<group>"; };
 		71A4D6041CD2A597002EBE83 /* foodSearchDialog-8.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "foodSearchDialog-8.xml"; sourceTree = "<group>"; };
 		71A4D6071CD2AECF002EBE83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FavoritesListDetails.storyboard; sourceTree = "<group>"; };
-		71BFBE011CDBCA7100B76DD4 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		71BFBE031CDBD0A000B76DD4 /* LocationObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationObjC.h; sourceTree = "<group>"; };
 		71BFBE041CDBD0A000B76DD4 /* LocationObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationObjC.m; sourceTree = "<group>"; };
 		87A28D315F5090215C804647 /* libPods-FoodTalk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodTalk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,7 +175,6 @@
 			children = (
 				71BFBE031CDBD0A000B76DD4 /* LocationObjC.h */,
 				71BFBE041CDBD0A000B76DD4 /* LocationObjC.m */,
-				71BFBE011CDBCA7100B76DD4 /* Location.swift */,
 				1A5E5A4E1CCACE9E00BBA6A1 /* FoodTalk-Bridging-Header.h */,
 				711FF97B1CCA0111000180B6 /* pizza_sample.xml */,
 				1AD77C381CD10BAA00CDF00F /* AppDelegate.swift */,
@@ -436,7 +433,6 @@
 				1A4FE0B31CC702E200EE8787 /* MainViewController.swift in Sources */,
 				717E624B1CC7FAE80078B71A /* DialogueCell.swift in Sources */,
 				713311681CCC0902006CE651 /* Restaurant+CoreDataProperties.swift in Sources */,
-				71BFBE021CDBCA7100B76DD4 /* Location.swift in Sources */,
 				7133116B1CCC0902006CE651 /* Photo.swift in Sources */,
 				1A5E5A551CCAE2AA00BBA6A1 /* (null) in Sources */,
 				717116891CD3C0AA0076A6AF /* FavoriteListDetails.swift in Sources */,
