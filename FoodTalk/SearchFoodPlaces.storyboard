@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="379"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cjn-3G-LJm" id="4Zv-lT-0to">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="378.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="378"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="(1453 Reviews)" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1w9-7E-8dv">
@@ -43,7 +43,7 @@
                                                     <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="10x10_1-5" translatesAutoresizingMaskIntoConstraints="NO" id="tZF-JS-0mv">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tZF-JS-0mv">
                                                     <rect key="frame" x="59" y="153" width="106" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="106" id="eT0-a8-aA3"/>
@@ -128,7 +128,7 @@ Cg
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <dataDetectorType key="dataDetectorTypes" address="YES"/>
                                                 </textView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Boston Creme Donut" translatesAutoresizingMaskIntoConstraints="NO" id="FUH-86-rE4">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FUH-86-rE4">
                                                     <rect key="frame" x="219" y="8" width="126" height="125"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="126" id="VPX-Uv-AIz"/>
@@ -194,8 +194,6 @@ Cg
         </scene>
     </scenes>
     <resources>
-        <image name="10x10_1-5" width="10" height="10"/>
-        <image name="Boston Creme Donut" width="2820" height="1840"/>
         <image name="Uncheckedbox-100" width="100" height="100"/>
     </resources>
 </document>
