@@ -98,7 +98,6 @@ class FavoriteListViewController: UIViewController, UITableViewDataSource, UITab
         self.tableView.reloadData()
     }
     
-
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         self.instanceOfLocationObject.locationObtained = true;

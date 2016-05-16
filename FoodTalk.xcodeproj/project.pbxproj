@@ -147,6 +147,7 @@
 		1A4FE07F1CC6FDA000EE8787 = {
 			isa = PBXGroup;
 			children = (
+				1A5524091CE94D4B00067D35 /* Data Model */,
 				1AFEF6171CE849A9002A7DE1 /* Custom Classes */,
 				1AFEF6151CE84936002A7DE1 /* Controllers */,
 				1AFEF6141CE84930002A7DE1 /* Views */,
@@ -180,6 +181,13 @@
 				714EF7F21CD15E8F0036F514 /* foodSearchDialog.xml */,
 			);
 			path = FoodTalk;
+			sourceTree = "<group>";
+		};
+		1A5524091CE94D4B00067D35 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Data Model";
 			sourceTree = "<group>";
 		};
 		1AFEF6141CE84930002A7DE1 /* Views */ = {

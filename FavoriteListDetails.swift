@@ -63,9 +63,7 @@ class FavoriteListDetails: UIViewController, UITextViewDelegate, UITextFieldDele
         let v = visitDescriptor()
         v.date = NSDate()
         v.rating = Int(Rating.text!)!
-        //v.favoriteDishes
         v.notes = Note.text
-        //v.photos
 
         CDM.addVisit(restaurant, descr: v)
     }

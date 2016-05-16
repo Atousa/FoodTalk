@@ -34,7 +34,6 @@
 @property CLPlacemark *placemark;
 
 @property CGFloat heightOfCell;
-@property NSMutableArray *expansionCheck;
 
 @property CLLocationManager *locationManager;
 @property LocationObjC *locationClass;
@@ -47,7 +46,6 @@
     [super viewDidLoad];
     
     self.heightOfCell = 185;
-    self.expansionCheck = [@[@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",@"false",]mutableCopy];
     
 //    Capitalize the first letter of the search term
     NSString *foo = [NSString stringWithFormat:@"%@", self.searchTerm];
@@ -62,10 +60,6 @@
     
     self.locationClass = [[LocationObjC alloc] init];
     [self.locationClass initStuff:self];
-    
-    
-    
-//    [self searchForFoodPlaces:self.locationAddressYelpVC searchString:self.searchTerm];
 }
 
 -(void)instantiateYelpAuthTokens {
@@ -154,11 +148,9 @@
     ResultsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
 
     cell.delegateCheckmark = self;
-//    cell.restaurantMapView.hidden = YES;
     [cell.yelpRestaurantTitleAddress sizeToFit];
     
     Business * businessOfMany = self.arrayOfBusinesses[indexPath.row];
-//    YLPBusiness *businessOfMany = self.arrayOfBusinesses[indexPath.row];
     
     //    Get the categories from an array and append them into a string
     NSMutableString *restaurantCategory = [[NSMutableString alloc] init];
@@ -187,12 +179,6 @@
     double restaurantLongitude = businessOfMany.yelpBusiness.location.coordinate.longitude;
     self.restaurantAnnotation.coordinate = CLLocationCoordinate2DMake(restaurantLatitude, restaurantLongitude);
     [cell.restaurantMapView addAnnotation:self.restaurantAnnotation];
-    
-//    Set up the annotation of the user's current location
-//    double currentLatitude = self.placemark.location.coordinate.latitude;
-//    double currentLongitude = self.placemark.location.coordinate.longitude;
-//    self.currentLocationAnnotation.coordinate = CLLocationCoordinate2DMake(currentLatitude, currentLongitude);
-//    [cell.restaurantMapView addAnnotation:self.currentLocationAnnotation];
     
 //    Zooms in on the region
     MKCoordinateRegion region = MKCoordinateRegionMake(self.restaurantAnnotation.coordinate, MKCoordinateSpanMake(0.03, 0.03));
@@ -318,8 +304,6 @@
         [self searchForFoodPlaces:self.locationClass.locationAddress searchString:self.searchTerm];
     }];
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

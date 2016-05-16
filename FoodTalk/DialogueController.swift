@@ -22,13 +22,8 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
     var userLog: [String] = []
     var foodType = "food"
     var dist = String()
-//    var location: CLLocation?
-//    var locationAddress: String?
     var maxHeight:CGFloat?
     var activityIndicator = UIActivityIndicatorView()
-//    let locationManager = CLLocationManager()
-
-    
 
 //MARK: View Load/Appear Methods
     override func viewDidLoad() {
@@ -93,39 +88,6 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
     }
-    
-//MARK: Location methods
-//    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        let location = locations.last
-//        if location?.verticalAccuracy < 1000 && location?.horizontalAccuracy < 1000 {
-//            self.location = location
-//            reverseGeoCode(location!)
-//        }
-//        
-//    }
-//    
-//    func reverseGeoCode(location:CLLocation) {
-//        let geoCoder = CLGeocoder()
-//        
-//        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
-//            let placemark = placemarks?.first
-//            self.locationAddress = String()
-//            if (placemark!.subThoroughfare != nil) {
-//                self.locationAddress! += placemark!.subThoroughfare!
-//            }
-//            if (placemark!.thoroughfare != nil) {
-//                self.locationAddress! += " " + placemark!.thoroughfare!
-//            }
-//            if (placemark!.locality != nil) {
-//                self.locationAddress! += " " + placemark!.locality!
-//            }
-//            if (placemark!.administrativeArea != nil) {
-//                self.locationAddress! += ", " + placemark!.administrativeArea!
-//            }
-//            
-//            print("Location detected: \(self.locationAddress!)")
-//        }
-//    }
 
 
 //MARK: Tableview Scroll
@@ -394,7 +356,5 @@ class DialogueViewController: UIViewController, UITableViewDelegate, AVAudioReco
         let srvc = segue.destinationViewController as! SearchResultViewController
         srvc.distance = dist
         srvc.searchTerm = foodType
-//        srvc.location = self.location
-//        srvc.locationAddress = self.locationAddress
     }
 }
